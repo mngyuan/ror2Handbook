@@ -15,12 +15,20 @@ import {
   Text,
   StatusBar,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+
+const DATA = {
+  items: [{name: 'testitem', category: 'damage', rarity: 'common', id: 0}],
+  survivors: [{name: 'testsurvivor', id: 0}],
+  environments: [{name: 'testenvironment', id: 0}],
+  utilities: [{name: 'testdrone', id: 0}],
+};
 
 const Colors = {
   lighter: 'white',
@@ -30,8 +38,19 @@ const Colors = {
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const SearchScreen = () => {
+const SearchScreen = ({type}) => {
   const [search, setSearch] = useState('');
+  const searchTokens = search.toLocaleLowerCase().split(/ +/);
+  const searchData = (type ? DATA[type] : Object.values(DATA).flat()).filter(
+    (o) => {
+      const searchableFields = Object.values(o).filter(
+        (v) => typeof v === 'string',
+      );
+      return searchTokens.every((t) =>
+        searchableFields.some((s) => s.toLocaleLowerCase().includes(t)),
+      );
+    },
+  );
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -50,6 +69,13 @@ const SearchScreen = () => {
             value={search}
             platform={Platform.OS === 'ios' ? 'ios' : 'android'}
           />
+          <View style={styles.searchResults}>
+            {searchData.map((v) => (
+              <View style={styles.searchResult} key={v.name}>
+                <Text>{v.name}</Text>
+              </View>
+            ))}
+          </View>
         </ScrollView>
       </SafeAreaView>
     </>
@@ -60,12 +86,14 @@ const DetailScreen = () => {
   return <></>;
 };
 
-const HomeScreen = () => {
+const HomeScreen = ({type}) => {
   return (
     <Stack.Navigator initialRouteName="Search">
       <Stack.Screen
         name="Search"
-        component={SearchScreen}
+        component={React.memo((props) => (
+          <SearchScreen {...props} type={type} />
+        ))}
         options={{
           header: ({scene, previous, navigation}) => {
             const {options} = scene.descriptor;
@@ -78,7 +106,11 @@ const HomeScreen = () => {
             return (
               <SafeAreaView style={styles.header}>
                 <View style={styles.headerSpacer}>
-                  <Icon name="menu" size={24} style={styles.headerIcon} />
+                  <TouchableOpacity
+                    onPress={() => navigation.openDrawer()}
+                    style={styles.headerIcon}>
+                    <Icon name="menu" size={24} />
+                  </TouchableOpacity>
                   <View>
                     <Text style={styles.headerText}>{title}</Text>
                   </View>
@@ -94,16 +126,29 @@ const HomeScreen = () => {
   );
 };
 
-const ItemScreen = () => {};
-const SurvivorScreen = () => {};
-const EnvironmentScreen = () => {};
-const UtilityScreen = () => {};
+const ItemScreen = React.memo((props) => (
+  <HomeScreen {...props} type="items" />
+));
+const SurvivorScreen = React.memo((props) => (
+  <HomeScreen {...props} type="survivors" />
+));
+const EnvironmentScreen = React.memo((props) => (
+  <HomeScreen {...props} type="environments" />
+));
+const UtilityScreen = React.memo((props) => (
+  <HomeScreen {...props} type="utilities" />
+));
 
 const App = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen
+          name="Home"
+          component={React.memo((props) => (
+            <HomeScreen {...props} type={null} />
+          ))}
+        />
         <Drawer.Screen name="Items" component={ItemScreen} />
         <Drawer.Screen name="Survivors" component={SurvivorScreen} />
         <Drawer.Screen name="Environments" component={EnvironmentScreen} />
@@ -142,6 +187,10 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '600',
   },
+  searchResults: {
+    flexDirection: 'row',
+  },
+  searchResult: {},
   footer: {
     color: Colors.dark,
     fontSize: 12,
