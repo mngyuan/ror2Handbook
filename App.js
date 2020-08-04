@@ -16,6 +16,8 @@ import {
   StatusBar,
   Platform,
   TouchableOpacity,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -54,30 +56,33 @@ const SearchScreen = ({type}) => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <SearchBar
-            placeholder="Search anything..."
-            onChangeText={(text) => setSearch(text)}
-            value={search}
-            platform={Platform.OS === 'ios' ? 'ios' : 'android'}
-          />
-          <View style={styles.searchResults}>
-            {searchData.map((v) => (
-              <View style={styles.searchResult} key={v.name}>
-                <Text>{v.name}</Text>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <SafeAreaView style={{flex: 1}}>
+          <ScrollView
+            keyboardShouldPersistTaps="handled"
+            contentInsetAdjustmentBehavior="automatic"
+            style={styles.scrollView}>
+            {global.HermesInternal == null ? null : (
+              <View style={styles.engine}>
+                <Text style={styles.footer}>Engine: Hermes</Text>
               </View>
-            ))}
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+            )}
+            <SearchBar
+              placeholder="Search anything..."
+              onChangeText={(text) => setSearch(text)}
+              value={search}
+              platform={Platform.OS === 'ios' ? 'ios' : 'android'}
+            />
+            <View style={styles.searchResults}>
+              {searchData.map((v) => (
+                <View style={styles.searchResult} key={v.name}>
+                  <Text>{v.name}</Text>
+                </View>
+              ))}
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </TouchableWithoutFeedback>
     </>
   );
 };
