@@ -18,6 +18,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
+  Image,
 } from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -25,8 +26,12 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
+import ITEM_IMAGES from './imgs/images.js';
+console.log(ITEM_IMAGES);
+import ITEM_DATA from './item_data.json';
+
 const DATA = {
-  items: [{name: 'testitem', category: 'damage', rarity: 'common', id: 0}],
+  items: ITEM_DATA,
   survivors: [{name: 'testsurvivor', id: 0}],
   environments: [{name: 'testenvironment', id: 0}],
   utilities: [{name: 'testdrone', id: 0}],
@@ -53,11 +58,19 @@ const SearchScreen = ({type}) => {
       );
     },
   );
+  console.log(searchData);
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <SafeAreaView style={{flex: 1}}>
+          {/* fix for ScrollView inside Touchable */}
+          <SearchBar
+            placeholder="Search anything..."
+            onChangeText={(text) => setSearch(text)}
+            value={search}
+            platform={Platform.OS === 'ios' ? 'ios' : 'android'}
+          />
           <ScrollView
             keyboardShouldPersistTaps="handled"
             contentInsetAdjustmentBehavior="automatic"
@@ -67,16 +80,19 @@ const SearchScreen = ({type}) => {
                 <Text style={styles.footer}>Engine: Hermes</Text>
               </View>
             )}
-            <SearchBar
-              placeholder="Search anything..."
-              onChangeText={(text) => setSearch(text)}
-              value={search}
-              platform={Platform.OS === 'ios' ? 'ios' : 'android'}
-            />
-            <View style={styles.searchResults}>
+            <View
+              style={styles.searchResults}
+              onStartShouldSetResponder={() => true}>
               {searchData.map((v) => (
                 <View style={styles.searchResult} key={v.name}>
-                  <Text>{v.name}</Text>
+                  {ITEM_IMAGES[v.name.replace(/ /g, '')] ? (
+                    <Image
+                      source={ITEM_IMAGES[v.name.replace(/ /g, '')]}
+                      style={styles.searchResultImage}
+                    />
+                  ) : (
+                    <Text>{v.name}</Text>
+                  )}
                 </View>
               ))}
             </View>
@@ -194,8 +210,10 @@ const styles = StyleSheet.create({
   },
   searchResults: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   searchResult: {},
+  searchResultImage: {},
   footer: {
     color: Colors.dark,
     fontSize: 12,
