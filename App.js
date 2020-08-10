@@ -27,7 +27,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import ITEM_IMAGES from './imgs/images.js';
-console.log(ITEM_IMAGES);
 import ITEM_DATA from './item_data.json';
 
 const DATA = {
@@ -40,25 +39,32 @@ const DATA = {
 const Colors = {
   lighter: 'white',
   dark: 'black',
+  rarityCommon: 'grey',
+  rarityUncommon: 'green',
+  rarityLegendary: 'red',
+  rarityBoss: 'yellow',
+  rarityLunar: 'blue',
 };
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const SearchScreen = ({type}) => {
+const SearchScreen = ({navigation, type}) => {
   const [search, setSearch] = useState('');
   const searchTokens = search.toLocaleLowerCase().split(/ +/);
-  const searchData = (type ? DATA[type] : Object.values(DATA).flat()).filter(
-    (o) => {
-      const searchableFields = Object.values(o).filter(
-        (v) => typeof v === 'string',
-      );
-      return searchTokens.every((t) =>
-        searchableFields.some((s) => s.toLocaleLowerCase().includes(t)),
-      );
-    },
-  );
-  console.log(searchData);
+  const searchData = type
+    ? DATA[type]
+    : Object.values(DATA)
+        .map(Object.values)
+        .flat()
+        .filter((o) => {
+          const searchableFields = Object.values(o).filter(
+            (v) => typeof v === 'string',
+          );
+          return searchTokens.every((t) =>
+            searchableFields.some((s) => s.toLocaleLowerCase().includes(t)),
+          );
+        });
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -70,6 +76,7 @@ const SearchScreen = ({type}) => {
             onChangeText={(text) => setSearch(text)}
             value={search}
             platform={Platform.OS === 'ios' ? 'ios' : 'android'}
+            containerStyle={styles.SearchBar}
           />
           <ScrollView
             keyboardShouldPersistTaps="handled"
@@ -84,16 +91,21 @@ const SearchScreen = ({type}) => {
               style={styles.searchResults}
               onStartShouldSetResponder={() => true}>
               {searchData.map((v) => (
-                <View style={styles.searchResult} key={v.name}>
+                <TouchableOpacity
+                  style={styles.searchResult}
+                  key={v.name}
+                  onPress={() =>
+                    navigation.navigate('Detail', {itemName: v.name})
+                  }>
                   {ITEM_IMAGES[v.name.replace(/ /g, '')] ? (
                     <Image
                       source={ITEM_IMAGES[v.name.replace(/ /g, '')]}
-                      style={styles.searchResultImage}
+                      style={[styles.searchResultImage]}
                     />
                   ) : (
                     <Text>{v.name}</Text>
                   )}
-                </View>
+                </TouchableOpacity>
               ))}
             </View>
           </ScrollView>
@@ -103,8 +115,31 @@ const SearchScreen = ({type}) => {
   );
 };
 
-const DetailScreen = () => {
-  return <></>;
+const DetailScreen = ({route}) => {
+  const {itemName} = route.params;
+  const item = DATA.items[itemName] || {};
+  return (
+    <ScrollView>
+      <View style={styles.DetailScreen}>
+        <Text style={styles.detailName}>{item.name}</Text>
+        <Image
+          source={ITEM_IMAGES[item.name.replace(/ /g, '')]}
+          style={styles.detailImage}
+        />
+        <Text style={styles.detailFlavor}>{item.flavorText}</Text>
+        <Text style={[styles.detailRarity, styles[`rarity${item.rarity}`]]}>
+          {item.rarity}
+        </Text>
+        <Text style={styles.detailCategory}>{item.category}</Text>
+        <Text style={styles.detailDescription}>{item.description}</Text>
+        {item.stats.map((stat) =>
+          Object.entries(stat).map((entry) => (
+            <Text key={entry[0]}>{entry[1]}</Text>
+          )),
+        )}
+      </View>
+    </ScrollView>
+  );
 };
 
 const HomeScreen = ({type}) => {
@@ -190,7 +225,6 @@ const styles = StyleSheet.create({
   header: {
     height: 80,
     width: '100%',
-    padding: 12,
   },
   headerSpacer: {
     flexDirection: 'row',
@@ -198,22 +232,35 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'relative',
     flex: 1,
+    paddingTop: 10,
   },
   headerIcon: {
     position: 'absolute',
     left: 4,
+    top: 10,
   },
   headerText: {
     // mimics default
     fontSize: 17,
     fontWeight: '600',
   },
+  SearchBar: {
+    paddingHorizontal: 4,
+  },
   searchResults: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    width: '100%',
+    padding: 4,
   },
-  searchResult: {},
-  searchResultImage: {},
+  searchResult: {
+    width: '20%',
+    aspectRatio: 1,
+  },
+  searchResultImage: {
+    aspectRatio: 1,
+    height: '100%',
+  },
   footer: {
     color: Colors.dark,
     fontSize: 12,
@@ -221,6 +268,35 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingRight: 12,
     textAlign: 'right',
+  },
+  rarityCommon: {color: Colors.rarityCommon},
+  rarityUncommon: {color: Colors.rarityUncommon},
+  rarityLegendary: {color: Colors.rarityLegendary},
+  rarityBoss: {color: Colors.rarityBoss},
+  rarityLunar: {color: Colors.rarityLunar},
+  DetailScreen: {
+    alignItems: 'center',
+    padding: 16,
+  },
+  detailName: {
+    textAlign: 'center',
+    fontSize: 32,
+    fontWeight: 'bold',
+  },
+  detailFlavor: {
+    fontSize: 24,
+    textAlign: 'center',
+  },
+  detailRarity: {
+    fontSize: 20,
+  },
+  detailCategory: {
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  detailDescription: {
+    textAlign: 'center',
+    fontSize: 20,
   },
 });
 

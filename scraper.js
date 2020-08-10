@@ -52,10 +52,10 @@ const scrapeItems = (seed, single = false) =>
           .map((url) => `${baseUrl}${url}`)
           .concat(seed)
           .filter((url) => !ignoreList.includes(url));
-        const itemData = [];
+        const itemData = {};
         for (const itemUrl of itemUrls) {
           const data = await visitItem(page, itemUrl);
-          itemData.push(data);
+          itemData[data.name] = data;
         }
         browser.close();
         return resolve(itemData);
