@@ -1,12 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -21,6 +13,8 @@ import {
   KeyboardAvoidingView,
   Image,
   useColorScheme,
+  AppState,
+  Alert,
 } from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import Modal from 'react-native-modal';
@@ -56,10 +50,24 @@ const Colors = {
   rarityLunar: 'blue',
 };
 
-console.log(DarkTheme);
-
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
+
+const useAppState = () => {
+  const [appState, setAppState] = useState(AppState.currentState);
+
+  const handleAppStateChange = (nextAppState) => setAppState(nextAppState);
+
+  useEffect(() => {
+    AppState.addEventListener('change', handleAppStateChange);
+
+    return () => {
+      AppState.removeEventListener('change', handleAppStateChange);
+    };
+  }, []);
+
+  return appState;
+};
 
 const RText = ({color = 'primary', style, children, ...props}) => {
   const colorScheme = useColorScheme();
@@ -180,8 +188,12 @@ const SearchScreen = ({navigation, type}) => {
 };
 
 const ItemModal = ({itemName, setViewingItem}) => {
+  const appState = useAppState();
   const colorScheme = useColorScheme();
   const item = DATA.items[itemName];
+  useEffect(() => {
+    appState === 'active' && Alert.alert('active!');
+  }, [appState]);
   return item ? (
     <Modal
       isVisible={!!itemName}
