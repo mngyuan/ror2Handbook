@@ -23,6 +23,7 @@ import {
   useColorScheme,
 } from 'react-native';
 import {SearchBar} from 'react-native-elements';
+import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {
@@ -44,7 +45,8 @@ const DATA = {
 
 const Colors = {
   white: 'white',
-  lightGrey: '#dfdfdf',
+  lighterGrey: '#dadada',
+  lightGrey: '#c0c0c0',
   darkGrey: 'rgb(18,18,18)',
   black: 'black',
   rarityCommon: 'grey',
@@ -54,18 +56,20 @@ const Colors = {
   rarityLunar: 'blue',
 };
 
+console.log(DarkTheme);
+
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const RText = ({style, children, ...props}) => {
+const RText = ({color = 'primary', style, children, ...props}) => {
   const colorScheme = useColorScheme();
+  const primaryColor =
+    colorScheme === 'dark' ? DarkTheme.colors.text : Colors.black;
+  const secondaryColor =
+    colorScheme === 'dark' ? 'rgb(170, 170, 172)' : Colors.darkGrey;
+  const textColor = color === 'primary' ? primaryColor : secondaryColor;
   return (
-    <Text
-      style={[
-        {color: colorScheme === 'dark' ? DarkTheme.colors.text : Colors.black},
-        style,
-      ]}
-      {...props}>
+    <Text style={[{color: textColor}, style]} {...props}>
       {children}
     </Text>
   );
@@ -74,6 +78,8 @@ const RText = ({style, children, ...props}) => {
 const SearchScreen = ({navigation, type}) => {
   const colorScheme = useColorScheme();
   const [search, setSearch] = useState('');
+  const [viewingItem, setViewingItem] = useState(null);
+
   const searchTokens = search.toLocaleLowerCase().split(/ +/);
   const searchData = type
     ? DATA[type]
@@ -149,9 +155,7 @@ const SearchScreen = ({navigation, type}) => {
                   <TouchableOpacity
                     style={styles.searchResult}
                     key={v.name}
-                    onPress={() =>
-                      navigation.navigate('Detail', {itemName: v.name})
-                    }>
+                    onPress={() => setViewingItem(v.name)}>
                     {ITEM_IMAGES[v.name.replace(/ /g, '')] ? (
                       <Image
                         source={ITEM_IMAGES[v.name.replace(/ /g, '')]}
@@ -167,8 +171,73 @@ const SearchScreen = ({navigation, type}) => {
           </KeyboardAvoidingView>
         </SafeAreaView>
       </TouchableWithoutFeedback>
+      <ItemModal
+        itemName={viewingItem}
+        setViewingItem={(itemName) => setViewingItem(itemName)}
+      />
     </>
   );
+};
+
+const ItemModal = ({itemName, setViewingItem}) => {
+  const colorScheme = useColorScheme();
+  const item = DATA.items[itemName];
+  return item ? (
+    <Modal
+      isVisible={!!itemName}
+      onBackdropPress={() => setViewingItem(null)}
+      style={styles.ItemModal}>
+      <View
+        style={[
+          styles.ItemModalInner,
+          {
+            backgroundColor:
+              colorScheme === 'dark'
+                ? DarkTheme.colors.background
+                : Colors.white,
+          },
+        ]}>
+        <View style={styles.itemModalHeader}>
+          <View style={styles.itemModalHeaderInfo}>
+            <RText
+              style={[styles.itemModalName, styles[`rarity${item.rarity}`]]}>
+              {item.name}
+            </RText>
+            <RText style={[styles.itemModalHeaderText]}>
+              <RText>{item.category?.replace(/\n/g, '→')} </RText>
+              <RText style={styles[`rarity${item.rarity}`]}>
+                {item.rarity}
+              </RText>
+            </RText>
+          </View>
+          <Image
+            source={ITEM_IMAGES[item.name.replace(/ /g, '')]}
+            style={styles.itemModalHeaderImage}
+          />
+        </View>
+        <RText color="secondary" style={styles.itemModalFlavor}>
+          "{item.flavorText}"
+        </RText>
+        <RText style={styles.itemModalDescription}>{item.description}</RText>
+        {item.stats?.map((stat) => (
+          <View style={styles.itemModalStatRow}>
+            {Object.entries(stat).map(([k, v], i) => (
+              <View key={k}>
+                <RText
+                  style={[
+                    styles.itemModalStatCell,
+                    styles.itemModalStatHeader,
+                  ]}>
+                  {k}
+                </RText>
+                <RText style={[styles.itemModalStatCell]}>{v}</RText>
+              </View>
+            ))}
+          </View>
+        ))}
+      </View>
+    </Modal>
+  ) : null;
 };
 
 const DetailScreen = ({route}) => {
@@ -294,6 +363,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   SearchBar: {
+    marginHorizontal: 4,
     paddingHorizontal: 4,
   },
   searchResults: {
@@ -301,6 +371,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     width: '100%',
     padding: 4,
+    paddingHorizontal: 16,
   },
   searchResult: {
     width: '20%',
@@ -323,28 +394,69 @@ const styles = StyleSheet.create({
   rarityLegendary: {color: Colors.rarityLegendary},
   rarityBoss: {color: Colors.rarityBoss},
   rarityLunar: {color: Colors.rarityLunar},
+  ItemModal: {
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    margin: 0,
+  },
+  ItemModalInner: {
+    flex: 1,
+    borderRadius: 12,
+    padding: 12,
+    paddingBottom: 24,
+  },
+  itemModalHeader: {
+    position: 'relative',
+    flexDirection: 'row',
+    marginBottom: 4,
+  },
+  itemModalName: {fontWeight: 'bold', fontSize: 24, marginBottom: 4},
+  itemModalHeaderInfo: {
+    paddingRight: 120,
+  },
+  itemModalHeaderImage: {
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+    height: 120,
+    width: 120,
+    aspectRatio: 1,
+  },
+  itemModalHeaderText: {
+    fontWeight: '500',
+    marginBottom: 8,
+  },
+  itemModalFlavor: {marginBottom: 16, color: Colors.lightGrey},
+  itemModalDescription: {marginBottom: 16},
+  itemModalStatRow: {
+    width: '100%',
+    flexDirection: 'row',
+    marginBottom: 8,
+  },
+  itemModalStatHeader: {},
+  itemModalStatCell: {
+    paddingRight: 8,
+    fontWeight: '500',
+  },
   DetailScreen: {
-    alignItems: 'center',
     padding: 16,
   },
   detailName: {
-    textAlign: 'center',
     fontSize: 32,
     fontWeight: 'bold',
   },
   detailFlavor: {
     fontSize: 24,
-    textAlign: 'center',
   },
   detailRarity: {
     fontSize: 20,
   },
   detailCategory: {
     fontSize: 20,
-    textAlign: 'center',
   },
   detailDescription: {
-    textAlign: 'center',
     fontSize: 20,
   },
 });
