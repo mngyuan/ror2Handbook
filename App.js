@@ -27,15 +27,32 @@ import {
 } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import ITEM_IMAGES from './imgs/images.js';
+import IMAGES from './imgs/images.js';
 import ITEM_DATA from './item_data.json';
+import EQP_DATA from './eqp_data.json';
 
 const DATA = {
-  items: ITEM_DATA,
-  survivors: [{name: 'testsurvivor', id: 0}],
-  environments: [{name: 'testenvironment', id: 0}],
-  utilities: [{name: 'testdrone', id: 0}],
+  items: {...ITEM_DATA, ...EQP_DATA},
+  //survivors: [{name: 'testsurvivor', id: 0}],
+  //environments: [{name: 'testenvironment', id: 0}],
+  //utilities: [{name: 'testdrone', id: 0}],
+  survivors: [],
+  environments: [],
+  utilities: [],
 };
+
+const RARITY_ORDER = Object.fromEntries(
+  [
+    'Common',
+    'Uncommon',
+    'Legendary',
+    'Boss',
+    'Lunar',
+    'Equipment',
+    'Lunar Equipment',
+    'Elite Equipment',
+  ].map((rarity, i) => [rarity, i]),
+);
 
 const Colors = {
   white: 'white',
@@ -89,19 +106,29 @@ const SearchScreen = ({navigation, type}) => {
   const [viewingItem, setViewingItem] = useState(null);
 
   const searchTokens = search.toLocaleLowerCase().split(/ +/);
-  const searchData = type
-    ? DATA[type]
-    : Object.values(DATA)
-        .map(Object.values)
-        .flat()
-        .filter((o) => {
-          const searchableFields = Object.values(o).filter(
-            (v) => typeof v === 'string',
-          );
-          return searchTokens.every((t) =>
-            searchableFields.some((s) => s.toLocaleLowerCase().includes(t)),
-          );
-        });
+  const baseData = type ? {type: DATA[type]} : DATA;
+  const searchData = Object.values(baseData)
+    .map(Object.values)
+    .flat()
+    .filter((o) => {
+      const searchableFields = Object.values(o).filter(
+        (v) => typeof v === 'string',
+      );
+      return searchTokens.every((t) =>
+        searchableFields.some((s) => s.toLocaleLowerCase().includes(t)),
+      );
+    });
+  const searchDataSorted = searchData.sort((a, b) => {
+    if (RARITY_ORDER[a.rarity] < RARITY_ORDER[b.rarity]) {
+      return -1;
+    }
+    if (RARITY_ORDER[a.rarity] === RARITY_ORDER[b.rarity]) {
+      return a.name.localeCompare(b.name);
+    }
+    if (RARITY_ORDER[a.rarity] > RARITY_ORDER[b.rarity]) {
+      return 1;
+    }
+  });
   return (
     <>
       <StatusBar
@@ -159,14 +186,14 @@ const SearchScreen = ({navigation, type}) => {
               <View
                 style={styles.searchResults}
                 onStartShouldSetResponder={() => true}>
-                {searchData.map((v) => (
+                {searchDataSorted.map((v) => (
                   <TouchableOpacity
                     style={styles.searchResult}
                     key={v.name}
                     onPress={() => setViewingItem(v.name)}>
-                    {ITEM_IMAGES[v.name.replace(/ /g, '')] ? (
+                    {IMAGES[v.name.replace(/ /g, '')] ? (
                       <Image
-                        source={ITEM_IMAGES[v.name.replace(/ /g, '')]}
+                        source={IMAGES[v.name.replace(/ /g, '')]}
                         style={[styles.searchResultImage]}
                       />
                     ) : (
@@ -192,7 +219,9 @@ const ItemModal = ({itemName, setViewingItem}) => {
   const colorScheme = useColorScheme();
   const item = DATA.items[itemName];
   useEffect(() => {
-    appState === 'active' && Alert.alert('active!');
+    if (__DEV__) {
+      //appState === 'active' && Alert.alert('active!');
+    }
   }, [appState]);
   return item ? (
     <Modal
@@ -223,7 +252,7 @@ const ItemModal = ({itemName, setViewingItem}) => {
             </RText>
           </View>
           <Image
-            source={ITEM_IMAGES[item.name.replace(/ /g, '')]}
+            source={IMAGES[item.name.replace(/ /g, '')]}
             style={styles.itemModalHeaderImage}
           />
         </View>
@@ -231,8 +260,8 @@ const ItemModal = ({itemName, setViewingItem}) => {
           "{item.flavorText}"
         </RText>
         <RText style={styles.itemModalDescription}>{item.description}</RText>
-        {item.stats?.map((stat) => (
-          <View style={styles.itemModalStatRow}>
+        {item.stats?.map((stat, i) => (
+          <View style={styles.itemModalStatRow} key={i}>
             {Object.entries(stat).map(([k, v], i) => (
               <View key={k}>
                 <RText
@@ -260,7 +289,7 @@ const DetailScreen = ({route}) => {
       <View style={styles.DetailScreen}>
         <RText style={styles.detailName}>{item.name}</RText>
         <Image
-          source={ITEM_IMAGES[item.name.replace(/ /g, '')]}
+          source={IMAGES[item.name.replace(/ /g, '')]}
           style={styles.detailImage}
         />
         <RText style={styles.detailFlavor}>{item.flavorText}</RText>
@@ -384,6 +413,7 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 4,
     paddingHorizontal: 16,
+    paddingBottom: 32,
   },
   searchResult: {
     width: '20%',
