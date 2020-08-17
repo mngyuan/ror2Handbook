@@ -393,11 +393,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 10,
   },
-  headerIcon: {
-    position: 'absolute',
-    left: 4,
-    top: 10,
-  },
+  headerIcon: {marginLeft: 16},
   headerText: {
     // mimics default
     fontSize: 17,
@@ -454,7 +450,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 4,
   },
-  itemModalName: {fontWeight: 'bold', fontSize: 24, marginBottom: 4},
+  itemModalName: {fontWeight: 'bold', fontSize: 28, marginBottom: 4},
   itemModalHeaderInfo: {
     paddingRight: 120,
   },
@@ -469,9 +465,10 @@ const styles = StyleSheet.create({
   itemModalHeaderText: {
     fontWeight: '500',
     marginBottom: 8,
+    fontSize: 20,
   },
-  itemModalFlavor: {marginBottom: 16, color: Colors.lightGrey},
-  itemModalDescription: {marginBottom: 16},
+  itemModalFlavor: {marginBottom: 16, color: Colors.lightGrey, fontSize: 20},
+  itemModalDescription: {marginBottom: 16, fontSize: 20},
   itemModalStatRow: {
     width: '100%',
     flexDirection: 'row',
@@ -481,6 +478,7 @@ const styles = StyleSheet.create({
   itemModalStatCell: {
     paddingRight: 8,
     fontWeight: '500',
+    fontSize: 20,
   },
   DetailScreen: {
     padding: 16,
