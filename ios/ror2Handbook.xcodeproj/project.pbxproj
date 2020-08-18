@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* ror2Handbook2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ror2Handbook2Tests.m */; };
-		0C8C6792CB2E59037520B553 /* libPods-ror2Handbook2-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D8DF8B3F39F71683D66A30 /* libPods-ror2Handbook2-tvOSTests.a */; };
+		00E356F31AD99517003FC87E /* ror2HandbookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ror2HandbookTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* ror2Handbook2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ror2Handbook2Tests.m */; };
-		2EB23EBA869BFCFA1D962259 /* libPods-ror2Handbook2-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D08BC2F8BB2FD6493C5D90CF /* libPods-ror2Handbook2-tvOS.a */; };
-		31983ECBF6F79456D09AB88E /* libPods-ror2Handbook2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1226E300CAF1E86A933581 /* libPods-ror2Handbook2.a */; };
-		6D3F2DE06CAE873E2E010C47 /* libPods-ror2Handbook2-ror2Handbook2Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F461933D3FAB8C2E42A51BA0 /* libPods-ror2Handbook2-ror2Handbook2Tests.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* ror2HandbookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ror2HandbookTests.m */; };
+		3295C695BCA59D3F385B5F43 /* libPods-ror2Handbook-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD793941BF4ACDCF7BCFAFE /* libPods-ror2Handbook-tvOSTests.a */; };
+		43D1B198BFAA0C092B5939AC /* libPods-ror2Handbook-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1938ACB6791E755D446BC42 /* libPods-ror2Handbook-tvOS.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		D02E681350C05773A40F0368 /* libPods-ror2Handbook-ror2HandbookTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 585949A854FC054EF0BCCC50 /* libPods-ror2Handbook-ror2HandbookTests.a */; };
+		DE5EA4C62EA658EA109385C1 /* libPods-ror2Handbook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBD0A4EAB21A544B61B8341 /* libPods-ror2Handbook.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,45 +28,53 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = ror2Handbook2;
+			remoteInfo = ror2Handbook;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "ror2Handbook2-tvOS";
+			remoteInfo = "ror2Handbook-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* ror2Handbook2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ror2Handbook2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* ror2HandbookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ror2HandbookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* ror2Handbook2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ror2Handbook2Tests.m; sourceTree = "<group>"; };
-		088CC437DDFD9412CB8722F0 /* Pods-ror2Handbook2-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook2-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook2-tvOS/Pods-ror2Handbook2-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* ror2Handbook2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ror2Handbook2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ror2Handbook2/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ror2Handbook2/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ror2Handbook2/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ror2Handbook2/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ror2Handbook2/main.m; sourceTree = "<group>"; };
-		1A1226E300CAF1E86A933581 /* libPods-ror2Handbook2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ror2Handbook2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E47B1E0B4A5D006451C7 /* ror2Handbook2-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ror2Handbook2-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* ror2Handbook2-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ror2Handbook2-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E1147B119568D7D1913F9A9 /* Pods-ror2Handbook2-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook2-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook2-tvOSTests/Pods-ror2Handbook2-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		33376DBFDA98AD7F498907D2 /* Pods-ror2Handbook2-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook2-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook2-tvOS/Pods-ror2Handbook2-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		6D694DD9AA460B8773C1890C /* Pods-ror2Handbook2-ror2Handbook2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook2-ror2Handbook2Tests.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook2-ror2Handbook2Tests/Pods-ror2Handbook2-ror2Handbook2Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		6E9BC24AE7D6025F5E6F275F /* Pods-ror2Handbook2-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook2-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook2-tvOSTests/Pods-ror2Handbook2-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ror2Handbook2/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AE6756DA82F69DAADA684A01 /* Pods-ror2Handbook2-ror2Handbook2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook2-ror2Handbook2Tests.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook2-ror2Handbook2Tests/Pods-ror2Handbook2-ror2Handbook2Tests.release.xcconfig"; sourceTree = "<group>"; };
-		C294A45CBDEC2939D80BE570 /* Pods-ror2Handbook2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook2.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook2/Pods-ror2Handbook2.debug.xcconfig"; sourceTree = "<group>"; };
-		D08BC2F8BB2FD6493C5D90CF /* libPods-ror2Handbook2-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ror2Handbook2-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D146334F6563986E8050F07D /* Pods-ror2Handbook2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook2.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook2/Pods-ror2Handbook2.release.xcconfig"; sourceTree = "<group>"; };
-		E9D8DF8B3F39F71683D66A30 /* libPods-ror2Handbook2-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ror2Handbook2-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F21AD99517003FC87E /* ror2HandbookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ror2HandbookTests.m; sourceTree = "<group>"; };
+		088CC437DDFD9412CB8722F0 /* Pods-ror2Handbook-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-tvOS/Pods-ror2Handbook-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		0BBD0A4EAB21A544B61B8341 /* libPods-ror2Handbook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ror2Handbook.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* RoR2 Handbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RoR2 Handbook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ror2Handbook/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ror2Handbook/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ror2Handbook/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ror2Handbook/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ror2Handbook/main.m; sourceTree = "<group>"; };
+		1BDA2470656A2BD03843B68D /* Pods-ror2Handbook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook/Pods-ror2Handbook.debug.xcconfig"; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* ror2Handbook-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ror2Handbook-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* ror2Handbook-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ror2Handbook-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E1147B119568D7D1913F9A9 /* Pods-ror2Handbook-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-tvOSTests/Pods-ror2Handbook-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		33376DBFDA98AD7F498907D2 /* Pods-ror2Handbook-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-tvOS/Pods-ror2Handbook-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		585949A854FC054EF0BCCC50 /* libPods-ror2Handbook-ror2HandbookTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ror2Handbook-ror2HandbookTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B6ACC8885FC4BD443B38EC7 /* Pods-ror2Handbook-ror2HandbookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-ror2HandbookTests.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-ror2HandbookTests/Pods-ror2Handbook-ror2HandbookTests.release.xcconfig"; sourceTree = "<group>"; };
+		6D694DD9AA460B8773C1890C /* Pods-ror2Handbook-ror2HandbookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-ror2HandbookTests.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-ror2HandbookTests/Pods-ror2Handbook-ror2HandbookTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6E9BC24AE7D6025F5E6F275F /* Pods-ror2Handbook-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-tvOSTests/Pods-ror2Handbook-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ror2Handbook/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		88000562C18A58392DCA8C35 /* Pods-ror2Handbook-ror2HandbookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-ror2HandbookTests.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-ror2HandbookTests/Pods-ror2Handbook-ror2HandbookTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8E421F9D15A00DCAB9101DAF /* Pods-ror2Handbook-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-tvOS/Pods-ror2Handbook-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		A1938ACB6791E755D446BC42 /* libPods-ror2Handbook-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ror2Handbook-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABA1C189C8C8BF5031E3CB8F /* Pods-ror2Handbook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook/Pods-ror2Handbook.release.xcconfig"; sourceTree = "<group>"; };
+		AE6756DA82F69DAADA684A01 /* Pods-ror2Handbook-ror2HandbookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-ror2HandbookTests.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-ror2HandbookTests/Pods-ror2Handbook-ror2HandbookTests.release.xcconfig"; sourceTree = "<group>"; };
+		BFE88609468D0654E2535353 /* Pods-ror2Handbook-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-tvOSTests/Pods-ror2Handbook-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C294A45CBDEC2939D80BE570 /* Pods-ror2Handbook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook/Pods-ror2Handbook.debug.xcconfig"; sourceTree = "<group>"; };
+		D1229A6A93E69C1FFD183E67 /* Pods-ror2Handbook-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-tvOS/Pods-ror2Handbook-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		D146334F6563986E8050F07D /* Pods-ror2Handbook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook/Pods-ror2Handbook.release.xcconfig"; sourceTree = "<group>"; };
+		D4BF3BB72A6FF94B0116BC63 /* Pods-ror2Handbook-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-tvOSTests/Pods-ror2Handbook-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F461933D3FAB8C2E42A51BA0 /* libPods-ror2Handbook2-ror2Handbook2Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ror2Handbook2-ror2Handbook2Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBD793941BF4ACDCF7BCFAFE /* libPods-ror2Handbook-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ror2Handbook-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D3F2DE06CAE873E2E010C47 /* libPods-ror2Handbook2-ror2Handbook2Tests.a in Frameworks */,
+				D02E681350C05773A40F0368 /* libPods-ror2Handbook-ror2HandbookTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31983ECBF6F79456D09AB88E /* libPods-ror2Handbook2.a in Frameworks */,
+				DE5EA4C62EA658EA109385C1 /* libPods-ror2Handbook.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EB23EBA869BFCFA1D962259 /* libPods-ror2Handbook2-tvOS.a in Frameworks */,
+				43D1B198BFAA0C092B5939AC /* libPods-ror2Handbook-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,20 +106,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C8C6792CB2E59037520B553 /* libPods-ror2Handbook2-tvOSTests.a in Frameworks */,
+				3295C695BCA59D3F385B5F43 /* libPods-ror2Handbook-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* ror2Handbook2Tests */ = {
+		00E356EF1AD99517003FC87E /* ror2HandbookTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* ror2Handbook2Tests.m */,
+				00E356F21AD99517003FC87E /* ror2HandbookTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = ror2Handbook2Tests;
+			path = ror2HandbookTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -122,7 +130,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* ror2Handbook2 */ = {
+		13B07FAE1A68108700A75B9A /* ror2Handbook */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -133,7 +141,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = ror2Handbook2;
+			name = ror2Handbook;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -141,10 +149,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				1A1226E300CAF1E86A933581 /* libPods-ror2Handbook2.a */,
-				F461933D3FAB8C2E42A51BA0 /* libPods-ror2Handbook2-ror2Handbook2Tests.a */,
-				D08BC2F8BB2FD6493C5D90CF /* libPods-ror2Handbook2-tvOS.a */,
-				E9D8DF8B3F39F71683D66A30 /* libPods-ror2Handbook2-tvOSTests.a */,
+				0BBD0A4EAB21A544B61B8341 /* libPods-ror2Handbook.a */,
+				585949A854FC054EF0BCCC50 /* libPods-ror2Handbook-ror2HandbookTests.a */,
+				A1938ACB6791E755D446BC42 /* libPods-ror2Handbook-tvOS.a */,
+				FBD793941BF4ACDCF7BCFAFE /* libPods-ror2Handbook-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -159,9 +167,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* ror2Handbook2 */,
+				13B07FAE1A68108700A75B9A /* ror2Handbook */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* ror2Handbook2Tests */,
+				00E356EF1AD99517003FC87E /* ror2HandbookTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				8C498B343E57E93EF68CB8F2 /* Pods */,
@@ -174,10 +182,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* ror2Handbook2.app */,
-				00E356EE1AD99517003FC87E /* ror2Handbook2Tests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* ror2Handbook2-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* ror2Handbook2-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* RoR2 Handbook.app */,
+				00E356EE1AD99517003FC87E /* ror2HandbookTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* ror2Handbook-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* ror2Handbook-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,14 +193,22 @@
 		8C498B343E57E93EF68CB8F2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C294A45CBDEC2939D80BE570 /* Pods-ror2Handbook2.debug.xcconfig */,
-				D146334F6563986E8050F07D /* Pods-ror2Handbook2.release.xcconfig */,
-				6D694DD9AA460B8773C1890C /* Pods-ror2Handbook2-ror2Handbook2Tests.debug.xcconfig */,
-				AE6756DA82F69DAADA684A01 /* Pods-ror2Handbook2-ror2Handbook2Tests.release.xcconfig */,
-				33376DBFDA98AD7F498907D2 /* Pods-ror2Handbook2-tvOS.debug.xcconfig */,
-				088CC437DDFD9412CB8722F0 /* Pods-ror2Handbook2-tvOS.release.xcconfig */,
-				2E1147B119568D7D1913F9A9 /* Pods-ror2Handbook2-tvOSTests.debug.xcconfig */,
-				6E9BC24AE7D6025F5E6F275F /* Pods-ror2Handbook2-tvOSTests.release.xcconfig */,
+				C294A45CBDEC2939D80BE570 /* Pods-ror2Handbook.debug.xcconfig */,
+				D146334F6563986E8050F07D /* Pods-ror2Handbook.release.xcconfig */,
+				6D694DD9AA460B8773C1890C /* Pods-ror2Handbook-ror2HandbookTests.debug.xcconfig */,
+				AE6756DA82F69DAADA684A01 /* Pods-ror2Handbook-ror2HandbookTests.release.xcconfig */,
+				33376DBFDA98AD7F498907D2 /* Pods-ror2Handbook-tvOS.debug.xcconfig */,
+				088CC437DDFD9412CB8722F0 /* Pods-ror2Handbook-tvOS.release.xcconfig */,
+				2E1147B119568D7D1913F9A9 /* Pods-ror2Handbook-tvOSTests.debug.xcconfig */,
+				6E9BC24AE7D6025F5E6F275F /* Pods-ror2Handbook-tvOSTests.release.xcconfig */,
+				1BDA2470656A2BD03843B68D /* Pods-ror2Handbook.debug.xcconfig */,
+				ABA1C189C8C8BF5031E3CB8F /* Pods-ror2Handbook.release.xcconfig */,
+				88000562C18A58392DCA8C35 /* Pods-ror2Handbook-ror2HandbookTests.debug.xcconfig */,
+				5B6ACC8885FC4BD443B38EC7 /* Pods-ror2Handbook-ror2HandbookTests.release.xcconfig */,
+				8E421F9D15A00DCAB9101DAF /* Pods-ror2Handbook-tvOS.debug.xcconfig */,
+				D1229A6A93E69C1FFD183E67 /* Pods-ror2Handbook-tvOS.release.xcconfig */,
+				BFE88609468D0654E2535353 /* Pods-ror2Handbook-tvOSTests.debug.xcconfig */,
+				D4BF3BB72A6FF94B0116BC63 /* Pods-ror2Handbook-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -200,9 +216,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* ror2Handbook2Tests */ = {
+		00E356ED1AD99517003FC87E /* ror2HandbookTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ror2Handbook2Tests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ror2HandbookTests" */;
 			buildPhases = (
 				B9865849424D85B6E4AA754B /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -215,14 +231,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = ror2Handbook2Tests;
-			productName = ror2Handbook2Tests;
-			productReference = 00E356EE1AD99517003FC87E /* ror2Handbook2Tests.xctest */;
+			name = ror2HandbookTests;
+			productName = ror2HandbookTests;
+			productReference = 00E356EE1AD99517003FC87E /* ror2HandbookTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* ror2Handbook2 */ = {
+		13B07F861A680F5B00A75B9A /* ror2Handbook */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ror2Handbook2" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ror2Handbook" */;
 			buildPhases = (
 				DB8E69DAE615B7613CB9735D /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -236,14 +252,14 @@
 			);
 			dependencies = (
 			);
-			name = ror2Handbook2;
-			productName = ror2Handbook2;
-			productReference = 13B07F961A680F5B00A75B9A /* ror2Handbook2.app */;
+			name = ror2Handbook;
+			productName = ror2Handbook;
+			productReference = 13B07F961A680F5B00A75B9A /* RoR2 Handbook.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* ror2Handbook2-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* ror2Handbook-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ror2Handbook2-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ror2Handbook-tvOS" */;
 			buildPhases = (
 				CB6CD9F53EEC74A4EFB6FBDE /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -256,14 +272,14 @@
 			);
 			dependencies = (
 			);
-			name = "ror2Handbook2-tvOS";
-			productName = "ror2Handbook2-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* ror2Handbook2-tvOS.app */;
+			name = "ror2Handbook-tvOS";
+			productName = "ror2Handbook-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* ror2Handbook-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* ror2Handbook2-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* ror2Handbook-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ror2Handbook2-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ror2Handbook-tvOSTests" */;
 			buildPhases = (
 				0B143DED414F3632BAD876FE /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -275,9 +291,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "ror2Handbook2-tvOSTests";
-			productName = "ror2Handbook2-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* ror2Handbook2-tvOSTests.xctest */;
+			name = "ror2Handbook-tvOSTests";
+			productName = "ror2Handbook-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* ror2Handbook-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -307,7 +323,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ror2Handbook2" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ror2Handbook" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -320,10 +336,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* ror2Handbook2 */,
-				00E356ED1AD99517003FC87E /* ror2Handbook2Tests */,
-				2D02E47A1E0B4A5D006451C7 /* ror2Handbook2-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* ror2Handbook2-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* ror2Handbook */,
+				00E356ED1AD99517003FC87E /* ror2HandbookTests */,
+				2D02E47A1E0B4A5D006451C7 /* ror2Handbook-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* ror2Handbook-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -392,7 +408,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ror2Handbook2-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ror2Handbook-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -419,7 +435,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ror2Handbook2-ror2Handbook2Tests/Pods-ror2Handbook2-ror2Handbook2Tests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ror2Handbook-ror2HandbookTests/Pods-ror2Handbook-ror2HandbookTests-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -460,7 +476,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ror2Handbook2-ror2Handbook2Tests/Pods-ror2Handbook2-ror2Handbook2Tests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ror2Handbook-ror2HandbookTests/Pods-ror2Handbook-ror2HandbookTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		420A593411BD6F1E0B1E5FF7 /* [CP] Copy Pods Resources */ = {
@@ -469,7 +485,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ror2Handbook2/Pods-ror2Handbook2-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ror2Handbook/Pods-ror2Handbook-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -510,7 +526,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ror2Handbook2/Pods-ror2Handbook2-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ror2Handbook/Pods-ror2Handbook-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B9865849424D85B6E4AA754B /* [CP] Check Pods Manifest.lock */ = {
@@ -528,7 +544,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ror2Handbook2-ror2Handbook2Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ror2Handbook-ror2HandbookTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -550,7 +566,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ror2Handbook2-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ror2Handbook-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -572,7 +588,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ror2Handbook2-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ror2Handbook-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -624,7 +640,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* ror2Handbook2Tests.m in Sources */,
+				00E356F31AD99517003FC87E /* ror2HandbookTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,7 +666,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* ror2Handbook2Tests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* ror2HandbookTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,12 +675,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* ror2Handbook2 */;
+			target = 13B07F861A680F5B00A75B9A /* ror2Handbook */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* ror2Handbook2-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* ror2Handbook-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -672,14 +688,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D694DD9AA460B8773C1890C /* Pods-ror2Handbook2-ror2Handbook2Tests.debug.xcconfig */;
+			baseConfigurationReference = 88000562C18A58392DCA8C35 /* Pods-ror2Handbook-ror2HandbookTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = ror2Handbook2Tests/Info.plist;
+				INFOPLIST_FILE = ror2HandbookTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -689,17 +705,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ror2Handbook2.app/ror2Handbook2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ror2Handbook.app/ror2Handbook";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE6756DA82F69DAADA684A01 /* Pods-ror2Handbook2-ror2Handbook2Tests.release.xcconfig */;
+			baseConfigurationReference = 5B6ACC8885FC4BD443B38EC7 /* Pods-ror2Handbook-ror2HandbookTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = ror2Handbook2Tests/Info.plist;
+				INFOPLIST_FILE = ror2HandbookTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -709,28 +725,28 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ror2Handbook2.app/ror2Handbook2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ror2Handbook.app/ror2Handbook";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C294A45CBDEC2939D80BE570 /* Pods-ror2Handbook2.debug.xcconfig */;
+			baseConfigurationReference = 1BDA2470656A2BD03843B68D /* Pods-ror2Handbook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7LA52Q9A75;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = ror2Handbook2/Info.plist;
+				INFOPLIST_FILE = ror2Handbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = ror2Handbook2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mngyuan.ror2Handbook;
+				PRODUCT_NAME = "RoR2 Handbook";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -739,21 +755,21 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D146334F6563986E8050F07D /* Pods-ror2Handbook2.release.xcconfig */;
+			baseConfigurationReference = ABA1C189C8C8BF5031E3CB8F /* Pods-ror2Handbook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7LA52Q9A75;
-				INFOPLIST_FILE = ror2Handbook2/Info.plist;
+				INFOPLIST_FILE = ror2Handbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = ror2Handbook2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mngyuan.ror2Handbook;
+				PRODUCT_NAME = "RoR2 Handbook";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -761,7 +777,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 33376DBFDA98AD7F498907D2 /* Pods-ror2Handbook2-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 8E421F9D15A00DCAB9101DAF /* Pods-ror2Handbook-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -772,14 +788,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "ror2Handbook2-tvOS/Info.plist";
+				INFOPLIST_FILE = "ror2Handbook-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.ror2Handbook2-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mngyuan.ror2Handbook-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -789,7 +805,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 088CC437DDFD9412CB8722F0 /* Pods-ror2Handbook2-tvOS.release.xcconfig */;
+			baseConfigurationReference = D1229A6A93E69C1FFD183E67 /* Pods-ror2Handbook-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -800,14 +816,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "ror2Handbook2-tvOS/Info.plist";
+				INFOPLIST_FILE = "ror2Handbook-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.ror2Handbook2-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mngyuan.ror2Handbook-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -817,7 +833,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E1147B119568D7D1913F9A9 /* Pods-ror2Handbook2-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = BFE88609468D0654E2535353 /* Pods-ror2Handbook-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -827,24 +843,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "ror2Handbook2-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "ror2Handbook-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.ror2Handbook2-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.ror2Handbook-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ror2Handbook2-tvOS.app/ror2Handbook2-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ror2Handbook-tvOS.app/ror2Handbook-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E9BC24AE7D6025F5E6F275F /* Pods-ror2Handbook2-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = D4BF3BB72A6FF94B0116BC63 /* Pods-ror2Handbook-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -854,17 +870,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "ror2Handbook2-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "ror2Handbook-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.ror2Handbook2-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.ror2Handbook-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ror2Handbook2-tvOS.app/ror2Handbook2-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ror2Handbook-tvOS.app/ror2Handbook-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -985,7 +1001,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ror2Handbook2Tests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ror2HandbookTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -994,7 +1010,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ror2Handbook2" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ror2Handbook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1003,7 +1019,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ror2Handbook2-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ror2Handbook-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1012,7 +1028,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ror2Handbook2-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ror2Handbook-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1021,7 +1037,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ror2Handbook2" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ror2Handbook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

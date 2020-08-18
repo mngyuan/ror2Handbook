@@ -3,12 +3,12 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'ror2Handbook2' do
+target 'ror2Handbook' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'ror2Handbook2Tests' do
+  target 'ror2HandbookTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -23,10 +23,10 @@ target 'ror2Handbook2' do
   end
 end
 
-target 'ror2Handbook2-tvOS' do
-  # Pods for ror2Handbook2-tvOS
+target 'ror2Handbook-tvOS' do
+  # Pods for ror2Handbook-tvOS
 
-  target 'ror2Handbook2-tvOSTests' do
+  target 'ror2Handbook-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
