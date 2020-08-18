@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   Text,
+  TextInput,
   StatusBar,
-  Platform,
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
@@ -14,9 +14,10 @@ import {
   Image,
   useColorScheme,
   AppState,
-  Alert,
+  Platform,
+  LayoutAnimation,
+  UIManager,
 } from 'react-native';
-import {SearchBar} from 'react-native-elements';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {createDrawerNavigator} from '@react-navigation/drawer';
@@ -30,6 +31,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 import IMAGES from './imgs/images.js';
 import ITEM_DATA from './item_data.json';
 import EQP_DATA from './eqp_data.json';
+
+if (
+  Platform.OS === 'android' &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 const DATA = {
   items: {...ITEM_DATA, ...EQP_DATA},
@@ -67,6 +75,11 @@ const Colors = {
   rarityLunar: 'blue',
 };
 
+const FontSize = {
+  heading: 28,
+  bodyText: 16,
+};
+
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -100,10 +113,81 @@ const RText = ({color = 'primary', style, children, ...props}) => {
   );
 };
 
+const SearchBar = ({placeholder, onChangeText, value}) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const colorScheme = useColorScheme();
+  const textInput = useRef();
+
+  return (
+    <View style={[styles.SearchBar]}>
+      <View
+        style={[
+          styles.searchBarInner,
+          {
+            backgroundColor:
+              colorScheme === 'dark' ? DarkTheme.colors.card : Colors.lightGrey,
+          },
+        ]}>
+        <Icon
+          name="search"
+          color={
+            colorScheme === 'dark' ? DarkTheme.colors.text : 'rgba(76,60,60,67)'
+          }
+          size={18}
+        />
+        <TextInput
+          ref={textInput}
+          placeholder={placeholder}
+          onChangeText={onChangeText}
+          value={value}
+          style={[styles.searchBarInput]}
+          onFocus={() => {
+            LayoutAnimation.configureNext(
+              LayoutAnimation.Presets.easeInEaseOut,
+            );
+            setIsFocused(true);
+          }}
+          onBlur={() => {
+            LayoutAnimation.configureNext(
+              LayoutAnimation.Presets.easeInEaseOut,
+            );
+            setIsFocused(false);
+          }}
+        />
+        {isFocused && value?.length > 0 ? (
+          <TouchableWithoutFeedback onPress={() => onChangeText('')}>
+            <View style={[{paddingRight: 8}, styles.verticalHitboxExtender]}>
+              <Icon
+                name="close-circle-sharp"
+                color={
+                  colorScheme === 'dark'
+                    ? DarkTheme.colors.text
+                    : 'rgba(76,60,60,67)'
+                }
+                size={18}
+              />
+            </View>
+          </TouchableWithoutFeedback>
+        ) : null}
+      </View>
+      {isFocused ? (
+        <TouchableOpacity
+          onPress={() => textInput.current && textInput.current.blur()}>
+          <View
+            style={[{paddingLeft: 8, flex: 1}, styles.verticalHitboxExtender]}>
+            <RText style={{color: 'rgb(10,132,255)'}}>Cancel</RText>
+          </View>
+        </TouchableOpacity>
+      ) : null}
+    </View>
+  );
+};
+
 const SearchScreen = ({navigation, type}) => {
   const colorScheme = useColorScheme();
   const [search, setSearch] = useState('');
   const [viewingItem, setViewingItem] = useState(null);
+  const [itemModalVisible, setItemModalVisible] = useState(false);
 
   const searchTokens = search.toLocaleLowerCase().split(/ +/);
   const baseData = type ? {type: DATA[type]} : DATA;
@@ -134,7 +218,9 @@ const SearchScreen = ({navigation, type}) => {
       <StatusBar
         barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
       />
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <TouchableWithoutFeedback
+        onPress={() => Keyboard.dismiss()}
+        style={{flex: 1}}>
         <SafeAreaView
           style={{
             flex: 1,
@@ -143,27 +229,13 @@ const SearchScreen = ({navigation, type}) => {
                 ? DarkTheme.colors.background
                 : Colors.white,
           }}>
-          <KeyboardAvoidingView behavior="padding">
+          <KeyboardAvoidingView behavior="padding" style={{flex: 1}}>
             <SearchBar
-              placeholder="Search anything..."
+              placeholder={`Search ${
+                type ? type.toLocaleLowerCase() : 'anything'
+              }...`}
               onChangeText={(text) => setSearch(text)}
               value={search}
-              platform={Platform.OS === 'ios' ? 'ios' : 'android'}
-              containerStyle={[
-                styles.SearchBar,
-                {
-                  backgroundColor:
-                    colorScheme === 'dark'
-                      ? DarkTheme.colors.background
-                      : Colors.white,
-                },
-              ]}
-              inputContainerStyle={{
-                backgroundColor:
-                  colorScheme === 'dark'
-                    ? DarkTheme.colors.card
-                    : Colors.lightGrey,
-              }}
             />
             {/* fix for ScrollView inside Touchable */}
             <ScrollView
@@ -176,13 +248,10 @@ const SearchScreen = ({navigation, type}) => {
                     colorScheme === 'dark'
                       ? DarkTheme.colors.background
                       : Colors.white,
+                  flexGrow: 1,
                 },
-              ]}>
-              {global.HermesInternal == null ? null : (
-                <View style={styles.engine}>
-                  <RText style={styles.footer}>Engine: Hermes</RText>
-                </View>
-              )}
+              ]}
+              contentContainerStyle={{flexGrow: 1}}>
               <View
                 style={styles.searchResults}
                 onStartShouldSetResponder={() => true}>
@@ -190,7 +259,10 @@ const SearchScreen = ({navigation, type}) => {
                   <TouchableOpacity
                     style={styles.searchResult}
                     key={v.name}
-                    onPress={() => setViewingItem(v.name)}>
+                    onPress={() => {
+                      setViewingItem(v.name);
+                      setItemModalVisible(true);
+                    }}>
                     {IMAGES[v.name.replace(/ /g, '')] ? (
                       <Image
                         source={IMAGES[v.name.replace(/ /g, '')]}
@@ -208,13 +280,14 @@ const SearchScreen = ({navigation, type}) => {
       </TouchableWithoutFeedback>
       <ItemModal
         itemName={viewingItem}
-        setViewingItem={(itemName) => setViewingItem(itemName)}
+        modalVisible={itemModalVisible}
+        setModalVisible={() => setItemModalVisible(false)}
       />
     </>
   );
 };
 
-const ItemModal = ({itemName, setViewingItem}) => {
+const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
   const appState = useAppState();
   const colorScheme = useColorScheme();
   const item = DATA.items[itemName];
@@ -225,8 +298,8 @@ const ItemModal = ({itemName, setViewingItem}) => {
   }, [appState]);
   return item ? (
     <Modal
-      isVisible={!!itemName}
-      onBackdropPress={() => setViewingItem(null)}
+      isVisible={modalVisible}
+      onBackdropPress={() => setModalVisible(false)}
       style={styles.ItemModal}>
       <View
         style={[
@@ -374,13 +447,7 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.white,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
+  scrollView: {},
   header: {
     height: 80,
     width: '100%',
@@ -400,8 +467,22 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   SearchBar: {
-    marginHorizontal: 4,
-    paddingHorizontal: 4,
+    marginHorizontal: 16,
+    marginVertical: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  searchBarInner: {
+    borderRadius: 100,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: 12,
+    height: '100%',
+  },
+  searchBarInput: {
+    padding: 12,
+    flex: 1,
   },
   searchResults: {
     flexDirection: 'row',
@@ -450,7 +531,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 4,
   },
-  itemModalName: {fontWeight: 'bold', fontSize: 28, marginBottom: 4},
+  itemModalName: {
+    fontWeight: 'bold',
+    fontSize: FontSize.heading,
+    marginBottom: 4,
+  },
   itemModalHeaderInfo: {
     paddingRight: 120,
   },
@@ -465,10 +550,14 @@ const styles = StyleSheet.create({
   itemModalHeaderText: {
     fontWeight: '500',
     marginBottom: 8,
-    fontSize: 20,
+    fontSize: FontSize.bodyText,
   },
-  itemModalFlavor: {marginBottom: 16, color: Colors.lightGrey, fontSize: 20},
-  itemModalDescription: {marginBottom: 16, fontSize: 20},
+  itemModalFlavor: {
+    marginBottom: 16,
+    color: Colors.lightGrey,
+    fontSize: FontSize.bodyText,
+  },
+  itemModalDescription: {marginBottom: 16, fontSize: FontSize.bodyText},
   itemModalStatRow: {
     width: '100%',
     flexDirection: 'row',
@@ -478,7 +567,7 @@ const styles = StyleSheet.create({
   itemModalStatCell: {
     paddingRight: 8,
     fontWeight: '500',
-    fontSize: 20,
+    fontSize: FontSize.bodyText,
   },
   DetailScreen: {
     padding: 16,
@@ -498,6 +587,12 @@ const styles = StyleSheet.create({
   },
   detailDescription: {
     fontSize: 20,
+  },
+  verticalHitboxExtender: {
+    height: '100%',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 });
 
