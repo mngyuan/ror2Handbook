@@ -6,6 +6,7 @@ const puppeteer = require('puppeteer');
 const imageDirPath = './imgs';
 const itemDataPath = './item_data.json';
 const eqpDataPath = './eqp_data.json';
+const survivorDataPath = './survivor_data.json';
 
 const download = (url, destination) =>
   new Promise((resolve, reject) => {
@@ -27,7 +28,15 @@ const download = (url, destination) =>
       });
   });
 
-const scrape = (seed, visitCallback, ignoreList, baseUrl, single = false) =>
+const scrape = ({
+  seed,
+  visitCallback,
+  ignoreList,
+  baseUrl,
+  single = false,
+  linkSeedSelector = '.navbox a',
+  skipSeed = false,
+}) =>
   new Promise(async (resolve, reject) => {
     try {
       const browser = await puppeteer.launch();
@@ -36,12 +45,12 @@ const scrape = (seed, visitCallback, ignoreList, baseUrl, single = false) =>
       await page.setDefaultNavigationTimeout(0);
       if (!single) {
         await page.goto(seed);
-        const nonSeedUrls = await page.$$eval('.navbox a', (links) =>
+        const nonSeedUrls = await page.$$eval(linkSeedSelector, (links) =>
           links.map((linkNode) => linkNode.getAttribute('href')),
         );
         const itemUrls = Array.from(nonSeedUrls)
           .map((url) => `${baseUrl}${url}`)
-          .concat(seed)
+          .concat(skipSeed ? [] : seed)
           .filter((url) => !ignoreList.includes(url));
         const itemData = {};
         for (const itemUrl of itemUrls) {
@@ -226,6 +235,72 @@ const visitEqp = async (page, url) => {
   };
 };
 
+const visitSurvivor = async (page, url) => {
+  await page.goto(url);
+  console.log(url);
+  const evalCatchHandler = (err) => {
+    if (!err.message.includes('failed to find element matching selector')) {
+      throw err;
+    }
+  };
+  const {url: imgUrl, name: imgName} = await page
+    .$eval('img.pi-image-thumbnail', (el) => ({
+      url: el.src,
+      name: el.dataset.imageName,
+    }))
+    .catch(evalCatchHandler);
+  const [description, unlock, name, skills, _] = await Promise.all([
+    page
+      .$eval(
+        '[data-source="desc"]',
+        (el) => el.querySelector('.pi-data-value').innerText,
+      )
+      .catch(evalCatchHandler),
+    page
+      .$eval(
+        '[data-source="unlock"]',
+        (el) => el.querySelector('.pi-data-value').innerText,
+      )
+      .catch(evalCatchHandler),
+    page
+      .$eval('[data-source="title"]', (el) => el.innerText)
+      .catch(evalCatchHandler),
+    page
+      .$$eval('table.wikitable', (els) =>
+        els.map((table) => {
+          const tableRows = Array.from(table.querySelectorAll('tr'));
+          const name = tableRows[0].innerText;
+          const imgUrl =
+            tableRows[1].querySelector('img').getAttribute('data-src') ||
+            tableRows[1].querySelector('img').getAttribute('src');
+          const data = {};
+          for (const [i, row] of tableRows.slice(2).entries()) {
+            if (row.querySelector('th').innerText === 'Notes') {
+              data['Notes'] = tableRows
+                .slice(2)
+                [i + 1].querySelector('td').innerText;
+              break;
+            }
+            data[row.querySelector('th').innerText] = row.querySelector(
+              'td',
+            ).innerText;
+          }
+          return {name, imgUrl, ...data};
+        }),
+      )
+      .catch(evalCatchHandler),
+    download(imgUrl, `${imageDirPath}/${imgName}`),
+  ]);
+  return {
+    wikiUrl: url,
+    description,
+    unlock,
+    name,
+    skills,
+    imgUrl,
+  };
+};
+
 const generateImageRequires = () => {
   // could improve by reading item_data.json to get name so name in gen'd code
   // doesn't have to have its spaces stripped
@@ -275,13 +350,13 @@ const main = () => {
         'https://riskofrain2.fandom.com/wiki/Items#Boss',
         'https://riskofrain2.fandom.com/wiki/Items#Lunar',
       ];
-      scrape(
-        positionalArgs[1] || ITEM_SEED,
-        visitItem,
-        ITEM_IGNORE_LIST,
-        BASE_URL,
-        flags.includes('--single'),
-      )
+      scrape({
+        seed: positionalArgs[1] || ITEM_SEED,
+        visitCallback: visitItem,
+        ignoreList: ITEM_IGNORE_LIST,
+        baseUrl: BASE_URL,
+        single: flags.includes('--single'),
+      })
         .then((itemData) => {
           if (flags.includes('--single')) {
             console.log(itemData);
@@ -302,13 +377,13 @@ const main = () => {
         'https://riskofrain2.fandom.com/wiki/Items#Lunar_Equipment',
         'https://riskofrain2.fandom.com/wiki/Items#Elite_Equipment',
       ];
-      scrape(
-        positionalArgs[1] || EQP_SEED,
-        visitEqp,
-        EQP_IGNORE_LIST,
-        BASE_URL,
-        flags.includes('--single'),
-      )
+      scrape({
+        seed: positionalArgs[1] || EQP_SEED,
+        visitCallback: visitEqp,
+        ignoreList: EQP_IGNORE_LIST,
+        baseUrl: BASE_URL,
+        single: flags.includes('--single'),
+      })
         .then((eqpData) => {
           if (flags.includes('--single')) {
             console.log(eqpData);
@@ -317,6 +392,34 @@ const main = () => {
               if (err) throw err;
               console.log(`written to ${eqpDataPath}`);
             });
+          }
+        })
+        .catch(console.error);
+      break;
+    case 'survivors':
+      const SURVIVOR_SEED = 'https://riskofrain2.fandom.com/wiki/Survivors';
+      const SURVIVOR_IGNORE_LIST = [];
+      scrape({
+        seed: positionalArgs[1] || SURVIVOR_SEED,
+        visitCallback: visitSurvivor,
+        ignoreList: SURVIVOR_IGNORE_LIST,
+        baseUrl: BASE_URL,
+        single: flags.includes('--single'),
+        linkSeedSelector: '.wikia-gallery a.link-internal',
+        skipSeed: true,
+      })
+        .then((survivorData) => {
+          if (flags.includes('--single')) {
+            console.log(survivorData);
+          } else {
+            fs.writeFile(
+              survivorDataPath,
+              JSON.stringify(survivorData),
+              (err) => {
+                if (err) throw err;
+                console.log(`written to ${survivorDataPath}`);
+              },
+            );
           }
         })
         .catch(console.error);
