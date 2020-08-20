@@ -255,9 +255,9 @@ const SearchScreen = ({navigation, type}) => {
               <View
                 style={styles.searchResults}
                 onStartShouldSetResponder={() => true}>
-                {searchDataSorted.map((v) => (
+                {searchDataSorted.map((v, i) => (
                   <TouchableOpacity
-                    style={styles.searchResult}
+                    style={[styles.searchResult]}
                     key={v.name}
                     onPress={() => {
                       setViewingItem(v.name);
@@ -318,7 +318,7 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
               {item.name}
             </RText>
             <RText style={[styles.itemModalHeaderText]}>
-              <RText>{item.category?.replace(/\n/g, '→')} </RText>
+              <RText>{item.category?.replace(/\n/g, '→\u200b')} </RText>
               <RText style={styles[`rarity${item.rarity}`]}>
                 {item.rarity}
               </RText>
@@ -330,7 +330,9 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
           />
         </View>
         <RText color="secondary" style={styles.itemModalFlavor}>
-          "{item.flavorText}"
+          {'\u201c'}
+          {item.flavorText}
+          {'\u201d'}
         </RText>
         <RText style={styles.itemModalDescription}>{item.description}</RText>
         {item.stats?.map((stat, i) => (
@@ -405,6 +407,9 @@ const HomeScreen = ({type}) => {
             </TouchableOpacity>
           ),
           headerMode: 'screen',
+          title: type
+            ? `${type[0].toLocaleUpperCase()}${type.slice(1)}`
+            : 'RoR2 Handbook',
         })}
       />
       <Stack.Screen name="Detail" component={DetailScreen} />
@@ -489,12 +494,14 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     width: '100%',
     padding: 4,
-    paddingHorizontal: 16,
+    paddingHorizontal: 16 - 4,
     paddingBottom: 32,
   },
   searchResult: {
     width: '20%',
     aspectRatio: 1,
+    paddingHorizontal: 4,
+    paddingVertical: 4,
   },
   searchResultImage: {
     aspectRatio: 1,
