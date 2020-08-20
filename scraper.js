@@ -231,12 +231,14 @@ const generateImageRequires = () => {
   // doesn't have to have its spaces stripped
   const outputPath = `${imageDirPath}/images.js`;
   const imgFiles = fs.readdirSync(imageDirPath);
+  const [getFilenameWithouExt, getFileExt] = [
+    (filename) => filename.split('.').slice(0, -1).join('.'),
+    (filename) => filename.split('.').slice(-1)[0],
+  ];
   const fileInfo = imgFiles
-    .filter((filename) =>
-      ['jpg', 'png'].includes(filename.split('.').slice(-1)[0]),
-    )
+    .filter((filename) => ['jpg', 'png'].includes(getFileExt(filename)))
     .map((filename) => ({
-      name: filename.split('.')[0],
+      name: getFilenameWithouExt(filename),
       path: `./${filename}`,
     }));
   const kvPairs = fileInfo.map(
