@@ -259,8 +259,12 @@ const SearchScreen = ({navigation, type}) => {
                     style={[styles.searchResult]}
                     key={v.name}
                     onPress={() => {
-                      setViewingItem(v.name);
-                      setItemModalVisible(true);
+                      if (DATA.items[v.name]) {
+                        setViewingItem(v.name);
+                        setItemModalVisible(true);
+                      } else {
+                        navigation.navigate('Detail', {itemName: v.name});
+                      }
                     }}>
                     {IMAGES[v.name.replace(/ /g, '')] ? (
                       <Image
@@ -356,27 +360,52 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
 };
 
 const DetailScreen = ({route}) => {
+  const colorScheme = useColorScheme();
+
   const {itemName} = route.params;
-  const item = DATA.items[itemName] || {};
+  const survivor = DATA.survivors[itemName] || {};
   return (
     <ScrollView>
-      <View style={styles.DetailScreen}>
-        <RText style={styles.detailName}>{item.name}</RText>
-        <Image
-          source={IMAGES[item.name.replace(/ /g, '')]}
-          style={styles.detailImage}
-        />
-        <RText style={styles.detailFlavor}>{item.flavorText}</RText>
-        <RText style={[styles.detailRarity, styles[`rarity${item.rarity}`]]}>
-          {item.rarity}
-        </RText>
-        <RText style={styles.detailCategory}>{item.category}</RText>
-        <RText style={styles.detailDescription}>{item.description}</RText>
-        {item.stats.map((stat) =>
-          Object.entries(stat).map((entry) => (
-            <RText key={entry[0]}>{entry[1]}</RText>
-          )),
-        )}
+      <View
+        style={[
+          styles.DetailScreen,
+          {
+            backgroundColor:
+              colorScheme === 'dark'
+                ? DarkTheme.colors.background
+                : Colors.white,
+          },
+        ]}>
+        <View style={styles.detailHeader}>
+          <View style={styles.detailHeaderInfo}>
+            <RText style={styles.detailHeaderName}>{survivor.name}</RText>
+            {survivor.unlock ? (
+              <RText>
+                Unlocked by
+                <RText style={styles.achievementName}> {survivor.unlock}</RText>
+              </RText>
+            ) : null}
+          </View>
+          <Image
+            source={IMAGES[survivor.name.replace(/ /g, '')]}
+            style={styles.detailHeaderImage}
+          />
+        </View>
+        {survivor.skills.map((skill) => (
+          <View style={styles.detailSkillRow} key={skill.name}>
+            <View style={styles.detailSkillInfo}>
+              <RText style={styles.detailSkillHeader}>
+                <RText style={styles.detailSkillName}>{skill.name}</RText>
+                <RText> {skill.Type}</RText>
+              </RText>
+              <RText>{skill.Description}</RText>
+            </View>
+            <Image
+              source={IMAGES[skill.name.replace(/ /g, '')]}
+              style={styles.detailSkillImage}
+            />
+          </View>
+        ))}
       </View>
     </ScrollView>
   );
@@ -578,21 +607,38 @@ const styles = StyleSheet.create({
   DetailScreen: {
     padding: 16,
   },
-  detailName: {
-    fontSize: 32,
+  detailHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  },
+  detailHeaderInfo: {flex: 1, marginRight: 8},
+  detailHeaderName: {
+    fontWeight: 'bold',
+    fontSize: FontSize.heading,
+    marginBottom: 4,
+  },
+  detailHeaderImage: {
+    width: `${100 / 2}%`,
+    aspectRatio: 1,
+  },
+  detailSkillRow: {
+    flexDirection: 'row',
+    width: '100%',
+    marginBottom: 12,
+  },
+  detailSkillInfo: {
+    flex: 1,
+    marginRight: 8,
+  },
+  detailSkillHeader: {
+    marginBottom: 4,
+  },
+  detailSkillName: {
     fontWeight: 'bold',
   },
-  detailFlavor: {
-    fontSize: 24,
-  },
-  detailRarity: {
-    fontSize: 20,
-  },
-  detailCategory: {
-    fontSize: 20,
-  },
-  detailDescription: {
-    fontSize: 20,
+  achievementName: {
+    color: 'blue',
   },
   verticalHitboxExtender: {
     height: '100%',
