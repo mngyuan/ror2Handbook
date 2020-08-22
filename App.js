@@ -29,8 +29,9 @@ import {
 import {createStackNavigator} from '@react-navigation/stack';
 
 import IMAGES from './imgs/images.js';
-import ITEM_DATA from './item_data.json';
+import ITEM_DATA from './gamepedia_item_data.json';
 import EQP_DATA from './eqp_data.json';
+import SURVIVOR_DATA from './survivor_data.json';
 
 if (
   Platform.OS === 'android' &&
@@ -41,10 +42,7 @@ if (
 
 const DATA = {
   items: {...ITEM_DATA, ...EQP_DATA},
-  //survivors: [{name: 'testsurvivor', id: 0}],
-  //environments: [{name: 'testenvironment', id: 0}],
-  //utilities: [{name: 'testdrone', id: 0}],
-  survivors: [],
+  survivors: SURVIVOR_DATA,
   environments: [],
   utilities: [],
 };
@@ -188,6 +186,7 @@ const SearchScreen = ({navigation, type}) => {
   const [search, setSearch] = useState('');
   const [viewingItem, setViewingItem] = useState(null);
   const [itemModalVisible, setItemModalVisible] = useState(false);
+  console.log(viewingItem);
 
   const searchTokens = search.toLocaleLowerCase().split(/ +/);
   const baseData = type ? {type: DATA[type]} : DATA;

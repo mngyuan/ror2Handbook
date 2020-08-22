@@ -5,6 +5,7 @@ const puppeteer = require('puppeteer');
 
 const imageDirPath = './imgs';
 const itemDataPath = './item_data.json';
+const gamepediaItemDataPath = './gamepedia_item_data.json';
 const eqpDataPath = './eqp_data.json';
 const survivorDataPath = './survivor_data.json';
 
@@ -28,19 +29,27 @@ const download = (url, destination) =>
       });
   });
 
+const toCamelCase = (s) =>
+  s
+    .toLocaleLowerCase()
+    .split(' ')
+    .map((w, i) => (i === 0 ? w : `${w[0].toLocaleUpperCase()}${w.slice(1)}`))
+    .join('');
+
 const scrape = ({
   seed,
   visitCallback,
   ignoreList,
   baseUrl,
   single = false,
-  linkSeedSelector = '.navbox a',
+  linkSeedSelector = '.navbox a:not(.selflink)',
   skipSeed = false,
 }) =>
   new Promise(async (resolve, reject) => {
     try {
       const browser = await puppeteer.launch();
       const page = await browser.newPage();
+      await page.exposeFunction('toCamelCase', toCamelCase);
       // never timeout, but might hang
       await page.setDefaultNavigationTimeout(0);
       if (!single) {
@@ -135,15 +144,7 @@ const visitItem = async (page, url) => {
           el.nextElementSibling
             ? [el.innerText, ...traverser(el.nextElementSibling)]
             : [el.innerText];
-        const keyNames = traverser(header).map((s) =>
-          s
-            .toLocaleLowerCase()
-            .split(' ')
-            .map((w, i) =>
-              i === 0 ? w : `${w[0].toLocaleUpperCase()}${w.slice(1)}`,
-            )
-            .join(''),
-        );
+        const keyNames = traverser(header).map(window.toCamelCase);
         return els.slice(1).map((el) => {
           const values = traverser(el);
           return Object.fromEntries(keyNames.map((key, i) => [key, values[i]]));
@@ -159,8 +160,71 @@ const visitItem = async (page, url) => {
     wikiUrl: url,
     description,
     rarity,
+    unlock,
     category,
     id,
+    name,
+    stats,
+    flavorText,
+    imgUrl,
+  };
+};
+
+const visitItemGamepedia = async (page, url) => {
+  await page.goto(url);
+  console.log(url);
+  const evalCatchHandler = (err) => {
+    if (!err.message.includes('failed to find element matching selector')) {
+      throw err;
+    }
+  };
+  const {url: imgUrl, name: imgName} = await page
+    .$eval('.infoboxtable img', (el) => ({
+      url: el.src,
+      name: el.alt,
+    }))
+    .catch(evalCatchHandler);
+  const [description, keyInfo, name, stats, flavorText, _] = await Promise.all([
+    page.$eval('.infoboxdesc', (el) => el.innerText).catch(evalCatchHandler),
+    page
+      .$$eval('.infoboxtable tr', (els) =>
+        els.reduce((agg, cur) => {
+          const label = cur.querySelector('td')?.innerText.toLocaleLowerCase();
+          return ['rarity', 'category', 'id', 'unlock'].includes(label)
+            ? {...agg, [label]: cur.querySelectorAll('td')[1].innerText}
+            : agg;
+        }),
+      )
+      .catch(evalCatchHandler),
+    page.$eval('.infoboxname', (el) => el.innerText).catch(evalCatchHandler),
+    page
+      .$$eval('.infoboxtable:first-of-type tr', async (els) => {
+        const statRowIndex = els.findIndex((row) =>
+          row.querySelector('th:not(.infoboxname)'),
+        );
+        const statRows = els.slice(statRowIndex);
+        if (statRows.length === 0) return;
+        const header = statRows[0];
+        const keyNames = await Promise.all(
+          Array.from(header.querySelectorAll('th'))
+            .map((el) => el.innerText)
+            .map(window.toCamelCase),
+        );
+        return statRows.slice(1).map((row) => {
+          const values = Array.from(row.querySelectorAll('td')).map(
+            (el) => el.innerText,
+          );
+          return Object.fromEntries(keyNames.map((key, i) => [key, values[i]]));
+        });
+      })
+      .catch(evalCatchHandler),
+    page.$eval('.infoboxcaption', (el) => el.innerText).catch(evalCatchHandler),
+    download(imgUrl, `${imageDirPath}/${imgName}`),
+  ]);
+  return {
+    ...keyInfo,
+    wikiUrl: url,
+    description,
     name,
     stats,
     flavorText,
@@ -333,55 +397,62 @@ const main = () => {
     fs.mkdirSync(imageDirPath);
   }
 
-  const BASE_URL = 'https://riskofrain2.fandom.com';
-
   const args = process.argv.slice(2);
   const positionalArgs = args.filter((s) => !s.startsWith('-'));
   const flags = args.filter((s) => s.startsWith('-'));
   const action = positionalArgs[0];
+  const baseUrl = flags.includes('--gamepedia')
+    ? 'https://riskofrain2.gamepedia.com'
+    : 'https://riskofrain2.fandom.com/wiki';
+
   switch (action) {
     case 'items':
-      const ITEM_SEED = 'https://riskofrain2.fandom.com/wiki/Focus_Crystal';
+      const ITEM_SEED = `${baseUrl}/Focus_Crystal`;
       const ITEM_IGNORE_LIST = [
-        'https://riskofrain2.fandom.com/wiki/Items',
-        'https://riskofrain2.fandom.com/wiki/Items#Common',
-        'https://riskofrain2.fandom.com/wiki/Items#Uncommon',
-        'https://riskofrain2.fandom.com/wiki/Items#Legendary',
-        'https://riskofrain2.fandom.com/wiki/Items#Boss',
-        'https://riskofrain2.fandom.com/wiki/Items#Lunar',
+        `${baseUrl}/Items`,
+        `${baseUrl}/Items#Common`,
+        `${baseUrl}/Items#Uncommon`,
+        `${baseUrl}/Items#Legendary`,
+        `${baseUrl}/Items#Boss`,
+        `${baseUrl}/Items#Lunar`,
       ];
       scrape({
         seed: positionalArgs[1] || ITEM_SEED,
-        visitCallback: visitItem,
+        visitCallback: flags.includes('--gamepedia')
+          ? visitItemGamepedia
+          : visitItem,
         ignoreList: ITEM_IGNORE_LIST,
-        baseUrl: BASE_URL,
+        baseUrl: baseUrl,
         single: flags.includes('--single'),
       })
         .then((itemData) => {
           if (flags.includes('--single')) {
             console.log(itemData);
           } else {
-            fs.writeFile(itemDataPath, JSON.stringify(itemData), (err) => {
+            const outputPath = flags.includes('--gamepedia')
+              ? gamepediaItemDataPath
+              : itemDataPath;
+            fs.writeFile(outputPath, JSON.stringify(itemData), (err) => {
               if (err) throw err;
-              console.log(`written to ${itemDataPath}`);
+              console.log(`written to ${outputPath}`);
             });
           }
         })
         .catch(console.error);
       break;
     case 'equipment':
-      const EQP_SEED = 'https://riskofrain2.fandom.com/wiki/Spinel_Tonic';
+      const EQP_SEED = `${baseUrl}/Spinel_Tonic`;
       const EQP_IGNORE_LIST = [
-        'https://riskofrain2.fandom.com/wiki/Items#Active_Items',
-        'https://riskofrain2.fandom.com/wiki/Items#Equipment',
-        'https://riskofrain2.fandom.com/wiki/Items#Lunar_Equipment',
-        'https://riskofrain2.fandom.com/wiki/Items#Elite_Equipment',
+        `${baseUrl}/Items#Active_Items`,
+        `${baseUrl}/Items#Equipment`,
+        `${baseUrl}/Items#Lunar_Equipment`,
+        `${baseUrl}/Items#Elite_Equipment`,
       ];
       scrape({
         seed: positionalArgs[1] || EQP_SEED,
         visitCallback: visitEqp,
         ignoreList: EQP_IGNORE_LIST,
-        baseUrl: BASE_URL,
+        baseUrl: baseUrl,
         single: flags.includes('--single'),
       })
         .then((eqpData) => {
@@ -397,13 +468,13 @@ const main = () => {
         .catch(console.error);
       break;
     case 'survivors':
-      const SURVIVOR_SEED = 'https://riskofrain2.fandom.com/wiki/Survivors';
+      const SURVIVOR_SEED = `${baseUrl}/Survivors`;
       const SURVIVOR_IGNORE_LIST = [];
       scrape({
         seed: positionalArgs[1] || SURVIVOR_SEED,
         visitCallback: visitSurvivor,
         ignoreList: SURVIVOR_IGNORE_LIST,
-        baseUrl: BASE_URL,
+        baseUrl: baseUrl,
         single: flags.includes('--single'),
         linkSeedSelector: '.wikia-gallery a.link-internal',
         skipSeed: true,
