@@ -337,6 +337,7 @@ const visitSurvivor = async (page, url) => {
           const imgUrl =
             tableRows[1].querySelector('img').getAttribute('data-src') ||
             tableRows[1].querySelector('img').getAttribute('src');
+          const imgName = tableRows[1].querySelector('img').alt;
           const data = {};
           for (const [i, row] of tableRows.slice(2).entries()) {
             if (row.querySelector('th').innerText === 'Notes') {
@@ -349,12 +350,17 @@ const visitSurvivor = async (page, url) => {
               'td',
             ).innerText;
           }
-          return {name, imgUrl, ...data};
+          return {name, imgUrl, imgName, ...data};
         }),
       )
       .catch(evalCatchHandler),
     download(imgUrl, `${imageDirPath}/${imgName}`),
   ]);
+  await Promise.all(
+    skills.map((skill) =>
+      download(skill.imgUrl, `${imageDirPath}/${skill.imgName}`),
+    ),
+  );
   return {
     wikiUrl: url,
     description,
@@ -404,6 +410,9 @@ const main = () => {
   const baseUrl = flags.includes('--gamepedia')
     ? 'https://riskofrain2.gamepedia.com'
     : 'https://riskofrain2.fandom.com/wiki';
+  const rootUrl = flags.includes('--gamepedia')
+    ? 'https://riskofrain2.gamepedia.com'
+    : 'https://riskofrain2.fandom.com';
 
   switch (action) {
     case 'items':
@@ -422,7 +431,7 @@ const main = () => {
           ? visitItemGamepedia
           : visitItem,
         ignoreList: ITEM_IGNORE_LIST,
-        baseUrl: baseUrl,
+        baseUrl: rootUrl,
         single: flags.includes('--single'),
       })
         .then((itemData) => {
@@ -452,7 +461,7 @@ const main = () => {
         seed: positionalArgs[1] || EQP_SEED,
         visitCallback: visitEqp,
         ignoreList: EQP_IGNORE_LIST,
-        baseUrl: baseUrl,
+        baseUrl: rootUrl,
         single: flags.includes('--single'),
       })
         .then((eqpData) => {
@@ -474,7 +483,7 @@ const main = () => {
         seed: positionalArgs[1] || SURVIVOR_SEED,
         visitCallback: visitSurvivor,
         ignoreList: SURVIVOR_IGNORE_LIST,
-        baseUrl: baseUrl,
+        baseUrl: rootUrl,
         single: flags.includes('--single'),
         linkSeedSelector: '.wikia-gallery a.link-internal',
         skipSeed: true,
