@@ -249,12 +249,14 @@ const SearchBar = ({placeholder, onChangeText, value}) => {
   );
 };
 
-const SearchScreen = ({navigation, type}) => {
+const SearchScreen = ({route, navigation}) => {
   const colorScheme = useColorScheme();
   const [search, setSearch] = useState('');
   const [viewingItem, setViewingItem] = useState(null);
   const [itemModalVisible, setItemModalVisible] = useState(false);
   const scrollView = useRef();
+
+  const {type} = route.params;
 
   const searchTokens = search.toLocaleLowerCase().split(/ +/);
   const baseData = type ? {type: DATA[type]} : DATA;
@@ -486,9 +488,8 @@ const HomeScreen = ({type}) => {
     <Stack.Navigator initialRouteName="Search">
       <Stack.Screen
         name="Search"
-        component={React.memo((props) => (
-          <SearchScreen {...props} type={type} />
-        ))}
+        component={SearchScreen}
+        initialParams={{type}}
         options={({navigation}) => ({
           headerLeft: () => (
             <TouchableOpacity
