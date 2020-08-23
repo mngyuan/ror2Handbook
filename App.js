@@ -47,6 +47,11 @@ const DATA = {
   utilities: [],
 };
 
+const TYPE_ORDER = {
+  item: 0,
+  survivor: 1,
+};
+
 const RARITY_ORDER = Object.fromEntries(
   [
     'Common',
@@ -59,6 +64,24 @@ const RARITY_ORDER = Object.fromEntries(
     'Elite Equipment',
   ].map((rarity, i) => [rarity, i]),
 );
+
+const SURVIVOR_ORDER = Object.fromEntries(
+  [
+    'Commando',
+    'Huntress',
+    'MUL-T',
+    'Engineer',
+    'Artificer',
+    'Mercenary',
+    'REX',
+    'Loader',
+    'Acrid',
+    'Bandit',
+    'Han-D',
+  ].map((survivor, i) => [survivor, i]),
+);
+
+const HIDE_LIST = ['Han-D'];
 
 const Colors = {
   white: 'white',
@@ -95,6 +118,51 @@ const useAppState = () => {
   }, []);
 
   return appState;
+};
+
+const getType = (o) => {
+  if (DATA.items[o]) {
+    return 'item';
+  }
+  if (DATA.survivors[o]) {
+    return 'survivor';
+  }
+};
+
+const compareItems = (a, b) => {
+  if (RARITY_ORDER[a.rarity] < RARITY_ORDER[b.rarity]) {
+    return -1;
+  } else if (RARITY_ORDER[a.rarity] === RARITY_ORDER[b.rarity]) {
+    return a.name.localeCompare(b.name);
+  } else if (RARITY_ORDER[a.rarity] > RARITY_ORDER[b.rarity]) {
+    return 1;
+  }
+};
+
+const compareSurvivors = (a, b) => {
+  if (SURVIVOR_ORDER[a.name] < SURVIVOR_ORDER[b.name]) {
+    return -1;
+  } else if (SURVIVOR_ORDER[a.name] === SURVIVOR_ORDER[b.name]) {
+    return a.name.localeCompare(b.name);
+  } else if (SURVIVOR_ORDER[a.name] > SURVIVOR_ORDER[b.name]) {
+    return 1;
+  }
+};
+
+const compareObjs = (a, b) => {
+  if (DATA.items[a.name] && DATA.items[b.name]) {
+    return compareItems(a, b);
+  }
+  if (DATA.survivors[a.name] && DATA.survivors[b.name]) {
+    return compareSurvivors(a, b);
+  }
+  if (TYPE_ORDER[getType(a)] < TYPE_ORDER[getType(b)]) {
+    return -1;
+  } else if (TYPE_ORDER[getType(a)] === TYPE_ORDER[getType(b)]) {
+    return 0;
+  } else {
+    return 1;
+  }
 };
 
 const RText = ({color = 'primary', style, children, ...props}) => {
@@ -186,7 +254,7 @@ const SearchScreen = ({navigation, type}) => {
   const [search, setSearch] = useState('');
   const [viewingItem, setViewingItem] = useState(null);
   const [itemModalVisible, setItemModalVisible] = useState(false);
-  console.log(viewingItem);
+  const scrollView = useRef();
 
   const searchTokens = search.toLocaleLowerCase().split(/ +/);
   const baseData = type ? {type: DATA[type]} : DATA;
@@ -200,18 +268,18 @@ const SearchScreen = ({navigation, type}) => {
       return searchTokens.every((t) =>
         searchableFields.some((s) => s.toLocaleLowerCase().includes(t)),
       );
-    });
-  const searchDataSorted = searchData.sort((a, b) => {
-    if (RARITY_ORDER[a.rarity] < RARITY_ORDER[b.rarity]) {
-      return -1;
+    })
+    .filter((o) => !HIDE_LIST.includes(o.name));
+  const searchDataSorted = searchData.sort(compareObjs);
+
+  useEffect(() => {
+    // scroll up if the search results are short
+    if (searchDataSorted.length < 20) {
+      scrollView.current &&
+        scrollView.current.scrollTo({y: 0, animated: false});
     }
-    if (RARITY_ORDER[a.rarity] === RARITY_ORDER[b.rarity]) {
-      return a.name.localeCompare(b.name);
-    }
-    if (RARITY_ORDER[a.rarity] > RARITY_ORDER[b.rarity]) {
-      return 1;
-    }
-  });
+  }, [search, searchDataSorted.length]);
+
   return (
     <>
       <StatusBar
@@ -250,7 +318,8 @@ const SearchScreen = ({navigation, type}) => {
                   flexGrow: 1,
                 },
               ]}
-              contentContainerStyle={{flexGrow: 1}}>
+              contentContainerStyle={{flexGrow: 1}}
+              ref={scrollView}>
               <View
                 style={styles.searchResults}
                 onStartShouldSetResponder={() => true}>
@@ -619,7 +688,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   detailHeaderImage: {
-    width: `${100 / 2}%`,
+    width: '45%',
     aspectRatio: 1,
   },
   detailSkillRow: {
