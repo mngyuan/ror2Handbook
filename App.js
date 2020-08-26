@@ -32,6 +32,7 @@ import IMAGES from './imgs/images.js';
 import ITEM_DATA from './gamepedia_item_data.json';
 import EQP_DATA from './eqp_data.json';
 import SURVIVOR_DATA from './survivor_data.json';
+import CHALLENGE_DATA from './challenge_data.json';
 
 if (
   Platform.OS === 'android' &&
@@ -40,11 +41,18 @@ if (
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const DATA = {
+const SEARCHABLE_DATA = {
   items: {...ITEM_DATA, ...EQP_DATA},
   survivors: SURVIVOR_DATA,
   environments: [],
   utilities: [],
+};
+
+// Some data we don't want to show in the search all view...?
+// We can include challenges into the search all view once we've found a way
+// to visualize them
+const NONSEARCHABLE_DATA = {
+  challenges: CHALLENGE_DATA,
 };
 
 const TYPE_ORDER = {
@@ -121,10 +129,10 @@ const useAppState = () => {
 };
 
 const getType = (o) => {
-  if (DATA.items[o]) {
+  if (SEARCHABLE_DATA.items[o]) {
     return 'item';
   }
-  if (DATA.survivors[o]) {
+  if (SEARCHABLE_DATA.survivors[o]) {
     return 'survivor';
   }
 };
@@ -150,10 +158,10 @@ const compareSurvivors = (a, b) => {
 };
 
 const compareObjs = (a, b) => {
-  if (DATA.items[a.name] && DATA.items[b.name]) {
+  if (SEARCHABLE_DATA.items[a.name] && SEARCHABLE_DATA.items[b.name]) {
     return compareItems(a, b);
   }
-  if (DATA.survivors[a.name] && DATA.survivors[b.name]) {
+  if (SEARCHABLE_DATA.survivors[a.name] && SEARCHABLE_DATA.survivors[b.name]) {
     return compareSurvivors(a, b);
   }
   if (TYPE_ORDER[getType(a)] < TYPE_ORDER[getType(b)]) {
@@ -259,7 +267,7 @@ const SearchScreen = ({route, navigation}) => {
   const {type} = route.params;
 
   const searchTokens = search.toLocaleLowerCase().split(/ +/);
-  const baseData = type ? {type: DATA[type]} : DATA;
+  const baseData = type ? {type: SEARCHABLE_DATA[type]} : SEARCHABLE_DATA;
   const searchData = Object.values(baseData)
     .map(Object.values)
     .flat()
@@ -330,7 +338,7 @@ const SearchScreen = ({route, navigation}) => {
                     style={[styles.searchResult]}
                     key={v.name}
                     onPress={() => {
-                      if (DATA.items[v.name]) {
+                      if (SEARCHABLE_DATA.items[v.name]) {
                         setViewingItem(v.name);
                         setItemModalVisible(true);
                       } else {
@@ -362,9 +370,11 @@ const SearchScreen = ({route, navigation}) => {
 };
 
 const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
+  const [viewingChallenge, setViewingChallenge] = useState(null);
+  const [challengeModalVisible, setChallengeModalVisible] = useState(false);
   const appState = useAppState();
   const colorScheme = useColorScheme();
-  const item = DATA.items[itemName];
+  const item = SEARCHABLE_DATA.items[itemName];
   useEffect(() => {
     if (__DEV__) {
       //appState === 'active' && Alert.alert('active!');
@@ -374,10 +384,10 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
     <Modal
       isVisible={modalVisible}
       onBackdropPress={() => setModalVisible(false)}
-      style={styles.ItemModal}>
+      style={styles.Modal}>
       <View
         style={[
-          styles.ItemModalInner,
+          styles.ModalInner,
           {
             backgroundColor:
               colorScheme === 'dark'
@@ -388,15 +398,32 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
         <View style={styles.itemModalHeader}>
           <View style={styles.itemModalHeaderInfo}>
             <RText
-              style={[styles.itemModalName, styles[`rarity${item.rarity}`]]}>
+              style={[
+                styles.itemModalHeaderRow,
+                styles.ModalName,
+                styles[`rarity${item.rarity}`],
+              ]}>
               {item.name}
             </RText>
-            <RText style={[styles.itemModalHeaderText]}>
+            <RText
+              style={[styles.itemModalHeaderRow, styles.itemModalHeaderText]}>
               <RText>{item.category?.replace(/\n/g, '→\u200b')} </RText>
               <RText style={styles[`rarity${item.rarity}`]}>
                 {item.rarity}
               </RText>
             </RText>
+            {item.unlock && (
+              <View style={[styles.itemModalHeaderRow]}>
+                <RText style={[styles.itemModalHeaderText]}>Unlocked by </RText>
+                <TouchableOpacity
+                  onPress={() => {
+                    setViewingChallenge(item.unlock);
+                    setChallengeModalVisible(true);
+                  }}>
+                  <RText style={[styles.achievementName]}>{item.unlock}</RText>
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
           <Image
             source={IMAGES[item.name.replace(/ /g, '')]}
@@ -426,6 +453,35 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
           </View>
         ))}
       </View>
+      <ChallengeModal
+        challengeName={viewingChallenge}
+        modalVisible={challengeModalVisible}
+        setModalVisible={() => setChallengeModalVisible(false)}
+      />
+    </Modal>
+  ) : null;
+};
+
+const ChallengeModal = ({challengeName, modalVisible, setModalVisible}) => {
+  const colorScheme = useColorScheme();
+  const challenge = NONSEARCHABLE_DATA.challenges[challengeName];
+  return challenge ? (
+    <Modal
+      isVisible={modalVisible}
+      onBackdropPress={() => setModalVisible(false)}
+      style={styles.Modal}>
+      <View
+        style={[
+          styles.ModalInner,
+          {
+            backgroundColor:
+              colorScheme === 'dark'
+                ? DarkTheme.colors.background
+                : Colors.white,
+          },
+        ]}>
+        <RText style={styles.ModalName}>{challenge.name}</RText>
+      </View>
     </Modal>
   ) : null;
 };
@@ -434,7 +490,7 @@ const DetailScreen = ({route}) => {
   const colorScheme = useColorScheme();
 
   const {itemName} = route.params;
-  const survivor = DATA.survivors[itemName] || {};
+  const survivor = SEARCHABLE_DATA.survivors[itemName] || {};
   return (
     <ScrollView>
       <View
@@ -618,14 +674,14 @@ const styles = StyleSheet.create({
   rarityLegendary: {color: Colors.rarityLegendary},
   rarityBoss: {color: Colors.rarityBoss},
   rarityLunar: {color: Colors.rarityLunar},
-  ItemModal: {
+  Modal: {
     alignItems: 'flex-end',
     justifyContent: 'center',
     flex: 1,
     flexDirection: 'row',
     margin: 0,
   },
-  ItemModalInner: {
+  ModalInner: {
     flex: 1,
     borderRadius: 12,
     padding: 12,
@@ -636,13 +692,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 4,
   },
-  itemModalName: {
+  ModalName: {
     fontWeight: 'bold',
     fontSize: FontSize.heading,
-    marginBottom: 4,
   },
   itemModalHeaderInfo: {
     paddingRight: 120,
+    marginBottom: 4,
   },
   itemModalHeaderImage: {
     position: 'absolute',
@@ -652,9 +708,12 @@ const styles = StyleSheet.create({
     width: 120,
     aspectRatio: 1,
   },
+  itemModalHeaderRow: {
+    flexDirection: 'row',
+    marginBottom: 4,
+  },
   itemModalHeaderText: {
     fontWeight: '500',
-    marginBottom: 8,
     fontSize: FontSize.bodyText,
   },
   itemModalFlavor: {
@@ -709,6 +768,8 @@ const styles = StyleSheet.create({
   },
   achievementName: {
     color: 'blue',
+    fontWeight: '500',
+    fontSize: FontSize.bodyText,
   },
   verticalHitboxExtender: {
     height: '100%',
