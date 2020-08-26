@@ -8,6 +8,7 @@ const itemDataPath = './item_data.json';
 const gamepediaItemDataPath = './gamepedia_item_data.json';
 const eqpDataPath = './eqp_data.json';
 const survivorDataPath = './survivor_data.json';
+const challengeDataPath = './challenge_data.json';
 
 const download = (url, destination) =>
   new Promise((resolve, reject) => {
@@ -28,6 +29,15 @@ const download = (url, destination) =>
         reject(error.message);
       });
   });
+
+const windowSet = (page, name, value) =>
+  page.evaluateOnNewDocument(`
+    Object.defineProperty(window, '${name}', {
+      get() {
+        return ${JSON.stringify(value)};
+      }
+    })
+  `);
 
 const toCamelCase = (s) =>
   s
@@ -50,6 +60,11 @@ const scrape = ({
       const browser = await puppeteer.launch();
       const page = await browser.newPage();
       await page.exposeFunction('toCamelCase', toCamelCase);
+      await windowSet(
+        page,
+        'CHALLENGE_TABLE_CATEGORY',
+        CHALLENGE_TABLE_CATEGORY,
+      );
       // never timeout, but might hang
       await page.setDefaultNavigationTimeout(0);
       if (!single) {
@@ -371,6 +386,44 @@ const visitSurvivor = async (page, url) => {
   };
 };
 
+const CHALLENGE_TABLE_CATEGORY = [
+  'survivors',
+  'items',
+  'equipment',
+  'skills',
+  'skins',
+  'artifacts',
+];
+
+const visitChallenge = async (page, url) => {
+  await page.goto(url);
+  console.log(url);
+  const evalCatchHandler = (err) => {
+    if (!err.message.includes('failed to find element matching selector')) {
+      throw err;
+    }
+  };
+  const challenges = await page.$$eval(
+    '.article-table.sortable.floatheader.jquery-tablesorter',
+    (tables) =>
+      tables
+        .map((table, i) => {
+          const tableRows = Array.from(table.querySelectorAll('tbody tr'));
+          return tableRows.map((tableRow) => {
+            const tableDatas = tableRow.querySelectorAll('td');
+            return {
+              name: tableDatas[0].innerText,
+              description: tableDatas[1].innerText,
+              unlock: tableDatas[2].innerText,
+              category: CHALLENGE_TABLE_CATEGORY[i],
+            };
+          });
+        })
+        .flat(),
+  );
+  return challenges.reduce((agg, cur) => ({...agg, [cur.name]: cur}));
+};
+
 const generateImageRequires = () => {
   // could improve by reading item_data.json to get name so name in gen'd code
   // doesn't have to have its spaces stripped
@@ -498,6 +551,30 @@ const main = () => {
               (err) => {
                 if (err) throw err;
                 console.log(`written to ${survivorDataPath}`);
+              },
+            );
+          }
+        })
+        .catch(console.error);
+      break;
+    case 'challenges':
+      const CHALLENGE_SEED = `${baseUrl}/Challenges`;
+      scrape({
+        seed: positionalArgs[1] || CHALLENGE_SEED,
+        visitCallback: visitChallenge,
+        baseUrl: rootUrl,
+        single: true,
+      })
+        .then((challengeData) => {
+          if (flags.includes('--single')) {
+            console.log(challengeData);
+          } else {
+            fs.writeFile(
+              challengeDataPath,
+              JSON.stringify(challengeData),
+              (err) => {
+                if (err) throw err;
+                console.log(`written to ${challengeDataPath}`);
               },
             );
           }

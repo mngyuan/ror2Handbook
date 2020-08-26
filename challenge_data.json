@@ -1,0 +1,618 @@
+{
+  "name": "...To Be Left Alone",
+  "description": "Stabilize the Cell in the Void Fields.",
+  "unlock": "Acrid",
+  "category": "survivors",
+  "Engineering Perfection": {
+    "name": "Engineering Perfection",
+    "description": "Complete 30 stages.",
+    "unlock": "Engineer",
+    "category": "survivors"
+  },
+  "Guidance Offline": {
+    "name": "Guidance Offline",
+    "description": "Defeat the unique guardian of Siren's Call.",
+    "unlock": "Loader",
+    "category": "survivors"
+  },
+  "Pause.": {
+    "name": "Pause.",
+    "description": "Free the survivor suspended in time.",
+    "unlock": "Artificer",
+    "category": "survivors"
+  },
+  "Power Plant": {
+    "name": "Power Plant",
+    "description": "Repair the broken robot with an Escape Pod's Fuel Array.",
+    "unlock": "REX",
+    "category": "survivors"
+  },
+  "True Respite": {
+    "name": "True Respite",
+    "description": "Obliterate yourself at the Obelisk..",
+    "unlock": "Mercenary",
+    "category": "survivors"
+  },
+  "Verified": {
+    "name": "Verified",
+    "description": "Complete the first Teleporter event 5 times.",
+    "unlock": "MUL-T",
+    "category": "survivors"
+  },
+  "Warrior": {
+    "name": "Warrior",
+    "description": "Reach and complete the 3rd Teleporter event without dying.",
+    "unlock": "Huntress",
+    "category": "survivors"
+  },
+  "Washed Away": {
+    "name": "Washed Away",
+    "description": "Beat the game.",
+    "unlock": "Captain",
+    "category": "survivors"
+  },
+  "\"Is This Bugged?\"": {
+    "name": "\"Is This Bugged?\"",
+    "description": "Fail the Shrine of Chance 3 times in a row.",
+    "unlock": "Paul's Goat Hoof",
+    "category": "items"
+  },
+  "...Maybe One More.": {
+    "name": "...Maybe One More.",
+    "description": "Duplicate the same item 7 times in a row with a 3D Printer.",
+    "unlock": "Bundle of Fireworks",
+    "category": "items"
+  },
+  "Advancement": {
+    "name": "Advancement",
+    "description": "Complete a Teleporter event.",
+    "unlock": "Armor-Piercing Rounds",
+    "category": "items"
+  },
+  "Automation Activation": {
+    "name": "Automation Activation",
+    "description": "Activate 6 turrets in a single run.",
+    "unlock": "Squid Polyp",
+    "category": "items"
+  },
+  "Blockade Breaker": {
+    "name": "Blockade Breaker",
+    "description": "Kill 15 boss monsters in a single run.",
+    "unlock": "Visions of Heresy\nStrides of Heresy",
+    "category": "items"
+  },
+  "Cut Down": {
+    "name": "Cut Down",
+    "description": "Defeat 500 elite monsters.",
+    "unlock": "Old Guillotine",
+    "category": "items"
+  },
+  "Death Do Us Part": {
+    "name": "Death Do Us Part",
+    "description": "Discover the hidden chamber in the Abandoned Aqueduct.",
+    "unlock": "Runald's Band\nKjaro's Band",
+    "category": "items"
+  },
+  "Deicide": {
+    "name": "Deicide",
+    "description": "Defeat an Elite boss on Monsoon difficulty.",
+    "unlock": "Brainstalks",
+    "category": "items"
+  },
+  "Deja Vu?": {
+    "name": "Deja Vu?",
+    "description": "Loop back to the first stage.",
+    "unlock": "Sentient Meat Hook",
+    "category": "items"
+  },
+  "Elite Slayer": {
+    "name": "Elite Slayer",
+    "description": "Defeat an Elite-type monster.",
+    "unlock": "Medkit",
+    "category": "items"
+  },
+  "Experimenting": {
+    "name": "Experimenting",
+    "description": "Pick up 5 different types of Equipment.",
+    "unlock": "Fuel Cell",
+    "category": "items"
+  },
+  "Flawless": {
+    "name": "Flawless",
+    "description": "Fully charge a Teleporter without getting hit.",
+    "unlock": "Backup Magazine",
+    "category": "items"
+  },
+  "Glorious Battle": {
+    "name": "Glorious Battle",
+    "description": "Charge the Teleporter with less than 10% health.",
+    "unlock": "Berzerker's Pauldron",
+    "category": "items"
+  },
+  "Going Fast Recommended": {
+    "name": "Going Fast Recommended",
+    "description": "Reach +300% movespeed (includes sprinting).",
+    "unlock": "Wax Quail",
+    "category": "items"
+  },
+  "Her Concepts": {
+    "name": "Her Concepts",
+    "description": "Find the Altar to N'kuhana.",
+    "unlock": "N'kuhana's Opinion",
+    "category": "items"
+  },
+  "Keyed Up": {
+    "name": "Keyed Up",
+    "description": "Defeat the Teleporter boss under 15 seconds.",
+    "unlock": "Rusted Key",
+    "category": "items"
+  },
+  "Learning Process": {
+    "name": "Learning Process",
+    "description": "Die 5 times.",
+    "unlock": "Tougher Times",
+    "category": "items"
+  },
+  "Macho": {
+    "name": "Macho",
+    "description": "Deal 5000 damage in one shot.",
+    "unlock": "Unstable Tesla Coil",
+    "category": "items"
+  },
+  "Naturopath": {
+    "name": "Naturopath",
+    "description": "Without healing, reach and complete the 3rd Teleporter event.",
+    "unlock": "Rejuvenation Rack",
+    "category": "items"
+  },
+  "Never Back Down": {
+    "name": "Never Back Down",
+    "description": "In 4 consecutive stages don’t leave the teleporter radius until it is fully charged.",
+    "unlock": "Focused Convergence",
+    "category": "items"
+  },
+  "Newtist": {
+    "name": "Newtist",
+    "description": "Discover and activate 8 unique Newt Altars.",
+    "unlock": "Soulbound Catalyst",
+    "category": "items"
+  },
+  "Prismatically Aligned": {
+    "name": "Prismatically Aligned",
+    "description": "Complete a Prismatic Trial.",
+    "unlock": "Harvester's Scythe",
+    "category": "items"
+  },
+  "Rapidfire": {
+    "name": "Rapidfire",
+    "description": "Reach +200% attack speed.",
+    "unlock": "Predatory Instincts",
+    "category": "items"
+  },
+  "Slaughter": {
+    "name": "Slaughter",
+    "description": "Defeat 3000 enemies.",
+    "unlock": "Infusion",
+    "category": "items"
+  },
+  "The Basics": {
+    "name": "The Basics",
+    "description": "Discover 10 unique white items.",
+    "unlock": "Crowbar",
+    "category": "items"
+  },
+  "The Calm": {
+    "name": "The Calm",
+    "description": "Beat the game on Monsoon difficulty.",
+    "unlock": "Purity",
+    "category": "items"
+  },
+  "The Demons And The Crabs": {
+    "name": "The Demons And The Crabs",
+    "description": "Kill 20 Hermit Crabs by chasing them off the edge of the map.",
+    "unlock": "Gesture of the Drowned",
+    "category": "items"
+  },
+  "The Lone Survivor": {
+    "name": "The Lone Survivor",
+    "description": "Stay alive for 30 consecutive minutes.",
+    "unlock": "Dio's Best Friend",
+    "category": "items"
+  },
+  "The Long Road": {
+    "name": "The Long Road",
+    "description": "Complete 20 stages in a single run.",
+    "unlock": "57 Leaf Clover",
+    "category": "items"
+  },
+  "Warmonger": {
+    "name": "Warmonger",
+    "description": "Complete 3 Combat Shrines in a single stage.",
+    "unlock": "War Horn",
+    "category": "items"
+  },
+  "Ascendant": {
+    "name": "Ascendant",
+    "description": "Defeat the Teleporter bosses after activating 2 Shrines of the Mountain.",
+    "unlock": "Royal Capacitor",
+    "category": "equipment"
+  },
+  "Blackout": {
+    "name": "Blackout",
+    "description": "Defeat the unique guardian of Gilded Coast without any beacons deactivating.",
+    "unlock": "Eccentric Vase",
+    "category": "equipment"
+  },
+  "Bookworm": {
+    "name": "Bookworm",
+    "description": "Collect 10 Monster or Environment Logs.",
+    "unlock": "Radar Scanner",
+    "category": "equipment"
+  },
+  "Cleanup Duty": {
+    "name": "Cleanup Duty",
+    "description": "Destroy 20 flying rocks in Sky Meadow.",
+    "unlock": "Recycler",
+    "category": "equipment"
+  },
+  "Cosmic Explorer": {
+    "name": "Cosmic Explorer",
+    "description": "Discover and enter three unique portals.",
+    "unlock": "Spinel Tonic",
+    "category": "equipment"
+  },
+  "Funded!": {
+    "name": "Funded!",
+    "description": "Collect $30,480 total gold.",
+    "unlock": "The Crowdfunder",
+    "category": "equipment"
+  },
+  "I Love Dying!": {
+    "name": "I Love Dying!",
+    "description": "Die 20 times.",
+    "unlock": "Forgive Me Please",
+    "category": "equipment"
+  },
+  "Mechanic": {
+    "name": "Mechanic",
+    "description": "Repair 30 drones or turrets.",
+    "unlock": "The Back-up",
+    "category": "equipment"
+  },
+  "Moon Worshipper": {
+    "name": "Moon Worshipper",
+    "description": "Carry 5 Lunar items in a single run.",
+    "unlock": "Glowing Meteorite",
+    "category": "equipment"
+  },
+  "Multikill!": {
+    "name": "Multikill!",
+    "description": "Kill 15 enemies simultaneously.",
+    "unlock": "Helfire Tincture",
+    "category": "equipment"
+  },
+  "One with the Woods": {
+    "name": "One with the Woods",
+    "description": "Fully upgrade a Shrine of the Woods.",
+    "unlock": "Gnarled Woodsprite",
+    "category": "equipment"
+  },
+  "Warm For Life": {
+    "name": "Warm For Life",
+    "description": "Die three times while burning.",
+    "unlock": "Blast Shower",
+    "category": "equipment"
+  },
+  "[REDACTED]": {
+    "name": "[REDACTED]",
+    "description": "Open the Timed Security Chest on Rallypoint Delta.",
+    "unlock": "Preon Accumulator",
+    "category": "equipment"
+  },
+  "Acrid: Bad Medicine": {
+    "name": "Acrid: Bad Medicine",
+    "description": "As Acrid, land the final blow on a Scavenger.",
+    "unlock": "Ravenous Bite",
+    "category": "skills"
+  },
+  "Acrid: Easy Prey": {
+    "name": "Acrid: Easy Prey",
+    "description": "As Acrid, land the killing blow on 50 total enemies that have 1 hit point left.",
+    "unlock": "Blight",
+    "category": "skills"
+  },
+  "Acrid: Pandemic": {
+    "name": "Acrid: Pandemic",
+    "description": "As Acrid, inflict Poison 1000 total times.",
+    "unlock": "Frenzied Leap",
+    "category": "skills"
+  },
+  "Artificer: Chunked!": {
+    "name": "Artificer: Chunked!",
+    "description": "As Artificer, fully defeat the teleporter boss in a one-second burst of damage.",
+    "unlock": "Cast Nano-Spear",
+    "category": "skills"
+  },
+  "Artificer: Massacre": {
+    "name": "Artificer: Massacre",
+    "description": "As Artificer, perform a multikill of 20 enemies.",
+    "unlock": "Plasma Bolt",
+    "category": "skills"
+  },
+  "Artificer: Orbital Bombardment": {
+    "name": "Artificer: Orbital Bombardment",
+    "description": "As Artificer, kill 15 enemies before touching the ground.",
+    "unlock": "Ion Surge",
+    "category": "skills"
+  },
+  "Captain: Wanderlust": {
+    "name": "Captain: Wanderlust",
+    "description": "As Captain, visit 10 different environments in a single run.",
+    "unlock": "Beacon: Resupply",
+    "category": "skills"
+  },
+  "Captain: Worth Every Penny": {
+    "name": "Captain: Worth Every Penny",
+    "description": "As Captain, repair and recruit a TC-280 Prototype.",
+    "unlock": "Beacon: Hacking",
+    "category": "skills"
+  },
+  "Commando: Godspeed": {
+    "name": "Commando: Godspeed",
+    "description": "As Commando, fully charge the first-stage teleporter before the timer hits 5 minutes.",
+    "unlock": "Tactical Slide",
+    "category": "skills"
+  },
+  "Commando: Incorruptible": {
+    "name": "Commando: Incorruptible",
+    "description": "As Commando, clear 20 stages in a single run without picking up any Lunar items.",
+    "unlock": "Frag Grenade",
+    "category": "skills"
+  },
+  "Commando: Rolling Thunder": {
+    "name": "Commando: Rolling Thunder",
+    "description": "As Commando, land the killing blow on an Overloading Worm.",
+    "unlock": "Phase Blast",
+    "category": "skills"
+  },
+  "Engineer: 100% Calculated": {
+    "name": "Engineer: 100% Calculated",
+    "description": "As Engineer, defeat the teleporter boss in less than 5 seconds after it spawns.",
+    "unlock": "Spider Mines",
+    "category": "skills"
+  },
+  "Engineer: Better With Friends": {
+    "name": "Engineer: Better With Friends",
+    "description": "As Engineer, recruit 12 minions at one time.",
+    "unlock": "TR58 Carbonizer Turret",
+    "category": "skills"
+  },
+  "Engineer: Zero Sum": {
+    "name": "Engineer: Zero Sum",
+    "description": "As Engineer, finish charging the teleporter with zero monsters remaining on the stage.",
+    "unlock": "Thermal Harpoons",
+    "category": "skills"
+  },
+  "Huntress: Finishing Touch": {
+    "name": "Huntress: Finishing Touch",
+    "description": "As Huntress, land a killing blow with every possible hit of a single glaive.",
+    "unlock": "Flurry",
+    "category": "skills"
+  },
+  "Huntress: One Shot, One Kill": {
+    "name": "Huntress: One Shot, One Kill",
+    "description": "As Huntress, collect and carry 12 Crowbars at once.",
+    "unlock": "Phase Blink",
+    "category": "skills"
+  },
+  "Huntress: Piercing Wind": {
+    "name": "Huntress: Piercing Wind",
+    "description": "As Huntress, start and finish either Rallypoint Delta or Scorched Acres without falling below 100% health.",
+    "unlock": "Ballista",
+    "category": "skills"
+  },
+  "Loader: Earthshatter": {
+    "name": "Loader: Earthshatter",
+    "description": "As Loader, land a Charged Gauntlet hit at 300mph or higher.",
+    "unlock": "Thunder Gauntlet",
+    "category": "skills"
+  },
+  "Loader: Swing By": {
+    "name": "Loader: Swing By",
+    "description": "As Loader, reach and proceed through the Celestial Portal in 25 minutes or less.",
+    "unlock": "Spiked Fist",
+    "category": "skills"
+  },
+  "MUL-T: Gotcha!": {
+    "name": "MUL-T: Gotcha!",
+    "description": "As MUL-T, land the killing blow on an Imp Overlord with the Preon Accumulator.",
+    "unlock": "Power-Saw",
+    "category": "skills"
+  },
+  "MUL-T: Pest Control": {
+    "name": "MUL-T: Pest Control",
+    "description": "As MUL-T, defeat two Beetle Queens without leaving the teleporter zone.",
+    "unlock": "Scrap Launcher",
+    "category": "skills"
+  },
+  "Mercenary: Demon of the Skies": {
+    "name": "Mercenary: Demon of the Skies",
+    "description": "As Mercenary, don't touch the ground for 30 seconds.",
+    "unlock": "Rising Thunder",
+    "category": "skills"
+  },
+  "Mercenary: Ethereal": {
+    "name": "Mercenary: Ethereal",
+    "description": "As Mercenary, complete a Prismatic Trial without falling below 100% health.",
+    "unlock": "Slicing Winds",
+    "category": "skills"
+  },
+  "REX: Bushwhacked": {
+    "name": "REX: Bushwhacked",
+    "description": "As REX, complete an entire teleporter event while under 50% health.",
+    "unlock": "DIRECTIVE: Drill",
+    "category": "skills"
+  },
+  "REX: Dunked": {
+    "name": "REX: Dunked",
+    "description": "As REX, kill a Clay Dunestrider on Abandoned Aqueduct by throwing it into a pit.",
+    "unlock": "Bramble Volley",
+    "category": "skills"
+  },
+  "Acrid: Mastery": {
+    "name": "Acrid: Mastery",
+    "description": "As Acrid, beat the game or obliterate on Monsoon.",
+    "unlock": "Albino",
+    "category": "skins"
+  },
+  "Artificer: Mastery": {
+    "name": "Artificer: Mastery",
+    "description": "As Artificer, beat the game or obliterate on Monsoon.",
+    "unlock": "Chrome",
+    "category": "skins"
+  },
+  "Captain: Mastery": {
+    "name": "Captain: Mastery",
+    "description": "As Captain, beat the game or obliterate on Monsoon.",
+    "unlock": "Admiral",
+    "category": "skins"
+  },
+  "Commando: Mastery": {
+    "name": "Commando: Mastery",
+    "description": "As Commando, beat the game or obliterate on Monsoon.",
+    "unlock": "Hornet",
+    "category": "skins"
+  },
+  "Engineer: Mastery": {
+    "name": "Engineer: Mastery",
+    "description": "As Engineer, beat the game or obliterate on Monsoon.",
+    "unlock": "EOD Tech",
+    "category": "skins"
+  },
+  "Huntress: Mastery": {
+    "name": "Huntress: Mastery",
+    "description": "As Huntress, beat the game or obliterate on Monsoon.",
+    "unlock": "Arctic",
+    "category": "skins"
+  },
+  "Loader: Mastery": {
+    "name": "Loader: Mastery",
+    "description": "As Loader, beat the game or obliterate on Monsoon.",
+    "unlock": "Classic",
+    "category": "skins"
+  },
+  "MUL-T: Mastery": {
+    "name": "MUL-T: Mastery",
+    "description": "As MUL-T, beat the game or obliterate on Monsoon.",
+    "unlock": "Janitor",
+    "category": "skins"
+  },
+  "Mercenary: Mastery": {
+    "name": "Mercenary: Mastery",
+    "description": "As Mercenary, beat the game or obliterate on Monsoon.",
+    "unlock": "Oni",
+    "category": "skins"
+  },
+  "REX: Mastery": {
+    "name": "REX: Mastery",
+    "description": "As REX, beat the game or obliterate on Monsoon.",
+    "unlock": "Smoothie",
+    "category": "skins"
+  },
+  "Trial of Chaos": {
+    "name": "Trial of Chaos",
+    "description": "Complete the Trial of Chaos.",
+    "unlock": "Artifact of Chaos",
+    "category": "artifacts"
+  },
+  "Trial of Command": {
+    "name": "Trial of Command",
+    "description": "Complete the Trial of Command.",
+    "unlock": "Artifact of Command",
+    "category": "artifacts"
+  },
+  "Trial of Death": {
+    "name": "Trial of Death",
+    "description": "Complete the Trial of Death.",
+    "unlock": "Artifact of Death",
+    "category": "artifacts"
+  },
+  "Trial of Dissonance": {
+    "name": "Trial of Dissonance",
+    "description": "Complete the Trial of Dissonance.",
+    "unlock": "Artifact of Dissonance",
+    "category": "artifacts"
+  },
+  "Trial of Enigma": {
+    "name": "Trial of Enigma",
+    "description": "Complete the Trial of Enigma.",
+    "unlock": "Artifact of Enigma",
+    "category": "artifacts"
+  },
+  "Trial of Evolution": {
+    "name": "Trial of Evolution",
+    "description": "Complete the Trial of Evolution.",
+    "unlock": "Artifact of Evolution",
+    "category": "artifacts"
+  },
+  "Trial of Frailty": {
+    "name": "Trial of Frailty",
+    "description": "Complete the Trial of Frailty.",
+    "unlock": "Artifact of Frailty",
+    "category": "artifacts"
+  },
+  "Trial of Glass": {
+    "name": "Trial of Glass",
+    "description": "Complete the Trial of Glass.",
+    "unlock": "Artifact of Glass",
+    "category": "artifacts"
+  },
+  "Trial of Honor": {
+    "name": "Trial of Honor",
+    "description": "Complete the Trial of Honor.",
+    "unlock": "Artifact of Honor",
+    "category": "artifacts"
+  },
+  "Trial of Kin": {
+    "name": "Trial of Kin",
+    "description": "Complete the Trial of Kin.",
+    "unlock": "Artifact of Kin",
+    "category": "artifacts"
+  },
+  "Trial of Metamorphosis": {
+    "name": "Trial of Metamorphosis",
+    "description": "Complete the Trial of Metamorphosis.",
+    "unlock": "Artifact of Metamorphosis",
+    "category": "artifacts"
+  },
+  "Trial of Sacrifice": {
+    "name": "Trial of Sacrifice",
+    "description": "Complete the Trial of Sacrifice.",
+    "unlock": "Artifact of Sacrifice",
+    "category": "artifacts"
+  },
+  "Trial of Soul": {
+    "name": "Trial of Soul",
+    "description": "Complete the Trial of Soul.",
+    "unlock": "Artifact of Soul",
+    "category": "artifacts"
+  },
+  "Trial of Spite": {
+    "name": "Trial of Spite",
+    "description": "Complete the Trial of Spite.",
+    "unlock": "Artifact of Spite",
+    "category": "artifacts"
+  },
+  "Trial of Swarms": {
+    "name": "Trial of Swarms",
+    "description": "Complete the Trial of Swarms.",
+    "unlock": "Artifact of Swarms",
+    "category": "artifacts"
+  },
+  "Trial of Vengeance": {
+    "name": "Trial of Vengeance",
+    "description": "Complete the Trial of Vengeance.",
+    "unlock": "Artifact of Vengeance",
+    "category": "artifacts"
+  }
+}
