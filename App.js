@@ -18,6 +18,7 @@ import {
   LayoutAnimation,
   UIManager,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {createDrawerNavigator} from '@react-navigation/drawer';
@@ -107,6 +108,13 @@ const FontSize = {
   heading: 28,
   bodyText: 16,
   subheading: 20,
+};
+
+const FontWeight = {
+  heading: '700',
+  bodyText: '400',
+  subheading: '500',
+  emphasis: '500',
 };
 
 const Stack = createStackNavigator();
@@ -292,9 +300,6 @@ const SearchScreen = ({route, navigation}) => {
 
   return (
     <>
-      <StatusBar
-        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
-      />
       <TouchableWithoutFeedback
         onPress={() => Keyboard.dismiss()}
         style={{flex: 1}}>
@@ -613,12 +618,70 @@ const UtilityScreen = React.memo((props) => (
   <HomeScreen {...props} type="utilities" />
 ));
 
+const AboutScreen = ({navigation}) => {
+  const colorScheme = useColorScheme();
+  return (
+    <SafeAreaView
+      style={[
+        {
+          backgroundColor:
+            colorScheme === 'dark' ? DarkTheme.colors.background : Colors.white,
+          flex: 1,
+        },
+      ]}>
+      <View style={styles.DrawerScreenHeader}>
+        <RText style={styles.screenHeaderText}>About</RText>
+        <TouchableOpacity
+          onPress={() => navigation.openDrawer()}
+          style={styles.screenHeaderBack}>
+          <Icon name="ios-chevron-back" size={28} />
+        </TouchableOpacity>
+      </View>
+      <View style={[styles.AboutScreen]}>
+        <ScrollView
+          style={{flex: 1}}
+          contentContainerStyle={{padding: 16, flex: 1}}>
+          <View style={styles.aboutRow}>
+            <RText style={styles.aboutRowText}>
+              Version: {DeviceInfo.getReadableVersion()}
+            </RText>
+          </View>
+          <TouchableOpacity
+            style={[styles.aboutRow, styles.aboutRowDisabled]}
+            onPress={() => {}}
+            disabled>
+            <RText style={styles.aboutRowText}>Share this app</RText>
+            <Icon name="chevron-forward" size={20} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.aboutRow, styles.aboutRowDisabled]}
+            onPress={() => {}}
+            disabled>
+            <RText style={styles.aboutRowText}>Report an issue</RText>
+            <Icon name="chevron-forward" size={20} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.aboutRow, styles.aboutRowDisabled]}
+            onPress={() => {}}
+            disabled>
+            <RText style={styles.aboutRowText}>Rate on App Store</RText>
+            <Icon name="chevron-forward" size={20} />
+          </TouchableOpacity>
+        </ScrollView>
+      </View>
+    </SafeAreaView>
+  );
+};
+
 const App = () => {
   const colorScheme = useColorScheme();
   return (
     <NavigationContainer
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Drawer.Navigator initialRouteName="Home">
+      <StatusBar
+        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+      />
+      <Drawer.Navigator initialRouteName="Home" drawerType="slide">
         <Drawer.Screen
           name="Home"
           component={React.memo((props) => (
@@ -627,6 +690,7 @@ const App = () => {
         />
         <Drawer.Screen name="Items" component={ItemScreen} />
         <Drawer.Screen name="Survivors" component={SurvivorScreen} />
+        <Drawer.Screen name="About" component={AboutScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -720,7 +784,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   ModalName: {
-    fontWeight: 'bold',
+    fontWeight: FontWeight.heading,
     fontSize: FontSize.heading,
   },
   itemModalHeaderInfo: {
@@ -740,7 +804,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   itemModalHeaderText: {
-    fontWeight: '500',
+    fontWeight: FontWeight.emphasis,
     fontSize: FontSize.bodyText,
   },
   itemModalFlavor: {
@@ -757,11 +821,40 @@ const styles = StyleSheet.create({
   itemModalStatHeader: {},
   itemModalStatCell: {
     paddingRight: 8,
-    fontWeight: '500',
+    fontWeight: FontWeight.emphasis,
     fontSize: FontSize.bodyText,
   },
   DetailScreen: {
     padding: 16,
+  },
+  DrawerScreenHeader: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    padding: 16,
+  },
+  screenHeaderText: {
+    fontSize: FontSize.subheading,
+    fontWeight: FontWeight.emphasis,
+  },
+  screenHeaderBack: {
+    position: 'absolute',
+    left: 16,
+  },
+  AboutScreen: {
+    flex: 1,
+  },
+  aboutRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 8,
+  },
+  aboutRowDisabled: {
+    opacity: 0.25,
+  },
+  aboutRowText: {
+    fontSize: FontSize.subheading,
+    marginRight: 8,
   },
   detailHeader: {
     flexDirection: 'row',
@@ -771,8 +864,8 @@ const styles = StyleSheet.create({
   detailHeaderInfo: {flex: 1, marginRight: 8},
   bodyText: {fontSize: FontSize.bodyText},
   detailHeaderName: {
-    fontWeight: 'bold',
     fontSize: FontSize.heading,
+    fontWeight: FontWeight.heading,
     marginBottom: 4,
   },
   detailHeaderImage: {
@@ -798,7 +891,7 @@ const styles = StyleSheet.create({
   },
   achievementNameLink: {
     color: Colors.achievementColor,
-    fontWeight: '500',
+    fontWeight: FontWeight.emphasis,
     fontSize: FontSize.bodyText,
   },
   verticalHitboxExtender: {
