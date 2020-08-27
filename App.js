@@ -44,8 +44,6 @@ if (
 const SEARCHABLE_DATA = {
   items: {...ITEM_DATA, ...EQP_DATA},
   survivors: SURVIVOR_DATA,
-  environments: [],
-  utilities: [],
 };
 
 // Some data we don't want to show in the search all view...?
@@ -102,11 +100,13 @@ const Colors = {
   rarityLegendary: 'red',
   rarityBoss: 'yellow',
   rarityLunar: 'blue',
+  achievementColor: 'blue',
 };
 
 const FontSize = {
   heading: 28,
   bodyText: 16,
+  subheading: 20,
 };
 
 const Stack = createStackNavigator();
@@ -407,21 +407,27 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
             </RText>
             <RText
               style={[styles.itemModalHeaderRow, styles.itemModalHeaderText]}>
-              <RText>{item.category?.replace(/\n/g, '→\u200b')} </RText>
+              <RText>
+                {item.category?.replace(/\n/g, '→\u200b')}
+                {item.category ? ' ' : ''}
+              </RText>
               <RText style={styles[`rarity${item.rarity}`]}>
                 {item.rarity}
               </RText>
             </RText>
             {item.unlock && (
               <View style={[styles.itemModalHeaderRow]}>
-                <RText style={[styles.itemModalHeaderText]}>Unlocked by </RText>
-                <TouchableOpacity
-                  onPress={() => {
-                    setViewingChallenge(item.unlock);
-                    setChallengeModalVisible(true);
-                  }}>
-                  <RText style={[styles.achievementName]}>{item.unlock}</RText>
-                </TouchableOpacity>
+                <RText style={[styles.itemModalHeaderText]}>
+                  Unlocked by{' '}
+                  <RText
+                    style={[styles.achievementNameLink]}
+                    onPress={() => {
+                      setViewingChallenge(item.unlock);
+                      setChallengeModalVisible(true);
+                    }}>
+                    {item.unlock}
+                  </RText>
+                </RText>
               </View>
             )}
           </View>
@@ -465,6 +471,7 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
 const ChallengeModal = ({challengeName, modalVisible, setModalVisible}) => {
   const colorScheme = useColorScheme();
   const challenge = NONSEARCHABLE_DATA.challenges[challengeName];
+
   return challenge ? (
     <Modal
       isVisible={modalVisible}
@@ -480,7 +487,15 @@ const ChallengeModal = ({challengeName, modalVisible, setModalVisible}) => {
                 : Colors.white,
           },
         ]}>
-        <RText style={styles.ModalName}>{challenge.name}</RText>
+        <RText
+          style={[
+            styles.ModalName,
+            styles.itemModalHeaderRow,
+            {color: Colors.achievementColor},
+          ]}>
+          {challenge.name}
+        </RText>
+        <RText style={styles.itemModalHeaderRow}>{challenge.description}</RText>
       </View>
     </Modal>
   ) : null;
@@ -488,6 +503,8 @@ const ChallengeModal = ({challengeName, modalVisible, setModalVisible}) => {
 
 const DetailScreen = ({route}) => {
   const colorScheme = useColorScheme();
+  const [viewingChallenge, setViewingChallenge] = useState(null);
+  const [challengeModalVisible, setChallengeModalVisible] = useState(false);
 
   const {itemName} = route.params;
   const survivor = SEARCHABLE_DATA.survivors[itemName] || {};
@@ -507,9 +524,16 @@ const DetailScreen = ({route}) => {
           <View style={styles.detailHeaderInfo}>
             <RText style={styles.detailHeaderName}>{survivor.name}</RText>
             {survivor.unlock ? (
-              <RText>
-                Unlocked by
-                <RText style={styles.achievementName}> {survivor.unlock}</RText>
+              <RText style={styles.bodyText}>
+                Unlocked by{' '}
+                <RText
+                  style={styles.achievementNameLink}
+                  onPress={() => {
+                    setViewingChallenge(survivor.unlock);
+                    setChallengeModalVisible(true);
+                  }}>
+                  {survivor.unlock}
+                </RText>
               </RText>
             ) : null}
           </View>
@@ -525,7 +549,7 @@ const DetailScreen = ({route}) => {
                 <RText style={styles.detailSkillName}>{skill.name}</RText>
                 <RText> {skill.Type}</RText>
               </RText>
-              <RText>{skill.Description}</RText>
+              <RText style={styles.bodyText}>{skill.Description}</RText>
             </View>
             <Image
               source={IMAGES[skill.name.replace(/ /g, '')]}
@@ -534,6 +558,11 @@ const DetailScreen = ({route}) => {
           </View>
         ))}
       </View>
+      <ChallengeModal
+        challengeName={viewingChallenge}
+        modalVisible={challengeModalVisible}
+        setModalVisible={() => setChallengeModalVisible(false)}
+      />
     </ScrollView>
   );
 };
@@ -598,8 +627,6 @@ const App = () => {
         />
         <Drawer.Screen name="Items" component={ItemScreen} />
         <Drawer.Screen name="Survivors" component={SurvivorScreen} />
-        <Drawer.Screen name="Environments" component={EnvironmentScreen} />
-        <Drawer.Screen name="Utilities" component={UtilityScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -742,6 +769,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   detailHeaderInfo: {flex: 1, marginRight: 8},
+  bodyText: {fontSize: FontSize.bodyText},
   detailHeaderName: {
     fontWeight: 'bold',
     fontSize: FontSize.heading,
@@ -751,6 +779,7 @@ const styles = StyleSheet.create({
     width: '45%',
     aspectRatio: 1,
   },
+  detailAchievementNameLink: {},
   detailSkillRow: {
     flexDirection: 'row',
     width: '100%',
@@ -762,12 +791,13 @@ const styles = StyleSheet.create({
   },
   detailSkillHeader: {
     marginBottom: 4,
+    fontSize: FontSize.subheading,
   },
   detailSkillName: {
     fontWeight: 'bold',
   },
-  achievementName: {
-    color: 'blue',
+  achievementNameLink: {
+    color: Colors.achievementColor,
     fontWeight: '500',
     fontSize: FontSize.bodyText,
   },
