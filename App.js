@@ -553,6 +553,11 @@ const DetailScreen = ({route}) => {
               <RText style={styles.detailSkillHeader}>
                 <RText style={styles.detailSkillName}>{skill.name}</RText>
                 <RText> {skill.Type}</RText>
+                {skill.Cooldown ? (
+                  <RText style={styles.detailSkillHeader}>
+                    , {skill.Cooldown}
+                  </RText>
+                ) : null}
               </RText>
               <RText style={styles.bodyText}>{skill.Description}</RText>
             </View>
@@ -876,7 +881,11 @@ const styles = StyleSheet.create({
   detailSkillRow: {
     flexDirection: 'row',
     width: '100%',
-    marginBottom: 12,
+    marginBottom: 24,
+  },
+  detailSkillImage: {
+    width: 80,
+    aspectRatio: 1,
   },
   detailSkillInfo: {
     flex: 1,
