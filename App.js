@@ -531,16 +531,16 @@ const DetailScreen = ({route}) => {
         <View style={styles.detailHeader}>
           <View style={styles.detailHeaderInfo}>
             <RText style={styles.detailHeaderName}>{survivor.name}</RText>
-            {survivor.stats.unlock ? (
+            {survivor.stats.Unlock ? (
               <RText style={styles.bodyText}>
                 Unlocked by{' '}
                 <RText
                   style={styles.achievementNameLink}
                   onPress={() => {
-                    setViewingChallenge(survivor.stats.unlock);
+                    setViewingChallenge(survivor.stats.Unlock);
                     setChallengeModalVisible(true);
                   }}>
-                  {survivor.stats.unlock}
+                  {survivor.stats.Unlock}
                 </RText>
               </RText>
             ) : null}
