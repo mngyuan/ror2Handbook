@@ -32,7 +32,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import IMAGES from './imgs/images.js';
 import ITEM_DATA from './gamepedia_item_data.json';
 import EQP_DATA from './eqp_data.json';
-import SURVIVOR_DATA from './survivor_data.json';
+import SURVIVOR_DATA from './gamepedia_survivor_data.json';
 import CHALLENGE_DATA from './challenge_data.json';
 
 if (
@@ -222,7 +222,10 @@ const SearchBar = ({placeholder, onChangeText, value}) => {
           placeholder={placeholder}
           onChangeText={onChangeText}
           value={value}
-          style={[styles.searchBarInput]}
+          style={[
+            styles.searchBarInput,
+            colorScheme === 'dark' ? {color: DarkTheme.colors.text} : {},
+          ]}
           onFocus={() => {
             LayoutAnimation.configureNext(
               LayoutAnimation.Presets.easeInEaseOut,
@@ -528,16 +531,16 @@ const DetailScreen = ({route}) => {
         <View style={styles.detailHeader}>
           <View style={styles.detailHeaderInfo}>
             <RText style={styles.detailHeaderName}>{survivor.name}</RText>
-            {survivor.unlock ? (
+            {survivor.stats.unlock ? (
               <RText style={styles.bodyText}>
                 Unlocked by{' '}
                 <RText
                   style={styles.achievementNameLink}
                   onPress={() => {
-                    setViewingChallenge(survivor.unlock);
+                    setViewingChallenge(survivor.stats.unlock);
                     setChallengeModalVisible(true);
                   }}>
-                  {survivor.unlock}
+                  {survivor.stats.unlock}
                 </RText>
               </RText>
             ) : null}
@@ -562,7 +565,10 @@ const DetailScreen = ({route}) => {
               <RText style={styles.bodyText}>{skill.Description}</RText>
             </View>
             <Image
-              source={IMAGES[skill.name.replace(/ /g, '')]}
+              source={
+                IMAGES[skill.name.replace(/ /g, '')] ||
+                IMAGES[skill.name.replace(/ |:/g, '')]
+              }
               style={styles.detailSkillImage}
             />
           </View>
