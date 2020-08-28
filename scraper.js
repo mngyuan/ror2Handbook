@@ -8,6 +8,7 @@ const itemDataPath = './item_data.json';
 const gamepediaItemDataPath = './gamepedia_item_data.json';
 const eqpDataPath = './eqp_data.json';
 const survivorDataPath = './survivor_data.json';
+const gamepediaSurvivorDataPath = './gamepedia_survivor_data.json';
 const challengeDataPath = './challenge_data.json';
 
 const download = (url, destination) =>
@@ -386,6 +387,74 @@ const visitSurvivor = async (page, url) => {
   };
 };
 
+const visitSurvivorGamepedia = async (page, url) => {
+  await page.goto(url);
+  console.log(url);
+  const evalCatchHandler = (err) => {
+    if (!err.message.includes('failed to find element matching selector')) {
+      throw err;
+    }
+  };
+  const {url: imgUrl, name: imgName} = await page
+    .$eval('.infoboxtable img', (el) => ({
+      url: el.src,
+      name: el.alt,
+    }))
+    .catch(evalCatchHandler);
+  const [description, stats, name, skills, _] = await Promise.all([
+    page.$eval('.infoboxdesc', (el) => el.innerText).catch(evalCatchHandler),
+    page.$$eval('.infoboxtable tr td:first-child:nth-last-child(2)', (tds) =>
+      Object.fromEntries(
+        tds.map((td) => {
+          const key = td.innerText;
+          const value = td.nextElementSibling.innerText;
+          return [key, value];
+        }),
+      ),
+    ),
+    page.$eval('.infoboxname', (el) => el.innerText).catch(evalCatchHandler),
+    page
+      .$$eval('table.wikitable.skill', (els) =>
+        els.map((table) => {
+          const tableRows = Array.from(table.querySelectorAll('tr'));
+          const name = tableRows[0].innerText;
+          const imgUrl =
+            tableRows[1].querySelector('img').getAttribute('data-src') ||
+            tableRows[1].querySelector('img').getAttribute('src');
+          const imgName = tableRows[1].querySelector('img').alt;
+          const data = {};
+          for (const [i, row] of tableRows.slice(2).entries()) {
+            if (row.querySelector('th').innerText === 'Notes') {
+              data['Notes'] = tableRows
+                .slice(2)
+                [i + 1].querySelector('td').innerText;
+              break;
+            }
+            data[row.querySelector('th').innerText] = row.querySelector(
+              'td',
+            ).innerText;
+          }
+          return {name, imgUrl, imgName, ...data};
+        }),
+      )
+      .catch(evalCatchHandler),
+    download(imgUrl, `${imageDirPath}/${imgName}`),
+  ]);
+  await Promise.all(
+    skills.map((skill) =>
+      download(skill.imgUrl, `${imageDirPath}/${skill.imgName}`),
+    ),
+  );
+  return {
+    wikiUrl: url,
+    description,
+    stats,
+    name,
+    skills,
+    imgUrl,
+  };
+};
+
 const CHALLENGE_TABLE_CATEGORY = [
   'survivors',
   'items',
@@ -534,25 +603,28 @@ const main = () => {
       const SURVIVOR_IGNORE_LIST = [];
       scrape({
         seed: positionalArgs[1] || SURVIVOR_SEED,
-        visitCallback: visitSurvivor,
+        visitCallback: flags.includes('--gamepedia')
+          ? visitSurvivorGamepedia
+          : visitSurvivor,
         ignoreList: SURVIVOR_IGNORE_LIST,
         baseUrl: rootUrl,
         single: flags.includes('--single'),
-        linkSeedSelector: '.wikia-gallery a.link-internal',
+        linkSeedSelector: flags.includes('--gamepedia')
+          ? '.gallery .gallerytext a'
+          : '.wikia-gallery a.link-internal',
         skipSeed: true,
       })
         .then((survivorData) => {
           if (flags.includes('--single')) {
             console.log(survivorData);
           } else {
-            fs.writeFile(
-              survivorDataPath,
-              JSON.stringify(survivorData),
-              (err) => {
-                if (err) throw err;
-                console.log(`written to ${survivorDataPath}`);
-              },
-            );
+            const outputPath = flags.includes('--gamepedia')
+              ? gamepediaSurvivorDataPath
+              : survivorDataPath;
+            fs.writeFile(outputPath, JSON.stringify(survivorData), (err) => {
+              if (err) throw err;
+              console.log(`written to ${outputPath}`);
+            });
           }
         })
         .catch(console.error);
