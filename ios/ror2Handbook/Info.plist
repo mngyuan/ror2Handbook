@@ -38,7 +38,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -57,6 +57,16 @@
 		<string>Octicons.ttf</string>
 		<string>Zocial.ttf</string>
 		<string>Fontisto.ttf</string>
+		<string>SpaceGrotesk-Bold.otf</string>
+		<string>SpaceGrotesk-Light.otf</string>
+		<string>SpaceGrotesk-Medium.otf</string>
+		<string>SpaceGrotesk-Regular.otf</string>
+		<string>SpaceGrotesk-SemiBold.otf</string>
+		<string>SpaceGroteskVariable.ttf</string>
+		<string>SpaceMono-Bold.ttf</string>
+		<string>SpaceMono-BoldItalic.ttf</string>
+		<string>SpaceMono-Italic.ttf</string>
+		<string>SpaceMono-Regular.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

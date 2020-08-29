@@ -90,6 +90,15 @@ const SURVIVOR_ORDER = Object.fromEntries(
 
 const HIDE_LIST = ['Han-D'];
 
+const getItemRarityColor = (item) =>
+  item.rarity
+    ? item.rarity.includes('Boss')
+      ? Colors.rarityBoss
+      : item.rarity.includes('Equipment')
+      ? Colors.rarityEquipment
+      : Colors[`rarity${item.rarity}`]
+    : null;
+
 const Colors = {
   white: 'white',
   lighterGrey: '#dadada',
@@ -99,15 +108,22 @@ const Colors = {
   rarityCommon: 'grey',
   rarityUncommon: 'green',
   rarityLegendary: 'red',
-  rarityBoss: 'yellow',
-  rarityLunar: 'blue',
+  rarityBoss: 'rgb(206,226,64)',
+  rarityLunar: 'rgb(69, 220, 240)',
+  rarityEquipment: 'orange',
   achievementColor: 'blue',
+};
+
+const Brand = {
+  defaultFont: 'Space Grotesk',
+  monospaceFont: 'Space Mono',
 };
 
 const FontSize = {
   heading: 28,
-  bodyText: 16,
+  bodyText: 14,
   subheading: 20,
+  monospace: 13,
 };
 
 const FontWeight = {
@@ -189,7 +205,9 @@ const RText = ({color = 'primary', style, children, ...props}) => {
     colorScheme === 'dark' ? 'rgb(170, 170, 172)' : Colors.darkGrey;
   const textColor = color === 'primary' ? primaryColor : secondaryColor;
   return (
-    <Text style={[{color: textColor}, style]} {...props}>
+    <Text
+      style={[{color: textColor, fontFamily: Brand.defaultFont}, style]}
+      {...props}>
       {children}
     </Text>
   );
@@ -409,7 +427,7 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
               style={[
                 styles.itemModalHeaderRow,
                 styles.ModalName,
-                styles[`rarity${item.rarity}`],
+                {color: getItemRarityColor(item)},
               ]}>
               {item.name}
             </RText>
@@ -419,7 +437,7 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
                 {item.category?.replace(/\n/g, '→\u200b')}
                 {item.category ? ' ' : ''}
               </RText>
-              <RText style={styles[`rarity${item.rarity}`]}>
+              <RText style={{color: getItemRarityColor(item)}}>
                 {item.rarity}
               </RText>
             </RText>
@@ -562,7 +580,9 @@ const DetailScreen = ({route}) => {
                   </RText>
                 ) : null}
               </RText>
-              <RText style={styles.bodyText}>{skill.Description}</RText>
+              <RText style={styles.bodyText}>
+                {skill.Description.replace(/\n/g, '')}
+              </RText>
             </View>
             <Image
               source={
@@ -606,6 +626,9 @@ const HomeScreen = ({type}) => {
             </TouchableOpacity>
           ),
           headerMode: 'screen',
+          headerTitleStyle: {
+            fontFamily: Brand.defaultFont,
+          },
           title: type
             ? `${type[0].toLocaleUpperCase()}${type.slice(1)}`
             : 'RoR2 Handbook',
@@ -692,7 +715,10 @@ const App = () => {
       <StatusBar
         barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
       />
-      <Drawer.Navigator initialRouteName="Home" drawerType="slide">
+      <Drawer.Navigator
+        initialRouteName="Home"
+        drawerType="slide"
+        drawerContentOptions={{labelStyle: {fontFamily: Brand.defaultFont}}}>
         <Drawer.Screen
           name="Home"
           component={React.memo((props) => (
@@ -771,11 +797,6 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
-  rarityCommon: {color: Colors.rarityCommon},
-  rarityUncommon: {color: Colors.rarityUncommon},
-  rarityLegendary: {color: Colors.rarityLegendary},
-  rarityBoss: {color: Colors.rarityBoss},
-  rarityLunar: {color: Colors.rarityLunar},
   Modal: {
     alignItems: 'flex-end',
     justifyContent: 'center',
@@ -797,6 +818,7 @@ const styles = StyleSheet.create({
   ModalName: {
     fontWeight: FontWeight.heading,
     fontSize: FontSize.heading,
+    lineHeight: 30,
   },
   itemModalHeaderInfo: {
     paddingRight: 120,
@@ -832,8 +854,8 @@ const styles = StyleSheet.create({
   itemModalStatHeader: {},
   itemModalStatCell: {
     paddingRight: 8,
-    fontWeight: FontWeight.emphasis,
-    fontSize: FontSize.bodyText,
+    fontSize: FontSize.monospace,
+    fontFamily: Brand.monospaceFont,
   },
   DetailScreen: {
     padding: 16,
