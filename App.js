@@ -21,6 +21,7 @@ import {
 import DeviceInfo from 'react-native-device-info';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Ionicons';
+import analytics from '@react-native-firebase/analytics';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {
   NavigationContainer,
@@ -319,6 +320,20 @@ const SearchScreen = ({route, navigation}) => {
     }
   }, [search, searchDataSorted.length]);
 
+  useEffect(() => {
+    if (itemModalVisible) {
+      analytics().logViewItem({
+        items: [
+          {
+            item_name: viewingItem.name,
+            item_category: 'item',
+            item_category2: viewingItem.category,
+          },
+        ],
+      });
+    }
+  }, [viewingItem, itemModalVisible]);
+
   return (
     <>
       <TouchableWithoutFeedback
@@ -401,11 +416,27 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
   const appState = useAppState();
   const colorScheme = useColorScheme();
   const item = SEARCHABLE_DATA.items[itemName];
+
   useEffect(() => {
     if (__DEV__) {
       //appState === 'active' && Alert.alert('active!');
     }
   }, [appState]);
+
+  useEffect(() => {
+    if (challengeModalVisible) {
+      analytics().logViewItem({
+        items: [
+          {
+            item_name: viewingChallenge.name,
+            item_category: 'challenge',
+            item_category2: viewingChallenge.category,
+          },
+        ],
+      });
+    }
+  }, [viewingChallenge, challengeModalVisible]);
+
   return item ? (
     <Modal
       isVisible={modalVisible}
@@ -534,6 +565,15 @@ const DetailScreen = ({route}) => {
 
   const {itemName} = route.params;
   const survivor = SEARCHABLE_DATA.survivors[itemName] || {};
+
+  useEffect(() => {
+    if (itemName) {
+      analytics().logViewItem({
+        items: [{item_name: itemName, item_category: 'survivor'}],
+      });
+    }
+  }, [itemName]);
+
   return (
     <ScrollView>
       <View
@@ -709,8 +749,26 @@ const AboutScreen = ({navigation}) => {
 
 const App = () => {
   const colorScheme = useColorScheme();
+  const navigationRef = useRef();
+  const routeNameRef = useRef();
+
   return (
     <NavigationContainer
+      ref={navigationRef}
+      onReady={() =>
+        (routeNameRef.current = navigationRef.current.getCurrentRoute().name)
+      }
+      onStateChange={() => {
+        const previousRouteName = routeNameRef.current;
+        const currentRouteName = navigationRef.current.getCurrentRoute().name;
+
+        if (previousRouteName !== currentRouteName) {
+          analytics().logScreenView({screen_name: currentRouteName});
+        }
+
+        // Save the current route name for later comparision
+        routeNameRef.current = currentRouteName;
+      }}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <StatusBar
         barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}

@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-firebase/analytics": "^7.6.1",
+    "@react-native-firebase/app": "^8.4.1",
     "@react-navigation/drawer": "^5.8.7",
     "@react-navigation/native": "^5.7.2",
     "@react-navigation/stack": "^5.8.0",
