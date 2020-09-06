@@ -1,4 +1,4 @@
-package com.ror2handbook2;
+package com.ror2handbook;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "ror2Handbook2";
+    return "ror2Handbook";
   }
 }
