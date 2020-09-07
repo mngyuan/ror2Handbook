@@ -116,8 +116,8 @@ const Colors = {
 };
 
 const Brand = {
-  defaultFont: 'Space Grotesk',
-  monospaceFont: 'Space Mono',
+  defaultFont: Platform.OS === 'ios' ? 'Space Grotesk' : 'SpaceGrotesk-Regular',
+  monospaceFont: Platform.OS === 'ios' ? 'Space Mono' : 'SpaceMono-Regular',
 };
 
 const FontSize = {
@@ -128,10 +128,28 @@ const FontSize = {
 };
 
 const FontWeight = {
-  heading: '700',
-  bodyText: '400',
-  subheading: '500',
-  emphasis: '500',
+  bold: '700',
+  semibold: '600',
+  regular: '400',
+  medium: '500',
+};
+
+// font weights / font families don't work on android
+const FontStyles = {
+  bold: {
+    fontWeight: Platform.OS === 'ios' ? FontWeight.bold : FontWeight.regular,
+    fontFamily: Platform.OS === 'ios' ? Brand.defaultFont : 'SpaceGrotesk-Bold',
+  },
+  semibold: {
+    fontWeight:
+      Platform.OS === 'ios' ? FontWeight.semibold : FontWeight.regular,
+    fontFamily:
+      Platform.OS === 'ios' ? Brand.defaultFont : 'SpaceGrotesk-SemiBold',
+  },
+  boldMono: {
+    fontWeight: Platform.OS === 'ios' ? FontWeight.bold : FontWeight.regular,
+    fontFamily: Platform.OS === 'ios' ? Brand.monospaceFont : 'SpaceMono-Bold',
+  },
 };
 
 const Stack = createStackNavigator();
@@ -347,7 +365,9 @@ const SearchScreen = ({route, navigation}) => {
                 ? DarkTheme.colors.background
                 : Colors.white,
           }}>
-          <KeyboardAvoidingView behavior="padding" style={{flex: 1}}>
+          <KeyboardAvoidingView
+            behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+            style={{flex: 1}}>
             <SearchBar
               placeholder={`Search ${
                 type ? type.toLocaleLowerCase() : 'anything'
@@ -374,28 +394,54 @@ const SearchScreen = ({route, navigation}) => {
               <View
                 style={styles.searchResults}
                 onStartShouldSetResponder={() => true}>
-                {searchDataSorted.map((v, i) => (
-                  <TouchableOpacity
-                    style={[styles.searchResult]}
-                    key={v.name}
-                    onPress={() => {
-                      if (SEARCHABLE_DATA.items[v.name]) {
-                        setViewingItem(v.name);
-                        setItemModalVisible(true);
-                      } else {
-                        navigation.navigate('Detail', {itemName: v.name});
-                      }
-                    }}>
-                    {IMAGES[v.name.replace(/ /g, '')] ? (
-                      <Image
-                        source={IMAGES[v.name.replace(/ /g, '')]}
-                        style={[styles.searchResultImage]}
-                      />
-                    ) : (
-                      <RText>{v.name}</RText>
-                    )}
-                  </TouchableOpacity>
-                ))}
+                {searchDataSorted.map((v) =>
+                  type === 'survivors' ? (
+                    <TouchableOpacity
+                      style={[styles.searchResultSurvivor]}
+                      key={v.name}
+                      onPress={() => {
+                        if (SEARCHABLE_DATA.items[v.name]) {
+                          setViewingItem(v.name);
+                          setItemModalVisible(true);
+                        } else {
+                          navigation.navigate('Detail', {itemName: v.name});
+                        }
+                      }}>
+                      {IMAGES[v.name.replace(/ /g, '')] ? (
+                        <Image
+                          source={IMAGES[v.name.replace(/ /g, '')]}
+                          style={[styles.searchResultSurvivorImage]}
+                        />
+                      ) : (
+                        <RText>Image not found</RText>
+                      )}
+                      <RText style={[styles.searchResultSurvivorName]}>
+                        {v.name}
+                      </RText>
+                    </TouchableOpacity>
+                  ) : (
+                    <TouchableOpacity
+                      style={[styles.searchResult]}
+                      key={v.name}
+                      onPress={() => {
+                        if (SEARCHABLE_DATA.items[v.name]) {
+                          setViewingItem(v.name);
+                          setItemModalVisible(true);
+                        } else {
+                          navigation.navigate('Detail', {itemName: v.name});
+                        }
+                      }}>
+                      {IMAGES[v.name.replace(/ /g, '')] ? (
+                        <Image
+                          source={IMAGES[v.name.replace(/ /g, '')]}
+                          style={[styles.searchResultImage]}
+                        />
+                      ) : (
+                        <RText>{v.name}</RText>
+                      )}
+                    </TouchableOpacity>
+                  ),
+                )}
               </View>
             </ScrollView>
           </KeyboardAvoidingView>
@@ -590,7 +636,7 @@ const DetailScreen = ({route}) => {
           <View style={styles.detailHeaderInfo}>
             <RText style={styles.detailHeaderName}>{survivor.name}</RText>
             {survivor.stats.Unlock ? (
-              <RText style={styles.bodyText}>
+              <RText style={[styles.bodyText, {marginBottom: 4}]}>
                 Unlocked by{' '}
                 <RText
                   style={styles.achievementNameLink}
@@ -602,6 +648,16 @@ const DetailScreen = ({route}) => {
                 </RText>
               </RText>
             ) : null}
+            <RText style={[styles.detailStat, styles.detailStatLabel]}>
+              Stats
+            </RText>
+            {Object.entries(survivor.stats)
+              .filter(([k]) => !['Unlock'].includes(k))
+              .map(([k, v]) => (
+                <RText style={styles.detailStat} key={k}>
+                  <RText style={styles.detailStatLabel}>{k}</RText> {v}
+                </RText>
+              ))}
           </View>
           <Image
             source={IMAGES[survivor.name.replace(/ /g, '')]}
@@ -620,9 +676,33 @@ const DetailScreen = ({route}) => {
                   </RText>
                 ) : null}
               </RText>
-              <RText style={styles.bodyText}>
+              {skill.Notes && skill.Notes.includes('Unlock') ? (
+                <RText style={styles.bodyText}>
+                  Unlocked by{' '}
+                  <RText
+                    style={styles.achievementNameLink}
+                    onPress={() => {
+                      const unlock = skill.Notes.match(
+                        /Unlocked via the (.*) Challenge\./,
+                      )[1];
+                      setViewingChallenge(unlock);
+                      setChallengeModalVisible(true);
+                    }}>
+                    {skill.Notes.match(/Unlocked via the (.*) Challenge\./)[1]}
+                  </RText>
+                </RText>
+              ) : null}
+              <RText style={[styles.bodyText, styles.detailSkillDescription]}>
                 {skill.Description.replace(/\n/g, '')}
               </RText>
+              {skill['Proc Coefficient'] ? (
+                <RText style={styles.detailStat}>
+                  <RText style={styles.detailStatLabel}>
+                    Proc Coefficient{' '}
+                  </RText>
+                  {skill['Proc Coefficient']}
+                </RText>
+              ) : null}
             </View>
             <Image
               source={
@@ -668,6 +748,7 @@ const HomeScreen = ({type}) => {
           headerMode: 'screen',
           headerTitleStyle: {
             fontFamily: Brand.defaultFont,
+            ...FontStyles.semibold,
           },
           title: type
             ? `${type[0].toLocaleUpperCase()}${type.slice(1)}`
@@ -809,7 +890,7 @@ const styles = StyleSheet.create({
   headerText: {
     // mimics default
     fontSize: 17,
-    fontWeight: '600',
+    ...FontStyles.semibold,
   },
   SearchBar: {
     marginHorizontal: 16,
@@ -847,10 +928,30 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     height: '100%',
   },
+  searchResultSurvivor: {
+    width: '100%',
+    flexDirection: 'row',
+    aspectRatio: null,
+    paddingHorizontal: 4,
+    paddingVertical: 4,
+    height: 80,
+    overflow: 'hidden',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  searchResultSurvivorImage: {
+    width: `${100 / 3}%`,
+    aspectRatio: 1,
+    marginRight: 12,
+  },
+  searchResultSurvivorName: {
+    ...FontStyles.bold,
+    fontSize: FontSize.subheading,
+  },
   footer: {
     color: Colors.black,
     fontSize: 12,
-    fontWeight: '600',
+    ...FontStyles.semibold,
     padding: 4,
     paddingRight: 12,
     textAlign: 'right',
@@ -874,7 +975,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   ModalName: {
-    fontWeight: FontWeight.heading,
+    ...FontStyles.bold,
     fontSize: FontSize.heading,
     lineHeight: 30,
   },
@@ -895,7 +996,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   itemModalHeaderText: {
-    fontWeight: FontWeight.emphasis,
+    ...FontStyles.medium,
     fontSize: FontSize.bodyText,
   },
   itemModalFlavor: {
@@ -926,7 +1027,7 @@ const styles = StyleSheet.create({
   },
   screenHeaderText: {
     fontSize: FontSize.subheading,
-    fontWeight: FontWeight.emphasis,
+    ...FontStyles.medium,
   },
   screenHeaderBack: {
     position: 'absolute',
@@ -956,12 +1057,19 @@ const styles = StyleSheet.create({
   bodyText: {fontSize: FontSize.bodyText},
   detailHeaderName: {
     fontSize: FontSize.heading,
-    fontWeight: FontWeight.heading,
+    ...FontStyles.bold,
     marginBottom: 4,
   },
   detailHeaderImage: {
     width: '45%',
     aspectRatio: 1,
+  },
+  detailStat: {
+    fontSize: FontSize.monospace,
+    fontFamily: Brand.monospaceFont,
+  },
+  detailStatLabel: {
+    ...FontStyles.boldMono,
   },
   detailAchievementNameLink: {},
   detailSkillRow: {
@@ -978,15 +1086,18 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   detailSkillHeader: {
-    marginBottom: 4,
     fontSize: FontSize.subheading,
   },
   detailSkillName: {
-    fontWeight: 'bold',
+    ...FontStyles.bold,
+  },
+  detailSkillDescription: {
+    marginTop: 4,
+    marginBottom: 4,
   },
   achievementNameLink: {
     color: Colors.achievementColor,
-    fontWeight: FontWeight.emphasis,
+    ...FontStyles.medium,
     fontSize: FontSize.bodyText,
   },
   verticalHitboxExtender: {
