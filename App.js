@@ -417,7 +417,10 @@ const SearchScreen = ({route, navigation}) => {
                       {IMAGES[v.name.replace(/ /g, '')] ? (
                         <Image
                           source={IMAGES[v.name.replace(/ /g, '')]}
-                          style={[styles.searchResultSurvivorImage]}
+                          style={[
+                            styles.searchResultSurvivorImage,
+                            {marginRight: 12},
+                          ]}
                         />
                       ) : (
                         <RText>Image not found</RText>
@@ -450,7 +453,10 @@ const SearchScreen = ({route, navigation}) => {
                           IMAGES[unlock.replace(/ /g, '')] ? (
                             <Image
                               source={IMAGES[unlock.replace(/ /g, '')]}
-                              style={[styles.searchResultSurvivorImage]}
+                              style={[
+                                styles.searchResultSurvivorImage,
+                                {marginLeft: 12},
+                              ]}
                             />
                           ) : (
                             <RText>Image not found</RText>
@@ -1013,7 +1019,6 @@ const styles = StyleSheet.create({
   searchResultSurvivorImage: {
     width: `${100 / 3}%`,
     aspectRatio: 1,
-    marginRight: 12,
   },
   searchResultRowName: {
     ...FontStyles.bold,
