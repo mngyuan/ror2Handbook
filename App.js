@@ -17,6 +17,7 @@ import {
   Platform,
   LayoutAnimation,
   UIManager,
+  Button,
 } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import Modal from 'react-native-modal';
@@ -113,6 +114,7 @@ const Colors = {
   rarityLunar: 'rgb(69, 220, 240)',
   rarityEquipment: 'orange',
   achievementColor: 'blue',
+  selected: Platform.OS === 'ios' ? 'rgb(10,122,255)' : 'rgb(33,150,243)',
 };
 
 const Brand = {
@@ -305,6 +307,130 @@ const SearchBar = ({placeholder, onChangeText, value}) => {
   );
 };
 
+const PickerModalRow = ({
+  option,
+  selected,
+  multi = false,
+  onSelect = () => {},
+}) => (
+  <TouchableOpacity
+    activeOpacity={multi ? 1 : undefined}
+    style={[styles.PickerModalRow]}
+    onPress={() => onSelect(!selected)}>
+    <View style={styles.pickerModalRowInner}>
+      <RText
+        style={[
+          styles.pickerModalRowText,
+          selected ? styles.pickerSelectedText : {},
+        ]}>
+        {option}
+      </RText>
+      {selected ? (
+        <Icon name="checkmark" color={Colors.selected} size={24} />
+      ) : null}
+    </View>
+  </TouchableOpacity>
+);
+
+const FilterPill = ({label, filterOptions = [], multi = false}) => {
+  const colorScheme = useColorScheme();
+  const [filter, setFilter] = useState(multi ? [] : '');
+  const [filterModalVisible, setFilterModalVisible] = useState(false);
+  return (
+    <>
+      <TouchableOpacity
+        onPress={() => setFilterModalVisible(true)}
+        style={[
+          styles.FilterPill,
+          {
+            backgroundColor:
+              colorScheme === 'dark' ? DarkTheme.colors.card : Colors.lightGrey,
+          },
+        ]}>
+        <Icon
+          name="chevron-down"
+          size={12}
+          color={colorScheme === 'dark' ? DarkTheme.colors.text : Colors.black}
+        />
+        <RText style={[styles.filterPillLabel]}>{label}</RText>
+      </TouchableOpacity>
+      <Modal
+        isVisible={filterModalVisible}
+        onBackdropPress={() => setFilterModalVisible(false)}
+        backdropTransitionOutTiming={0}
+        style={styles.Modal}>
+        <View
+          style={[
+            styles.ModalInner,
+            styles.modalInnerNoPadding,
+            {
+              backgroundColor:
+                colorScheme === 'dark'
+                  ? DarkTheme.colors.background
+                  : Colors.white,
+            },
+          ]}>
+          <View>
+            <RText style={styles.filterName}>{label}</RText>
+            <ScrollView
+              contentContainerStyle={[styles.modalInnerPadding]}
+              scrollEnabled={false}>
+              {filterOptions.map((option) => (
+                <PickerModalRow
+                  key={option}
+                  option={option}
+                  selected={multi && filter.includes(option)}
+                  multi={multi}
+                  onSelect={(select) => {
+                    if (multi) {
+                      select
+                        ? setFilter([...filter, option])
+                        : setFilter(filter.filter((f) => f !== option));
+                    } else {
+                      setFilter(option);
+                      setFilterModalVisible(false);
+                    }
+                  }}
+                />
+              ))}
+              {multi ? (
+                <Button
+                  title="Apply"
+                  onPress={() => setFilterModalVisible(false)}
+                />
+              ) : null}
+            </ScrollView>
+          </View>
+        </View>
+      </Modal>
+    </>
+  );
+};
+
+const SearchFilters = ({type}) => {
+  const itemCategories = Array.from(
+    Object.values(SEARCHABLE_DATA.items).reduce((agg, cur) => {
+      if (cur.category) {
+        cur.category.split(/\n/g).map((c) => agg.add(c));
+      }
+      return agg;
+    }, new Set()),
+  ).sort();
+  const itemRarities = Object.keys(RARITY_ORDER).filter(
+    (rarity) => !rarity.includes('Equipment'),
+  );
+  return type === 'items' ? (
+    <ScrollView
+      horizontal
+      style={[styles.SearchFilters]}
+      keyboardShouldPersistTaps="handled">
+      <FilterPill filterOptions={itemCategories} label="Category" multi />
+      <FilterPill filterOptions={itemRarities} label="Rarity" />
+      <FilterPill filterOptions={['Equipment', 'Item']} label="Type" />
+    </ScrollView>
+  ) : null;
+};
+
 const SearchScreen = ({route, navigation}) => {
   const colorScheme = useColorScheme();
   const [search, setSearch] = useState('');
@@ -379,7 +505,7 @@ const SearchScreen = ({route, navigation}) => {
               onChangeText={(text) => setSearch(text)}
               value={search}
             />
-            {/* fix for ScrollView inside Touchable */}
+            <SearchFilters type={type} />
             <ScrollView
               keyboardShouldPersistTaps="handled"
               contentInsetAdjustmentBehavior="automatic"
@@ -1046,6 +1172,13 @@ const styles = StyleSheet.create({
     padding: 12,
     paddingBottom: 24,
   },
+  modalInnerNoPadding: {
+    padding: 0,
+  },
+  modalInnerPadding: {
+    padding: 12,
+    paddingBottom: 24,
+  },
   itemModalHeader: {
     position: 'relative',
     flexDirection: 'row',
@@ -1188,6 +1321,44 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  PickerModalRow: {
+    paddingVertical: 8,
+  },
+  SearchFilters: {
+    paddingHorizontal: 16,
+    marginBottom: 8,
+  },
+  FilterPill: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderRadius: 100,
+    marginRight: 4,
+    paddingHorizontal: 4,
+  },
+  filterPillLabel: {
+    ...FontStyles.semibold,
+    fontSize: FontSize.bodyText,
+    padding: 4,
+  },
+  filterName: {
+    marginTop: 12,
+    marginLeft: 12,
+    fontSize: FontSize.heading,
+    ...FontStyles.bold,
+  },
+  pickerModalRowInner: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  pickerModalRowText: {
+    ...FontStyles.semibold,
+    fontSize: FontSize.subheading,
+  },
+  pickerSelectedText: {
+    color: Colors.selected,
   },
 });
 
