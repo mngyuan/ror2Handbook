@@ -85,6 +85,7 @@ const SURVIVOR_ORDER = Object.fromEntries(
     'REX',
     'Loader',
     'Acrid',
+    'Captain',
     'Bandit',
     'Han-D',
   ].map((survivor, i) => [survivor, i]),
@@ -185,7 +186,15 @@ const getType = (o) => {
   if (SEARCHABLE_DATA.survivors[o]) {
     return 'survivor';
   }
+  if (NONSEARCHABLE_DATA.challenges[o]) {
+    return 'challenge';
+  }
 };
+
+const findObjByName = (name) =>
+  SEARCHABLE_DATA.items[name] ||
+  SEARCHABLE_DATA.survivors[name] ||
+  NONSEARCHABLE_DATA.challenges[name];
 
 const compareItems = (a, b) => {
   if (RARITY_ORDER[a.rarity] < RARITY_ORDER[b.rarity]) {
@@ -207,12 +216,25 @@ const compareSurvivors = (a, b) => {
   }
 };
 
+const compareChallenges = (a, b) => {
+  const unlockA = findObjByName(a.unlock) || {};
+  const unlockB = findObjByName(b.unlock) || {};
+  const res = compareObjs(unlockA, unlockB);
+  return res;
+};
+
 const compareObjs = (a, b) => {
   if (SEARCHABLE_DATA.items[a.name] && SEARCHABLE_DATA.items[b.name]) {
     return compareItems(a, b);
   }
   if (SEARCHABLE_DATA.survivors[a.name] && SEARCHABLE_DATA.survivors[b.name]) {
     return compareSurvivors(a, b);
+  }
+  if (
+    NONSEARCHABLE_DATA.challenges[a.name] &&
+    NONSEARCHABLE_DATA.challenges[b.name]
+  ) {
+    return compareChallenges(a, b);
   }
   if (TYPE_ORDER[getType(a)] < TYPE_ORDER[getType(b)]) {
     return -1;
