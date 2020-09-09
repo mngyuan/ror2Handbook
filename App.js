@@ -310,12 +310,16 @@ const SearchScreen = ({route, navigation}) => {
   const [search, setSearch] = useState('');
   const [viewingItem, setViewingItem] = useState(null);
   const [itemModalVisible, setItemModalVisible] = useState(false);
+  const [viewingChallenge, setViewingChallenge] = useState(null);
+  const [challengeModalVisible, setChallengeModalVisible] = useState(false);
   const scrollView = useRef();
 
   const {type} = route.params;
 
   const searchTokens = search.toLocaleLowerCase().split(/ +/);
-  const baseData = type ? {type: SEARCHABLE_DATA[type]} : SEARCHABLE_DATA;
+  const baseData = type
+    ? {type: SEARCHABLE_DATA[type] || NONSEARCHABLE_DATA[type]}
+    : SEARCHABLE_DATA;
   const searchData = Object.values(baseData)
     .map(Object.values)
     .flat()
@@ -397,12 +401,15 @@ const SearchScreen = ({route, navigation}) => {
                 {searchDataSorted.map((v) =>
                   type === 'survivors' ? (
                     <TouchableOpacity
-                      style={[styles.searchResultSurvivor]}
+                      style={[styles.searchResultRow]}
                       key={v.name}
                       onPress={() => {
                         if (SEARCHABLE_DATA.items[v.name]) {
                           setViewingItem(v.name);
                           setItemModalVisible(true);
+                        } else if (NONSEARCHABLE_DATA.challenges[v.name]) {
+                          setViewingChallenge(v.name);
+                          setChallengeModalVisible(true);
                         } else {
                           navigation.navigate('Detail', {itemName: v.name});
                         }
@@ -415,9 +422,40 @@ const SearchScreen = ({route, navigation}) => {
                       ) : (
                         <RText>Image not found</RText>
                       )}
-                      <RText style={[styles.searchResultSurvivorName]}>
+                      <RText style={[styles.searchResultRowName]}>
                         {v.name}
                       </RText>
+                    </TouchableOpacity>
+                  ) : type === 'challenges' ? (
+                    <TouchableOpacity
+                      style={[styles.searchResultRow]}
+                      key={v.name}
+                      onPress={() => {
+                        if (SEARCHABLE_DATA.items[v.name]) {
+                          setViewingItem(v.name);
+                          setItemModalVisible(true);
+                        } else if (NONSEARCHABLE_DATA.challenges[v.name]) {
+                          setViewingChallenge(v.name);
+                          setChallengeModalVisible(true);
+                        } else {
+                          navigation.navigate('Detail', {itemName: v.name});
+                        }
+                      }}>
+                      <RText style={[styles.searchResultRowName]}>
+                        {v.name}
+                      </RText>
+                      {v.unlock
+                        .split('\n')
+                        .map((unlock) =>
+                          IMAGES[unlock.replace(/ /g, '')] ? (
+                            <Image
+                              source={IMAGES[unlock.replace(/ /g, '')]}
+                              style={[styles.searchResultSurvivorImage]}
+                            />
+                          ) : (
+                            <RText>Image not found</RText>
+                          ),
+                        )}
                     </TouchableOpacity>
                   ) : (
                     <TouchableOpacity
@@ -427,6 +465,9 @@ const SearchScreen = ({route, navigation}) => {
                         if (SEARCHABLE_DATA.items[v.name]) {
                           setViewingItem(v.name);
                           setItemModalVisible(true);
+                        } else if (NONSEARCHABLE_DATA.challenges[v.name]) {
+                          setViewingChallenge(v.name);
+                          setChallengeModalVisible(true);
                         } else {
                           navigation.navigate('Detail', {itemName: v.name});
                         }
@@ -451,6 +492,11 @@ const SearchScreen = ({route, navigation}) => {
         itemName={viewingItem}
         modalVisible={itemModalVisible}
         setModalVisible={() => setItemModalVisible(false)}
+      />
+      <ChallengeModal
+        challengeName={viewingChallenge}
+        modalVisible={challengeModalVisible}
+        setModalVisible={() => setChallengeModalVisible(false)}
       />
     </>
   );
@@ -783,6 +829,9 @@ const ItemScreen = React.memo((props) => (
 const SurvivorScreen = React.memo((props) => (
   <HomeScreen {...props} type="survivors" />
 ));
+const ChallengeScreen = React.memo((props) => (
+  <HomeScreen {...props} type="challenges" />
+));
 const EnvironmentScreen = React.memo((props) => (
   <HomeScreen {...props} type="environments" />
 ));
@@ -886,6 +935,7 @@ const App = () => {
         />
         <Drawer.Screen name="Items" component={ItemScreen} />
         <Drawer.Screen name="Survivors" component={SurvivorScreen} />
+        <Drawer.Screen name="Challenges" component={ChallengeScreen} />
         <Drawer.Screen name="About" component={AboutScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
@@ -948,7 +998,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     height: '100%',
   },
-  searchResultSurvivor: {
+  searchResultRow: {
     width: '100%',
     flexDirection: 'row',
     aspectRatio: null,
@@ -958,15 +1008,17 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     alignItems: 'center',
     marginBottom: 8,
+    justifyContent: 'space-between',
   },
   searchResultSurvivorImage: {
     width: `${100 / 3}%`,
     aspectRatio: 1,
     marginRight: 12,
   },
-  searchResultSurvivorName: {
+  searchResultRowName: {
     ...FontStyles.bold,
     fontSize: FontSize.subheading,
+    flex: 1,
   },
   footer: {
     color: Colors.black,

@@ -1,8 +1,10 @@
 {
-  "name": "...To Be Left Alone",
-  "description": "Stabilize the Cell in the Void Fields.",
-  "unlock": "Acrid",
-  "category": "survivors",
+  "...To Be Left Alone": {
+    "name": "...To Be Left Alone",
+    "description": "Stabilize the Cell in the Void Fields.",
+    "unlock": "Acrid",
+    "category": "survivors"
+  },
   "Engineering Perfection": {
     "name": "Engineering Perfection",
     "description": "Complete 30 stages.",
