@@ -487,6 +487,7 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
     <Modal
       isVisible={modalVisible}
       onBackdropPress={() => setModalVisible(false)}
+      backdropTransitionOutTiming={0}
       style={styles.Modal}>
       <View
         style={[
@@ -579,6 +580,7 @@ const ChallengeModal = ({challengeName, modalVisible, setModalVisible}) => {
     <Modal
       isVisible={modalVisible}
       onBackdropPress={() => setModalVisible(false)}
+      backdropTransitionOutTiming={0}
       style={styles.Modal}>
       <View
         style={[
@@ -634,7 +636,7 @@ const DetailScreen = ({route}) => {
         ]}>
         <View style={styles.detailHeader}>
           <View style={styles.detailHeaderInfo}>
-            <RText style={styles.detailHeaderName}>{survivor.name}</RText>
+            <RText style={styles.detailSectionHeader}>{survivor.name}</RText>
             {survivor.stats.Unlock ? (
               <RText style={[styles.bodyText, {marginBottom: 4}]}>
                 Unlocked by{' '}
@@ -648,71 +650,86 @@ const DetailScreen = ({route}) => {
                 </RText>
               </RText>
             ) : null}
-            <RText style={[styles.detailStat, styles.detailStatLabel]}>
-              Stats
-            </RText>
-            {Object.entries(survivor.stats)
-              .filter(([k]) => !['Unlock'].includes(k))
-              .map(([k, v]) => (
-                <RText style={styles.detailStat} key={k}>
-                  <RText style={styles.detailStatLabel}>{k}</RText> {v}
-                </RText>
-              ))}
+            {survivor.description ? (
+              <RText style={[styles.bodyText, {marginBottom: 4}]}>
+                {survivor.description}
+              </RText>
+            ) : null}
           </View>
           <Image
             source={IMAGES[survivor.name.replace(/ /g, '')]}
             style={styles.detailHeaderImage}
           />
         </View>
-        {survivor.skills.map((skill) => (
-          <View style={styles.detailSkillRow} key={skill.name}>
-            <View style={styles.detailSkillInfo}>
-              <RText style={styles.detailSkillHeader}>
-                <RText style={styles.detailSkillName}>{skill.name}</RText>
-                <RText> {skill.Type}</RText>
-                {skill.Cooldown ? (
-                  <RText style={styles.detailSkillHeader}>
-                    , {skill.Cooldown}
+        {Object.entries(survivor.stats).length > 0 ? (
+          <>
+            <RText style={[styles.detailSectionHeader]}>Stats</RText>
+            <View style={styles.detailStats}>
+              {Object.entries(survivor.stats)
+                .filter(([k]) => !['Unlock'].includes(k))
+                .map(([k, v]) => (
+                  <RText style={styles.detailStat} key={k}>
+                    <RText style={styles.detailStatLabel}>{k}</RText> {v}
                   </RText>
-                ) : null}
-              </RText>
-              {skill.Notes && skill.Notes.includes('Unlock') ? (
-                <RText style={styles.bodyText}>
-                  Unlocked by{' '}
-                  <RText
-                    style={styles.achievementNameLink}
-                    onPress={() => {
-                      const unlock = skill.Notes.match(
-                        /Unlocked via the (.*) Challenge\./,
-                      )[1];
-                      setViewingChallenge(unlock);
-                      setChallengeModalVisible(true);
-                    }}>
-                    {skill.Notes.match(/Unlocked via the (.*) Challenge\./)[1]}
-                  </RText>
-                </RText>
-              ) : null}
-              <RText style={[styles.bodyText, styles.detailSkillDescription]}>
-                {skill.Description.replace(/\n/g, '')}
-              </RText>
-              {skill['Proc Coefficient'] ? (
-                <RText style={styles.detailStat}>
-                  <RText style={styles.detailStatLabel}>
-                    Proc Coefficient{' '}
-                  </RText>
-                  {skill['Proc Coefficient']}
-                </RText>
-              ) : null}
+                ))}
             </View>
-            <Image
-              source={
-                IMAGES[skill.name.replace(/ /g, '')] ||
-                IMAGES[skill.name.replace(/ |:/g, '')]
-              }
-              style={styles.detailSkillImage}
-            />
-          </View>
-        ))}
+          </>
+        ) : null}
+        {survivor.skills && survivor.skills.length > 0 ? (
+          <>
+            <RText style={[styles.detailSectionHeader]}>Skills</RText>
+            {survivor.skills.map((skill) => (
+              <View style={styles.detailSkillRow} key={skill.name}>
+                <View style={styles.detailSkillInfo}>
+                  <RText style={styles.detailSkillHeader}>
+                    <RText style={styles.detailSkillName}>{skill.name}</RText>
+                    <RText> {skill.Type}</RText>
+                    {skill.Cooldown ? <RText>, {skill.Cooldown}</RText> : null}
+                  </RText>
+                  {skill.Notes && skill.Notes.includes('Unlock') ? (
+                    <RText style={[styles.bodyText, styles.detailSkillUnlock]}>
+                      Unlocked by{' '}
+                      <RText
+                        style={styles.achievementNameLink}
+                        onPress={() => {
+                          const unlock = skill.Notes.match(
+                            /Unlocked via the (.*) Challenge\./,
+                          )[1];
+                          setViewingChallenge(unlock);
+                          setChallengeModalVisible(true);
+                        }}>
+                        {
+                          skill.Notes.match(
+                            /Unlocked via the (.*) Challenge\./,
+                          )[1]
+                        }
+                      </RText>
+                    </RText>
+                  ) : null}
+                  <RText
+                    style={[styles.bodyText, styles.detailSkillDescription]}>
+                    {skill.Description.replace(/\n/g, '')}
+                  </RText>
+                  {skill['Proc Coefficient'] ? (
+                    <RText style={styles.detailStat}>
+                      <RText style={styles.detailStatLabel}>
+                        Proc Coefficient{' '}
+                      </RText>
+                      {skill['Proc Coefficient']}
+                    </RText>
+                  ) : null}
+                </View>
+                <Image
+                  source={
+                    IMAGES[skill.name.replace(/ /g, '')] ||
+                    IMAGES[skill.name.replace(/ |:/g, '')]
+                  }
+                  style={styles.detailSkillImage}
+                />
+              </View>
+            ))}
+          </>
+        ) : null}
       </View>
       <ChallengeModal
         challengeName={viewingChallenge}
@@ -819,7 +836,9 @@ const AboutScreen = ({navigation}) => {
             style={[styles.aboutRow, styles.aboutRowDisabled]}
             onPress={() => {}}
             disabled>
-            <RText style={styles.aboutRowText}>Rate on App Store</RText>
+            <RText style={styles.aboutRowText}>
+              Rate on {Platform.OS === 'ios' ? 'App' : 'Play'} Store
+            </RText>
             <Icon name="chevron-forward" size={20} />
           </TouchableOpacity>
         </ScrollView>
@@ -1052,11 +1071,11 @@ const styles = StyleSheet.create({
   detailHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 16,
+    marginBottom: 24,
   },
   detailHeaderInfo: {flex: 1, marginRight: 8},
   bodyText: {fontSize: FontSize.bodyText},
-  detailHeaderName: {
+  detailSectionHeader: {
     fontSize: FontSize.heading,
     ...FontStyles.bold,
     marginBottom: 4,
@@ -1064,6 +1083,9 @@ const styles = StyleSheet.create({
   detailHeaderImage: {
     width: '45%',
     aspectRatio: 1,
+  },
+  detailStats: {
+    marginBottom: 24,
   },
   detailStat: {
     fontSize: FontSize.monospace,
@@ -1076,7 +1098,7 @@ const styles = StyleSheet.create({
   detailSkillRow: {
     flexDirection: 'row',
     width: '100%',
-    marginBottom: 24,
+    marginBottom: 16,
   },
   detailSkillImage: {
     width: 80,
@@ -1088,6 +1110,9 @@ const styles = StyleSheet.create({
   },
   detailSkillHeader: {
     fontSize: FontSize.subheading,
+  },
+  detailSkillUnlock: {
+    marginBottom: 4,
   },
   detailSkillName: {
     ...FontStyles.bold,
