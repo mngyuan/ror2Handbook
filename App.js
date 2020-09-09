@@ -124,9 +124,9 @@ const Brand = {
 
 const FontSize = {
   heading: 28,
-  bodyText: 14,
+  bodyText: 16,
   subheading: 20,
-  monospace: 13,
+  monospace: 15,
 };
 
 const FontWeight = {
@@ -151,6 +151,11 @@ const FontStyles = {
   boldMono: {
     fontWeight: Platform.OS === 'ios' ? FontWeight.bold : FontWeight.regular,
     fontFamily: Platform.OS === 'ios' ? Brand.monospaceFont : 'SpaceMono-Bold',
+  },
+  medium: {
+    fontWeight: Platform.OS === 'ios' ? FontWeight.medium : FontWeight.regular,
+    fontFamily:
+      Platform.OS === 'ios' ? Brand.defaultFont : 'SpaceGrotesk-Medium',
   },
 };
 
@@ -578,6 +583,7 @@ const SearchScreen = ({route, navigation}) => {
                         .map((unlock) =>
                           IMAGES[unlock.replace(/ /g, '')] ? (
                             <Image
+                              key={unlock}
                               source={IMAGES[unlock.replace(/ /g, '')]}
                               style={[
                                 styles.searchResultSurvivorImage,
@@ -585,7 +591,7 @@ const SearchScreen = ({route, navigation}) => {
                               ]}
                             />
                           ) : (
-                            <RText>Image not found</RText>
+                            <RText key={unlock}>Image not found</RText>
                           ),
                         )}
                     </TouchableOpacity>
@@ -778,7 +784,25 @@ const ChallengeModal = ({challengeName, modalVisible, setModalVisible}) => {
           ]}>
           {challenge.name}
         </RText>
-        <RText style={styles.itemModalHeaderRow}>{challenge.description}</RText>
+        <RText style={[styles.bodyText, {marginBottom: 4}]}>
+          {challenge.description}
+        </RText>
+        <RText style={[styles.bodyText, {marginBottom: 4}]}>
+          Unlocks{' '}
+          <RText style={[styles.bodyText, styles.mediumText]}>
+            {challenge.unlock}
+          </RText>
+          {IMAGES[challenge.unlock.replace(/ /g, '')] ? (
+            <>
+              {' '}
+              <Image
+                source={IMAGES[challenge.unlock.replace(/ /g, '')]}
+                style={[styles.challengeModalUnlockImage]}
+              />{' '}
+            </>
+          ) : null}
+          .
+        </RText>
       </View>
     </Modal>
   ) : null;
@@ -1265,6 +1289,9 @@ const styles = StyleSheet.create({
   },
   detailHeaderInfo: {flex: 1, marginRight: 8},
   bodyText: {fontSize: FontSize.bodyText},
+  mediumText: {
+    ...FontStyles.medium,
+  },
   detailSectionHeader: {
     fontSize: FontSize.heading,
     ...FontStyles.bold,
@@ -1359,6 +1386,12 @@ const styles = StyleSheet.create({
   },
   pickerSelectedText: {
     color: Colors.selected,
+  },
+  challengeModalUnlockImage: {
+    height: 48,
+    // not sure why not setting width doesn't work but all our images (i think)
+    // are square
+    width: 48,
   },
 });
 
