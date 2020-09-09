@@ -853,6 +853,7 @@ const App = () => {
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <StatusBar
         barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+        backgroundColor={colorScheme === 'dark' ? Colors.black : Colors.white}
       />
       <Drawer.Navigator
         initialRouteName="Home"
