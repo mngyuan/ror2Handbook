@@ -33,7 +33,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import IMAGES from './imgs/images.js';
 import ITEM_DATA from './gamepedia_item_data.json';
-import EQP_DATA from './eqp_data.json';
+import EQP_DATA from './gamepedia_eqp_data.json';
 import SURVIVOR_DATA from './gamepedia_survivor_data.json';
 import CHALLENGE_DATA from './challenge_data.json';
 

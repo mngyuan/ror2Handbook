@@ -7,6 +7,7 @@ const imageDirPath = './imgs';
 const itemDataPath = './item_data.json';
 const gamepediaItemDataPath = './gamepedia_item_data.json';
 const eqpDataPath = './eqp_data.json';
+const gamepediaEqpDataPath = './gamepedia_eqp_data.json';
 const survivorDataPath = './survivor_data.json';
 const gamepediaSurvivorDataPath = './gamepedia_survivor_data.json';
 const challengeDataPath = './challenge_data.json';
@@ -47,13 +48,20 @@ const toCamelCase = (s) =>
     .map((w, i) => (i === 0 ? w : `${w[0].toLocaleUpperCase()}${w.slice(1)}`))
     .join('');
 
+const genUrlsToFollow = async (page, navboxSelector = '.navbox') =>
+  await page.$$eval(navboxSelector, (navboxes) =>
+    Array.from(
+      navboxes[0].querySelectorAll('a:not(.selflink)'),
+    ).map((linkNode) => linkNode.getAttribute('href')),
+  );
+
 const scrape = ({
   seed,
   visitCallback,
   ignoreList,
   baseUrl,
   single = false,
-  linkSeedSelector = '.navbox a:not(.selflink)',
+  genUrls = genUrlsToFollow,
   skipSeed = false,
 }) =>
   new Promise(async (resolve, reject) => {
@@ -70,9 +78,7 @@ const scrape = ({
       await page.setDefaultNavigationTimeout(0);
       if (!single) {
         await page.goto(seed);
-        const nonSeedUrls = await page.$$eval(linkSeedSelector, (links) =>
-          links.map((linkNode) => linkNode.getAttribute('href')),
-        );
+        const nonSeedUrls = await genUrls(page);
         const itemUrls = Array.from(nonSeedUrls)
           .map((url) => `${baseUrl}${url}`)
           .concat(skipSeed ? [] : seed)
@@ -309,6 +315,46 @@ const visitEqp = async (page, url) => {
     rarity,
     unlock,
     cooldown,
+    name,
+    flavorText,
+    imgUrl,
+  };
+};
+
+const visitEqpGamepedia = async (page, url) => {
+  await page.goto(url);
+  console.log(url);
+  const evalCatchHandler = (err) => {
+    if (!err.message.includes('failed to find element matching selector')) {
+      throw err;
+    }
+  };
+  const {url: imgUrl, name: imgName} = await page
+    .$eval('.infoboxtable img', (el) => ({
+      url: el.src,
+      name: el.alt,
+    }))
+    .catch(evalCatchHandler);
+  const [description, name, flavorText, keyInfo, _] = await Promise.all([
+    page.$eval('.infoboxdesc', (el) => el.innerText).catch(evalCatchHandler),
+    page.$eval('.infoboxname', (el) => el.innerText).catch(evalCatchHandler),
+    page.$eval('.infoboxcaption', (el) => el.innerText).catch(evalCatchHandler),
+    page
+      .$$eval('.infoboxtable tr', (els) =>
+        els.reduce((agg, cur) => {
+          const label = cur.querySelector('td')?.innerText.toLocaleLowerCase();
+          return ['rarity', 'cooldown', 'unlock', 'id'].includes(label)
+            ? {...agg, [label]: cur.querySelectorAll('td')[1].innerText}
+            : agg;
+        }),
+      )
+      .catch(evalCatchHandler),
+    download(imgUrl, `${imageDirPath}/${imgName}`),
+  ]);
+  return {
+    ...keyInfo,
+    wikiUrl: url,
+    description,
     name,
     flavorText,
     imgUrl,
@@ -581,7 +627,9 @@ const main = () => {
       ];
       scrape({
         seed: positionalArgs[1] || EQP_SEED,
-        visitCallback: visitEqp,
+        visitCallback: flags.includes('--gamepedia')
+          ? visitEqpGamepedia
+          : visitEqp,
         ignoreList: EQP_IGNORE_LIST,
         baseUrl: rootUrl,
         single: flags.includes('--single'),
@@ -590,9 +638,12 @@ const main = () => {
           if (flags.includes('--single')) {
             console.log(eqpData);
           } else {
-            fs.writeFile(eqpDataPath, JSON.stringify(eqpData), (err) => {
+            const outputPath = flags.includes('--gamepedia')
+              ? gamepediaEqpDataPath
+              : eqpDataPath;
+            fs.writeFile(outputPath, JSON.stringify(eqpData), (err) => {
               if (err) throw err;
-              console.log(`written to ${eqpDataPath}`);
+              console.log(`written to ${outputPath}`);
             });
           }
         })
@@ -609,9 +660,12 @@ const main = () => {
         ignoreList: SURVIVOR_IGNORE_LIST,
         baseUrl: rootUrl,
         single: flags.includes('--single'),
-        linkSeedSelector: flags.includes('--gamepedia')
-          ? '.gallery .gallerytext a'
-          : '.wikia-gallery a.link-internal',
+        genUrls: flags.includes('--gamepedia')
+          ? async (page, linkSeedSelector = '.gallery .gallerytext a') =>
+              await page.$$eval(linkSeedSelector, (links) =>
+                links.map((linkNode) => linkNode.getAttribute('href')),
+              )
+          : genUrlsToFollow,
         skipSeed: true,
       })
         .then((survivorData) => {
