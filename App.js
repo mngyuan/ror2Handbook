@@ -352,17 +352,26 @@ const PickerModalRow = ({
         ]}>
         {option}
       </RText>
-      {selected ? (
+      {multi && selected ? (
         <Icon name="checkmark" color={Colors.selected} size={24} />
       ) : null}
     </View>
   </TouchableOpacity>
 );
 
-const FilterPill = ({label, filterOptions = [], multi = false}) => {
+const FilterPill = ({
+  label,
+  filter,
+  onSetFilter,
+  filterOptions = [],
+  multi = false,
+}) => {
   const colorScheme = useColorScheme();
-  const [filter, setFilter] = useState(multi ? [] : '');
   const [filterModalVisible, setFilterModalVisible] = useState(false);
+  // We have to hold on to our own filter state, since we only want to update
+  // the parent view once the filters have been set
+  const [displayFilter, setDisplayFilter] = useState(filter);
+  const filterOn = multi ? filter.length > 0 : !!filter;
   return (
     <>
       <TouchableOpacity
@@ -370,8 +379,11 @@ const FilterPill = ({label, filterOptions = [], multi = false}) => {
         style={[
           styles.FilterPill,
           {
-            backgroundColor:
-              colorScheme === 'dark' ? DarkTheme.colors.card : Colors.lightGrey,
+            backgroundColor: filterOn
+              ? Colors.selected
+              : colorScheme === 'dark'
+              ? DarkTheme.colors.card
+              : Colors.lightGrey,
           },
         ]}>
         <Icon
@@ -379,7 +391,13 @@ const FilterPill = ({label, filterOptions = [], multi = false}) => {
           size={12}
           color={colorScheme === 'dark' ? DarkTheme.colors.text : Colors.black}
         />
-        <RText style={[styles.filterPillLabel]}>{label}</RText>
+        <RText style={[styles.filterPillLabel]}>
+          {multi
+            ? filter.length > 0
+              ? filter.join(' | ')
+              : label
+            : filter || label}
+        </RText>
       </TouchableOpacity>
       <Modal
         isVisible={filterModalVisible}
@@ -406,15 +424,22 @@ const FilterPill = ({label, filterOptions = [], multi = false}) => {
                 <PickerModalRow
                   key={option}
                   option={option}
-                  selected={multi && filter.includes(option)}
+                  selected={
+                    multi
+                      ? displayFilter.includes(option)
+                      : displayFilter === option
+                  }
                   multi={multi}
                   onSelect={(select) => {
                     if (multi) {
-                      select
-                        ? setFilter([...filter, option])
-                        : setFilter(filter.filter((f) => f !== option));
+                      setDisplayFilter(
+                        select
+                          ? [...displayFilter, option]
+                          : displayFilter.filter((f) => f !== option),
+                      );
                     } else {
-                      setFilter(option);
+                      setDisplayFilter(select ? option : '');
+                      onSetFilter(select ? option : '');
                       setFilterModalVisible(false);
                     }
                   }}
@@ -423,7 +448,10 @@ const FilterPill = ({label, filterOptions = [], multi = false}) => {
               {multi ? (
                 <Button
                   title="Apply"
-                  onPress={() => setFilterModalVisible(false)}
+                  onPress={() => {
+                    onSetFilter(displayFilter);
+                    setFilterModalVisible(false);
+                  }}
                 />
               ) : null}
             </ScrollView>
@@ -435,6 +463,7 @@ const FilterPill = ({label, filterOptions = [], multi = false}) => {
 };
 
 const SearchFilters = ({type}) => {
+  const [filters, setFilters] = useState({category: [], rarity: '', type: ''});
   const itemCategories = Array.from(
     Object.values(SEARCHABLE_DATA.items).reduce((agg, cur) => {
       if (cur.category) {
@@ -449,11 +478,29 @@ const SearchFilters = ({type}) => {
   return type === 'items' ? (
     <ScrollView
       horizontal
+      showsHorizontalScrollIndicator={false}
       style={[styles.SearchFilters]}
+      contentContainerStyle={{paddingHorizontal: 16}}
       keyboardShouldPersistTaps="handled">
-      <FilterPill filterOptions={itemCategories} label="Category" multi />
-      <FilterPill filterOptions={itemRarities} label="Rarity" />
-      <FilterPill filterOptions={['Equipment', 'Item']} label="Type" />
+      <FilterPill
+        filterOptions={itemCategories}
+        label="Category"
+        multi
+        filter={filters.category}
+        onSetFilter={(filter) => setFilters({...filters, category: filter})}
+      />
+      <FilterPill
+        filterOptions={itemRarities}
+        label="Rarity"
+        filter={filters.rarity}
+        onSetFilter={(filter) => setFilters({...filters, rarity: filter})}
+      />
+      <FilterPill
+        filterOptions={['Equipment', 'Item']}
+        label="Type"
+        filter={filters.type}
+        onSetFilter={(filter) => setFilters({...filters, type: filter})}
+      />
     </ScrollView>
   ) : null;
 };
@@ -1375,7 +1422,6 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   SearchFilters: {
-    paddingHorizontal: 16,
     marginBottom: 8,
   },
   FilterPill: {
