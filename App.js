@@ -102,6 +102,15 @@ const getItemRarityColor = (item) =>
       : Colors[`rarity${item.rarity}`]
     : null;
 
+const getDefaultSearchFilters = (type) =>
+  type === 'items'
+    ? {
+        category: null,
+        rarity: null,
+        type: null,
+      }
+    : null;
+
 const Colors = {
   white: 'white',
   lighterGrey: '#dadada',
@@ -371,21 +380,15 @@ const FilterPill = ({
   // We have to hold on to our own filter state, since we only want to update
   // the parent view once the filters have been set
   const [displayFilter, setDisplayFilter] = useState(filter);
-  const filterOn = multi ? filter.length > 0 : !!filter;
+  const filterOn = multi ? filter && filter.length > 0 : !!filter;
+  useEffect(() => {
+    setDisplayFilter(filter);
+  }, [filter]);
   return (
     <>
-      <TouchableOpacity
+      <Pill
         onPress={() => setFilterModalVisible(true)}
-        style={[
-          styles.FilterPill,
-          {
-            backgroundColor: filterOn
-              ? Colors.selected
-              : colorScheme === 'dark'
-              ? DarkTheme.colors.card
-              : Colors.lightGrey,
-          },
-        ]}>
+        backgroundColor={filterOn ? Colors.selected : undefined}>
         <Icon
           name="chevron-down"
           size={12}
@@ -393,12 +396,12 @@ const FilterPill = ({
         />
         <RText style={[styles.filterPillLabel]}>
           {multi
-            ? filter.length > 0
+            ? filter && filter.length > 0
               ? filter.join(' | ')
               : label
             : filter || label}
         </RText>
-      </TouchableOpacity>
+      </Pill>
       <Modal
         isVisible={filterModalVisible}
         onBackdropPress={() => setFilterModalVisible(false)}
@@ -419,6 +422,7 @@ const FilterPill = ({
             <RText style={styles.filterName}>{label}</RText>
             <ScrollView
               contentContainerStyle={[styles.modalInnerPadding]}
+              keyboardShouldPersistTaps="handled"
               scrollEnabled={false}>
               {filterOptions.map((option) => (
                 <PickerModalRow
@@ -426,17 +430,16 @@ const FilterPill = ({
                   option={option}
                   selected={
                     multi
-                      ? displayFilter.includes(option)
+                      ? (displayFilter || []).includes(option)
                       : displayFilter === option
                   }
                   multi={multi}
                   onSelect={(select) => {
                     if (multi) {
-                      setDisplayFilter(
-                        select
-                          ? [...displayFilter, option]
-                          : displayFilter.filter((f) => f !== option),
-                      );
+                      const newFilter = select
+                        ? [...(displayFilter || []), option]
+                        : (displayFilter || []).filter((f) => f !== option);
+                      setDisplayFilter(newFilter.length > 0 ? newFilter : null);
                     } else {
                       setDisplayFilter(select ? option : '');
                       onSetFilter(select ? option : '');
@@ -462,8 +465,26 @@ const FilterPill = ({
   );
 };
 
-const SearchFilters = ({type}) => {
-  const [filters, setFilters] = useState({category: [], rarity: '', type: ''});
+const Pill = ({onPress, children, backgroundColor}) => {
+  const colorScheme = useColorScheme();
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      style={[
+        styles.FilterPill,
+        {
+          backgroundColor:
+            backgroundColor ||
+            (colorScheme === 'dark' ? DarkTheme.colors.card : Colors.lightGrey),
+        },
+      ]}>
+      {children}
+    </TouchableOpacity>
+  );
+};
+
+const SearchFilters = ({searchFilters, setSearchFilters, type}) => {
+  const colorScheme = useColorScheme();
   const itemCategories = Array.from(
     Object.values(SEARCHABLE_DATA.items).reduce((agg, cur) => {
       if (cur.category) {
@@ -475,7 +496,7 @@ const SearchFilters = ({type}) => {
   const itemRarities = Object.keys(RARITY_ORDER).filter(
     (rarity) => !rarity.includes('Equipment'),
   );
-  return type === 'items' ? (
+  return searchFilters && type === 'items' ? (
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
@@ -486,35 +507,87 @@ const SearchFilters = ({type}) => {
         filterOptions={itemCategories}
         label="Category"
         multi
-        filter={filters.category}
-        onSetFilter={(filter) => setFilters({...filters, category: filter})}
+        filter={searchFilters.category}
+        onSetFilter={(filter) =>
+          setSearchFilters({...searchFilters, category: filter})
+        }
       />
       <FilterPill
         filterOptions={itemRarities}
         label="Rarity"
-        filter={filters.rarity}
-        onSetFilter={(filter) => setFilters({...filters, rarity: filter})}
+        multi
+        filter={searchFilters.rarity}
+        onSetFilter={(filter) =>
+          setSearchFilters({...searchFilters, rarity: filter})
+        }
       />
       <FilterPill
         filterOptions={['Equipment', 'Item']}
         label="Type"
-        filter={filters.type}
-        onSetFilter={(filter) => setFilters({...filters, type: filter})}
+        multi
+        filter={searchFilters.type}
+        onSetFilter={(filter) =>
+          setSearchFilters({...searchFilters, type: filter})
+        }
       />
+      {(searchFilters.category ||
+        searchFilters.rarity ||
+        searchFilters.type) && (
+        <Pill onPress={() => setSearchFilters(getDefaultSearchFilters(type))}>
+          <Icon
+            name="close-circle-sharp"
+            size={12}
+            color={
+              colorScheme === 'dark' ? DarkTheme.colors.text : Colors.black
+            }
+          />
+          <RText style={[styles.filterPillLabel]}>Clear</RText>
+        </Pill>
+      )}
     </ScrollView>
   ) : null;
 };
 
 const SearchScreen = ({route, navigation}) => {
+  const {type} = route.params;
+
   const colorScheme = useColorScheme();
   const [search, setSearch] = useState('');
   const [viewingItem, setViewingItem] = useState(null);
   const [itemModalVisible, setItemModalVisible] = useState(false);
   const [viewingChallenge, setViewingChallenge] = useState(null);
   const [challengeModalVisible, setChallengeModalVisible] = useState(false);
+  const [searchFilters, setSearchFilters] = useState(
+    getDefaultSearchFilters(type),
+  );
   const scrollView = useRef();
 
-  const {type} = route.params;
+  const checkMatchesSearchFilter = (o, searchFilters) => {
+    if (!searchFilters || type !== 'items') {
+      return true;
+    }
+    const matchesFilteredType =
+      !searchFilters.type ||
+      (o.rarity &&
+        searchFilters.type.some((type) =>
+          type === 'Equipment'
+            ? o.rarity.includes('Equipment')
+            : !o.rarity.includes('Equipment'),
+        ));
+    const matchesFilteredRarity =
+      !searchFilters.rarity ||
+      (o.rarity &&
+        searchFilters.rarity.some((rarity) => o.rarity.includes(rarity)));
+    const matchesFilteredCategory =
+      !searchFilters.category ||
+      (!!o.category &&
+        searchFilters.category.some((category) =>
+          o.category.includes(category),
+        ));
+    return (
+      matchesFilteredType && matchesFilteredRarity && matchesFilteredCategory
+    );
+  };
 
   const searchTokens = search.toLocaleLowerCase().split(/ +/);
   const baseData = type
@@ -527,9 +600,10 @@ const SearchScreen = ({route, navigation}) => {
       const searchableFields = Object.values(o).filter(
         (v) => typeof v === 'string',
       );
-      return searchTokens.every((t) =>
+      const matchesUserSearch = searchTokens.every((t) =>
         searchableFields.some((s) => s.toLocaleLowerCase().includes(t)),
       );
+      return matchesUserSearch && checkMatchesSearchFilter(o, searchFilters);
     })
     .filter((o) => !HIDE_LIST.includes(o.name));
   const searchDataSorted = searchData.sort(compareObjs);
@@ -556,6 +630,10 @@ const SearchScreen = ({route, navigation}) => {
     }
   }, [viewingItem, itemModalVisible]);
 
+  useEffect(() => {
+    setSearchFilters(getDefaultSearchFilters(type));
+  }, [route, type]);
+
   return (
     <>
       <TouchableWithoutFeedback
@@ -579,7 +657,11 @@ const SearchScreen = ({route, navigation}) => {
               onChangeText={(text) => setSearch(text)}
               value={search}
             />
-            <SearchFilters type={type} />
+            <SearchFilters
+              searchFilters={searchFilters}
+              setSearchFilters={setSearchFilters}
+              type={type}
+            />
             <ScrollView
               keyboardShouldPersistTaps="handled"
               contentInsetAdjustmentBehavior="automatic"
@@ -1423,6 +1505,7 @@ const styles = StyleSheet.create({
   },
   SearchFilters: {
     marginBottom: 8,
+    flexGrow: 0,
   },
   FilterPill: {
     flexDirection: 'row',
