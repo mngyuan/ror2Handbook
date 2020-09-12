@@ -3,618 +3,824 @@
     "name": "...To Be Left Alone",
     "description": "Stabilize the Cell in the Void Fields.",
     "unlock": "Acrid",
-    "category": "survivors"
+    "category": "survivors",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/8e/Acrid.png/revision/latest/scale-to-width-down/64?cb=20200129235327",
+    "imgName": "Acrid.png"
   },
   "Engineering Perfection": {
     "name": "Engineering Perfection",
     "description": "Complete 30 stages.",
     "unlock": "Engineer",
-    "category": "survivors"
+    "category": "survivors",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d8/Engineer.png/revision/latest/scale-to-width-down/64?cb=20200129200650",
+    "imgName": "Engineer.png"
   },
   "Guidance Offline": {
     "name": "Guidance Offline",
     "description": "Defeat the unique guardian of Siren's Call.",
     "unlock": "Loader",
-    "category": "survivors"
+    "category": "survivors",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/25/Loader.png/revision/latest/scale-to-width-down/64?cb=20200129235339",
+    "imgName": "Loader.png"
   },
   "Pause.": {
     "name": "Pause.",
     "description": "Free the survivor suspended in time.",
     "unlock": "Artificer",
-    "category": "survivors"
+    "category": "survivors",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/98/Artificer.png/revision/latest/scale-to-width-down/64?cb=20200129200644",
+    "imgName": "Artificer.png"
   },
   "Power Plant": {
     "name": "Power Plant",
     "description": "Repair the broken robot with an Escape Pod's Fuel Array.",
     "unlock": "REX",
-    "category": "survivors"
+    "category": "survivors",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/74/REX.png/revision/latest/scale-to-width-down/64?cb=20200129200653",
+    "imgName": "REX.png"
   },
   "True Respite": {
     "name": "True Respite",
     "description": "Obliterate yourself at the Obelisk..",
     "unlock": "Mercenary",
-    "category": "survivors"
+    "category": "survivors",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/0/00/Mercenary.png/revision/latest/scale-to-width-down/64?cb=20200129200652",
+    "imgName": "Mercenary.png"
   },
   "Verified": {
     "name": "Verified",
     "description": "Complete the first Teleporter event 5 times.",
     "unlock": "MUL-T",
-    "category": "survivors"
+    "category": "survivors",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/6f/MUL-T.png/revision/latest/scale-to-width-down/64?cb=20200129200653",
+    "imgName": "MUL-T.png"
   },
   "Warrior": {
     "name": "Warrior",
     "description": "Reach and complete the 3rd Teleporter event without dying.",
     "unlock": "Huntress",
-    "category": "survivors"
+    "category": "survivors",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/6f/Huntress.png/revision/latest/scale-to-width-down/64?cb=20200129200651",
+    "imgName": "Huntress.png"
   },
   "Washed Away": {
     "name": "Washed Away",
     "description": "Beat the game.",
     "unlock": "Captain",
-    "category": "survivors"
+    "category": "survivors",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/a9/Captain.png/revision/latest/scale-to-width-down/64?cb=20200811155444",
+    "imgName": "Captain.png"
   },
   "\"Is This Bugged?\"": {
     "name": "\"Is This Bugged?\"",
     "description": "Fail the Shrine of Chance 3 times in a row.",
     "unlock": "Paul's Goat Hoof",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/4a/Paul%27s_Goat_Hoof.png/revision/latest/scale-to-width-down/64?cb=20200129193128",
+    "imgName": "Paul's Goat Hoof.png"
   },
   "...Maybe One More.": {
     "name": "...Maybe One More.",
     "description": "Duplicate the same item 7 times in a row with a 3D Printer.",
     "unlock": "Bundle of Fireworks",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/3d/Bundle_of_Fireworks.png/revision/latest/scale-to-width-down/64?cb=20200129193033",
+    "imgName": "Bundle of Fireworks.png"
   },
   "Advancement": {
     "name": "Advancement",
     "description": "Complete a Teleporter event.",
     "unlock": "Armor-Piercing Rounds",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f0/Armor-Piercing_Rounds.png/revision/latest/scale-to-width-down/64?cb=20200129193019",
+    "imgName": "Armor-Piercing Rounds.png"
   },
   "Automation Activation": {
     "name": "Automation Activation",
     "description": "Activate 6 turrets in a single run.",
     "unlock": "Squid Polyp",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/de/Squid_Polyp.png/revision/latest/scale-to-width-down/64?cb=20200331154527",
+    "imgName": "Squid Polyp.png"
   },
   "Blockade Breaker": {
     "name": "Blockade Breaker",
     "description": "Kill 15 boss monsters in a single run.",
     "unlock": "Visions of Heresy\nStrides of Heresy",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/31/Visions_of_Heresy.png/revision/latest/scale-to-width-down/64?cb=20200129235348",
+    "imgName": "Visions of Heresy.png"
   },
   "Cut Down": {
     "name": "Cut Down",
     "description": "Defeat 500 elite monsters.",
     "unlock": "Old Guillotine",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/8d/Old_Guillotine.png/revision/latest/scale-to-width-down/64?cb=20200201131531",
+    "imgName": "Old Guillotine.png"
   },
   "Death Do Us Part": {
     "name": "Death Do Us Part",
     "description": "Discover the hidden chamber in the Abandoned Aqueduct.",
     "unlock": "Runald's Band\nKjaro's Band",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/0/05/Runald%27s_Band.png/revision/latest/scale-to-width-down/64?cb=20200129193148",
+    "imgName": "Runald's Band.png"
   },
   "Deicide": {
     "name": "Deicide",
     "description": "Defeat an Elite boss on Monsoon difficulty.",
     "unlock": "Brainstalks",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c0/Brainstalks.png/revision/latest/scale-to-width-down/64?cb=20200129193029",
+    "imgName": "Brainstalks.png"
   },
   "Deja Vu?": {
     "name": "Deja Vu?",
     "description": "Loop back to the first stage.",
     "unlock": "Sentient Meat Hook",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e7/Sentient_Meat_Hook.png/revision/latest/scale-to-width-down/64?cb=20200129193152",
+    "imgName": "Sentient Meat Hook.png"
   },
   "Elite Slayer": {
     "name": "Elite Slayer",
     "description": "Defeat an Elite-type monster.",
     "unlock": "Medkit",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/0/0f/Medkit.png/revision/latest/scale-to-width-down/64?cb=20200129193119",
+    "imgName": "Medkit.png"
   },
   "Experimenting": {
     "name": "Experimenting",
     "description": "Pick up 5 different types of Equipment.",
     "unlock": "Fuel Cell",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/4d/Fuel_Cell.png/revision/latest/scale-to-width-down/64?cb=20200129193059",
+    "imgName": "Fuel Cell.png"
   },
   "Flawless": {
     "name": "Flawless",
     "description": "Fully charge a Teleporter without getting hit.",
     "unlock": "Backup Magazine",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f3/Backup_Magazine.png/revision/latest/scale-to-width-down/64?cb=20200129193023",
+    "imgName": "Backup Magazine.png"
   },
   "Glorious Battle": {
     "name": "Glorious Battle",
     "description": "Charge the Teleporter with less than 10% health.",
     "unlock": "Berzerker's Pauldron",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/a6/Berzerker%27s_Pauldron.png/revision/latest/scale-to-width-down/64?cb=20200129193027",
+    "imgName": "Berzerker's Pauldron.png"
   },
   "Going Fast Recommended": {
     "name": "Going Fast Recommended",
     "description": "Reach +300% movespeed (includes sprinting).",
     "unlock": "Wax Quail",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/6c/Wax_Quail.png/revision/latest/scale-to-width-down/64?cb=20200129193219",
+    "imgName": "Wax Quail.png"
   },
   "Her Concepts": {
     "name": "Her Concepts",
     "description": "Find the Altar to N'kuhana.",
     "unlock": "N'kuhana's Opinion",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c9/N%27kuhana%27s_Opinion.png/revision/latest/scale-to-width-down/64?cb=20200129193122",
+    "imgName": "N'kuhana's Opinion.png"
   },
   "Keyed Up": {
     "name": "Keyed Up",
     "description": "Defeat the Teleporter boss under 15 seconds.",
     "unlock": "Rusted Key",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9b/Rusted_Key.png/revision/latest/scale-to-width-down/64?cb=20200129193150",
+    "imgName": "Rusted Key.png"
   },
   "Learning Process": {
     "name": "Learning Process",
     "description": "Die 5 times.",
     "unlock": "Tougher Times",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/39/Tougher_Times.png/revision/latest/scale-to-width-down/64?cb=20200129193211",
+    "imgName": "Tougher Times.png"
   },
   "Macho": {
     "name": "Macho",
     "description": "Deal 5000 damage in one shot.",
     "unlock": "Unstable Tesla Coil",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e4/Unstable_Tesla_Coil.png/revision/latest/scale-to-width-down/64?cb=20200129193215",
+    "imgName": "Unstable Tesla Coil.png"
   },
   "Naturopath": {
     "name": "Naturopath",
     "description": "Without healing, reach and complete the 3rd Teleporter event.",
     "unlock": "Rejuvenation Rack",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/0/0a/Rejuvenation_Rack.png/revision/latest/scale-to-width-down/64?cb=20200129193142",
+    "imgName": "Rejuvenation Rack.png"
   },
   "Never Back Down": {
     "name": "Never Back Down",
     "description": "In 4 consecutive stages don’t leave the teleporter radius until it is fully charged.",
     "unlock": "Focused Convergence",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/2c/Focused_Convergence.png/revision/latest/scale-to-width-down/64?cb=20200331153435",
+    "imgName": "Focused Convergence.png"
   },
   "Newtist": {
     "name": "Newtist",
     "description": "Discover and activate 8 unique Newt Altars.",
     "unlock": "Soulbound Catalyst",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f1/Soulbound_Catalyst.png/revision/latest/scale-to-width-down/64?cb=20200129193160",
+    "imgName": "Soulbound Catalyst.png"
   },
   "Prismatically Aligned": {
     "name": "Prismatically Aligned",
     "description": "Complete a Prismatic Trial.",
     "unlock": "Harvester's Scythe",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e1/Harvester%27s_Scythe.png/revision/latest/scale-to-width-down/64?cb=20200129193109",
+    "imgName": "Harvester's Scythe.png"
   },
   "Rapidfire": {
     "name": "Rapidfire",
     "description": "Reach +200% attack speed.",
     "unlock": "Predatory Instincts",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/39/Predatory_Instincts.png/revision/latest/scale-to-width-down/64?cb=20200129193132",
+    "imgName": "Predatory Instincts.png"
   },
   "Slaughter": {
     "name": "Slaughter",
     "description": "Defeat 3000 enemies.",
     "unlock": "Infusion",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/7d/Infusion.png/revision/latest/scale-to-width-down/64?cb=20200129193114",
+    "imgName": "Infusion.png"
   },
   "The Basics": {
     "name": "The Basics",
     "description": "Discover 10 unique white items.",
     "unlock": "Crowbar",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c0/Crowbar.png/revision/latest/scale-to-width-down/64?cb=20200129193047",
+    "imgName": "Crowbar.png"
   },
   "The Calm": {
     "name": "The Calm",
     "description": "Beat the game on Monsoon difficulty.",
     "unlock": "Purity",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/a2/Purity.png/revision/latest/scale-to-width-down/64?cb=20200811165023",
+    "imgName": "Purity.png"
   },
   "The Demons And The Crabs": {
     "name": "The Demons And The Crabs",
     "description": "Kill 20 Hermit Crabs by chasing them off the edge of the map.",
     "unlock": "Gesture of the Drowned",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c9/Gesture_of_the_Drowned.png/revision/latest/scale-to-width-down/64?cb=20200129193101",
+    "imgName": "Gesture of the Drowned.png"
   },
   "The Lone Survivor": {
     "name": "The Lone Survivor",
     "description": "Stay alive for 30 consecutive minutes.",
     "unlock": "Dio's Best Friend",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/dc/Dio%27s_Best_Friend.png/revision/latest/scale-to-width-down/64?cb=20200129193051",
+    "imgName": "Dio's Best Friend.png"
   },
   "The Long Road": {
     "name": "The Long Road",
     "description": "Complete 20 stages in a single run.",
     "unlock": "57 Leaf Clover",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e5/57_Leaf_Clover.png/revision/latest/scale-to-width-down/64?cb=20200129192960",
+    "imgName": "57 Leaf Clover.png"
   },
   "Warmonger": {
     "name": "Warmonger",
     "description": "Complete 3 Combat Shrines in a single stage.",
     "unlock": "War Horn",
-    "category": "items"
+    "category": "items",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9c/War_Horn.png/revision/latest/scale-to-width-down/64?cb=20200129193218",
+    "imgName": "War Horn.png"
   },
   "Ascendant": {
     "name": "Ascendant",
     "description": "Defeat the Teleporter bosses after activating 2 Shrines of the Mountain.",
     "unlock": "Royal Capacitor",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/ef/Royal_Capacitor.png/revision/latest/scale-to-width-down/64?cb=20200129193146",
+    "imgName": "Royal Capacitor.png"
   },
   "Blackout": {
     "name": "Blackout",
     "description": "Defeat the unique guardian of Gilded Coast without any beacons deactivating.",
     "unlock": "Eccentric Vase",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/ce/Eccentric_Vase.png/revision/latest/scale-to-width-down/64?cb=20200129193053",
+    "imgName": "Eccentric Vase.png"
   },
   "Bookworm": {
     "name": "Bookworm",
     "description": "Collect 10 Monster or Environment Logs.",
     "unlock": "Radar Scanner",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/7f/Radar_Scanner.png/revision/latest/scale-to-width-down/64?cb=20200129193140",
+    "imgName": "Radar Scanner.png"
   },
   "Cleanup Duty": {
     "name": "Cleanup Duty",
     "description": "Destroy 20 flying rocks in Sky Meadow.",
     "unlock": "Recycler",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/67/Recycler.png/revision/latest/scale-to-width-down/64?cb=20200331153331",
+    "imgName": "Recycler.png"
   },
   "Cosmic Explorer": {
     "name": "Cosmic Explorer",
     "description": "Discover and enter three unique portals.",
     "unlock": "Spinel Tonic",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/29/Spinel_Tonic.png/revision/latest/scale-to-width-down/64?cb=20200129193203",
+    "imgName": "Spinel Tonic.png"
   },
   "Funded!": {
     "name": "Funded!",
     "description": "Collect $30,480 total gold.",
     "unlock": "The Crowdfunder",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d4/The_Crowdfunder.png/revision/latest/scale-to-width-down/64?cb=20200129193208",
+    "imgName": "The Crowdfunder.png"
   },
   "I Love Dying!": {
     "name": "I Love Dying!",
     "description": "Die 20 times.",
     "unlock": "Forgive Me Please",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/78/Forgive_Me_Please.png/revision/latest/scale-to-width-down/64?cb=20200811161829",
+    "imgName": "Forgive Me Please.png"
   },
   "Mechanic": {
     "name": "Mechanic",
     "description": "Repair 30 drones or turrets.",
     "unlock": "The Back-up",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/39/The_Back-up.png/revision/latest/scale-to-width-down/64?cb=20200129193207",
+    "imgName": "The Back-up.png"
   },
   "Moon Worshipper": {
     "name": "Moon Worshipper",
     "description": "Carry 5 Lunar items in a single run.",
     "unlock": "Glowing Meteorite",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f4/Glowing_Meteorite.png/revision/latest/scale-to-width-down/64?cb=20200129193103",
+    "imgName": "Glowing Meteorite.png"
   },
   "Multikill!": {
     "name": "Multikill!",
     "description": "Kill 15 enemies simultaneously.",
     "unlock": "Helfire Tincture",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/4d/Helfire_Tincture.png/revision/latest/scale-to-width-down/64?cb=20200129193110",
+    "imgName": "Helfire Tincture.png"
   },
   "One with the Woods": {
     "name": "One with the Woods",
     "description": "Fully upgrade a Shrine of the Woods.",
     "unlock": "Gnarled Woodsprite",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d8/Gnarled_Woodsprite.png/revision/latest/scale-to-width-down/64?cb=20200129193104",
+    "imgName": "Gnarled Woodsprite.png"
   },
   "Warm For Life": {
     "name": "Warm For Life",
     "description": "Die three times while burning.",
     "unlock": "Blast Shower",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/4f/Blast_Shower.png/revision/latest/scale-to-width-down/64?cb=20200129235331",
+    "imgName": "Blast Shower.png"
   },
   "[REDACTED]": {
     "name": "[REDACTED]",
     "description": "Open the Timed Security Chest on Rallypoint Delta.",
     "unlock": "Preon Accumulator",
-    "category": "equipment"
+    "category": "equipment",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/fe/Preon_Accumulator.png/revision/latest/scale-to-width-down/64?cb=20200129193134",
+    "imgName": "Preon Accumulator.png"
   },
   "Acrid: Bad Medicine": {
     "name": "Acrid: Bad Medicine",
     "description": "As Acrid, land the final blow on a Scavenger.",
     "unlock": "Ravenous Bite",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/8b/Ravenous_Bite.png/revision/latest/scale-to-width-down/64?cb=20200331165624",
+    "imgName": "Ravenous Bite.png"
   },
   "Acrid: Easy Prey": {
     "name": "Acrid: Easy Prey",
     "description": "As Acrid, land the killing blow on 50 total enemies that have 1 hit point left.",
     "unlock": "Blight",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/ac/Blight.png/revision/latest/scale-to-width-down/64?cb=20200331165620",
+    "imgName": "Blight.png"
   },
   "Acrid: Pandemic": {
     "name": "Acrid: Pandemic",
     "description": "As Acrid, inflict Poison 1000 total times.",
     "unlock": "Frenzied Leap",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/96/Frenzied_Leap.png/revision/latest/scale-to-width-down/64?cb=20200130005159",
+    "imgName": "Frenzied Leap.png"
   },
   "Artificer: Chunked!": {
     "name": "Artificer: Chunked!",
     "description": "As Artificer, fully defeat the teleporter boss in a one-second burst of damage.",
     "unlock": "Cast Nano-Spear",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/92/Cast_Nano-Spear.png/revision/latest/scale-to-width-down/64?cb=20200130005104",
+    "imgName": "Cast Nano-Spear.png"
   },
   "Artificer: Massacre": {
     "name": "Artificer: Massacre",
     "description": "As Artificer, perform a multikill of 20 enemies.",
     "unlock": "Plasma Bolt",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/57/Plasma_Bolt.png/revision/latest/scale-to-width-down/64?cb=20200130005015",
+    "imgName": "Plasma Bolt.png"
   },
   "Artificer: Orbital Bombardment": {
     "name": "Artificer: Orbital Bombardment",
     "description": "As Artificer, kill 15 enemies before touching the ground.",
     "unlock": "Ion Surge",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d1/Ion_Surge.png/revision/latest/scale-to-width-down/64?cb=20200130005149",
+    "imgName": "Ion Surge.png"
   },
   "Captain: Wanderlust": {
     "name": "Captain: Wanderlust",
     "description": "As Captain, visit 10 different environments in a single run.",
     "unlock": "Beacon: Resupply",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/67/Beacon_Resupply.png/revision/latest/scale-to-width-down/64?cb=20200812024641",
+    "imgName": "Beacon Resupply.png"
   },
   "Captain: Worth Every Penny": {
     "name": "Captain: Worth Every Penny",
     "description": "As Captain, repair and recruit a TC-280 Prototype.",
     "unlock": "Beacon: Hacking",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/38/Beacon_Hacking.png/revision/latest/scale-to-width-down/64?cb=20200812024640",
+    "imgName": "Beacon Hacking.png"
   },
   "Commando: Godspeed": {
     "name": "Commando: Godspeed",
     "description": "As Commando, fully charge the first-stage teleporter before the timer hits 5 minutes.",
     "unlock": "Tactical Slide",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e8/Tactical_Slide.png/revision/latest/scale-to-width-down/64?cb=20200331165626",
+    "imgName": "Tactical Slide.png"
   },
   "Commando: Incorruptible": {
     "name": "Commando: Incorruptible",
     "description": "As Commando, clear 20 stages in a single run without picking up any Lunar items.",
     "unlock": "Frag Grenade",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/6b/Frag_Grenade.png/revision/latest/scale-to-width-down/64?cb=20200130003159",
+    "imgName": "Frag Grenade.png"
   },
   "Commando: Rolling Thunder": {
     "name": "Commando: Rolling Thunder",
     "description": "As Commando, land the killing blow on an Overloading Worm.",
     "unlock": "Phase Blast",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/49/Phase_Blast.png/revision/latest/scale-to-width-down/64?cb=20200130003012",
+    "imgName": "Phase Blast.png"
   },
   "Engineer: 100% Calculated": {
     "name": "Engineer: 100% Calculated",
     "description": "As Engineer, defeat the teleporter boss in less than 5 seconds after it spawns.",
     "unlock": "Spider Mines",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/61/Spider_Mines.png/revision/latest/scale-to-width-down/64?cb=20200130004739",
+    "imgName": "Spider Mines.png"
   },
   "Engineer: Better With Friends": {
     "name": "Engineer: Better With Friends",
     "description": "As Engineer, recruit 12 minions at one time.",
     "unlock": "TR58 Carbonizer Turret",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/4f/TR58_Carbonizer_Turret.png/revision/latest/scale-to-width-down/64?cb=20200130004828",
+    "imgName": "TR58 Carbonizer Turret.png"
   },
   "Engineer: Zero Sum": {
     "name": "Engineer: Zero Sum",
     "description": "As Engineer, finish charging the teleporter with zero monsters remaining on the stage.",
     "unlock": "Thermal Harpoons",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/b7/Thermal_Harpoons.png/revision/latest/scale-to-width-down/64?cb=20200331170409",
+    "imgName": "Thermal Harpoons.png"
   },
   "Huntress: Finishing Touch": {
     "name": "Huntress: Finishing Touch",
     "description": "As Huntress, land a killing blow with every possible hit of a single glaive.",
     "unlock": "Flurry",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/24/Flurry.png/revision/latest/scale-to-width-down/64?cb=20200331165622",
+    "imgName": "Flurry.png"
   },
   "Huntress: One Shot, One Kill": {
     "name": "Huntress: One Shot, One Kill",
     "description": "As Huntress, collect and carry 12 Crowbars at once.",
     "unlock": "Phase Blink",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/dd/Phase_Blink.png/revision/latest/scale-to-width-down/64?cb=20200130003634",
+    "imgName": "Phase Blink.png"
   },
   "Huntress: Piercing Wind": {
     "name": "Huntress: Piercing Wind",
     "description": "As Huntress, start and finish either Rallypoint Delta or Scorched Acres without falling below 100% health.",
     "unlock": "Ballista",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d5/Ballista.png/revision/latest/scale-to-width-down/64?cb=20200130003742",
+    "imgName": "Ballista.png"
   },
   "Loader: Earthshatter": {
     "name": "Loader: Earthshatter",
     "description": "As Loader, land a Charged Gauntlet hit at 300mph or higher.",
     "unlock": "Thunder Gauntlet",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f3/Thunder_Gauntlet.png/revision/latest/scale-to-width-down/64?cb=20200130011407",
+    "imgName": "Thunder Gauntlet.png"
   },
   "Loader: Swing By": {
     "name": "Loader: Swing By",
     "description": "As Loader, reach and proceed through the Celestial Portal in 25 minutes or less.",
     "unlock": "Spiked Fist",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/62/Spiked_Fist.png/revision/latest/scale-to-width-down/64?cb=20200201131735",
+    "imgName": "Spiked Fist.png"
   },
   "MUL-T: Gotcha!": {
     "name": "MUL-T: Gotcha!",
     "description": "As MUL-T, land the killing blow on an Imp Overlord with the Preon Accumulator.",
     "unlock": "Power-Saw",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/8e/Power-Saw.png/revision/latest/scale-to-width-down/64?cb=20200130003524",
+    "imgName": "Power-Saw.png"
   },
   "MUL-T: Pest Control": {
     "name": "MUL-T: Pest Control",
     "description": "As MUL-T, defeat two Beetle Queens without leaving the teleporter zone.",
     "unlock": "Scrap Launcher",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e6/Scrap_Launcher.png/revision/latest/scale-to-width-down/64?cb=20200130003342",
+    "imgName": "Scrap Launcher.png"
   },
   "Mercenary: Demon of the Skies": {
     "name": "Mercenary: Demon of the Skies",
     "description": "As Mercenary, don't touch the ground for 30 seconds.",
     "unlock": "Rising Thunder",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d4/Rising_Thunder.png/revision/latest/scale-to-width-down/64?cb=20200201131624",
+    "imgName": "Rising Thunder.png"
   },
   "Mercenary: Ethereal": {
     "name": "Mercenary: Ethereal",
     "description": "As Mercenary, complete a Prismatic Trial without falling below 100% health.",
     "unlock": "Slicing Winds",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/bc/Slicing_Winds.png/revision/latest/scale-to-width-down/64?cb=20200201131723",
+    "imgName": "Slicing Winds.png"
   },
   "REX: Bushwhacked": {
     "name": "REX: Bushwhacked",
     "description": "As REX, complete an entire teleporter event while under 50% health.",
     "unlock": "DIRECTIVE: Drill",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/fc/DIRECTIVE_Drill.png/revision/latest/scale-to-width-down/64?cb=20200201131130",
+    "imgName": "DIRECTIVE Drill.png"
   },
   "REX: Dunked": {
     "name": "REX: Dunked",
     "description": "As REX, kill a Clay Dunestrider on Abandoned Aqueduct by throwing it into a pit.",
     "unlock": "Bramble Volley",
-    "category": "skills"
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/63/Bramble_Volley.png/revision/latest/scale-to-width-down/64?cb=20200201131036",
+    "imgName": "Bramble Volley.png"
   },
   "Acrid: Mastery": {
     "name": "Acrid: Mastery",
     "description": "As Acrid, beat the game or obliterate on Monsoon.",
     "unlock": "Albino",
-    "category": "skins"
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d6/Albino.png/revision/latest/scale-to-width-down/64?cb=20200201130934",
+    "imgName": "Albino.png"
   },
   "Artificer: Mastery": {
     "name": "Artificer: Mastery",
     "description": "As Artificer, beat the game or obliterate on Monsoon.",
     "unlock": "Chrome",
-    "category": "skins"
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/89/Chrome.png/revision/latest/scale-to-width-down/64?cb=20200201131103",
+    "imgName": "Chrome.png"
   },
   "Captain: Mastery": {
     "name": "Captain: Mastery",
     "description": "As Captain, beat the game or obliterate on Monsoon.",
     "unlock": "Admiral",
-    "category": "skins"
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d1/Admiral.png/revision/latest/scale-to-width-down/64?cb=20200814190109",
+    "imgName": "Admiral.png"
   },
   "Commando: Mastery": {
     "name": "Commando: Mastery",
     "description": "As Commando, beat the game or obliterate on Monsoon.",
     "unlock": "Hornet",
-    "category": "skins"
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/72/Hornet.png/revision/latest/scale-to-width-down/64?cb=20200130011551",
+    "imgName": "Hornet.png"
   },
   "Engineer: Mastery": {
     "name": "Engineer: Mastery",
     "description": "As Engineer, beat the game or obliterate on Monsoon.",
     "unlock": "EOD Tech",
-    "category": "skins"
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/bf/EOD_Tech.png/revision/latest/scale-to-width-down/64?cb=20200331161744",
+    "imgName": "EOD Tech.png"
   },
   "Huntress: Mastery": {
     "name": "Huntress: Mastery",
     "description": "As Huntress, beat the game or obliterate on Monsoon.",
     "unlock": "Arctic",
-    "category": "skins"
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/6a/Arctic.png/revision/latest/scale-to-width-down/64?cb=20200201130939",
+    "imgName": "Arctic.png"
   },
   "Loader: Mastery": {
     "name": "Loader: Mastery",
     "description": "As Loader, beat the game or obliterate on Monsoon.",
     "unlock": "Classic",
-    "category": "skins"
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/57/Classic.png/revision/latest/scale-to-width-down/64?cb=20200201131105",
+    "imgName": "Classic.png"
   },
   "MUL-T: Mastery": {
     "name": "MUL-T: Mastery",
     "description": "As MUL-T, beat the game or obliterate on Monsoon.",
     "unlock": "Janitor",
-    "category": "skins"
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e8/Janitor.png/revision/latest/scale-to-width-down/64?cb=20200201131402",
+    "imgName": "Janitor.png"
   },
   "Mercenary: Mastery": {
     "name": "Mercenary: Mastery",
     "description": "As Mercenary, beat the game or obliterate on Monsoon.",
     "unlock": "Oni",
-    "category": "skins"
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/bc/Oni.png/revision/latest/scale-to-width-down/64?cb=20200201131534",
+    "imgName": "Oni.png"
   },
   "REX: Mastery": {
     "name": "REX: Mastery",
     "description": "As REX, beat the game or obliterate on Monsoon.",
     "unlock": "Smoothie",
-    "category": "skins"
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/a2/Smoothie.png/revision/latest/scale-to-width-down/64?cb=20200201131726",
+    "imgName": "Smoothie.png"
   },
   "Trial of Chaos": {
     "name": "Trial of Chaos",
     "description": "Complete the Trial of Chaos.",
     "unlock": "Artifact of Chaos",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/ad/Artifact_of_Chaos.png/revision/latest/scale-to-width-down/64?cb=20200331162542",
+    "imgName": "Artifact of Chaos.png"
   },
   "Trial of Command": {
     "name": "Trial of Command",
     "description": "Complete the Trial of Command.",
     "unlock": "Artifact of Command",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/3a/Artifact_of_Command.png/revision/latest/scale-to-width-down/64?cb=20200331162544",
+    "imgName": "Artifact of Command.png"
   },
   "Trial of Death": {
     "name": "Trial of Death",
     "description": "Complete the Trial of Death.",
     "unlock": "Artifact of Death",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/5a/Artifact_of_Death.png/revision/latest/scale-to-width-down/64?cb=20200331162546",
+    "imgName": "Artifact of Death.png"
   },
   "Trial of Dissonance": {
     "name": "Trial of Dissonance",
     "description": "Complete the Trial of Dissonance.",
     "unlock": "Artifact of Dissonance",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/87/Artifact_of_Dissonance.png/revision/latest/scale-to-width-down/64?cb=20200331162547",
+    "imgName": "Artifact of Dissonance.png"
   },
   "Trial of Enigma": {
     "name": "Trial of Enigma",
     "description": "Complete the Trial of Enigma.",
     "unlock": "Artifact of Enigma",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/ed/Artifact_of_Enigma.png/revision/latest/scale-to-width-down/64?cb=20200331162548",
+    "imgName": "Artifact of Enigma.png"
   },
   "Trial of Evolution": {
     "name": "Trial of Evolution",
     "description": "Complete the Trial of Evolution.",
     "unlock": "Artifact of Evolution",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/fd/Artifact_of_Evolution.png/revision/latest/scale-to-width-down/64?cb=20200331162550",
+    "imgName": "Artifact of Evolution.png"
   },
   "Trial of Frailty": {
     "name": "Trial of Frailty",
     "description": "Complete the Trial of Frailty.",
     "unlock": "Artifact of Frailty",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/12/Artifact_of_Frailty.png/revision/latest/scale-to-width-down/64?cb=20200331162552",
+    "imgName": "Artifact of Frailty.png"
   },
   "Trial of Glass": {
     "name": "Trial of Glass",
     "description": "Complete the Trial of Glass.",
     "unlock": "Artifact of Glass",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e1/Artifact_of_Glass.png/revision/latest/scale-to-width-down/64?cb=20200331162554",
+    "imgName": "Artifact of Glass.png"
   },
   "Trial of Honor": {
     "name": "Trial of Honor",
     "description": "Complete the Trial of Honor.",
     "unlock": "Artifact of Honor",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c1/Artifact_of_Honor.png/revision/latest/scale-to-width-down/64?cb=20200331162555",
+    "imgName": "Artifact of Honor.png"
   },
   "Trial of Kin": {
     "name": "Trial of Kin",
     "description": "Complete the Trial of Kin.",
     "unlock": "Artifact of Kin",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/54/Artifact_of_Kin.png/revision/latest/scale-to-width-down/64?cb=20200331162556",
+    "imgName": "Artifact of Kin.png"
   },
   "Trial of Metamorphosis": {
     "name": "Trial of Metamorphosis",
     "description": "Complete the Trial of Metamorphosis.",
     "unlock": "Artifact of Metamorphosis",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f1/Artifact_of_Metamorphosis.png/revision/latest/scale-to-width-down/64?cb=20200331162558",
+    "imgName": "Artifact of Metamorphosis.png"
   },
   "Trial of Sacrifice": {
     "name": "Trial of Sacrifice",
     "description": "Complete the Trial of Sacrifice.",
     "unlock": "Artifact of Sacrifice",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/26/Artifact_of_Sacrifice.png/revision/latest/scale-to-width-down/64?cb=20200331162560",
+    "imgName": "Artifact of Sacrifice.png"
   },
   "Trial of Soul": {
     "name": "Trial of Soul",
     "description": "Complete the Trial of Soul.",
     "unlock": "Artifact of Soul",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9a/Artifact_of_Soul.png/revision/latest/scale-to-width-down/64?cb=20200331162602",
+    "imgName": "Artifact of Soul.png"
   },
   "Trial of Spite": {
     "name": "Trial of Spite",
     "description": "Complete the Trial of Spite.",
     "unlock": "Artifact of Spite",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/26/Artifact_of_Spite.png/revision/latest/scale-to-width-down/64?cb=20200331162604",
+    "imgName": "Artifact of Spite.png"
   },
   "Trial of Swarms": {
     "name": "Trial of Swarms",
     "description": "Complete the Trial of Swarms.",
     "unlock": "Artifact of Swarms",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c8/Artifact_of_Swarms.png/revision/latest/scale-to-width-down/64?cb=20200331162606",
+    "imgName": "Artifact of Swarms.png"
   },
   "Trial of Vengeance": {
     "name": "Trial of Vengeance",
     "description": "Complete the Trial of Vengeance.",
     "unlock": "Artifact of Vengeance",
-    "category": "artifacts"
+    "category": "artifacts",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d8/Artifact_of_Vengeance.png/revision/latest/scale-to-width-down/64?cb=20200331162541",
+    "imgName": "Artifact of Vengeance.png"
   }
 }

@@ -513,11 +513,6 @@ const CHALLENGE_TABLE_CATEGORY = [
 const visitChallenge = async (page, url) => {
   await page.goto(url);
   console.log(url);
-  const evalCatchHandler = (err) => {
-    if (!err.message.includes('failed to find element matching selector')) {
-      throw err;
-    }
-  };
   const challenges = await page.$$eval(
     '.article-table.sortable.floatheader.jquery-tablesorter',
     (tables) =>
@@ -531,12 +526,33 @@ const visitChallenge = async (page, url) => {
               description: tableDatas[1].innerText,
               unlock: tableDatas[2].innerText,
               category: CHALLENGE_TABLE_CATEGORY[i],
+              imgUrl: tableDatas[2].querySelector('img').src,
+              imgName: tableDatas[2].querySelector('img').alt,
             };
           });
         })
         .flat(),
   );
-  return challenges.reduce((agg, cur) => ({...agg, [cur.name]: cur}));
+  await Promise.all(
+    challenges
+      .map(async (challenge) => {
+        const outputPath = `${imageDirPath}/${challenge.imgName.replace(
+          / /g,
+          '',
+        )}`;
+        try {
+          await fs.promises.access(outputPath, fs.constants.F_OK);
+          console.log(`${outputPath} exists`);
+          // file "exists" so we don't want to overwite
+          return null;
+        } catch (error) {
+          // file doesn't exist (or any other kind of error lmfao)
+          return await download(challenge.imgUrl, outputPath);
+        }
+      })
+      .filter((v) => v != null),
+  );
+  return challenges.reduce((agg, cur) => ({...agg, [cur.name]: cur}), {});
 };
 
 const generateImageRequires = () => {
@@ -684,6 +700,7 @@ const main = () => {
         .catch(console.error);
       break;
     case 'challenges':
+      // has to be gamepedia because i said fuck it
       const CHALLENGE_SEED = `${baseUrl}/Challenges`;
       scrape({
         seed: positionalArgs[1] || CHALLENGE_SEED,

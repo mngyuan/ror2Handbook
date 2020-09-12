@@ -732,10 +732,10 @@ const SearchScreen = ({route, navigation}) => {
                       {v.unlock
                         .split('\n')
                         .map((unlock) =>
-                          IMAGES[unlock.replace(/ /g, '')] ? (
+                          IMAGES[unlock.replace(/[ :]/g, '')] ? (
                             <Image
                               key={unlock}
-                              source={IMAGES[unlock.replace(/ /g, '')]}
+                              source={IMAGES[unlock.replace(/[ :]/g, '')]}
                               style={[
                                 styles.searchResultSurvivorImage,
                                 {marginLeft: 12},
