@@ -11,6 +11,7 @@ const gamepediaEqpDataPath = './gamepedia_eqp_data.json';
 const survivorDataPath = './survivor_data.json';
 const gamepediaSurvivorDataPath = './gamepedia_survivor_data.json';
 const challengeDataPath = './challenge_data.json';
+const artifactDataPath = './artifact_data.json';
 
 const download = (url, destination) =>
   new Promise((resolve, reject) => {
@@ -555,6 +556,34 @@ const visitChallenge = async (page, url) => {
   return challenges.reduce((agg, cur) => ({...agg, [cur.name]: cur}), {});
 };
 
+const visitArtifact = async (page, url) => {
+  await page.goto(url);
+  console.log(url);
+  const artifacts = await page.$$eval('.article-table.floatheader', (tables) =>
+    tables
+      .map((table) => {
+        const tableRows = Array.from(table.querySelectorAll('tbody tr'));
+        return tableRows.map((tableRow) => {
+          const tableDatas = tableRow.querySelectorAll('td');
+          return {
+            name: tableDatas[0].innerText,
+            description: tableDatas[1].innerText,
+            code: tableDatas[2].innerText.replace(/[ \n]/g, ''),
+            imgUrl: tableDatas[0].querySelector('img').src,
+            imgName: tableDatas[0].querySelector('img').alt,
+          };
+        });
+      })
+      .flat(),
+  );
+  await Promise.all(
+    artifacts.map((artifact) =>
+      download(artifact.imgUrl, `${imageDirPath}/${artifact.imgName}`),
+    ),
+  );
+  return artifacts.reduce((agg, cur) => ({...agg, [cur.name]: cur}), {});
+};
+
 const generateImageRequires = () => {
   // could improve by reading item_data.json to get name so name in gen'd code
   // doesn't have to have its spaces stripped
@@ -700,7 +729,12 @@ const main = () => {
         .catch(console.error);
       break;
     case 'challenges':
-      // has to be gamepedia because i said fuck it
+      if (!flags.includes('--gamepedia')) {
+        return console.error(
+          'Challenges must be scraped from gamepedia; ' +
+            "I didn't bother making compatibility with fandom",
+        );
+      }
       const CHALLENGE_SEED = `${baseUrl}/Challenges`;
       scrape({
         seed: positionalArgs[1] || CHALLENGE_SEED,
@@ -718,6 +752,36 @@ const main = () => {
               (err) => {
                 if (err) throw err;
                 console.log(`written to ${challengeDataPath}`);
+              },
+            );
+          }
+        })
+        .catch(console.error);
+      break;
+    case 'artifacts':
+      if (!flags.includes('--gamepedia')) {
+        return console.error(
+          'Artifacts must be scraped from gamepedia; ' +
+            "I didn't bother making compatibility with fandom",
+        );
+      }
+      const ARTIFACT_SEED = `${baseUrl}/Artifacts`;
+      scrape({
+        seed: positionalArgs[1] || ARTIFACT_SEED,
+        visitCallback: visitArtifact,
+        baseUrl: rootUrl,
+        single: true,
+      })
+        .then((artifactData) => {
+          if (flags.includes('--single')) {
+            console.log(artifactData);
+          } else {
+            fs.writeFile(
+              artifactDataPath,
+              JSON.stringify(artifactData),
+              (err) => {
+                if (err) throw err;
+                console.log(`written to ${artifactDataPath}`);
               },
             );
           }
