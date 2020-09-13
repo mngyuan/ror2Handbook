@@ -1060,6 +1060,13 @@ const ArtifactModal = ({artifactName, modalVisible, setModalVisible}) => {
             style={styles.itemModalHeaderImage}
           />
         </View>
+        <RText style={[styles.artifactCode]}>
+          {artifact.code.slice(0, 3).split('').join(' ')}
+          {'\n'}
+          {artifact.code.slice(3, 6).split('').join(' ')}
+          {'\n'}
+          {artifact.code.slice(6).split('').join(' ')}
+        </RText>
         <RText style={[styles.bodyText, {marginBottom: 4}]}>
           {artifact.description}
         </RText>
@@ -1654,6 +1661,11 @@ const styles = StyleSheet.create({
     // not sure why not setting width doesn't work but all our images (i think)
     // are square
     width: 48,
+  },
+  artifactCode: {
+    ...FontStyles.boldMono,
+    textAlign: 'center',
+    marginBottom: 16,
   },
 });
 
