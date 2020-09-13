@@ -18,6 +18,8 @@ import {
   LayoutAnimation,
   UIManager,
   Button,
+  Linking,
+  Share,
 } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import Modal from 'react-native-modal';
@@ -37,6 +39,11 @@ import EQP_DATA from './gamepedia_eqp_data.json';
 import SURVIVOR_DATA from './gamepedia_survivor_data.json';
 import CHALLENGE_DATA from './challenge_data.json';
 import ARTIFACT_DATA from './artifact_data.json';
+
+const SUPPORT_EMAIL = 'support@mngyuan.com';
+const SUPPORT_EMAIL_SUBJECT = 'Help with RoR2 Handbook';
+const SUPPORT_EMAIL_BODY = 'Describe your problem';
+const SHARE_URL = 'https://ror2handbook.app';
 
 if (
   Platform.OS === 'android' &&
@@ -1288,16 +1295,20 @@ const AboutScreen = ({navigation}) => {
             </RText>
           </View>
           <TouchableOpacity
-            style={[styles.aboutRow, styles.aboutRowDisabled]}
-            onPress={() => {}}
-            disabled>
+            style={[styles.aboutRow]}
+            onPress={async () =>
+              await Share.share({url: SHARE_URL, title: SHARE_URL})
+            }>
             <RText style={styles.aboutRowText}>Share this app</RText>
             <Icon name="chevron-forward" size={20} />
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.aboutRow, styles.aboutRowDisabled]}
-            onPress={() => {}}
-            disabled>
+            style={[styles.aboutRow]}
+            onPress={() =>
+              Linking.openURL(
+                `mailto:${SUPPORT_EMAIL}?subject=${SUPPORT_EMAIL_SUBJECT}&body=${SUPPORT_EMAIL_BODY}`,
+              )
+            }>
             <RText style={styles.aboutRowText}>Report an issue</RText>
             <Icon name="chevron-forward" size={20} />
           </TouchableOpacity>
