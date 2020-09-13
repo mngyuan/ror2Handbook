@@ -36,6 +36,7 @@ import ITEM_DATA from './gamepedia_item_data.json';
 import EQP_DATA from './gamepedia_eqp_data.json';
 import SURVIVOR_DATA from './gamepedia_survivor_data.json';
 import CHALLENGE_DATA from './challenge_data.json';
+import ARTIFACT_DATA from './artifact_data.json';
 
 if (
   Platform.OS === 'android' &&
@@ -47,6 +48,7 @@ if (
 const SEARCHABLE_DATA = {
   items: {...ITEM_DATA, ...EQP_DATA},
   survivors: SURVIVOR_DATA,
+  artifacts: ARTIFACT_DATA,
 };
 
 // Some data we don't want to show in the search all view...?
@@ -59,6 +61,7 @@ const NONSEARCHABLE_DATA = {
 const TYPE_ORDER = {
   item: 0,
   survivor: 1,
+  artifact: 2,
 };
 
 const RARITY_ORDER = Object.fromEntries(
@@ -189,13 +192,16 @@ const useAppState = () => {
 };
 
 const getType = (o) => {
-  if (SEARCHABLE_DATA.items[o]) {
+  if (SEARCHABLE_DATA.items[o.name]) {
     return 'item';
   }
-  if (SEARCHABLE_DATA.survivors[o]) {
+  if (SEARCHABLE_DATA.survivors[o.name]) {
     return 'survivor';
   }
-  if (NONSEARCHABLE_DATA.challenges[o]) {
+  if (SEARCHABLE_DATA.artifacts[o.name]) {
+    return 'artifact';
+  }
+  if (NONSEARCHABLE_DATA.challenges[o.name]) {
     return 'challenge';
   }
 };
@@ -232,6 +238,10 @@ const compareChallenges = (a, b) => {
   return res;
 };
 
+const compareArtifacts = (a, b) => {
+  return a.name.localeCompare(b.name);
+};
+
 const compareObjs = (a, b) => {
   if (SEARCHABLE_DATA.items[a.name] && SEARCHABLE_DATA.items[b.name]) {
     return compareItems(a, b);
@@ -245,9 +255,20 @@ const compareObjs = (a, b) => {
   ) {
     return compareChallenges(a, b);
   }
+  if (SEARCHABLE_DATA.artifacts[a.name] && SEARCHABLE_DATA.artifacts[b.name]) {
+    return compareArtifacts(a, b);
+  }
   if (TYPE_ORDER[getType(a)] < TYPE_ORDER[getType(b)]) {
     return -1;
   } else if (TYPE_ORDER[getType(a)] === TYPE_ORDER[getType(b)]) {
+    console.log(
+      a,
+      getType(a),
+      TYPE_ORDER[getType(a)],
+      b,
+      getType(b),
+      TYPE_ORDER[getType(b)],
+    );
     return 0;
   } else {
     return 1;
@@ -557,6 +578,8 @@ const SearchScreen = ({route, navigation}) => {
   const [itemModalVisible, setItemModalVisible] = useState(false);
   const [viewingChallenge, setViewingChallenge] = useState(null);
   const [challengeModalVisible, setChallengeModalVisible] = useState(false);
+  const [viewingArtifact, setViewingArtifact] = useState(null);
+  const [artifactModalVisible, setArtifactModalVisible] = useState(false);
   const [searchFilters, setSearchFilters] = useState(
     getDefaultSearchFilters(type),
   );
@@ -692,6 +715,9 @@ const SearchScreen = ({route, navigation}) => {
                         } else if (NONSEARCHABLE_DATA.challenges[v.name]) {
                           setViewingChallenge(v.name);
                           setChallengeModalVisible(true);
+                        } else if (SEARCHABLE_DATA.artifacts[v.name]) {
+                          setViewingArtifact(v.name);
+                          setArtifactModalVisible(true);
                         } else {
                           navigation.navigate('Detail', {itemName: v.name});
                         }
@@ -722,6 +748,9 @@ const SearchScreen = ({route, navigation}) => {
                         } else if (NONSEARCHABLE_DATA.challenges[v.name]) {
                           setViewingChallenge(v.name);
                           setChallengeModalVisible(true);
+                        } else if (SEARCHABLE_DATA.artifacts[v.name]) {
+                          setViewingArtifact(v.name);
+                          setArtifactModalVisible(true);
                         } else {
                           navigation.navigate('Detail', {itemName: v.name});
                         }
@@ -746,6 +775,39 @@ const SearchScreen = ({route, navigation}) => {
                           ),
                         )}
                     </TouchableOpacity>
+                  ) : type === 'artifacts' ? (
+                    <TouchableOpacity
+                      style={[styles.searchResultRow]}
+                      key={v.name}
+                      onPress={() => {
+                        if (SEARCHABLE_DATA.items[v.name]) {
+                          setViewingItem(v.name);
+                          setItemModalVisible(true);
+                        } else if (NONSEARCHABLE_DATA.challenges[v.name]) {
+                          setViewingChallenge(v.name);
+                          setChallengeModalVisible(true);
+                        } else if (SEARCHABLE_DATA.artifacts[v.name]) {
+                          setViewingArtifact(v.name);
+                          setArtifactModalVisible(true);
+                        } else {
+                          navigation.navigate('Detail', {itemName: v.name});
+                        }
+                      }}>
+                      {IMAGES[v.name.replace(/ /g, '')] ? (
+                        <Image
+                          source={IMAGES[v.name.replace(/ /g, '')]}
+                          style={[
+                            styles.searchResultArtifactImage,
+                            {marginRight: 12},
+                          ]}
+                        />
+                      ) : (
+                        <RText>Image not found</RText>
+                      )}
+                      <RText style={[styles.searchResultRowName]}>
+                        {v.name}
+                      </RText>
+                    </TouchableOpacity>
                   ) : (
                     <TouchableOpacity
                       style={[styles.searchResult]}
@@ -757,6 +819,9 @@ const SearchScreen = ({route, navigation}) => {
                         } else if (NONSEARCHABLE_DATA.challenges[v.name]) {
                           setViewingChallenge(v.name);
                           setChallengeModalVisible(true);
+                        } else if (SEARCHABLE_DATA.artifacts[v.name]) {
+                          setViewingArtifact(v.name);
+                          setArtifactModalVisible(true);
                         } else {
                           navigation.navigate('Detail', {itemName: v.name});
                         }
@@ -786,6 +851,11 @@ const SearchScreen = ({route, navigation}) => {
         challengeName={viewingChallenge}
         modalVisible={challengeModalVisible}
         setModalVisible={() => setChallengeModalVisible(false)}
+      />
+      <ArtifactModal
+        artifactName={viewingArtifact}
+        modalVisible={artifactModalVisible}
+        setModalVisible={() => setArtifactModalVisible(false)}
       />
     </>
   );
@@ -953,6 +1023,45 @@ const ChallengeModal = ({challengeName, modalVisible, setModalVisible}) => {
             </>
           ) : null}
           .
+        </RText>
+      </View>
+    </Modal>
+  ) : null;
+};
+
+const ArtifactModal = ({artifactName, modalVisible, setModalVisible}) => {
+  const colorScheme = useColorScheme();
+  const artifact = SEARCHABLE_DATA.artifacts[artifactName];
+
+  return artifact ? (
+    <Modal
+      isVisible={modalVisible}
+      onBackdropPress={() => setModalVisible(false)}
+      backdropTransitionOutTiming={0}
+      style={styles.Modal}>
+      <View
+        style={[
+          styles.ModalInner,
+          {
+            backgroundColor:
+              colorScheme === 'dark'
+                ? DarkTheme.colors.background
+                : Colors.white,
+          },
+        ]}>
+        <View style={styles.itemModalHeader}>
+          <View style={styles.itemModalHeaderInfo}>
+            <RText style={[styles.itemModalHeaderRow, styles.ModalName]}>
+              {artifact.name}
+            </RText>
+          </View>
+          <Image
+            source={IMAGES[artifact.name.replace(/ /g, '')]}
+            style={styles.itemModalHeaderImage}
+          />
+        </View>
+        <RText style={[styles.bodyText, {marginBottom: 4}]}>
+          {artifact.description}
         </RText>
       </View>
     </Modal>
@@ -1139,11 +1248,8 @@ const SurvivorScreen = React.memo((props) => (
 const ChallengeScreen = React.memo((props) => (
   <HomeScreen {...props} type="challenges" />
 ));
-const EnvironmentScreen = React.memo((props) => (
-  <HomeScreen {...props} type="environments" />
-));
-const UtilityScreen = React.memo((props) => (
-  <HomeScreen {...props} type="utilities" />
+const ArtifactScreen = React.memo((props) => (
+  <HomeScreen {...props} type="artifacts" />
 ));
 
 const AboutScreen = ({navigation}) => {
@@ -1243,6 +1349,7 @@ const App = () => {
         <Drawer.Screen name="Items" component={ItemScreen} />
         <Drawer.Screen name="Survivors" component={SurvivorScreen} />
         <Drawer.Screen name="Challenges" component={ChallengeScreen} />
+        <Drawer.Screen name="Artifacts" component={ArtifactScreen} />
         <Drawer.Screen name="About" component={AboutScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
@@ -1319,6 +1426,10 @@ const styles = StyleSheet.create({
   },
   searchResultSurvivorImage: {
     width: `${100 / 3}%`,
+    aspectRatio: 1,
+  },
+  searchResultSurvivorImage: {
+    width: `${100 / 4}%`,
     aspectRatio: 1,
   },
   searchResultRowName: {
