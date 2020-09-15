@@ -669,7 +669,7 @@ const SearchScreen = ({route, navigation}) => {
       <TouchableWithoutFeedback
         onPress={() => Keyboard.dismiss()}
         style={{flex: 1}}>
-        <SafeAreaView
+        <View
           style={{
             flex: 1,
             backgroundColor:
@@ -847,7 +847,7 @@ const SearchScreen = ({route, navigation}) => {
               </View>
             </ScrollView>
           </KeyboardAvoidingView>
-        </SafeAreaView>
+        </View>
       </TouchableWithoutFeedback>
       <ItemModal
         itemName={viewingItem}
