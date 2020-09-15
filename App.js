@@ -24,7 +24,7 @@ import {
 import DeviceInfo from 'react-native-device-info';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Ionicons';
-import analytics from '@react-native-firebase/analytics';
+import analytics, {firebase} from '@react-native-firebase/analytics';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {
   NavigationContainer,
@@ -44,6 +44,8 @@ const SUPPORT_EMAIL = 'support@mngyuan.com';
 const SUPPORT_EMAIL_SUBJECT = 'Help with RoR2 Handbook';
 const SUPPORT_EMAIL_BODY = 'Describe your problem';
 const SHARE_URL = 'https://ror2handbook.app';
+const IOS_APP_ID = 'id1528143765';
+const ANDROID_PACKAGE_NAME = 'com.ror2handbook';
 
 if (
   Platform.OS === 'android' &&
@@ -51,6 +53,10 @@ if (
 ) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
+
+const enableAnalytics = async () =>
+  await firebase.analytics().setAnalyticsCollectionEnabled(!__DEV__);
+enableAnalytics();
 
 const SEARCHABLE_DATA = {
   items: {...ITEM_DATA, ...EQP_DATA},
@@ -659,6 +665,31 @@ const SearchScreen = ({route, navigation}) => {
       });
     }
   }, [viewingItem, itemModalVisible]);
+  useEffect(() => {
+    if (challengeModalVisible) {
+      analytics().logViewItem({
+        items: [
+          {
+            item_name: viewingChallenge.name,
+            item_category: 'challenge',
+            item_category2: viewingChallenge.category,
+          },
+        ],
+      });
+    }
+  }, [viewingChallenge, challengeModalVisible]);
+  useEffect(() => {
+    if (artifactModalVisible) {
+      analytics().logViewItem({
+        items: [
+          {
+            item_name: viewingArtifact.name,
+            item_category: 'artifact',
+          },
+        ],
+      });
+    }
+  }, [viewingArtifact, artifactModalVisible]);
 
   useEffect(() => {
     setSearchFilters(getDefaultSearchFilters(type));
@@ -1098,6 +1129,20 @@ const DetailScreen = ({route}) => {
     }
   }, [itemName]);
 
+  useEffect(() => {
+    if (challengeModalVisible) {
+      analytics().logViewItem({
+        items: [
+          {
+            item_name: viewingChallenge.name,
+            item_category: 'challenge',
+            item_category2: viewingChallenge.category,
+          },
+        ],
+      });
+    }
+  }, [viewingChallenge, challengeModalVisible]);
+
   return (
     <ScrollView>
       <View
@@ -1296,26 +1341,34 @@ const AboutScreen = ({navigation}) => {
           </View>
           <TouchableOpacity
             style={[styles.aboutRow]}
-            onPress={async () =>
-              await Share.share({url: SHARE_URL, title: SHARE_URL})
-            }>
+            onPress={async () => {
+              await Share.share({url: SHARE_URL, title: SHARE_URL});
+              analytics.logEvent('share');
+            }}>
             <RText style={styles.aboutRowText}>Share this app</RText>
             <Icon name="chevron-forward" size={20} />
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.aboutRow]}
-            onPress={() =>
+            onPress={() => {
               Linking.openURL(
                 `mailto:${SUPPORT_EMAIL}?subject=${SUPPORT_EMAIL_SUBJECT}&body=${SUPPORT_EMAIL_BODY}`,
-              )
-            }>
+              );
+              analytics().logEvent('support');
+            }}>
             <RText style={styles.aboutRowText}>Report an issue</RText>
             <Icon name="chevron-forward" size={20} />
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.aboutRow, styles.aboutRowDisabled]}
-            onPress={() => {}}
-            disabled>
+            style={[styles.aboutRow]}
+            onPress={() => {
+              Linking.openURL(
+                Platform.OS === 'ios'
+                  ? `itms-apps://itunes.apple.com/us/app/apple-store/${IOS_APP_ID}?mt=8`
+                  : `market://details?id=${ANDROID_PACKAGE_NAME}`,
+              );
+              analytics().logEvent('rate');
+            }}>
             <RText style={styles.aboutRowText}>
               Rate on {Platform.OS === 'ios' ? 'App' : 'Play'} Store
             </RText>
