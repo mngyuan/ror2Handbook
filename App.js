@@ -40,23 +40,15 @@ import SURVIVOR_DATA from './gamepedia_survivor_data.json';
 import CHALLENGE_DATA from './challenge_data.json';
 import ARTIFACT_DATA from './artifact_data.json';
 
+// Consts
+// ----------------------------------------------------------------------------
+
 const SUPPORT_EMAIL = 'support@mngyuan.com';
 const SUPPORT_EMAIL_SUBJECT = 'Help with RoR2 Handbook';
 const SUPPORT_EMAIL_BODY = 'Describe your problem';
 const SHARE_URL = 'https://ror2handbook.app';
 const IOS_APP_ID = 'id1528143765';
 const ANDROID_PACKAGE_NAME = 'com.ror2handbook';
-
-if (
-  Platform.OS === 'android' &&
-  UIManager.setLayoutAnimationEnabledExperimental
-) {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
-}
-
-const enableAnalytics = async () =>
-  await firebase.analytics().setAnalyticsCollectionEnabled(!__DEV__);
-enableAnalytics();
 
 const SEARCHABLE_DATA = {
   items: {...ITEM_DATA, ...EQP_DATA},
@@ -108,24 +100,6 @@ const SURVIVOR_ORDER = Object.fromEntries(
 );
 
 const HIDE_LIST = ['Han-D'];
-
-const getItemRarityColor = (item) =>
-  item.rarity
-    ? item.rarity.includes('Boss')
-      ? Colors.rarityBoss
-      : item.rarity.includes('Equipment')
-      ? Colors.rarityEquipment
-      : Colors[`rarity${item.rarity}`]
-    : null;
-
-const getDefaultSearchFilters = (type) =>
-  type === 'items'
-    ? {
-        category: null,
-        rarity: null,
-        type: null,
-      }
-    : null;
 
 const Colors = {
   white: 'white',
@@ -185,24 +159,40 @@ const FontStyles = {
   },
 };
 
-const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
+// Config
+// ----------------------------------------------------------------------------
 
-const useAppState = () => {
-  const [appState, setAppState] = useState(AppState.currentState);
+if (
+  Platform.OS === 'android' &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
-  const handleAppStateChange = (nextAppState) => setAppState(nextAppState);
+const enableAnalytics = async () =>
+  await firebase.analytics().setAnalyticsCollectionEnabled(!__DEV__);
+enableAnalytics();
 
-  useEffect(() => {
-    AppState.addEventListener('change', handleAppStateChange);
+// Util
+// ----------------------------------------------------------------------------
 
-    return () => {
-      AppState.removeEventListener('change', handleAppStateChange);
-    };
-  }, []);
+const getItemRarityColor = (item) =>
+  item.rarity
+    ? item.rarity.includes('Boss')
+      ? Colors.rarityBoss
+      : item.rarity.includes('Equipment')
+      ? Colors.rarityEquipment
+      : Colors[`rarity${item.rarity}`]
+    : null;
 
-  return appState;
-};
+const getDefaultSearchFilters = (type) =>
+  type === 'items'
+    ? {
+        category: null,
+        rarity: null,
+        type: null,
+      }
+    : null;
 
 const getType = (o) => {
   if (SEARCHABLE_DATA.items[o.name]) {
@@ -286,6 +276,28 @@ const compareObjs = (a, b) => {
   } else {
     return 1;
   }
+};
+
+// Components / Hooks
+// ----------------------------------------------------------------------------
+
+const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+const useAppState = () => {
+  const [appState, setAppState] = useState(AppState.currentState);
+
+  const handleAppStateChange = (nextAppState) => setAppState(nextAppState);
+
+  useEffect(() => {
+    AppState.addEventListener('change', handleAppStateChange);
+
+    return () => {
+      AppState.removeEventListener('change', handleAppStateChange);
+    };
+  }, []);
+
+  return appState;
 };
 
 const RText = ({color = 'primary', style, children, ...props}) => {
@@ -581,6 +593,223 @@ const SearchFilters = ({searchFilters, setSearchFilters, type}) => {
     </ScrollView>
   ) : null;
 };
+
+const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
+  const [viewingChallenge, setViewingChallenge] = useState(null);
+  const [challengeModalVisible, setChallengeModalVisible] = useState(false);
+  const appState = useAppState();
+  const colorScheme = useColorScheme();
+  const item = SEARCHABLE_DATA.items[itemName];
+
+  useEffect(() => {
+    if (__DEV__) {
+      //appState === 'active' && Alert.alert('active!');
+    }
+  }, [appState]);
+
+  useEffect(() => {
+    if (challengeModalVisible) {
+      analytics().logViewItem({
+        items: [
+          {
+            item_name: viewingChallenge.name,
+            item_category: 'challenge',
+            item_category2: viewingChallenge.category,
+          },
+        ],
+      });
+    }
+  }, [viewingChallenge, challengeModalVisible]);
+
+  return item ? (
+    <Modal
+      isVisible={modalVisible}
+      onBackdropPress={() => setModalVisible(false)}
+      backdropTransitionOutTiming={0}
+      style={styles.Modal}>
+      <View
+        style={[
+          styles.ModalInner,
+          {
+            backgroundColor:
+              colorScheme === 'dark'
+                ? DarkTheme.colors.background
+                : Colors.white,
+          },
+        ]}>
+        <View style={styles.itemModalHeader}>
+          <View style={styles.itemModalHeaderInfo}>
+            <RText
+              style={[
+                styles.itemModalHeaderRow,
+                styles.ModalName,
+                {color: getItemRarityColor(item)},
+              ]}>
+              {item.name}
+            </RText>
+            <RText
+              style={[styles.itemModalHeaderRow, styles.itemModalHeaderText]}>
+              <RText>
+                {item.category?.replace(/\n/g, '→\u200b')}
+                {item.category ? ' ' : ''}
+              </RText>
+              <RText style={{color: getItemRarityColor(item)}}>
+                {item.rarity}
+              </RText>
+            </RText>
+            {item.unlock && (
+              <View style={[styles.itemModalHeaderRow]}>
+                <RText style={[styles.itemModalHeaderText]}>
+                  Unlocked by{' '}
+                  <RText
+                    style={[styles.achievementNameLink]}
+                    onPress={() => {
+                      setViewingChallenge(item.unlock);
+                      setChallengeModalVisible(true);
+                    }}>
+                    {item.unlock}
+                  </RText>
+                </RText>
+              </View>
+            )}
+          </View>
+          <Image
+            source={IMAGES[item.name.replace(/ /g, '')]}
+            style={styles.itemModalHeaderImage}
+          />
+        </View>
+        <RText color="secondary" style={styles.itemModalFlavor}>
+          {'\u201c'}
+          {item.flavorText}
+          {'\u201d'}
+        </RText>
+        <RText style={styles.itemModalDescription}>{item.description}</RText>
+        {item.stats?.map((stat, i) => (
+          <View style={styles.itemModalStatRow} key={i}>
+            {Object.entries(stat).map(([k, v], i) => (
+              <View key={k}>
+                <RText
+                  style={[
+                    styles.itemModalStatCell,
+                    styles.itemModalStatHeader,
+                  ]}>
+                  {k}
+                </RText>
+                <RText style={[styles.itemModalStatCell]}>{v}</RText>
+              </View>
+            ))}
+          </View>
+        ))}
+      </View>
+      <ChallengeModal
+        challengeName={viewingChallenge}
+        modalVisible={challengeModalVisible}
+        setModalVisible={() => setChallengeModalVisible(false)}
+      />
+    </Modal>
+  ) : null;
+};
+
+const ChallengeModal = ({challengeName, modalVisible, setModalVisible}) => {
+  const colorScheme = useColorScheme();
+  const challenge = NONSEARCHABLE_DATA.challenges[challengeName];
+
+  return challenge ? (
+    <Modal
+      isVisible={modalVisible}
+      onBackdropPress={() => setModalVisible(false)}
+      backdropTransitionOutTiming={0}
+      style={styles.Modal}>
+      <View
+        style={[
+          styles.ModalInner,
+          {
+            backgroundColor:
+              colorScheme === 'dark'
+                ? DarkTheme.colors.background
+                : Colors.white,
+          },
+        ]}>
+        <RText
+          style={[
+            styles.ModalName,
+            styles.itemModalHeaderRow,
+            {color: Colors.achievementColor},
+          ]}>
+          {challenge.name}
+        </RText>
+        <RText style={[styles.bodyText, {marginBottom: 4}]}>
+          {challenge.description}
+        </RText>
+        <RText style={[styles.bodyText, {marginBottom: 4}]}>
+          Unlocks{' '}
+          <RText style={[styles.bodyText, styles.mediumText]}>
+            {challenge.unlock}
+          </RText>
+          {IMAGES[challenge.unlock.replace(/ /g, '')] ? (
+            <>
+              {' '}
+              <Image
+                source={IMAGES[challenge.unlock.replace(/ /g, '')]}
+                style={[styles.challengeModalUnlockImage]}
+              />{' '}
+            </>
+          ) : null}
+          .
+        </RText>
+      </View>
+    </Modal>
+  ) : null;
+};
+
+const ArtifactModal = ({artifactName, modalVisible, setModalVisible}) => {
+  const colorScheme = useColorScheme();
+  const artifact = SEARCHABLE_DATA.artifacts[artifactName];
+
+  return artifact ? (
+    <Modal
+      isVisible={modalVisible}
+      onBackdropPress={() => setModalVisible(false)}
+      backdropTransitionOutTiming={0}
+      style={styles.Modal}>
+      <View
+        style={[
+          styles.ModalInner,
+          {
+            backgroundColor:
+              colorScheme === 'dark'
+                ? DarkTheme.colors.background
+                : Colors.white,
+          },
+        ]}>
+        <View style={styles.itemModalHeader}>
+          <View style={styles.itemModalHeaderInfo}>
+            <RText style={[styles.itemModalHeaderRow, styles.ModalName]}>
+              {artifact.name}
+            </RText>
+          </View>
+          <Image
+            source={IMAGES[artifact.name.replace(/ /g, '')]}
+            style={styles.itemModalHeaderImage}
+          />
+        </View>
+        <RText style={[styles.artifactCode]}>
+          {artifact.code.slice(0, 3).split('').join(' ')}
+          {'\n'}
+          {artifact.code.slice(3, 6).split('').join(' ')}
+          {'\n'}
+          {artifact.code.slice(6).split('').join(' ')}
+        </RText>
+        <RText style={[styles.bodyText, {marginBottom: 4}]}>
+          {artifact.description}
+        </RText>
+      </View>
+    </Modal>
+  ) : null;
+};
+
+// Screens
+// ----------------------------------------------------------------------------
 
 const SearchScreen = ({route, navigation}) => {
   const {type} = route.params;
@@ -897,220 +1126,6 @@ const SearchScreen = ({route, navigation}) => {
       />
     </>
   );
-};
-
-const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
-  const [viewingChallenge, setViewingChallenge] = useState(null);
-  const [challengeModalVisible, setChallengeModalVisible] = useState(false);
-  const appState = useAppState();
-  const colorScheme = useColorScheme();
-  const item = SEARCHABLE_DATA.items[itemName];
-
-  useEffect(() => {
-    if (__DEV__) {
-      //appState === 'active' && Alert.alert('active!');
-    }
-  }, [appState]);
-
-  useEffect(() => {
-    if (challengeModalVisible) {
-      analytics().logViewItem({
-        items: [
-          {
-            item_name: viewingChallenge.name,
-            item_category: 'challenge',
-            item_category2: viewingChallenge.category,
-          },
-        ],
-      });
-    }
-  }, [viewingChallenge, challengeModalVisible]);
-
-  return item ? (
-    <Modal
-      isVisible={modalVisible}
-      onBackdropPress={() => setModalVisible(false)}
-      backdropTransitionOutTiming={0}
-      style={styles.Modal}>
-      <View
-        style={[
-          styles.ModalInner,
-          {
-            backgroundColor:
-              colorScheme === 'dark'
-                ? DarkTheme.colors.background
-                : Colors.white,
-          },
-        ]}>
-        <View style={styles.itemModalHeader}>
-          <View style={styles.itemModalHeaderInfo}>
-            <RText
-              style={[
-                styles.itemModalHeaderRow,
-                styles.ModalName,
-                {color: getItemRarityColor(item)},
-              ]}>
-              {item.name}
-            </RText>
-            <RText
-              style={[styles.itemModalHeaderRow, styles.itemModalHeaderText]}>
-              <RText>
-                {item.category?.replace(/\n/g, '→\u200b')}
-                {item.category ? ' ' : ''}
-              </RText>
-              <RText style={{color: getItemRarityColor(item)}}>
-                {item.rarity}
-              </RText>
-            </RText>
-            {item.unlock && (
-              <View style={[styles.itemModalHeaderRow]}>
-                <RText style={[styles.itemModalHeaderText]}>
-                  Unlocked by{' '}
-                  <RText
-                    style={[styles.achievementNameLink]}
-                    onPress={() => {
-                      setViewingChallenge(item.unlock);
-                      setChallengeModalVisible(true);
-                    }}>
-                    {item.unlock}
-                  </RText>
-                </RText>
-              </View>
-            )}
-          </View>
-          <Image
-            source={IMAGES[item.name.replace(/ /g, '')]}
-            style={styles.itemModalHeaderImage}
-          />
-        </View>
-        <RText color="secondary" style={styles.itemModalFlavor}>
-          {'\u201c'}
-          {item.flavorText}
-          {'\u201d'}
-        </RText>
-        <RText style={styles.itemModalDescription}>{item.description}</RText>
-        {item.stats?.map((stat, i) => (
-          <View style={styles.itemModalStatRow} key={i}>
-            {Object.entries(stat).map(([k, v], i) => (
-              <View key={k}>
-                <RText
-                  style={[
-                    styles.itemModalStatCell,
-                    styles.itemModalStatHeader,
-                  ]}>
-                  {k}
-                </RText>
-                <RText style={[styles.itemModalStatCell]}>{v}</RText>
-              </View>
-            ))}
-          </View>
-        ))}
-      </View>
-      <ChallengeModal
-        challengeName={viewingChallenge}
-        modalVisible={challengeModalVisible}
-        setModalVisible={() => setChallengeModalVisible(false)}
-      />
-    </Modal>
-  ) : null;
-};
-
-const ChallengeModal = ({challengeName, modalVisible, setModalVisible}) => {
-  const colorScheme = useColorScheme();
-  const challenge = NONSEARCHABLE_DATA.challenges[challengeName];
-
-  return challenge ? (
-    <Modal
-      isVisible={modalVisible}
-      onBackdropPress={() => setModalVisible(false)}
-      backdropTransitionOutTiming={0}
-      style={styles.Modal}>
-      <View
-        style={[
-          styles.ModalInner,
-          {
-            backgroundColor:
-              colorScheme === 'dark'
-                ? DarkTheme.colors.background
-                : Colors.white,
-          },
-        ]}>
-        <RText
-          style={[
-            styles.ModalName,
-            styles.itemModalHeaderRow,
-            {color: Colors.achievementColor},
-          ]}>
-          {challenge.name}
-        </RText>
-        <RText style={[styles.bodyText, {marginBottom: 4}]}>
-          {challenge.description}
-        </RText>
-        <RText style={[styles.bodyText, {marginBottom: 4}]}>
-          Unlocks{' '}
-          <RText style={[styles.bodyText, styles.mediumText]}>
-            {challenge.unlock}
-          </RText>
-          {IMAGES[challenge.unlock.replace(/ /g, '')] ? (
-            <>
-              {' '}
-              <Image
-                source={IMAGES[challenge.unlock.replace(/ /g, '')]}
-                style={[styles.challengeModalUnlockImage]}
-              />{' '}
-            </>
-          ) : null}
-          .
-        </RText>
-      </View>
-    </Modal>
-  ) : null;
-};
-
-const ArtifactModal = ({artifactName, modalVisible, setModalVisible}) => {
-  const colorScheme = useColorScheme();
-  const artifact = SEARCHABLE_DATA.artifacts[artifactName];
-
-  return artifact ? (
-    <Modal
-      isVisible={modalVisible}
-      onBackdropPress={() => setModalVisible(false)}
-      backdropTransitionOutTiming={0}
-      style={styles.Modal}>
-      <View
-        style={[
-          styles.ModalInner,
-          {
-            backgroundColor:
-              colorScheme === 'dark'
-                ? DarkTheme.colors.background
-                : Colors.white,
-          },
-        ]}>
-        <View style={styles.itemModalHeader}>
-          <View style={styles.itemModalHeaderInfo}>
-            <RText style={[styles.itemModalHeaderRow, styles.ModalName]}>
-              {artifact.name}
-            </RText>
-          </View>
-          <Image
-            source={IMAGES[artifact.name.replace(/ /g, '')]}
-            style={styles.itemModalHeaderImage}
-          />
-        </View>
-        <RText style={[styles.artifactCode]}>
-          {artifact.code.slice(0, 3).split('').join(' ')}
-          {'\n'}
-          {artifact.code.slice(3, 6).split('').join(' ')}
-          {'\n'}
-          {artifact.code.slice(6).split('').join(' ')}
-        </RText>
-        <RText style={[styles.bodyText, {marginBottom: 4}]}>
-          {artifact.description}
-        </RText>
-      </View>
-    </Modal>
-  ) : null;
 };
 
 const DetailScreen = ({route}) => {
