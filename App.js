@@ -157,6 +157,10 @@ const FontStyles = {
     fontFamily:
       Platform.OS === 'ios' ? Brand.defaultFont : 'SpaceGrotesk-Medium',
   },
+  regular: {
+    fontWeight: FontWeight.regular,
+    fontFamily: Brand.defaultFont,
+  },
 };
 
 // Config
@@ -684,22 +688,82 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
           {'\u201d'}
         </RText>
         <RText style={styles.itemModalDescription}>{item.description}</RText>
-        {item.stats?.map((stat, i) => (
-          <View style={styles.itemModalStatRow} key={i}>
-            {Object.entries(stat).map(([k, v], i) => (
-              <View key={k}>
-                <RText
+        {item.stats ? (
+          <>
+            <RText style={styles.itemModalStatHeader}>Stats</RText>
+            <View style={styles.itemModalStatRow}>
+              <View
+                style={[styles.itemModalStatCell, styles.itemModalStatName]}>
+                <View
                   style={[
-                    styles.itemModalStatCell,
-                    styles.itemModalStatHeader,
+                    styles.itemModalStatLabelWrapper,
+                    {
+                      borderBottomColor:
+                        colorScheme === 'dark'
+                          ? DarkTheme.colors.text
+                          : Colors.black,
+                    },
                   ]}>
-                  {k}
+                  <RText style={[styles.itemModalStatLabel]}>Stat</RText>
+                </View>
+                <RText style={styles.itemModalStatText}>
+                  {item.stats.map((stat) => stat.stat).join('\n')}
                 </RText>
-                <RText style={[styles.itemModalStatCell]}>{v}</RText>
               </View>
-            ))}
-          </View>
-        ))}
+              <View style={[styles.itemModalStatCell]}>
+                <View
+                  style={[
+                    styles.itemModalStatLabelWrapper,
+                    {
+                      borderBottomColor:
+                        colorScheme === 'dark'
+                          ? DarkTheme.colors.text
+                          : Colors.black,
+                    },
+                  ]}>
+                  <RText style={[styles.itemModalStatLabel]}>Value</RText>
+                </View>
+                <RText style={styles.itemModalStatText}>
+                  {item.stats.map((stat) => stat.value).join('\n')}
+                </RText>
+              </View>
+              <View style={[styles.itemModalStatCell]}>
+                <View
+                  style={[
+                    styles.itemModalStatLabelWrapper,
+                    {
+                      borderBottomColor:
+                        colorScheme === 'dark'
+                          ? DarkTheme.colors.text
+                          : Colors.black,
+                    },
+                  ]}>
+                  <RText style={[styles.itemModalStatLabel]}>Stacking</RText>
+                </View>
+                <RText style={styles.itemModalStatText}>
+                  {item.stats.map((stat) => stat.stack).join('\n')}
+                </RText>
+              </View>
+              <View style={[styles.itemModalStatCell]}>
+                <View
+                  style={[
+                    styles.itemModalStatLabelWrapper,
+                    {
+                      borderBottomColor:
+                        colorScheme === 'dark'
+                          ? DarkTheme.colors.text
+                          : Colors.black,
+                    },
+                  ]}>
+                  <RText style={[styles.itemModalStatLabel]}>Add</RText>
+                </View>
+                <RText style={styles.itemModalStatText}>
+                  {item.stats.map((stat) => stat.add).join('\n')}
+                </RText>
+              </View>
+            </View>
+          </>
+        ) : null}
       </View>
       <ChallengeModal
         challengeName={viewingChallenge}
@@ -1541,7 +1605,7 @@ const styles = StyleSheet.create({
   ModalInner: {
     flex: 1,
     borderRadius: 12,
-    padding: 12,
+    padding: 16,
     paddingBottom: 24,
   },
   modalInnerNoPadding: {
@@ -1590,13 +1654,26 @@ const styles = StyleSheet.create({
   itemModalStatRow: {
     width: '100%',
     flexDirection: 'row',
+  },
+  itemModalStatHeader: {
+    ...FontStyles.semibold,
+    fontSize: FontSize.bodyText,
     marginBottom: 8,
   },
-  itemModalStatHeader: {},
+  itemModalStatName: {
+    flex: 1,
+  },
+  itemModalStatLabel: {
+    fontSize: FontSize.bodyText,
+  },
+  itemModalStatLabelWrapper: {
+    borderBottomWidth: 1,
+  },
   itemModalStatCell: {
     paddingRight: 8,
-    fontSize: FontSize.monospace,
-    fontFamily: Brand.monospaceFont,
+  },
+  itemModalStatText: {
+    fontSize: FontSize.bodyText,
   },
   DetailScreen: {
     padding: 16,
