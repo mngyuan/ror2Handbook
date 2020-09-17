@@ -320,6 +320,31 @@ const RText = ({color = 'primary', style, children, ...props}) => {
   );
 };
 
+const VerticalSwipeView = ({onSwipeDown = () => {}, style, children}) => {
+  const [offset, setOffset] = useState(0);
+  return (
+    <ScrollView
+      onScroll={(e) => {
+        const offset = e.nativeEvent.contentOffset.y;
+        setOffset(offset);
+      }}
+      onResponderRelease={() => {
+        if (offset > -50) {
+          return;
+        }
+        onSwipeDown();
+      }}
+      scrollEventThrottle={50}
+      showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="handled"
+      style={{overflow: 'visible'}}>
+      <View onStartShouldSetResponder={() => true} style={style}>
+        {children}
+      </View>
+    </ScrollView>
+  );
+};
+
 const SearchBar = ({placeholder, onChangeText, value}) => {
   const [isFocused, setIsFocused] = useState(false);
   const colorScheme = useColorScheme();
@@ -457,7 +482,8 @@ const FilterPill = ({
         onBackdropPress={() => setFilterModalVisible(false)}
         backdropTransitionOutTiming={0}
         style={styles.Modal}>
-        <View
+        <VerticalSwipeView
+          onSwipeDown={() => setFilterModalVisible(false)}
           style={[
             styles.ModalInner,
             styles.modalInnerNoPadding,
@@ -509,7 +535,7 @@ const FilterPill = ({
               ) : null}
             </ScrollView>
           </View>
-        </View>
+        </VerticalSwipeView>
       </Modal>
     </>
   );
@@ -631,7 +657,8 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
       onBackdropPress={() => setModalVisible(false)}
       backdropTransitionOutTiming={0}
       style={styles.Modal}>
-      <View
+      <VerticalSwipeView
+        onSwipeDown={() => setModalVisible(false)}
         style={[
           styles.ModalInner,
           {
@@ -764,7 +791,7 @@ const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
             </View>
           </>
         ) : null}
-      </View>
+      </VerticalSwipeView>
       <ChallengeModal
         challengeName={viewingChallenge}
         modalVisible={challengeModalVisible}
@@ -784,7 +811,8 @@ const ChallengeModal = ({challengeName, modalVisible, setModalVisible}) => {
       onBackdropPress={() => setModalVisible(false)}
       backdropTransitionOutTiming={0}
       style={styles.Modal}>
-      <View
+      <VerticalSwipeView
+        onSwipeDown={() => setModalVisible(false)}
         style={[
           styles.ModalInner,
           {
@@ -821,7 +849,7 @@ const ChallengeModal = ({challengeName, modalVisible, setModalVisible}) => {
           ) : null}
           .
         </RText>
-      </View>
+      </VerticalSwipeView>
     </Modal>
   ) : null;
 };
@@ -836,7 +864,8 @@ const ArtifactModal = ({artifactName, modalVisible, setModalVisible}) => {
       onBackdropPress={() => setModalVisible(false)}
       backdropTransitionOutTiming={0}
       style={styles.Modal}>
-      <View
+      <VerticalSwipeView
+        onSwipeDown={() => setModalVisible(false)}
         style={[
           styles.ModalInner,
           {
@@ -867,7 +896,7 @@ const ArtifactModal = ({artifactName, modalVisible, setModalVisible}) => {
         <RText style={[styles.bodyText, {marginBottom: 4}]}>
           {artifact.description}
         </RText>
-      </View>
+      </VerticalSwipeView>
     </Modal>
   ) : null;
 };
@@ -1606,7 +1635,9 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 12,
     padding: 16,
-    paddingBottom: 24,
+    // we want to show ModalInner's background on vertical bounces
+    paddingBottom: 24 + 512,
+    marginBottom: -512,
   },
   modalInnerNoPadding: {
     padding: 0,
