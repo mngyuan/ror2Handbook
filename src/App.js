@@ -44,26 +44,24 @@ const App = () => {
 };
 
 const Root = () => (
-  <>
-    <Drawer.Navigator
-      initialRouteName="Home"
-      drawerType="slide"
-      drawerContentOptions={{
-        labelStyle: {fontFamily: Brand.defaultFont},
-      }}>
-      <Drawer.Screen
-        name="Home"
-        component={React.memo((props) => (
-          <HomeScreen {...props} type={null} />
-        ))}
-      />
-      <Drawer.Screen name="Items" component={ItemScreen} />
-      <Drawer.Screen name="Survivors" component={SurvivorScreen} />
-      <Drawer.Screen name="Challenges" component={ChallengeScreen} />
-      <Drawer.Screen name="Artifacts" component={ArtifactScreen} />
-      <Drawer.Screen name="Settings" component={SettingsScreen} />
-    </Drawer.Navigator>
-  </>
+  <Drawer.Navigator
+    initialRouteName="Home"
+    drawerType="slide"
+    drawerContentOptions={{
+      labelStyle: {fontFamily: Brand.defaultFont},
+    }}>
+    <Drawer.Screen
+      name="Home"
+      component={React.memo((props) => (
+        <HomeScreen {...props} type={null} />
+      ))}
+    />
+    <Drawer.Screen name="Items" component={ItemScreen} />
+    <Drawer.Screen name="Survivors" component={SurvivorScreen} />
+    <Drawer.Screen name="Challenges" component={ChallengeScreen} />
+    <Drawer.Screen name="Artifacts" component={ArtifactScreen} />
+    <Drawer.Screen name="Settings" component={SettingsScreen} />
+  </Drawer.Navigator>
 );
 
 const NavigationRoot = ({children}) => {

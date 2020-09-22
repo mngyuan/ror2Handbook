@@ -68,7 +68,7 @@ const SettingsScreen = ({navigation}) => {
           style={{flex: 1}}
           contentContainerStyle={{padding: 16, flex: 1}}>
           <View style={[styles.aboutRow, styles.aboutRowToggle]}>
-            <View>
+            <View style={{flex: 1, marginRight: 8}}>
               <RText style={styles.aboutRowText}>Dark Mode</RText>
               <RText>
                 If enabled, ignores system settings and uses Dark Mode always

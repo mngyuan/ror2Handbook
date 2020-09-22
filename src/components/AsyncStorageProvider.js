@@ -32,8 +32,8 @@ const AsyncStorageProvider = ({children}) => {
       value={{
         data: asyncStorageData,
         setAsyncStorageItem: async (key, value) => {
-          await AsyncStorage.setItem(key, JSON.stringify(value));
           setAsyncStorageData({...asyncStorageData, [key]: value});
+          await AsyncStorage.setItem(key, JSON.stringify(value));
         },
       }}>
       {children}
