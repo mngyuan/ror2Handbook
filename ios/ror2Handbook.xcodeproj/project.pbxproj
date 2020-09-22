@@ -848,7 +848,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ror2Handbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -875,7 +875,7 @@
 				DEVELOPMENT_TEAM = 7LA52Q9A75;
 				INFOPLIST_FILE = ror2Handbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
