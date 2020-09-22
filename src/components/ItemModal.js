@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
-import {Image, View, useColorScheme} from 'react-native';
+import {Image, Platform, View, useColorScheme} from 'react-native';
 import analytics from '@react-native-firebase/analytics';
 import {DarkTheme} from '@react-navigation/native';
 import {AsyncStorageContext} from './AsyncStorageProvider.js';
@@ -44,7 +44,13 @@ export const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
   return item ? (
     <RModal modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <View style={sharedStyles.itemModalHeader}>
-        <View style={sharedStyles.itemModalHeaderInfo}>
+        <View
+          style={[
+            sharedStyles.itemModalHeaderInfo,
+            Platform.OS !== 'ios'
+              ? sharedStyles.itemModalHeaderInfoNoOverflow
+              : {},
+          ]}>
           <RText
             style={[
               sharedStyles.itemModalHeaderRow,
@@ -85,7 +91,11 @@ export const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
         </View>
         <Image
           source={IMAGES[item.name.replace(/ /g, '')]}
-          style={sharedStyles.itemModalHeaderImage}
+          style={
+            Platform.OS === 'ios'
+              ? sharedStyles.itemModalHeaderImage
+              : sharedStyles.itemModalHeaderImageNoOverflow
+          }
         />
       </View>
       <RText color="secondary" style={sharedStyles.itemModalFlavor}>

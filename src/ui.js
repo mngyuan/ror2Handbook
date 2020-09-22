@@ -1,5 +1,12 @@
 import React, {useContext, useState} from 'react';
-import {ScrollView, StyleSheet, Text, View, useColorScheme} from 'react-native';
+import {
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  useColorScheme,
+} from 'react-native';
 import Modal from 'react-native-modal';
 import {DarkTheme} from '@react-navigation/native';
 import {AsyncStorageContext} from './components/AsyncStorageProvider.js';
@@ -17,10 +24,20 @@ export const RText = ({color = 'primary', style, children, ...props}) => {
   const secondaryColor =
     colorScheme === 'dark' ? 'rgb(170, 170, 172)' : Colors.darkGrey;
   const textColor = color === 'primary' ? primaryColor : secondaryColor;
+  // hacky android line height fix for Space Grotesk
+  const providedFontSize =
+    style?.fontSize ||
+    (style && style.find ? style.find((s) => !!s.fontSize)?.fontSize : null);
 
   return (
     <Text
-      style={[{color: textColor, fontFamily: Brand.defaultFont}, style]}
+      style={[
+        {color: textColor, fontFamily: Brand.defaultFont},
+        Platform.OS !== 'ios'
+          ? {lineHeight: providedFontSize * 1.25 || 20}
+          : {},
+        style,
+      ]}
       {...props}>
       {children}
     </Text>
@@ -96,7 +113,6 @@ const modalStyles = StyleSheet.create({
     margin: 0,
   },
   ModalInner: {
-    flex: 1,
     borderRadius: 12,
     padding: 16,
     // we want to show ModalInner's background on vertical bounces
@@ -124,13 +140,22 @@ export const sharedStyles = StyleSheet.create({
     lineHeight: 30,
   },
   itemModalHeaderInfo: {
+    flex: 1,
     paddingRight: 120,
     marginBottom: 4,
+  },
+  itemModalHeaderInfoNoOverflow: {
+    paddingRight: 8,
   },
   itemModalHeaderImage: {
     position: 'absolute',
     right: 0,
     bottom: 0,
+    height: 120,
+    width: 120,
+    aspectRatio: 1,
+  },
+  itemModalHeaderImageNoOverflow: {
     height: 120,
     width: 120,
     aspectRatio: 1,
