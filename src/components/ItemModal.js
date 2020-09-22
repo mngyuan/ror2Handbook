@@ -78,6 +78,7 @@ export const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
               <RText style={{color: getItemRarityColor(item)}}>
                 {item.rarity}
               </RText>
+              {item.cooldown && <RText> {item.cooldown}</RText>}
             </RText>
             {item.unlock && (
               <View style={[styles.itemModalHeaderRow]}>
