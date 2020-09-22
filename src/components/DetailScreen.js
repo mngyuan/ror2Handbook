@@ -17,7 +17,7 @@ import {
   FontStyles,
   SEARCHABLE_DATA,
 } from '../const.js';
-import {RText} from '../ui.js';
+import {RText, sharedStyles} from '../ui.js';
 import IMAGES from '../../imgs/images.js';
 
 export const DetailScreen = ({route}) => {
@@ -70,10 +70,10 @@ export const DetailScreen = ({route}) => {
           <View style={styles.detailHeaderInfo}>
             <RText style={styles.detailSectionHeader}>{survivor.name}</RText>
             {survivor.stats.Unlock ? (
-              <RText style={[styles.bodyText, {marginBottom: 4}]}>
+              <RText style={[sharedStyles.bodyText, {marginBottom: 4}]}>
                 Unlocked by{' '}
                 <RText
-                  style={styles.achievementNameLink}
+                  style={sharedStyles.achievementNameLink}
                   onPress={() => {
                     setViewingChallenge(survivor.stats.Unlock);
                     setChallengeModalVisible(true);
@@ -83,7 +83,7 @@ export const DetailScreen = ({route}) => {
               </RText>
             ) : null}
             {survivor.description ? (
-              <RText style={[styles.bodyText, {marginBottom: 4}]}>
+              <RText style={[sharedStyles.bodyText, {marginBottom: 4}]}>
                 {survivor.description}
               </RText>
             ) : null}
@@ -119,10 +119,11 @@ export const DetailScreen = ({route}) => {
                     {skill.Cooldown ? <RText>, {skill.Cooldown}</RText> : null}
                   </RText>
                   {skill.Notes && skill.Notes.includes('Unlock') ? (
-                    <RText style={[styles.bodyText, styles.detailSkillUnlock]}>
+                    <RText
+                      style={[sharedStyles.bodyText, styles.detailSkillUnlock]}>
                       Unlocked by{' '}
                       <RText
-                        style={styles.achievementNameLink}
+                        style={sharedStyles.achievementNameLink}
                         onPress={() => {
                           const unlock = skill.Notes.match(
                             /Unlocked via the (.*) Challenge\./,
@@ -139,7 +140,10 @@ export const DetailScreen = ({route}) => {
                     </RText>
                   ) : null}
                   <RText
-                    style={[styles.bodyText, styles.detailSkillDescription]}>
+                    style={[
+                      sharedStyles.bodyText,
+                      styles.detailSkillDescription,
+                    ]}>
                     {skill.Description.replace(/\n/g, '')}
                   </RText>
                   {skill['Proc Coefficient'] ? (
@@ -227,10 +231,5 @@ const styles = StyleSheet.create({
   detailSkillDescription: {
     marginTop: 4,
     marginBottom: 4,
-  },
-  achievementNameLink: {
-    color: Colors.achievementColor,
-    ...FontStyles.medium,
-    fontSize: FontSize.bodyText,
   },
 });
