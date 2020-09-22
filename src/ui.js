@@ -73,7 +73,12 @@ export const VerticalSwipeView = ({
   );
 };
 
-export const RModal = ({modalVisible, setModalVisible, children}) => {
+export const RModal = ({
+  modalVisible,
+  setModalVisible,
+  modalInnerNoPadding = false,
+  children,
+}) => {
   const systemColorScheme = useColorScheme();
   const {data: asyncStorageData} = useContext(AsyncStorageContext);
 
@@ -91,6 +96,7 @@ export const RModal = ({modalVisible, setModalVisible, children}) => {
         onSwipeDown={() => setModalVisible(false)}
         style={[
           modalStyles.ModalInner,
+          modalInnerNoPadding ? sharedStyles.modalInnerNoPadding : {},
           {
             backgroundColor:
               colorScheme === 'dark'
@@ -119,6 +125,9 @@ const modalStyles = StyleSheet.create({
     paddingBottom: 24 + 512,
     marginBottom: -512,
   },
+});
+
+export const sharedStyles = StyleSheet.create({
   modalInnerNoPadding: {
     padding: 0,
   },
@@ -126,9 +135,6 @@ const modalStyles = StyleSheet.create({
     padding: 12,
     paddingBottom: 24,
   },
-});
-
-export const sharedStyles = StyleSheet.create({
   itemModalHeader: {
     position: 'relative',
     flexDirection: 'row',

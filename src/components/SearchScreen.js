@@ -14,7 +14,6 @@ import {
   View,
   useColorScheme,
 } from 'react-native';
-import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Ionicons';
 import analytics from '@react-native-firebase/analytics';
 import {DarkTheme} from '@react-navigation/native';
@@ -23,7 +22,7 @@ import {AsyncStorageContext} from './AsyncStorageProvider.js';
 import {ChallengeModal} from './ChallengeModal.js';
 import {ItemModal} from './ItemModal.js';
 import {Colors, FontStyles, FontSize, HIDE_LIST} from '../const.js';
-import {RText, VerticalSwipeView} from '../ui.js';
+import {RModal, RText, sharedStyles} from '../ui.js';
 
 import {
   SEARCHABLE_DATA,
@@ -264,66 +263,50 @@ const FilterPill = ({
             : filter || label}
         </RText>
       </Pill>
-      <Modal
-        isVisible={filterModalVisible}
-        onBackdropPress={() => setFilterModalVisible(false)}
-        backdropTransitionOutTiming={0}
-        style={styles.Modal}>
-        <VerticalSwipeView
-          onSwipeDown={() => setFilterModalVisible(false)}
-          style={[
-            styles.ModalInner,
-            styles.modalInnerNoPadding,
-            {
-              backgroundColor:
-                colorScheme === 'dark'
-                  ? DarkTheme.colors.background
-                  : Colors.white,
-            },
-          ]}>
-          <View>
-            <RText style={styles.filterName}>{label}</RText>
-            <ScrollView
-              contentContainerStyle={[styles.modalInnerPadding]}
-              keyboardShouldPersistTaps="handled"
-              scrollEnabled={false}>
-              {filterOptions.map((option) => (
-                <PickerModalRow
-                  key={option}
-                  option={option}
-                  selected={
-                    multi
-                      ? (displayFilter || []).includes(option)
-                      : displayFilter === option
-                  }
-                  multi={multi}
-                  onSelect={(select) => {
-                    if (multi) {
-                      const newFilter = select
-                        ? [...(displayFilter || []), option]
-                        : (displayFilter || []).filter((f) => f !== option);
-                      setDisplayFilter(newFilter.length > 0 ? newFilter : null);
-                    } else {
-                      setDisplayFilter(select ? option : '');
-                      onSetFilter(select ? option : '');
-                      setFilterModalVisible(false);
-                    }
-                  }}
-                />
-              ))}
-              {multi ? (
-                <Button
-                  title="Apply"
-                  onPress={() => {
-                    onSetFilter(displayFilter);
-                    setFilterModalVisible(false);
-                  }}
-                />
-              ) : null}
-            </ScrollView>
-          </View>
-        </VerticalSwipeView>
-      </Modal>
+      <RModal
+        modalVisible={filterModalVisible}
+        setModalVisible={setFilterModalVisible}
+        modalInnerNoPadding>
+        <RText style={styles.filterName}>{label}</RText>
+        <ScrollView
+          contentContainerStyle={[sharedStyles.modalInnerPadding]}
+          keyboardShouldPersistTaps="handled"
+          scrollEnabled={false}>
+          {filterOptions.map((option) => (
+            <PickerModalRow
+              key={option}
+              option={option}
+              selected={
+                multi
+                  ? (displayFilter || []).includes(option)
+                  : displayFilter === option
+              }
+              multi={multi}
+              onSelect={(select) => {
+                if (multi) {
+                  const newFilter = select
+                    ? [...(displayFilter || []), option]
+                    : (displayFilter || []).filter((f) => f !== option);
+                  setDisplayFilter(newFilter.length > 0 ? newFilter : null);
+                } else {
+                  setDisplayFilter(select ? option : '');
+                  onSetFilter(select ? option : '');
+                  setFilterModalVisible(false);
+                }
+              }}
+            />
+          ))}
+          {multi ? (
+            <Button
+              title="Apply"
+              onPress={() => {
+                onSetFilter(displayFilter);
+                setFilterModalVisible(false);
+              }}
+            />
+          ) : null}
+        </ScrollView>
+      </RModal>
     </>
   );
 };
@@ -851,27 +834,5 @@ const styles = StyleSheet.create({
   },
   pickerSelectedText: {
     color: Colors.selected,
-  },
-  Modal: {
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    flex: 1,
-    flexDirection: 'row',
-    margin: 0,
-  },
-  ModalInner: {
-    flex: 1,
-    borderRadius: 12,
-    padding: 16,
-    // we want to show ModalInner's background on vertical bounces
-    paddingBottom: 24 + 512,
-    marginBottom: -512,
-  },
-  modalInnerNoPadding: {
-    padding: 0,
-  },
-  modalInnerPadding: {
-    padding: 12,
-    paddingBottom: 24,
   },
 });
