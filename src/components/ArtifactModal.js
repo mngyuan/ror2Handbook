@@ -14,7 +14,13 @@ export const ArtifactModal = ({
   return artifact ? (
     <RModal modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <View style={sharedStyles.itemModalHeader}>
-        <View style={sharedStyles.itemModalHeaderInfo}>
+        <View
+          style={[
+            sharedStyles.itemModalHeaderInfo,
+            Platform.OS !== 'ios'
+              ? sharedStyles.itemModalHeaderInfoNoOverflow
+              : {},
+          ]}>
           <RText
             style={[sharedStyles.itemModalHeaderRow, sharedStyles.ModalName]}>
             {artifact.name}
@@ -22,7 +28,11 @@ export const ArtifactModal = ({
         </View>
         <Image
           source={IMAGES[artifact.name.replace(/ /g, '')]}
-          style={sharedStyles.itemModalHeaderImage}
+          style={
+            Platform.OS === 'ios'
+              ? sharedStyles.itemModalHeaderImage
+              : sharedStyles.itemModalHeaderImageNoOverflow
+          }
         />
       </View>
       <RText style={[styles.artifactCode]}>
