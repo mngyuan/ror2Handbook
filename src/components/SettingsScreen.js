@@ -86,7 +86,10 @@ const SettingsScreen = ({navigation}) => {
           </View>
           <View style={styles.aboutRow}>
             <RText style={styles.aboutRowText}>
-              Version: {DeviceInfo.getReadableVersion()}
+              Version:{' '}
+              {Platform.OS === 'ios'
+                ? DeviceInfo.getReadableVersion()
+                : DeviceInfo.getVersion()}
             </RText>
           </View>
           <TouchableOpacity
