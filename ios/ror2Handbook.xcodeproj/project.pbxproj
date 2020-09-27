@@ -11,6 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1A589F154815421793A87F3C /* FiraMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F388966679743CD8D88A54A /* FiraMono-Bold.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -19,6 +20,7 @@
 		43D1B198BFAA0C092B5939AC /* libPods-ror2Handbook-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1938ACB6791E755D446BC42 /* libPods-ror2Handbook-tvOS.a */; };
 		4B1C090F343148DAA47134EC /* SpaceMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09BFDA7E89404F62BAB5CF58 /* SpaceMono-Regular.ttf */; };
 		65C1AA28A0EB4012AE1E1A7D /* SpaceGroteskVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F93115CB3A43EAA903B412 /* SpaceGroteskVariable.ttf */; };
+		66F6587C8F064D0E9F3B1055 /* FiraMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C3E0CD8B3C146F992D6E1AC /* FiraMono-Regular.ttf */; };
 		7627D1A81FC1496F9A5A7452 /* SpaceGrotesk-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97ABCE97D6C942E9B90A98B8 /* SpaceGrotesk-Light.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8644B094B63441EE80281B3C /* SpaceGrotesk-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C3E7B1536FD84B83911D86A0 /* SpaceGrotesk-Regular.otf */; };
@@ -30,6 +32,7 @@
 		C6362F4E518C430B89CE7B67 /* SpaceMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6BFE79BB2C34685B5D1D7E8 /* SpaceMono-Italic.ttf */; };
 		D02E681350C05773A40F0368 /* libPods-ror2Handbook-ror2HandbookTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 585949A854FC054EF0BCCC50 /* libPods-ror2Handbook-ror2HandbookTests.a */; };
 		DE5EA4C62EA658EA109385C1 /* libPods-ror2Handbook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBD0A4EAB21A544B61B8341 /* libPods-ror2Handbook.a */; };
+		E01A59AA0D744F03B2507C58 /* FiraMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DF0773DEFFFF419DB7B7D647 /* FiraMono-Medium.ttf */; };
 		FE3FE2EA2502F99500079666 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE3FE2E92502F99500079666 /* GoogleService-Info.plist */; };
 		FE3FE2EB2502F99500079666 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE3FE2E92502F99500079666 /* GoogleService-Info.plist */; };
 		FE3FE2EC2502F99500079666 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE3FE2E92502F99500079666 /* GoogleService-Info.plist */; };
@@ -63,6 +66,7 @@
 		088CC437DDFD9412CB8722F0 /* Pods-ror2Handbook-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-tvOS/Pods-ror2Handbook-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		09BFDA7E89404F62BAB5CF58 /* SpaceMono-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceMono-Regular.ttf"; path = "../assets/fonts/SpaceMono-Regular.ttf"; sourceTree = "<group>"; };
 		0BBD0A4EAB21A544B61B8341 /* libPods-ror2Handbook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ror2Handbook.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C3E0CD8B3C146F992D6E1AC /* FiraMono-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraMono-Regular.ttf"; path = "../assets/fonts/FiraMono-Regular.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* RoR2 Handbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RoR2 Handbook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ror2Handbook/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ror2Handbook/AppDelegate.m; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 		2E1147B119568D7D1913F9A9 /* Pods-ror2Handbook-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-tvOSTests/Pods-ror2Handbook-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		33376DBFDA98AD7F498907D2 /* Pods-ror2Handbook-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-tvOS/Pods-ror2Handbook-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		49F93115CB3A43EAA903B412 /* SpaceGroteskVariable.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SpaceGroteskVariable.ttf; path = ../assets/fonts/SpaceGroteskVariable.ttf; sourceTree = "<group>"; };
+		4F388966679743CD8D88A54A /* FiraMono-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraMono-Bold.ttf"; path = "../assets/fonts/FiraMono-Bold.ttf"; sourceTree = "<group>"; };
 		585949A854FC054EF0BCCC50 /* libPods-ror2Handbook-ror2HandbookTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ror2Handbook-ror2HandbookTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ADFF6AB3918481FB5DE58A0 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		5B6ACC8885FC4BD443B38EC7 /* Pods-ror2Handbook-ror2HandbookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-ror2HandbookTests.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-ror2HandbookTests/Pods-ror2Handbook-ror2HandbookTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +114,7 @@
 		D4BF3BB72A6FF94B0116BC63 /* Pods-ror2Handbook-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ror2Handbook-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ror2Handbook-tvOSTests/Pods-ror2Handbook-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		D6BFE79BB2C34685B5D1D7E8 /* SpaceMono-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceMono-Italic.ttf"; path = "../assets/fonts/SpaceMono-Italic.ttf"; sourceTree = "<group>"; };
 		D748CE87DC04453A91F23061 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		DF0773DEFFFF419DB7B7D647 /* FiraMono-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraMono-Medium.ttf"; path = "../assets/fonts/FiraMono-Medium.ttf"; sourceTree = "<group>"; };
 		E69A4518788843B0AE271537 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -228,6 +234,9 @@
 				BF1E79A5319D4B23AE376124 /* Octicons.ttf */,
 				84C914F16311453596E8E219 /* SimpleLineIcons.ttf */,
 				95976E4F579740E090FC4AC8 /* Zocial.ttf */,
+				4F388966679743CD8D88A54A /* FiraMono-Bold.ttf */,
+				DF0773DEFFFF419DB7B7D647 /* FiraMono-Medium.ttf */,
+				0C3E0CD8B3C146F992D6E1AC /* FiraMono-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -450,6 +459,9 @@
 				9228F5445B7849E685653531 /* SpaceMono-BoldItalic.ttf in Resources */,
 				C6362F4E518C430B89CE7B67 /* SpaceMono-Italic.ttf in Resources */,
 				4B1C090F343148DAA47134EC /* SpaceMono-Regular.ttf in Resources */,
+				1A589F154815421793A87F3C /* FiraMono-Bold.ttf in Resources */,
+				E01A59AA0D744F03B2507C58 /* FiraMono-Medium.ttf in Resources */,
+				66F6587C8F064D0E9F3B1055 /* FiraMono-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

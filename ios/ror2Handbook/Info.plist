@@ -67,6 +67,9 @@
 		<string>SpaceMono-BoldItalic.ttf</string>
 		<string>SpaceMono-Italic.ttf</string>
 		<string>SpaceMono-Regular.ttf</string>
+		<string>FiraMono-Bold.ttf</string>
+		<string>FiraMono-Medium.ttf</string>
+		<string>FiraMono-Regular.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

@@ -1,6 +1,6 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
-import {FontStyles, SEARCHABLE_DATA} from '../const.js';
+import {Image, Platform, StyleSheet, View} from 'react-native';
+import {SEARCHABLE_DATA} from '../const.js';
 import {RModal, RText, sharedStyles} from '../ui.js';
 import IMAGES from '../../imgs/images.js';
 
@@ -51,7 +51,7 @@ export const ArtifactModal = ({
 
 const styles = StyleSheet.create({
   artifactCode: {
-    ...FontStyles.boldMono,
+    fontFamily: 'FiraMono-Regular',
     textAlign: 'center',
     marginBottom: 16,
   },
