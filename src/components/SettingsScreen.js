@@ -29,6 +29,7 @@ const SUPPORT_EMAIL = 'support@mngyuan.com';
 const SUPPORT_EMAIL_SUBJECT = 'Help with RoR2 Handbook';
 const SUPPORT_EMAIL_BODY = 'Describe your problem';
 const SHARE_URL = 'https://ror2handbook.app';
+const DONATE_URL = 'https://buymeacoffee.com/mngyuan';
 
 const SettingsScreen = ({navigation}) => {
   const systemColorScheme = useColorScheme();
@@ -40,6 +41,8 @@ const SettingsScreen = ({navigation}) => {
     ? 'dark'
     : systemColorScheme;
 
+  const versionString = `Version: ${DeviceInfo.getVersion()} Build: ${DeviceInfo.getBuildNumber()}`;
+
   return (
     <SafeAreaView
       style={[
@@ -50,7 +53,7 @@ const SettingsScreen = ({navigation}) => {
         },
       ]}>
       <View style={styles.DrawerScreenHeader}>
-        <RText style={styles.screenHeaderText}>About</RText>
+        <RText style={styles.screenHeaderText}>Settings</RText>
         <TouchableOpacity
           onPress={() => navigation.openDrawer()}
           style={styles.screenHeaderBack}>
@@ -85,12 +88,7 @@ const SettingsScreen = ({navigation}) => {
             />
           </View>
           <View style={styles.aboutRow}>
-            <RText style={styles.aboutRowText}>
-              Version:{' '}
-              {Platform.OS === 'ios'
-                ? DeviceInfo.getReadableVersion()
-                : DeviceInfo.getVersion()}
-            </RText>
+            <RText style={styles.aboutRowText}>{versionString}</RText>
           </View>
           <TouchableOpacity
             style={[styles.aboutRow]}
@@ -111,7 +109,7 @@ const SettingsScreen = ({navigation}) => {
             style={[styles.aboutRow]}
             onPress={() => {
               Linking.openURL(
-                `mailto:${SUPPORT_EMAIL}?subject=${SUPPORT_EMAIL_SUBJECT}&body=${SUPPORT_EMAIL_BODY}`,
+                `mailto:${SUPPORT_EMAIL}?subject=${SUPPORT_EMAIL_SUBJECT}&body=${versionString}\n${SUPPORT_EMAIL_BODY}`,
               );
               analytics().logEvent('support');
             }}>
@@ -145,6 +143,26 @@ const SettingsScreen = ({navigation}) => {
               }
             />
           </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.aboutRow]}
+            onPress={() => {
+              Linking.openURL(DONATE_URL);
+              analytics().logEvent('donate');
+            }}>
+            <RText style={styles.aboutRowText}>Support the developer</RText>
+            <Icon
+              name="chevron-forward"
+              size={20}
+              color={
+                colorScheme === 'dark' ? DarkTheme.colors.text : Colors.black
+              }
+            />
+          </TouchableOpacity>
+          <RText>
+            Thanks for using the app! This app is developed by one person. If
+            you'd like to support me or say thanks, I'd appreciate that very
+            much.
+          </RText>
         </ScrollView>
       </View>
     </SafeAreaView>
