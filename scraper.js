@@ -3,6 +3,12 @@ const fs = require('fs');
 const https = require('https');
 const puppeteer = require('puppeteer');
 
+const CLI_DOC = `scraper.js
+
+Usage
+node scraper.js [artifacts|survivors|items|challenges|equipment|gencode] [--single URL] [--gamepedia]
+`;
+
 const imageDirPath = './imgs';
 const itemDataPath = './item_data.json';
 const gamepediaItemDataPath = './gamepedia_item_data.json';
@@ -792,6 +798,7 @@ const main = () => {
       generateImageRequires();
       break;
     default:
+      console.log(CLI_DOC);
       break;
   }
 };
