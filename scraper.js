@@ -6,15 +6,11 @@ const puppeteer = require('puppeteer');
 const CLI_DOC = `scraper.js
 
 Usage
-node scraper.js [artifacts|survivors|items|challenges|equipment|gencode] [--single URL] [--gamepedia]
-`;
+node scraper.js [artifacts|survivors|items|challenges|equipment|gencode] [--single URL]`;
 
 const imageDirPath = './imgs';
-const itemDataPath = './item_data.json';
 const gamepediaItemDataPath = './gamepedia_item_data.json';
-const eqpDataPath = './eqp_data.json';
 const gamepediaEqpDataPath = './gamepedia_eqp_data.json';
-const survivorDataPath = './survivor_data.json';
 const gamepediaSurvivorDataPath = './gamepedia_survivor_data.json';
 const challengeDataPath = './challenge_data.json';
 const artifactDataPath = './artifact_data.json';
@@ -626,12 +622,8 @@ const main = () => {
   const positionalArgs = args.filter((s) => !s.startsWith('-'));
   const flags = args.filter((s) => s.startsWith('-'));
   const action = positionalArgs[0];
-  const baseUrl = flags.includes('--gamepedia')
-    ? 'https://riskofrain2.gamepedia.com'
-    : 'https://riskofrain2.fandom.com/wiki';
-  const rootUrl = flags.includes('--gamepedia')
-    ? 'https://riskofrain2.gamepedia.com'
-    : 'https://riskofrain2.fandom.com';
+  const baseUrl = 'https://riskofrain2.gamepedia.com/wiki';
+  const rootUrl = 'https://riskofrain2.gamepedia.com';
 
   switch (action) {
     case 'items':
@@ -646,9 +638,7 @@ const main = () => {
       ];
       scrape({
         seed: positionalArgs[1] || ITEM_SEED,
-        visitCallback: flags.includes('--gamepedia')
-          ? visitItemGamepedia
-          : visitItem,
+        visitCallback: visitItemGamepedia,
         ignoreList: ITEM_IGNORE_LIST,
         baseUrl: rootUrl,
         single: flags.includes('--single'),
@@ -657,9 +647,7 @@ const main = () => {
           if (flags.includes('--single')) {
             console.log(itemData);
           } else {
-            const outputPath = flags.includes('--gamepedia')
-              ? gamepediaItemDataPath
-              : itemDataPath;
+            const outputPath = gamepediaItemDataPath;
             fs.writeFile(outputPath, JSON.stringify(itemData), (err) => {
               if (err) throw err;
               console.log(`written to ${outputPath}`);
@@ -678,9 +666,7 @@ const main = () => {
       ];
       scrape({
         seed: positionalArgs[1] || EQP_SEED,
-        visitCallback: flags.includes('--gamepedia')
-          ? visitEqpGamepedia
-          : visitEqp,
+        visitCallback: visitEqpGamepedia,
         ignoreList: EQP_IGNORE_LIST,
         baseUrl: rootUrl,
         single: flags.includes('--single'),
@@ -689,9 +675,7 @@ const main = () => {
           if (flags.includes('--single')) {
             console.log(eqpData);
           } else {
-            const outputPath = flags.includes('--gamepedia')
-              ? gamepediaEqpDataPath
-              : eqpDataPath;
+            const outputPath = gamepediaEqpDataPath;
             fs.writeFile(outputPath, JSON.stringify(eqpData), (err) => {
               if (err) throw err;
               console.log(`written to ${outputPath}`);
@@ -705,27 +689,21 @@ const main = () => {
       const SURVIVOR_IGNORE_LIST = [];
       scrape({
         seed: positionalArgs[1] || SURVIVOR_SEED,
-        visitCallback: flags.includes('--gamepedia')
-          ? visitSurvivorGamepedia
-          : visitSurvivor,
+        visitCallback: visitSurvivorGamepedia,
         ignoreList: SURVIVOR_IGNORE_LIST,
         baseUrl: rootUrl,
         single: flags.includes('--single'),
-        genUrls: flags.includes('--gamepedia')
-          ? async (page, linkSeedSelector = '.gallery .gallerytext a') =>
-              await page.$$eval(linkSeedSelector, (links) =>
-                links.map((linkNode) => linkNode.getAttribute('href')),
-              )
-          : genUrlsToFollow,
+        genUrls: async (page, linkSeedSelector = '.gallery .gallerytext a') =>
+          await page.$$eval(linkSeedSelector, (links) =>
+            links.map((linkNode) => linkNode.getAttribute('href')),
+          ),
         skipSeed: true,
       })
         .then((survivorData) => {
           if (flags.includes('--single')) {
             console.log(survivorData);
           } else {
-            const outputPath = flags.includes('--gamepedia')
-              ? gamepediaSurvivorDataPath
-              : survivorDataPath;
+            const outputPath = gamepediaSurvivorDataPath;
             fs.writeFile(outputPath, JSON.stringify(survivorData), (err) => {
               if (err) throw err;
               console.log(`written to ${outputPath}`);
@@ -735,12 +713,6 @@ const main = () => {
         .catch(console.error);
       break;
     case 'challenges':
-      if (!flags.includes('--gamepedia')) {
-        return console.error(
-          'Challenges must be scraped from gamepedia; ' +
-            "I didn't bother making compatibility with fandom",
-        );
-      }
       const CHALLENGE_SEED = `${baseUrl}/Challenges`;
       scrape({
         seed: positionalArgs[1] || CHALLENGE_SEED,
@@ -765,12 +737,6 @@ const main = () => {
         .catch(console.error);
       break;
     case 'artifacts':
-      if (!flags.includes('--gamepedia')) {
-        return console.error(
-          'Artifacts must be scraped from gamepedia; ' +
-            "I didn't bother making compatibility with fandom",
-        );
-      }
       const ARTIFACT_SEED = `${baseUrl}/Artifacts`;
       scrape({
         seed: positionalArgs[1] || ARTIFACT_SEED,
