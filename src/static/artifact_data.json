@@ -3,112 +3,113 @@
     "name": "Artifact of Chaos",
     "description": "Friendly fire is enabled for both survivors and monsters alike.",
     "code": "●▲●●▲●●▲●",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/ad/Artifact_of_Chaos.png/revision/latest/scale-to-width-down/64?cb=20200331162542",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/ad/Artifact_of_Chaos.png/revision/latest/scale-to-width-down/64?cb=20200331162541",
     "imgName": "Artifact of Chaos.png"
   },
   "Artifact of Command": {
     "name": "Artifact of Command",
     "description": "Choose your items.",
     "code": "■■■■■■▲▲▲",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/3a/Artifact_of_Command.png/revision/latest/scale-to-width-down/64?cb=20200331162544",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/3a/Artifact_of_Command.png/revision/latest/scale-to-width-down/64?cb=20200331162543",
     "imgName": "Artifact of Command.png"
   },
   "Artifact of Death": {
     "name": "Artifact of Death",
     "description": "When one player dies, everyone dies. Enable only if you want to truly put your teamwork and individual skill to the ultimate test.",
     "code": "●●●■▲■●▲●",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/5a/Artifact_of_Death.png/revision/latest/scale-to-width-down/64?cb=20200331162546",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/5a/Artifact_of_Death.png/revision/latest/scale-to-width-down/64?cb=20200331162545",
     "imgName": "Artifact of Death.png"
   },
   "Artifact of Dissonance": {
     "name": "Artifact of Dissonance",
     "description": "Monsters can appear outside their usual environments.",
     "code": "●■■■■■■■●",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/87/Artifact_of_Dissonance.png/revision/latest/scale-to-width-down/64?cb=20200331162547",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/87/Artifact_of_Dissonance.png/revision/latest/scale-to-width-down/64?cb=20200331162546",
     "imgName": "Artifact of Dissonance.png"
   },
   "Artifact of Enigma": {
     "name": "Artifact of Enigma",
     "description": "Spawn with a random equipment that changes every time it's activated.",
     "code": "♦■■▲■▲●♦♦",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/ed/Artifact_of_Enigma.png/revision/latest/scale-to-width-down/64?cb=20200331162548",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/ed/Artifact_of_Enigma.png/revision/latest/scale-to-width-down/64?cb=20200331162547",
     "imgName": "Artifact of Enigma.png"
   },
   "Artifact of Evolution": {
     "name": "Artifact of Evolution",
     "description": "Monsters gain items between stages.",
     "code": "♦♦♦■■■●●●",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/fd/Artifact_of_Evolution.png/revision/latest/scale-to-width-down/64?cb=20200331162550",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/fd/Artifact_of_Evolution.png/revision/latest/scale-to-width-down/64?cb=20200331162549",
     "imgName": "Artifact of Evolution.png"
   },
   "Artifact of Frailty": {
     "name": "Artifact of Frailty",
     "description": "Fall damage is doubled and lethal.",
     "code": "●●●▲●▲▲▲▲",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/12/Artifact_of_Frailty.png/revision/latest/scale-to-width-down/64?cb=20200331162552",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/12/Artifact_of_Frailty.png/revision/latest/scale-to-width-down/64?cb=20200331162551",
     "imgName": "Artifact of Frailty.png"
   },
   "Artifact of Glass": {
     "name": "Artifact of Glass",
     "description": "Allies deal 500% damage, but have 10% health.",
     "code": "♦♦♦♦♦♦♦♦♦",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e1/Artifact_of_Glass.png/revision/latest/scale-to-width-down/64?cb=20200331162554",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e1/Artifact_of_Glass.png/revision/latest/scale-to-width-down/64?cb=20200331162553",
     "imgName": "Artifact of Glass.png"
   },
   "Artifact of Honor": {
     "name": "Artifact of Honor",
     "description": "Enemies can only spawn as elites.",
     "code": "■■■■▲■■■■",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c1/Artifact_of_Honor.png/revision/latest/scale-to-width-down/64?cb=20200331162555",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c1/Artifact_of_Honor.png/revision/latest/scale-to-width-down/64?cb=20200331162554",
     "imgName": "Artifact of Honor.png"
   },
   "Artifact of Kin": {
     "name": "Artifact of Kin",
     "description": "Monsters will be of only one type per stage.",
     "code": "●▲▲♦●▲♦♦●",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/54/Artifact_of_Kin.png/revision/latest/scale-to-width-down/64?cb=20200331162556",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/54/Artifact_of_Kin.png/revision/latest/scale-to-width-down/64?cb=20200331162555",
     "imgName": "Artifact of Kin.png"
   },
   "Artifact of Metamorphosis": {
     "name": "Artifact of Metamorphosis",
     "description": "Players always spawn as a random survivor.",
     "code": "♦■●♦■●♦■●",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f1/Artifact_of_Metamorphosis.png/revision/latest/scale-to-width-down/64?cb=20200331162558",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f1/Artifact_of_Metamorphosis.png/revision/latest/scale-to-width-down/64?cb=20200331162557",
     "imgName": "Artifact of Metamorphosis.png"
   },
   "Artifact of Sacrifice": {
     "name": "Artifact of Sacrifice",
     "description": "Monsters drop items on death, but Chests no longer spawn.",
     "code": "▲▲▲▲▲▲▲♦▲",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/26/Artifact_of_Sacrifice.png/revision/latest/scale-to-width-down/64?cb=20200331162560",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/26/Artifact_of_Sacrifice.png/revision/latest/scale-to-width-down/64?cb=20200331162559",
     "imgName": "Artifact of Sacrifice.png"
   },
   "Artifact of Soul": {
     "name": "Artifact of Soul",
     "description": "Wisps emerge from defeated monsters.",
     "code": "●■●●♦●■♦■",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9a/Artifact_of_Soul.png/revision/latest/scale-to-width-down/64?cb=20200331162602",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9a/Artifact_of_Soul.png/revision/latest/scale-to-width-down/64?cb=20200331162601",
     "imgName": "Artifact of Soul.png"
   },
   "Artifact of Spite": {
     "name": "Artifact of Spite",
     "description": "Enemies drop multiple exploding bombs on death.",
     "code": "▲●▲●●●▲●▲",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/26/Artifact_of_Spite.png/revision/latest/scale-to-width-down/64?cb=20200331162604",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/26/Artifact_of_Spite.png/revision/latest/scale-to-width-down/64?cb=20200331162603",
     "imgName": "Artifact of Spite.png"
   },
   "Artifact of Swarms": {
     "name": "Artifact of Swarms",
     "description": "Monster spawns are doubled, but monster maximum health is halved.",
     "code": "●●▲▲♦▲▲●●",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c8/Artifact_of_Swarms.png/revision/latest/scale-to-width-down/64?cb=20200331162606",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c8/Artifact_of_Swarms.png/revision/latest/scale-to-width-down/64?cb=20200331162605",
     "imgName": "Artifact of Swarms.png"
   },
   "Artifact of Vengeance": {
     "name": "Artifact of Vengeance",
     "description": "Your relentless doppelganger will invade every 10 minutes.",
     "code": "♦■■♦●■♦■■",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d8/Artifact_of_Vengeance.png/revision/latest/scale-to-width-down/64?cb=20200331162541",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d8/Artifact_of_Vengeance.png/revision/latest/scale-to-width-down/64?cb=20200331162540",
     "imgName": "Artifact of Vengeance.png"
   }
 }
+
