@@ -143,26 +143,6 @@ const SettingsScreen = ({navigation}) => {
               }
             />
           </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.aboutRow]}
-            onPress={() => {
-              Linking.openURL(DONATE_URL);
-              analytics().logEvent('donate');
-            }}>
-            <RText style={styles.aboutRowText}>Support the developer</RText>
-            <Icon
-              name="chevron-forward"
-              size={20}
-              color={
-                colorScheme === 'dark' ? DarkTheme.colors.text : Colors.black
-              }
-            />
-          </TouchableOpacity>
-          <RText>
-            Thanks for using the app! This app is developed by one person. If
-            you'd like to support me or say thanks, I'd appreciate that very
-            much.
-          </RText>
         </ScrollView>
       </View>
     </SafeAreaView>
