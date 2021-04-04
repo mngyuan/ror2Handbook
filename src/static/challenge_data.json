@@ -58,10 +58,10 @@
   "Warrior": {
     "name": "Warrior",
     "description": "Reach and complete the 3rd Teleporter event without dying.",
-    "unlock": "Huntress",
+    "unlock": "Bandit",
     "category": "survivors",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/6f/Huntress.png/revision/latest/scale-to-width-down/64?cb=20200129200650",
-    "imgName": "Huntress.png"
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/1f/Bandit.png/revision/latest/scale-to-width-down/64?cb=20210326045945",
+    "imgName": "Bandit.png"
   },
   "Washed Away": {
     "name": "Washed Away",
@@ -76,7 +76,7 @@
     "description": "Fail the Shrine of Chance 3 times in a row.",
     "unlock": "Paul's Goat Hoof",
     "category": "items",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/4a/Paul%27s_Goat_Hoof.png/revision/latest/scale-to-width-down/64?cb=20200129193127",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/4a/Paul%27s_Goat_Hoof.png/revision/latest/scale-to-width-down/64?cb=20210329070130",
     "imgName": "Paul's Goat Hoof.png"
   },
   "...Maybe One More.": {
@@ -100,13 +100,13 @@
     "description": "Activate 6 turrets in a single run.",
     "unlock": "Squid Polyp",
     "category": "items",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/de/Squid_Polyp.png/revision/latest/scale-to-width-down/64?cb=20200331154526",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/de/Squid_Polyp.png/revision/latest/scale-to-width-down/64?cb=20210329071113",
     "imgName": "Squid Polyp.png"
   },
   "Blockade Breaker": {
     "name": "Blockade Breaker",
     "description": "Kill 15 boss monsters in a single run.",
-    "unlock": "Visions of Heresy\nStrides of Heresy",
+    "unlock": "Visions of Heresy\nHooks of Heresy",
     "category": "items",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/31/Visions_of_Heresy.png/revision/latest/scale-to-width-down/64?cb=20200129235347",
     "imgName": "Visions of Heresy.png"
@@ -196,7 +196,7 @@
     "description": "Defeat the Teleporter boss under 15 seconds.",
     "unlock": "Rusted Key",
     "category": "items",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9b/Rusted_Key.png/revision/latest/scale-to-width-down/64?cb=20200129193149",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9b/Rusted_Key.png/revision/latest/scale-to-width-down/64?cb=20210326082529",
     "imgName": "Rusted Key.png"
   },
   "Learning Process": {
@@ -463,6 +463,38 @@
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d1/Ion_Surge.png/revision/latest/scale-to-width-down/64?cb=20200130005148",
     "imgName": "Ion Surge.png"
   },
+  "Bandit: B&E": {
+    "name": "Bandit: B&E",
+    "description": "As Bandit, kill the final boss with 'Lights Out'.",
+    "unlock": "Desperado",
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/57/Desperado.png/revision/latest/scale-to-width-down/64?cb=20210326040638",
+    "imgName": "Desperado.png"
+  },
+  "Bandit: Classic Man": {
+    "name": "Bandit: Classic Man",
+    "description": "As Bandit, successfully use 'Lights Out' to reset your cooldowns 15 times in a row.",
+    "unlock": "Blast",
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e7/Blast.png/revision/latest/scale-to-width-down/64?cb=20210326040524",
+    "imgName": "Blast.png"
+  },
+  "Bandit: Sadist": {
+    "name": "Bandit: Sadist",
+    "description": "As Bandit, kill a monster with 20 stacks of Hemorrhage.",
+    "unlock": "Serrated Shiv",
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/80/Serrated_Shiv.png/revision/latest/scale-to-width-down/64?cb=20210326033012",
+    "imgName": "Serrated Shiv.png"
+  },
+  "Captain: Smushed": {
+    "name": "Captain: Smushed",
+    "description": "As Captain, kill the final boss using a Supply Beacon",
+    "unlock": "OGM-72 'DIABLO' Strike",
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/85/OGM-72_%27DIABLO%27_Strike.png/revision/latest/scale-to-width-down/64?cb=20210326163021",
+    "imgName": "OGM-72 'DIABLO' Strike.png"
+  },
   "Captain: Wanderlust": {
     "name": "Captain: Wanderlust",
     "description": "As Captain, visit 10 different environments in a single run.",
@@ -567,6 +599,14 @@
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/62/Spiked_Fist.png/revision/latest/scale-to-width-down/64?cb=20201001065903",
     "imgName": "Spiked Fist.png"
   },
+  "Loader: The Thunderdome": {
+    "name": "Loader: The Thunderdome",
+    "description": "As Loader, kill three other Loaders in the Bulwark's Ambry.",
+    "unlock": "Thunderslam",
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/4f/Thunderslam.png/revision/latest/scale-to-width-down/64?cb=20210326163023",
+    "imgName": "Thunderslam.png"
+  },
   "MUL-T: Gotcha!": {
     "name": "MUL-T: Gotcha!",
     "description": "As MUL-T, land the killing blow on an Imp Overlord with the Preon Accumulator.",
@@ -582,6 +622,14 @@
     "category": "skills",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e6/Scrap_Launcher.png/revision/latest/scale-to-width-down/64?cb=20200130003341",
     "imgName": "Scrap Launcher.png"
+  },
+  "MUL-T: Seventh Day": {
+    "name": "MUL-T: Seventh Day",
+    "description": "As MUL-T, clear the Void Fields on Stage 7 or later",
+    "unlock": "Power Mode",
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/7c/Power_Mode.png/revision/latest/scale-to-width-down/64?cb=20210326163022",
+    "imgName": "Power Mode.png"
   },
   "Mercenary: Demon of the Skies": {
     "name": "Mercenary: Demon of the Skies",
@@ -599,6 +647,14 @@
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/bc/Slicing_Winds.png/revision/latest/scale-to-width-down/64?cb=20200201131722",
     "imgName": "Slicing Winds.png"
   },
+  "Mercenary: Flash of Blades": {
+    "name": "Mercenary: Flash of Blades",
+    "description": "As Mercenary, use 20 abilities in 10 seconds.",
+    "unlock": "Focused Assault",
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/a8/Focused_Assault.png/revision/latest/scale-to-width-down/64?cb=20210326163020",
+    "imgName": "Focused Assault.png"
+  },
   "REX: Bushwhacked": {
     "name": "REX: Bushwhacked",
     "description": "As REX, complete an entire teleporter event while under 50% health.",
@@ -615,6 +671,14 @@
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/63/Bramble_Volley.png/revision/latest/scale-to-width-down/64?cb=20201002024411",
     "imgName": "Bramble Volley.png"
   },
+  "REX: Full of Life": {
+    "name": "REX: Full of Life",
+    "description": "As REX, heal for 1000 health at once.",
+    "unlock": "DIRECTIVE: Harvest",
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/db/DIRECTIVE_Harvest.png/revision/latest/scale-to-width-down/64?cb=20210326131341",
+    "imgName": "DIRECTIVE Harvest.png"
+  },
   "Acrid: Mastery": {
     "name": "Acrid: Mastery",
     "description": "As Acrid, beat the game or obliterate on Monsoon.",
@@ -630,6 +694,14 @@
     "category": "skins",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/89/Chrome.png/revision/latest/scale-to-width-down/64?cb=20200201131102",
     "imgName": "Chrome.png"
+  },
+  "Bandit: Mastery": {
+    "name": "Bandit: Mastery",
+    "description": "As Bandit, beat the game or obliterate on Monsoon.",
+    "unlock": "Chilly",
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/0/0e/Chilly.png/revision/latest/scale-to-width-down/64?cb=20210326040356",
+    "imgName": "Chilly.png"
   },
   "Captain: Mastery": {
     "name": "Captain: Mastery",

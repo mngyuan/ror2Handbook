@@ -18,15 +18,15 @@
         "imgName": "Poison.png",
         "Type": "Passive",
         "Description": "Poisonous\n attacks apply a powerful damage-over-time.",
-        "Notes": "Poison ticks 3 times/s for 10s.\nPoison deals 1% of the victim's maximum health/s (0.33% per tick) or an amount per second equivalent to Acrid's damage stat, whichever deals more damage. Poison is capped at 50 times Acrid's Damage per second.\nPoison damage is affected by armor and has the nonlethal tag.\nPoison is a Damage over Time effect, meaning it cannot Proc."
+        "Notes": "Poison ticks 3 times per second for 10 seconds.\nPoison deals 1% of the victim's maximum health per second (0.33% per tick) or an amount per second equivalent to Acrid's damage stat, whichever deals more damage. Poison is capped at 50 times Acrid's Damage per second.\nPoison damage is affected by armor and has the nonlethal tag.\nPoison is a Damage over Time effect, meaning it cannot Proc."
       },
       {
         "name": "Blight",
         "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/ac/Blight.png/revision/latest/scale-to-width-down/128?cb=20200331165619",
         "imgName": "Blight.png",
         "Type": "Passive",
-        "Description": "Attacks that apply Poison apply stacking Blight instead, dealing 60% damage/s.",
-        "Notes": "Unlocked via the Acrid: Easy Prey Challenge. (As Acrid, land the killing blow on 50 total enemies that have 1 hit point left.)\nBlight ticks 3 times/s for 5s.\nBlight deals 20% of Acrid's damage stat per tick, or 60% damage/s. Each stack of Blight increases the damage of each tick rather than adding more ticks."
+        "Description": "Attacks that apply Poison apply stacking Blight instead, dealing 60% damage per second.",
+        "Notes": "Unlocked via the Acrid: Easy Prey Challenge. (As Acrid, land the killing blow on 50 total enemies that have 1 hit point left.)\nBlight ticks 3 times per second for 5 seconds.\nBlight deals 20% of Acrid's damage stat per tick, or 60% damage per second. Each stack of Blight increases the damage of each tick rather than adding more ticks."
       },
       {
         "name": "Vicious Wounds",
@@ -52,7 +52,7 @@
         "Type": "Secondary",
         "Cooldown": "2s",
         "Proc Coefficient": "1",
-        "Description": "Poisonous\n. \nRegenerative\n. Bite an enemy for 310% damage. Deals up to 3x damage to low health enemies.",
+        "Description": "Poisonous\n. \nSlayer\n. \nRegenerative\n. Bite an enemy for 310% damage.",
         "Notes": "Unlocked via the Acrid: Bad Medicine Challenge. (As Acrid, land the final blow on a Scavenger.)\nFor every 1% of health the enemy is missing, the damage multiplier is increased by 2%."
       },
       {
@@ -166,7 +166,7 @@
         "Cooldown": "5s",
         "Proc Coefficient": "1",
         "Description": "Burn all enemies in front of you for 1700% damage.",
-        "Notes": "Pierces through enemies\nEach tick has a 50% chance to ignite all enemies it hits. This chance is affected by Luck.\nIf crit procs, all hits will crit\nTakes 3s to fire and another 5s to cooldown.\nDeals damage 22 times. Each hit deals roughly 95% damage, has a Proc Coefficient of 1 and half of them will set the target on fire. That means Flamethrower deals a tremendous 2095% damage, plus 2200% in burn to anything in front.\nThe fire beam has a max reach of 21m.\nDamage Tick-rate does not scale with attack speed."
+        "Notes": "Pierces through enemies\nEach tick has a 50% chance to ignite all enemies it hits. This chance is affected by Luck.\nIf crit procs, all hits will crit\nHas a 0.6 second windup duration. This is the only part of the skill that scales with Attack Speed.\nTakes 3s to fire and another 5s to cooldown.\nDeals damage 22 times. Each hit deals roughly 95% damage, has a Proc Coefficient of 1 and half of them will set the target on fire. That means Flamethrower deals a tremendous 2095% damage, plus 2200% in burn to anything in front.\nThe fire beam has a max reach of 21m.\nDamage Tick-rate does not scale with attack speed."
       },
       {
         "name": "Ion Surge",
@@ -180,6 +180,97 @@
       }
     ],
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/98/Artificer.png/revision/latest/scale-to-width-down/256?cb=20200129200643"
+  },
+  "Bandit": {
+    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Bandit",
+    "description": "The Bandit is a high-skill combo character that can dish out devastating backstabs while weaving in and out of stealth.",
+    "stats": {
+      "Health": "110 (+33 per level)",
+      "Health Regen": "1/s (+0.2 per level)",
+      "Damage": "12 (+2.8 per level)",
+      "Speed": "7 m/s",
+      "Armor": "0",
+      "Unlock": "Warrior"
+    },
+    "name": "Bandit",
+    "skills": [
+      {
+        "name": "Backstab",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/7a/Backstab.png/revision/latest/scale-to-width-down/128?cb=20210326040611",
+        "imgName": "Backstab.png",
+        "Type": "Passive",
+        "Description": "All attacks from behind are Critical Strikes."
+      },
+      {
+        "name": "Burst",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/47/Burst.png/revision/latest/scale-to-width-down/128?cb=20210326040513",
+        "imgName": "Burst.png",
+        "Type": "Primary",
+        "Cooldown": "0.5s/shot",
+        "Proc Coefficient": "0.5 (x5)",
+        "Description": "Fire a shotgun burst for 5x100% damage. Can hold up to 4 shells."
+      },
+      {
+        "name": "Blast",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e7/Blast.png/revision/latest/scale-to-width-down/128?cb=20210326040524",
+        "imgName": "Blast.png",
+        "Type": "Primary",
+        "Cooldown": "0.5s/shot",
+        "Proc Coefficient": "1.0",
+        "Description": "Fire a rifle blast for 330% damage. Can hold up to 4 bullets.",
+        "Notes": "Unlocked via the Bandit: Classic Man Challenge. (As Bandit, successfully use 'Lights Out' to reset your cooldowns 15 times in a row.)"
+      },
+      {
+        "name": "Serrated Dagger",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/bb/Serrated_Dagger.png/revision/latest/scale-to-width-down/128?cb=20210326040535",
+        "imgName": "Serrated Dagger.png",
+        "Type": "Secondary",
+        "Cooldown": "4s",
+        "Proc Coefficient": "1.0",
+        "Description": "Lunge and slash for 360% damage. Critical Strikes also cause \nhemorrhaging\n.",
+        "Notes": "Doesn't interrupt sprinting."
+      },
+      {
+        "name": "Serrated Shiv",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/80/Serrated_Shiv.png/revision/latest/scale-to-width-down/128?cb=20210326033012",
+        "imgName": "Serrated Shiv.png",
+        "Type": "Secondary",
+        "Cooldown": "4s",
+        "Proc Coefficient": "1.0",
+        "Description": "Throw a hidden blade for 240% damage. Critical Strikes also cause \nhemorrhaging\n.",
+        "Notes": "Unlocked via the Bandit: Sadist Challenge. (As Bandit, kill a monster with 20 stacks of Hemorrhage.)\nDoesn't interrupt sprinting."
+      },
+      {
+        "name": "Smoke Bomb",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/eb/Smoke_Bomb.png/revision/latest/scale-to-width-down/128?cb=20210326040358",
+        "imgName": "Smoke Bomb.png",
+        "Type": "Utility",
+        "Cooldown": "6s",
+        "Proc Coefficient": "1.0",
+        "Description": "Stunning\n. Deal 200% damage, become invisible, then deal 200% damage again.",
+        "Notes": "Applies upward momentum to Bandit at the start and end of the ability's duration when activated in the air.\nProvides a small speed boost for the duration of the ability.\nUsing any Skill during the ability will instantly make Bandit exit invisibility. Using an equipment will not."
+      },
+      {
+        "name": "Lights Out",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/7c/Lights_Out.png/revision/latest/scale-to-width-down/128?cb=20210326040452",
+        "imgName": "Lights Out.png",
+        "Type": "Special",
+        "Cooldown": "4s",
+        "Proc Coefficient": "1.0",
+        "Description": "Slayer\n. Fire a revolver shot for 600% damage. Kills reset all your cooldowns."
+      },
+      {
+        "name": "Desperado",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/57/Desperado.png/revision/latest/scale-to-width-down/128?cb=20210326040638",
+        "imgName": "Desperado.png",
+        "Type": "Special",
+        "Cooldown": "4s",
+        "Proc Coefficient": "1.0",
+        "Description": "Slayer\n. Fire a revolver shot for 600% damage. Kills grant stacking tokens for 10% more Desparado damage.",
+        "Notes": "Unlocked via the Bandit: B&E Challenge. (As Bandit, kill the final boss with 'Lights Out'.)\nAll tokens are lost upon advancing to next stage."
+      }
+    ],
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/1f/Bandit.png/revision/latest/scale-to-width-down/128?cb=20210326045945"
   },
   "Captain": {
     "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Captain",
@@ -209,7 +300,7 @@
         "Type": "Primary",
         "Proc Coefficient": "8x 0.75",
         "Description": "Fire a blast of pellets that deal 8x120% damage. Charging the attack narrows the spread.",
-        "Notes": "Time between shots is 1s at base attack speed\nCharge time is 1.2s at base attack speed\nIf the attack is a crit, all 8 pellets will crit\nConfers a considerable amount of knockback to lighter enemies on impact: fully-charged shots can launch Lesser Wisps great distances."
+        "Notes": "Time between shots is 1 second at base attack speed\nCharge time is 1.2 seconds at base attack speed\nDamage falloff starts at 25m and ends at 60m, falling to approximately 50% of the bullet's damage.\nIf the attack is a crit, all 8 pellets will crit\nConfers a considerable amount of knockback to lighter enemies on impact: fully-charged shots can launch Lesser Wisps great distances."
       },
       {
         "name": "Power Tazer",
@@ -219,7 +310,7 @@
         "Cooldown": "6s",
         "Proc Coefficient": "1.0",
         "Description": "Shocking\n. Fire a fast tazer that deals 100% damage. Travels farther if bounced.",
-        "Notes": "Guaranteed stun/interrupt on any non-Boss enemy.\nProduces a 2m AoE.\nShock wears off after 5s if not broken by damage."
+        "Notes": "Guaranteed stun/interrupt on any non-Boss enemy.\nProduces a 2m AoE.\nShock wears off after 5 seconds if not broken by damage."
       },
       {
         "name": "Orbital Probe",
@@ -232,21 +323,32 @@
         "Notes": "Has three 'charges' when activated, and puts you into a targeting mode similar to Engineer's Thermal Harpoons. Cooldown only starts when all charges are spent.\nHas a short delay before impact. Adjust for enemy movements accordingly."
       },
       {
+        "name": "OGM-72 'DIABLO' Strike",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/85/OGM-72_%27DIABLO%27_Strike.png/revision/latest/scale-to-width-down/128?cb=20210326163021",
+        "imgName": "OGM-72 'DIABLO' Strike.png",
+        "Type": "Utility",
+        "Cooldown": "40s",
+        "Proc Coefficient": "1.0",
+        "Description": "Stunning\n. Request a kinetic strike from the UES Safe Travels. After 20 seconds, it deals 40,000% damage to ALL characters.",
+        "Notes": "Unlocked via the Captain: Smushed Challenge. (As Captain, kill the final boss using a Supply Beacon)"
+      },
+      {
         "name": "Orbital Supply Beacon",
         "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/0/03/Orbital_Supply_Beacon.png/revision/latest/scale-to-width-down/128?cb=20200811174713",
         "imgName": "Orbital Supply Beacon.png",
         "Type": "Special",
-        "Cooldown": "0s",
+        "Cooldown": "N/A",
         "Proc Coefficient": "0",
         "Description": "Request a permanent Supply Beacon. Can only be requested twice per stage.",
-        "Notes": "Activating this skill puts you into a targeting mode which previews where the beacon will land. The primary skill button calls in the first beacon, and the secondary skill button calls in the second beacon. Once both have been called in, the skill icon will turn into a red NO ENTRY sign for the rest of the stage.\nBeacons take a few moments to arrive and fully deploy before their effect activates.\nSelect Beacon functions via Loadout. Appearance will vary by function.\nBeacons do 2000% damage each.\nBeacon targeting can be cancelled by Sprinting.\nThe AoE of all applicable beacons is about 9m, as displayed by the drop guide."
+        "Notes": "Activating this skill puts you into a targeting mode which previews where the beacon will land. The primary skill button calls in the first beacon, and the secondary skill button calls in the second beacon. Once both have been called in, the skill icon will turn into a red NO ENTRY sign for the rest of the stage.\nBeacons take a few moments to arrive and fully deploy before their effect activates.\nSelect Beacon functions via Loadout. Appearance will vary by function.\nIf a beacon succesfully lands on an enemy it does 2000% damage each.\nBeacon targeting can be cancelled by Sprinting.\nThe AoE of all applicable beacons is about 9m, as displayed by the drop guide."
       },
       {
         "name": "Beacon: Healing",
         "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/1e/Beacon_Healing.png/revision/latest/scale-to-width-down/128?cb=20200812024639",
         "imgName": "Beacon Healing.png",
         "Type": "Special",
-        "Description": "Heal all nearby allies for 10% of their maximum health every second."
+        "Description": "Heal all nearby allies for 10% of their maximum health every second.",
+        "Notes": "When in the area of multiple beacons at once, the effects will stack."
       },
       {
         "name": "Beacon: Shocking",
@@ -254,7 +356,7 @@
         "imgName": "Beacon Shocking.png",
         "Type": "Special",
         "Description": "Periodically Shock all nearby enemies, immobilizing them.",
-        "Notes": "Fires every 3s, stun-locking susceptible enemies until attacked."
+        "Notes": "Fires every 3 seconds, stun-locking susceptible enemies until attacked."
       },
       {
         "name": "Beacon: Resupply",
@@ -293,7 +395,7 @@
         "imgName": "Double Tap.png",
         "Type": "Primary",
         "Proc Coefficient": "2x 1",
-        "Description": "Shoot twice for 2x90% damage.",
+        "Description": "Rapidly shoot an enemy for 100% damage.",
         "Notes": "Takes 0.4s with Attack Speed of 1.\nDamage falloff starts at 25m and ends at 60m, falling to approximately 50% of the bullet's damage."
       },
       {
@@ -303,7 +405,7 @@
         "Type": "Secondary",
         "Cooldown": "3s",
         "Proc Coefficient": "1",
-        "Description": "Fire a piercing bullet that hits all enemies in a line for 300% damage. Goes through terrain.",
+        "Description": "Fire a piercing bullet for 300% damage. Deals 40% more damage every time it passes through an enemy.",
         "Notes": "Can travel through terrain"
       },
       {
@@ -331,7 +433,7 @@
         "Type": "Utility",
         "Cooldown": "4s",
         "Description": "Slide on the ground for a short distance. You can fire while sliding.",
-        "Notes": "Unlocked via the Commando: Godspeed Challenge. (As Commando, fully charge the first-stage teleporter before the timer hits 5 minutes.)"
+        "Notes": "Unlocked via the Commando: Godspeed Challenge. (As Commando, fully charge the first-stage teleporter before the timer hits 5 minutes.)\nIf used in the air, it will act like an extra jump."
       },
       {
         "name": "Suppressive Fire",
@@ -350,8 +452,8 @@
         "Type": "Special",
         "Cooldown": "5s",
         "Proc Coefficient": "1",
-        "Description": "Throw a grenade that explodes for 175% damage. Deals 4x damage in the center of the explosion. Can hold up to 2.",
-        "Notes": "Unlocked via the Commando: Incorruptible Challenge. (As Commando, clear 20 stages in a single run without picking up any Lunar items.)\nThe timer for the explosion begins after the first bounce and is 1s long."
+        "Description": "Throw a grenade that explodes for 700% damage. Can hold up to 2.",
+        "Notes": "Unlocked via the Commando: Incorruptible Challenge. (As Commando, clear 20 stages in a single run without picking up any Lunar items.)\nThe timer for the explosion begins after the first bounce and is 1 second long."
       }
     ],
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/50/Commando.png/revision/latest/scale-to-width-down/256?cb=20200129200647"
@@ -396,7 +498,7 @@
         "Cooldown": "8s",
         "Proc Coefficient": "1",
         "Description": "Place a robot mine that deals 600% damage when an enemy walks nearby. Can place up to 4.",
-        "Notes": "Unlocked via the Engineer: 100% Calculated Challenge. (As Engineer, defeat the teleporter boss in less than 5s after it spawns.)\nThese mines have a greater range as they seek out enemies, and double the damage of the default mines if thrown directly onto enemies (or otherwise not allowed to arm), making this a good potential 'upgrade' for many players' playstyles"
+        "Notes": "Unlocked via the Engineer: 100% Calculated Challenge. (As Engineer, defeat the teleporter boss in less than 5 seconds after it spawns.)\nThese mines have a greater range as they seek out enemies, and double the damage of the default mines if thrown directly onto enemies (or otherwise not allowed to arm), making this a good potential 'upgrade' for many players' playstyles"
       },
       {
         "name": "Bubble Shield",
@@ -405,7 +507,7 @@
         "Type": "Utility",
         "Cooldown": "25s",
         "Description": "Place an impenetrable shield that blocks all incoming damage.",
-        "Notes": "Lasts for 15s\nCan be estimated to cover a 9.75m radius.\nOnly one can be active at a time\nFlashes before disappearing\nEnemies can move inside the barrier, negating its effects\nAnything can fire outwards from the shield, and nothing can fire through it inwards (including yourself)."
+        "Notes": "Lasts for 10s\nCan be estimated to cover a 9.75m radius.\nOnly one can be active at a time\nFlashes before disappearing\nEnemies can move inside the barrier, negating its effects\nAnything can fire outwards from the shield, and nothing can fire through it inwards (including yourself)."
       },
       {
         "name": "Thermal Harpoons",
@@ -415,7 +517,7 @@
         "Cooldown": "2.5s",
         "Proc Coefficient": "1 per Harpoon",
         "Description": "Enter target painting mode to launch heat-seeking harpoons that deal 500% damage each. Can store up to 4.",
-        "Notes": "Unlocked via the Engineer: Zero Sum Challenge. (As Engineer, finish charging the teleporter with zero monsters remaining on the stage.)\nPress utility key to enter paint mode, M1 to paint targets\nHarpoon recharge pauses while in paint mode\nHolding down M1 allows allocation of up to 4 harpoons on 1-4 targets at a rate of 1 harpoon per .3s.\nHarpoons cannot be fired without a target\nFired harpoons that no longer have a target will redirect to the nearest target (it is possible to build up a swarm of harpoons by constantly firing at a single target when no other targets are within range)"
+        "Notes": "Unlocked via the Engineer: Zero Sum Challenge. (As Engineer, finish charging the teleporter with zero monsters remaining on the stage.)\nPress utility key to enter paint mode, M1 to paint targets\nHarpoon recharge pauses while in paint mode\nHolding down M1 allows allocation of up to 4 harpoons on 1-4 targets at a rate of 1 harpoon per .3 seconds.\nHarpoons cannot be fired without a target\nFired harpoons that no longer have a target will redirect to the nearest target (it is possible to build up a swarm of harpoons by constantly firing at a single target when no other targets are within range)\nIf harpoons are canceled by M2, the number of charges painted onto targets will deplete, and fire no harpoons."
       },
       {
         "name": "TR12 Gauss Auto-Turret",
@@ -425,7 +527,7 @@
         "Cooldown": "30s",
         "Proc Coefficient": "1",
         "Description": "Place a turret that inherits all your items. Fires a cannon for 100% damage. Can place up to 2.",
-        "Notes": "Description clarification: Fires a cannon 3 times/s for 70% of the turret's damage, which is the same as 80% of the engineer's damage. A turret's items will use the turret's base damage to calculate damage.\nThe TR12 Gauss Auto-Turrets experience damage falloff, starting at roughly 25m and ending near 60m, falling to approximately 50% of their original damage per shot."
+        "Notes": "Description clarification: Fires a cannon 3 times per second for 70% of the turret's damage, which is the same as 80% of the engineer's damage. A turret's items will use the turret's base damage to calculate damage.\nThe TR12 Gauss Auto-Turrets experience damage falloff, starting at roughly 25m and ending near 60m, falling to approximately 50% of their original damage per shot."
       },
       {
         "name": "TR58 Carbonizer Turret",
@@ -434,11 +536,73 @@
         "Type": "Special",
         "Cooldown": "30s",
         "Proc Coefficient": "0.6",
-        "Description": "Place a mobile turret that inherits all your items. Fires a laser for 200% damage/s that slows enemies. Can place up to 2.",
+        "Description": "Place a mobile turret that inherits all your items. Fires a laser for 200% damage per second that slows enemies. Can place up to 2.",
         "Notes": "Unlocked via the Engineer: Better With Friends Challenge. (As Engineer, recruit 12 minions at one time.)"
       }
     ],
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d8/Engineer.png/revision/latest/scale-to-width-down/256?cb=20200129200649"
+  },
+  "Heretic": {
+    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Heretic",
+    "description": "The Heretic is a powerful character who can only be accessed through extraordinary means.",
+    "stats": {
+      "Health": "440 (+132 per level)",
+      "Health Regen": "-6/s (-1.2 per level)",
+      "Damage": "18 (+3.6 per level)",
+      "Speed": "8 m/s",
+      "Armor": "0"
+    },
+    "name": "Heretic",
+    "skills": [
+      {
+        "name": "Nevermore",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/21/Nevermore.png/revision/latest/scale-to-width-down/128?cb=20210404011418",
+        "imgName": "Nevermore.png",
+        "Type": "All",
+        "Cooldown": "1s",
+        "Description": "Squawk a solemn reply."
+      },
+      {
+        "name": "Hungering Gaze",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/3c/Hungering_Gaze.png/revision/latest/scale-to-width-down/128?cb=20200130011541",
+        "imgName": "Hungering Gaze.png",
+        "Type": "Primary",
+        "Cooldown": "2s (+2s per stack) since the last shot was fired",
+        "Proc Coefficient": "Initial hit: 0.1\nExplosion: 1.0",
+        "Description": "Fire a flurry of tracking shards that detonate after a delay, dealing 120% base damage. Hold up to 12 charges (+12 per stack) that reload after 2 seconds (+2 per stack).",
+        "Notes": "Changes the firing of Engineer's turrets.\nReplaces both of MUL-T's selected primary skills.\nPicking up an Ammo Box from a \nBandolier\n will grant the full capacity.\nAffected by \nAlien Head\n.\nWorks well with \nPurity\n."
+      },
+      {
+        "name": "Slicing Maelstrom",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e9/Slicing_Maelstrom.png/revision/latest/scale-to-width-down/128?cb=20210326042249",
+        "imgName": "Slicing Maelstrom.png",
+        "Type": "Secondary",
+        "Cooldown": "5s (+5s per stack)",
+        "Proc Coefficient": "Maelstrom: 0.2\nExplosion: 1",
+        "Description": "Charge up a projectile that deals 175% damage per second to nearby enemies, exploding after 3 seconds to deal 700% damage and root enemies for 3 (+3 per stack) seconds. Recharges after 5 (+5 per stack) seconds.",
+        "Notes": "Each hit of the \"slice\" has a damage coefficient of 25%.\nThe blast has a radius of 14m."
+      },
+      {
+        "name": "Shadowfade",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c8/Shadowfade.png/revision/latest/scale-to-width-down/128?cb=20200130011540",
+        "imgName": "Shadowfade.png",
+        "Type": "Utility",
+        "Cooldown": "6s after the effect ends",
+        "Description": "Fade away, becoming intangible and gaining +30% movement speed. Heal for 18.2% (+18.2% per stack) of your maximum health. Lasts 3 (+3 per stack) seconds.",
+        "Notes": "Correction: The in-game description of healing for 25% of your max health is incorrect. Instead, it gives 1.3% max health per tick for 14 ticks, for a total of 18.2% max health in healing per stack.\nBeing in the air when activating the skill, or jumping, will allow the player to fly\nCan not be canceled early\nThe player can still interact with things, but cannot use skills"
+      },
+      {
+        "name": "Ruin",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/bc/Ruin.png/revision/latest/scale-to-width-down/128?cb=20210326042259",
+        "imgName": "Ruin.png",
+        "Type": "Special",
+        "Cooldown": "8s (+8s per stack)",
+        "Proc Coefficient": "1",
+        "Description": "Dealing damage adds a stack of Ruin for 10 (+10 per stack) seconds. Activating the skill detonates all Ruin stacks at unlimited range, dealing 300% damage plus 120% damage per stack of Ruin. Recharges after 8 (+8 per stack) seconds.",
+        "Notes": "Multiple enemies can be afflicted by Ruin simultaneously.\nWhen the skill is activated, one shot is fired towards each enemy.\nThe shots penetrate walls.\nUnable to add Ruin stacks while this ability is on cooldown.\nDamaging enemies has a chance (100% * Proc Coefficient) to apply Ruin for the full 10 seconds.\nApplying Ruin will reset the duration of current Ruin debuffs on the same enemy.\nBleeding, Drones, and other types of damage do not stack Ruin."
+      }
+    ],
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/81/Heretic.png/revision/latest/scale-to-width-down/128?cb=20210326043605"
   },
   "Huntress": {
     "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Huntress",
@@ -448,8 +612,7 @@
       "Health Regen": "1/s (+0.2 per level)",
       "Damage": "12 (+2.4 per level)",
       "Speed": "7 m/s",
-      "Armor": "0",
-      "Unlock": "Warrior"
+      "Armor": "0"
     },
     "name": "Huntress",
     "skills": [
@@ -469,7 +632,7 @@
         "Type": "Primary",
         "Proc Coefficient": "0.7 per arrow",
         "Description": "Agile\n. Draw back a volley of 3 seeking arrows for 3x100% damage. Critical Strikes fire 6 arrows.",
-        "Notes": "Unlocked via the Huntress: Finishing Touch Challenge. (As Huntress, land a killing blow with every possible hit of a single glaive.)\nFire Rate: 1.3s\nCan only be used while locked onto an enemy. Huntress automatically locks onto enemies in front of her at a medium range.\nFires 3 arrows per attack. These arrows all home in on your locked target, ignoring terrain and cover.\nIf you would Critically Hit, fires 6 arrows instead for a total of 400% base damage.\nWhile Flurry is initially weaker than Strafe, this interaction makes it stronger with high Critical Strike chance. Flurry itself does 22% less damage than Strafe with no bonus crit chance, 2% more at 18% crit chance, and 54% more with full crit chance. For triggering on-hit items that do (don't) scale with total damage, Flurry is 46% (19%) weaker without crit, equal at 86% (24%) crit, and 7% (62%) stronger with full crit."
+        "Notes": "Unlocked via the Huntress: Finishing Touch Challenge. (As Huntress, land a killing blow with every possible hit of a single glaive.)\nFire Rate: 1.3s\nCan only be used while locked onto an enemy. Huntress automatically locks onto enemies in front of her at a medium range.\nFires 3 arrows per attack. These arrows all home in on your locked target, ignoring terrain and cover.\nIf you would Critically Hit, fires 6 arrows instead for a total of 600% base damage.\nWhile Flurry is initially weaker than Strafe, this interaction makes it stronger with high Critical Strike chance. Flurry itself does 22% less damage than Strafe with no bonus crit chance, 2% more at 18% crit chance, and 54% more with full crit chance. For triggering on-hit items that do (don't) scale with total damage, Flurry is 46% (19%) weaker without crit, equal at 86% (24%) crit, and 7% (62%) stronger with full crit."
       },
       {
         "name": "Laser Glaive",
@@ -506,8 +669,8 @@
         "Type": "Special",
         "Cooldown": "12s",
         "Proc Coefficient": "0.2 per hit",
-        "Description": "Teleport into the sky. Target an area to rain arrows, slowing all enemies and dealing 330% damage/s.",
-        "Notes": "Correction: The in-game description of 225% damage/s is incorrect\nHits 19 times for 110% damage over 6s (2090% damage total)\nCan struggle to hit airborne enemies as they cannot be directly targeted."
+        "Description": "Teleport into the sky. Target an area to rain arrows, slowing all enemies and dealing 330% damage per second.",
+        "Notes": "Correction: The in-game description of 225% damage per second is incorrect\nHits 19 times for 110% damage over 6s (2090% damage total)\nCan struggle to hit airborne enemies as they cannot be directly targeted."
       },
       {
         "name": "Ballista",
@@ -577,7 +740,8 @@
         "Type": "Utility",
         "Cooldown": "5s",
         "Proc Coefficient": "1",
-        "Description": "Heavy\n. Charge up a piercing punch for 600%-2700% damage."
+        "Description": "Heavy\n. Charge up a piercing punch for 600%-2700% damage.",
+        "Notes": "Can hold the charge.\nCharges faster with attack speed."
       },
       {
         "name": "Thunder Gauntlet",
@@ -597,7 +761,17 @@
         "Cooldown": "20s",
         "Proc Coefficient": "0.5",
         "Description": "Throw a floating pylon that zaps up to 6 nearby enemies for 100% damage. Can be grappled.",
-        "Notes": "Spawning multiple pylons through the use of other items (e.g. \nBrainstalks\n, \nBandolier\n, or stacking \nAlien Head\n) is possible but there is an internal cap of three that can be active at any time. Spawning more than three will have the oldest active pylon be removed when the new one spawns.\nThe pylon is inactive for 1.65s after being used, and then zaps 14 times at 1-second intervals before despawning. All zaps over the duration crit together."
+        "Notes": "Spawning multiple pylons through the use of other items (e.g. \nBrainstalks\n, \nBandolier\n, or stacking \nAlien Head\n) is possible but there is an internal cap of three that can be active at any time. Spawning more than three will have the oldest active pylon be removed when the new one spawns.\nThe pylon is inactive for 1.65 seconds after being used, and then zaps 14 times at 1-second intervals before despawning. All zaps over the duration crit together.\nDoes not attack faster with attack speed items."
+      },
+      {
+        "name": "Thunderslam",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/4f/Thunderslam.png/revision/latest/scale-to-width-down/128?cb=20210326163023",
+        "imgName": "Thunderslam.png",
+        "Type": "Special",
+        "Cooldown": "8s",
+        "Proc Coefficient": "1",
+        "Description": "Stunning\n. Slam your fists down, dealing 2000% damage on impact.",
+        "Notes": "Unlocked via the Loader: The Thunderdome Challenge. (As Loader, kill three other Loaders in the Bulwark's Ambry.)\nThe AOE is about the same size as the Hellfire Tincture"
       }
     ],
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/25/Loader.png/revision/latest/scale-to-width-down/128?cb=20200129235338"
@@ -649,7 +823,7 @@
         "Cooldown": "2.5s",
         "Proc Coefficient": "1",
         "Description": "Unleash a slicing uppercut, dealing 450% damage and sending you airborne.",
-        "Notes": "Unlocked via the Mercenary: Demon of the Skies Challenge. (As Mercenary, don't touch the ground for 30s.)\nCorrection: Rising Thunder actually does 550% damage."
+        "Notes": "Unlocked via the Mercenary: Demon of the Skies Challenge. (As Mercenary, don't touch the ground for 30 seconds.)\nCorrection: Rising Thunder actually does 550% damage."
       },
       {
         "name": "Blinding Assault",
@@ -659,7 +833,17 @@
         "Cooldown": "8s",
         "Proc Coefficient": "1",
         "Description": "Stunning\n. Dash forward, dealing 300% damage. If you hit an enemy, you can dash again, up to 3 total.",
-        "Notes": "The color of the icon will change depending on how many uses the skill has before going on cooldown; Blue for three, Yellow for two, Red for one.\nThe animation speed and total distance traveled is improved by attack speed bonuses.\nThe player has 2.66s to use this ability again after striking an enemy (while a charge is available)."
+        "Notes": "The color of the icon will change depending on how many uses the skill has before going on cooldown; Blue for three, Yellow for two, Red for one.\nThe animation speed and total distance traveled is improved by attack speed bonuses.\nThe player has 2.66 seconds to use this ability again after striking an enemy (while a charge is available).\nFocused Assault\n\n\n\nType\tUtility\nCooldown\t8s\nProc Coefficient\t1\nDescription\t\nStunning\n. Dash forward, dealing 700% damage and Exposing enemies after 1 second.\nNotes\n\nUnlocked via the Mercenary: Flash of Blades Challenge. (As Mercenary, use 20 abilities in 10 seconds.)\nAfter a 1 second delay, All enemies hit become Exposed"
+      },
+      {
+        "name": "Focused Assault",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/a8/Focused_Assault.png/revision/latest/scale-to-width-down/128?cb=20210326163020",
+        "imgName": "Focused Assault.png",
+        "Type": "Utility",
+        "Cooldown": "8s",
+        "Proc Coefficient": "1",
+        "Description": "Stunning\n. Dash forward, dealing 700% damage and Exposing enemies after 1 second.",
+        "Notes": "Unlocked via the Mercenary: Flash of Blades Challenge. (As Mercenary, use 20 abilities in 10 seconds.)\nAfter a 1 second delay, All enemies hit become Exposed"
       },
       {
         "name": "Eviscerate",
@@ -669,7 +853,7 @@
         "Cooldown": "6s",
         "Proc Coefficient": "1 per hit",
         "Description": "Target the nearest enemy, attacking them for 110% damage repeatedly. You cannot be hit for the duration.",
-        "Notes": "Lasts for 1.3s after casting.\nDeals 7 damage ticks on cast, the amount of damage ticks is improved by attack speed without affecting its duration.\nInvincible for 0.6s after Eviscerate ends."
+        "Notes": "Lasts for 1.3s after casting.\nDeals 7 damage ticks on cast, the amount of damage ticks is improved by attack speed without affecting its duration.\nInvincible for 0.6s after Eviscerate ends.\nPerforms a dash and no other effects if it does not target an enemy."
       },
       {
         "name": "Slicing Winds",
@@ -711,7 +895,7 @@
         "Type": "Primary",
         "Proc Coefficient": "0.6",
         "Description": "Rapidly fire nails for 70% damage. Finishes with a blast of 12 nails.",
-        "Notes": "Fires 12 shots/s, for 840% damage/s.\nFires in a corkscrew pattern.\nNeeds 1.152s after releasing the fire button to cool down."
+        "Notes": "Fires 12 shots per second, for 840% damage per second.\nFires in a corkscrew pattern.\nNeeds 1.152s after releasing the fire button to cool down.\nThe final blast recoils a little."
       },
       {
         "name": "Rebar Puncher",
@@ -720,7 +904,7 @@
         "Type": "Primary",
         "Proc Coefficient": "1",
         "Description": "Fire a piercing rebar that deals 600% damage.",
-        "Notes": "Base time between shots is 1.8s"
+        "Notes": "Base time between shots is 1.8s, for 333% damage per second."
       },
       {
         "name": "Scrap Launcher",
@@ -730,7 +914,7 @@
         "Cooldown": "1.5s",
         "Proc Coefficient": "1",
         "Description": "Fire a rocket that explodes for 360% damage. Hold up to 4.",
-        "Notes": "Unlocked via the MUL-T: Pest Control Challenge. (As MUL-T, defeat two Beetle Queens without leaving the teleporter zone.)\nOnce fired, the cooldown will begin and once finished, the entire ammo capacity of 4 will be reloaded, regardless of shots fired when the cooldown ends.\nEnemies that are damaged by the AOE but are not hit by the projectile directly take 90% damage, or 1/4th of the shot's direct power.\nTravels at 100m/s.\nExplodes in a 7m radius."
+        "Notes": "Unlocked via the MUL-T: Pest Control Challenge. (As MUL-T, defeat two Beetle Queens without leaving the teleporter zone.)\nThere is a 0.3 second delay after firing each shot before it is possible to fire again. This means it takes 0.9 seconds to fire all 4 shots at base attack speed, if ignoring the delay after the final shot.\nAll 4 shots are fired and reloaded every 1.5 seconds, for 960% damage per second.\nThe cooldown begins when the first shot is fired. Subsequent shots will not reset the cooldown. When the cooldown ends, all 4 shots are reloaded.\nEnemies that are damaged by the AOE but are not hit by the projectile directly take 90% damage, or 1/4th of the shot's direct power.\nTravels at 100m/s.\nExplodes in a 7m radius."
       },
       {
         "name": "Power-Saw",
@@ -738,8 +922,8 @@
         "imgName": "Power-Saw.png",
         "Type": "Primary",
         "Proc Coefficient": "1",
-        "Description": "Saw nearby enemies for 1000% damage/s.",
-        "Notes": "Unlocked via the MUL-T: Gotcha! Challenge. (As MUL-T, land the killing blow on an Imp Overlord with the Preon Accumulator.)\nDeals 100% damage 10 times/s.\nSlightly pulls you forward whenever you hit a target."
+        "Description": "Saw nearby enemies for 1000% damage per second.",
+        "Notes": "Unlocked via the MUL-T: Gotcha! Challenge. (As MUL-T, land the killing blow on an Imp Overlord with the Preon Accumulator.)\nDeals 100% damage 10 times per second.\nSlightly pulls you forward whenever you hit a target."
       },
       {
         "name": "Blast Canister",
@@ -768,6 +952,15 @@
         "Cooldown": "0.5s",
         "Description": "Passively hold TWO equipment at once. Activating 'Retool' switches the active Equipment and MUL-T's primary attack.",
         "Notes": "Swapping takes 0.4s"
+      },
+      {
+        "name": "Power Mode",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/7c/Power_Mode.png/revision/latest/scale-to-width-down/128?cb=20210326163022",
+        "imgName": "Power Mode.png",
+        "Type": "Special",
+        "Cooldown": "5s",
+        "Description": "Enter a heavy stance, equipping both your primary attacks at once. Gain 200 armor, but lose -60% movement speed.",
+        "Notes": "Unlocked via the MUL-T: Seventh Day Challenge. (As MUL-T, clear the Void Fields on Stage 7 or later)"
       }
     ],
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/6f/MUL-T.png/revision/latest/scale-to-width-down/256?cb=20200129200652"
@@ -791,7 +984,7 @@
         "imgName": "Natural Toxins.png",
         "Type": "Passive",
         "Description": "Certain attacks \nWeaken\n enemies hit, reducing their movement speed, armor, and damage.",
-        "Notes": "Note: The in-game description of -20 armor is incorrect, it is actually -30 armor\nLasts 3s."
+        "Notes": "Note: The in-game description of -20 armor is incorrect, it is actually -30 armor.\nLasts 3 seconds."
       },
       {
         "name": "DIRECTIVE: Inject",
@@ -800,7 +993,17 @@
         "Type": "Primary",
         "Proc Coefficient": "3x 0.5",
         "Description": "Fire 3 syringes for 3x80% damage. The last syringe \nWeakens\n and heals for 60% of damage dealt.",
-        "Notes": "Burst duration is 0.2s and the animation duration is 0.6s.\nEach shot of the burst can crit independently"
+        "Notes": "Burst duration is 0.2 seconds and the animation duration is 0.6 seconds.\nEach shot of the burst can crit independently."
+      },
+      {
+        "name": "DIRECTIVE: Drill",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/fc/DIRECTIVE_Drill.png/revision/latest/scale-to-width-down/128?cb=20200201131129",
+        "imgName": "DIRECTIVE Drill.png",
+        "Type": "Secondary",
+        "Cooldown": "6s",
+        "Proc Coefficient": "0.5 per hit",
+        "Description": "Launch a series of seed bullets into the sky, raining down for 450% damage per second.",
+        "Notes": "Unlocked via the REX: Bushwhacked Challenge. (As REX, complete an entire teleporter event while under 50% health.)\nHits 16 times for 90% damage over 3s (1440% damage total)"
       },
       {
         "name": "Seed Barrage",
@@ -812,23 +1015,14 @@
         "Description": "15% HP\n. Launch a mortar into the sky for 450% damage."
       },
       {
-        "name": "DIRECTIVE: Drill",
-        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/fc/DIRECTIVE_Drill.png/revision/latest/scale-to-width-down/128?cb=20200201131129",
-        "imgName": "DIRECTIVE Drill.png",
-        "Type": "Secondary",
-        "Cooldown": "6s",
-        "Proc Coefficient": "0.5 per hit",
-        "Description": "Launch a series of seed bullets into the sky, raining down for 450% damage/s.",
-        "Notes": "Unlocked via the REX: Bushwhacked Challenge. (As REX, complete an entire teleporter event while under 50% health.)\nHits 16 times for 90% damage over 3s (1440% damage total)"
-      },
-      {
         "name": "DIRECTIVE: Disperse",
         "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/22/DIRECTIVE_Disperse.png/revision/latest/scale-to-width-down/128?cb=20201002024743",
         "imgName": "DIRECTIVE Disperse.png",
         "Type": "Utility",
         "Cooldown": "5s",
         "Proc Coefficient": "0",
-        "Description": "Fire a \nSonic Boom\n that \nWeakens\n all enemies hit."
+        "Description": "Fire a \nSonic Boom\n that \nWeakens\n all enemies hit.",
+        "Notes": "Pushing force varies depending on the size of the enemy, with bosses being pushed the least."
       },
       {
         "name": "Bramble Volley",
@@ -841,6 +1035,16 @@
         "Notes": "Unlocked via the REX: Dunked Challenge. (As REX, kill a Clay Dunestrider on Abandoned Aqueduct by throwing it into a pit.)\nHeals REX for 10% of their max HP per target hit."
       },
       {
+        "name": "DIRECTIVE: Harvest",
+        "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/db/DIRECTIVE_Harvest.png/revision/latest/scale-to-width-down/128?cb=20210326131341",
+        "imgName": "DIRECTIVE Harvest.png",
+        "Type": "Special",
+        "Cooldown": "6s",
+        "Proc Coefficient": "1",
+        "Description": "Fire a bolt that deals 330% damage and injects an enemy. On death, drop multiple healing fruits that heal for 25% HP.",
+        "Notes": "Unlocked via the REX: Full of Life challenge. (As REX, heal for 1000 health at once.)\nThe mark lasts 10 seconds before expiring.\nHas a slight area of effect, so multiple enemies can become marked from a single cast.\nSpawns 2 - 8 fruits (scales with enemy max HP) when the marked target is killed.\nOnly 1 enemy can be affected at any time. Using the ability on a different target removes the debuff on the previous enemy"
+      },
+      {
         "name": "Tangling Growth",
         "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9d/Tangling_Growth.png/revision/latest/scale-to-width-down/128?cb=20201002024313",
         "imgName": "Tangling Growth.png",
@@ -848,9 +1052,10 @@
         "Cooldown": "12s",
         "Proc Coefficient": "Projectile: 1\nRoots: 0",
         "Description": "25% HP\n. Fire a flower that roots for 200% damage. Heals for every target hit.",
-        "Notes": "Takes a full second to unfurl, then remains active for 8s.\nHeals REX for an estimated 1.5% of their max HP every second per snared target."
+        "Notes": "Takes a full second to unfurl, then remains active for 8 seconds.\nHeals REX for an estimated 1.5% of their max HP every second per snared target."
       }
     ],
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/74/REX.png/revision/latest/scale-to-width-down/128?cb=20200129200652"
   }
 }
+

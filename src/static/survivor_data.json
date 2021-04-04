@@ -652,7 +652,7 @@
       {
         "name": "Smokebomb",
         "imgUrl": "https://static.wikia.nocookie.net/riskofrain2/images/8/82/Smokebomb.png/revision/latest/scale-to-width-down/112?cb=20190406235317",
-        "imgName": "Smokebomb.png",
+        "imgName": "SmokeBomb.png",
         "Type": "Utility",
         "Cooldown": "9s",
         "Description": "Turn invisible for 3 seconds, gaining movement speed."
