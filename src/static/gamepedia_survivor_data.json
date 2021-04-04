@@ -544,7 +544,7 @@
   },
   "Heretic": {
     "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Heretic",
-    "description": "The Heretic is a powerful character who can only be accessed through extraordinary means.",
+    "description": "The Heretic is a powerful character who can only be accessed through extraordinary means. \n\nThe Heretic cannot be selected from the character selection screen and must be transformed into by collecting all 4 Heresy items in a single run: Visions of Heresy, Hooks of Heresy, Essence of Heresy, and Strides of Heresy.",
     "stats": {
       "Health": "440 (+132 per level)",
       "Health Regen": "-6/s (-1.2 per level)",
@@ -1058,4 +1058,3 @@
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/74/REX.png/revision/latest/scale-to-width-down/128?cb=20200129200652"
   }
 }
-
