@@ -69,6 +69,7 @@ const scrape = ({
 }) =>
   new Promise(async (resolve, reject) => {
     try {
+      // to debug, launch with launch({devtools: true, headless: false})
       const browser = await puppeteer.launch();
       const page = await browser.newPage();
       await page.exposeFunction('toCamelCase', toCamelCase);
@@ -565,16 +566,21 @@ const visitArtifact = async (page, url) => {
     tables
       .map((table) => {
         const tableRows = Array.from(table.querySelectorAll('tbody tr'));
-        return tableRows.map((tableRow) => {
-          const tableDatas = tableRow.querySelectorAll('td');
-          return {
-            name: tableDatas[0].innerText,
-            description: tableDatas[1].innerText,
-            code: tableDatas[2].innerText.replace(/[ \n]/g, ''),
-            imgUrl: tableDatas[0].querySelector('img').src,
-            imgName: tableDatas[0].querySelector('img').alt,
-          };
-        });
+        return tableRows
+          .map((tableRow) => {
+            const tableDatas = tableRow.querySelectorAll('td');
+            if (tableDatas.length == 0) {
+              return null;
+            }
+            return {
+              name: tableDatas[0].innerText,
+              description: tableDatas[1].innerText,
+              code: tableDatas[2].innerText.replace(/[ \n]/g, ''),
+              imgUrl: tableDatas[0].querySelector('img').src,
+              imgName: tableDatas[0].querySelector('img').alt,
+            };
+          })
+          .filter((artifact) => !!artifact);
       })
       .flat(),
   );
@@ -622,8 +628,8 @@ const main = () => {
   const positionalArgs = args.filter((s) => !s.startsWith('-'));
   const flags = args.filter((s) => s.startsWith('-'));
   const action = positionalArgs[0];
-  const baseUrl = 'https://riskofrain2.gamepedia.com/wiki';
-  const rootUrl = 'https://riskofrain2.gamepedia.com';
+  const baseUrl = 'https://riskofrain2.fandom.com/wiki';
+  const rootUrl = 'https://riskofrain2.fandom.com';
 
   switch (action) {
     case 'items':
