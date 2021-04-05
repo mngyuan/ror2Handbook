@@ -1042,7 +1042,7 @@
         "Cooldown": "6s",
         "Proc Coefficient": "1",
         "Description": "Fire a bolt that deals 330% damage and injects an enemy. On death, drop multiple healing fruits that heal for 25% HP.",
-        "Notes": "Unlocked via the REX: Full of Life challenge. (As REX, heal for 1000 health at once.)\nThe mark lasts 10 seconds before expiring.\nHas a slight area of effect, so multiple enemies can become marked from a single cast.\nSpawns 2 - 8 fruits (scales with enemy max HP) when the marked target is killed.\nOnly 1 enemy can be affected at any time. Using the ability on a different target removes the debuff on the previous enemy"
+        "Notes": "Unlocked via the REX: Full of Life Challenge. (As REX, heal for 1000 health at once.)\nThe mark lasts 10 seconds before expiring.\nHas a slight area of effect, so multiple enemies can become marked from a single cast.\nSpawns 2 - 8 fruits (scales with enemy max HP) when the marked target is killed.\nOnly 1 enemy can be affected at any time. Using the ability on a different target removes the debuff on the previous enemy"
       },
       {
         "name": "Tangling Growth",
