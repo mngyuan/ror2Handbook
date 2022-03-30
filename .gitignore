@@ -28,6 +28,8 @@ build/
 .gradle
 local.properties
 *.iml
+# Upload cert for Play Store?
+android/app/upload_cert.pem
 
 # node.js
 #
