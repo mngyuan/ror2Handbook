@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const AsyncStorageContext = React.createContext(defaultAsyncStorageData);
 const ASYNC_STORAGE_KEYS = ['dark_mode_override'];

@@ -35,6 +35,7 @@ export const RARITY_ORDER = Object.fromEntries(
     'Legendary',
     'Boss',
     'Lunar',
+    'Void',
     'Equipment',
     'Lunar Equipment',
     'Elite Equipment',
