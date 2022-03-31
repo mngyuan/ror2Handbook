@@ -592,7 +592,6 @@ const visitArtifact = async (page, url) => {
     tables
       .map((table) => {
         const tableRows = Array.from(table.querySelectorAll('tbody tr'));
-        console.log(tableRows);
         return tableRows
           .map((tableRow) => {
             const tableDatas = tableRow.querySelectorAll('td');
@@ -726,7 +725,7 @@ const main = () => {
         ignoreList: SURVIVOR_IGNORE_LIST,
         baseUrl: rootUrl,
         single: flags.includes('--single'),
-        genUrls: async (page, linkSeedSelector = '.gallery .gallerytext p > span > span > a') =>
+        genUrls: async (page, linkSeedSelector = '.gallerybox .thumb a') =>
           await page.$$eval(linkSeedSelector, (links) =>
             links.map((linkNode) => linkNode.getAttribute('href')),
           ),
