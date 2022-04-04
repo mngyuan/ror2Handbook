@@ -7,6 +7,14 @@
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/8e/Acrid.png/revision/latest/scale-to-width-down/64?cb=20200129235326",
     "imgName": "Acrid.png"
   },
+  "Dragged Below": {
+    "name": "Dragged Below",
+    "description": "Escape the Planetarium or complete wave 50 in Simulacrum.",
+    "unlock": "Void Fiend",
+    "category": "survivors",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/5b/Void_Fiend.png/revision/latest/scale-to-width-down/64?cb=20220302014710",
+    "imgName": "Void Fiend.png"
+  },
   "Engineering Perfection": {
     "name": "Engineering Perfection",
     "description": "Complete 30 stages.",
@@ -679,6 +687,30 @@
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/db/DIRECTIVE_Harvest.png/revision/latest/scale-to-width-down/64?cb=20210326131341",
     "imgName": "DIRECTIVE Harvest.png"
   },
+  "Railgunner: Annihilator": {
+    "name": "Railgunner: Annihilator",
+    "description": "As Railgunner, deal 1,000,000 damage in one shot.",
+    "unlock": "Polar Field Device",
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/3f/Polar_Field_Device.png/revision/latest/scale-to-width-down/64?cb=20220302031402",
+    "imgName": "Polar Field Device.png"
+  },
+  "Railgunner: Marksman": {
+    "name": "Railgunner: Marksman",
+    "description": "As Railgunner, fire 30 consecutive sniper shots without missing a Weak Point.",
+    "unlock": "HH44 Marksman",
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/ec/HH44_Marksman.png/revision/latest/scale-to-width-down/64?cb=20220302031538",
+    "imgName": "HH44 Marksman.png"
+  },
+  "Railgunner: Trickshot": {
+    "name": "Railgunner: Trickshot",
+    "description": "As Railgunner, get 3 kills with a single Supercharge shot while airborne.",
+    "unlock": "Cryocharge",
+    "category": "skills",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/3a/Cryocharge.png/revision/latest/scale-to-width-down/64?cb=20220302023227",
+    "imgName": "Cryocharge.png"
+  },
   "Acrid: Mastery": {
     "name": "Acrid: Mastery",
     "description": "As Acrid, beat the game or obliterate on Monsoon.",
@@ -766,6 +798,22 @@
     "category": "skins",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/a2/Smoothie.png/revision/latest/scale-to-width-down/64?cb=20200201131725",
     "imgName": "Smoothie.png"
+  },
+  "Railgunner: Mastery": {
+    "name": "Railgunner: Mastery",
+    "description": "As Railgunner, beat the game or obliterate on Monsoon.",
+    "unlock": "Marksman",
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/a0/Marksman.png/revision/latest/scale-to-width-down/64?cb=20220304205015",
+    "imgName": "Marksman.png"
+  },
+  "Void Fiend: Mastery": {
+    "name": "Void Fiend: Mastery",
+    "description": "As Void Fiend, beat the game or obliterate on Monsoon.",
+    "unlock": "Purified",
+    "category": "skins",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/1e/Purified.png/revision/latest/scale-to-width-down/64?cb=20220309193345",
+    "imgName": "Purified.png"
   },
   "Trial of Chaos": {
     "name": "Trial of Chaos",
@@ -896,4 +944,3 @@
     "imgName": "Artifact of Vengeance.png"
   }
 }
-

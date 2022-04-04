@@ -54,9 +54,28 @@ const toCamelCase = (s) =>
 const genUrlsToFollow = async (page, navboxSelector = '.navbox') =>
   await page.$$eval(navboxSelector, (navboxes) =>
     Array.from(
-      navboxes[0].querySelectorAll('a:not(.selflink)'),
-    ).map((linkNode) => linkNode.getAttribute('href')),
+      navboxes[0].querySelectorAll('.notitle > a:not(.selflink)'),
+    ).map((linkNode) => linkNode.getAttribute('href'))
   );
+
+async function autoScroll(page){
+  await page.evaluate(async () => {
+      await new Promise((resolve, reject) => {
+          var totalHeight = 0;
+          var distance = 100;
+          var timer = setInterval(() => {
+              var scrollHeight = document.body.scrollHeight;
+              window.scrollBy(0, distance);
+              totalHeight += distance;
+
+              if(totalHeight >= scrollHeight - window.innerHeight){
+                  clearInterval(timer);
+                  resolve();
+              }
+          }, 100);
+      });
+  });
+}
 
 const scrape = ({
   seed,
@@ -70,7 +89,11 @@ const scrape = ({
   new Promise(async (resolve, reject) => {
     try {
       // to debug, launch with launch({devtools: true, headless: false})
-      const browser = await puppeteer.launch();
+      const browser = await puppeteer.launch({
+        "headless": true,
+        "args": ["--fast-start", "--disable-extensions", "--no-sandbox"],
+        "ignoreHTTPSErrors": true
+      });
       const page = await browser.newPage();
       await page.exposeFunction('toCamelCase', toCamelCase);
       await windowSet(
@@ -83,10 +106,10 @@ const scrape = ({
       if (!single) {
         await page.goto(seed);
         const nonSeedUrls = await genUrls(page);
-        const itemUrls = Array.from(nonSeedUrls)
+        const itemUrls = new Set(Array.from(nonSeedUrls)
           .map((url) => `${baseUrl}${url}`)
           .concat(skipSeed ? [] : seed)
-          .filter((url) => !ignoreList.includes(url));
+          .filter((url) => !ignoreList.includes(url)));
         const itemData = {};
         for (const itemUrl of itemUrls) {
           const data = await visitCallback(page, itemUrl);
@@ -197,7 +220,7 @@ const visitItem = async (page, url) => {
 };
 
 const visitItemGamepedia = async (page, url) => {
-  await page.goto(url);
+  await page.goto(url, {"waitUntil" : "networkidle0"});
   console.log(url);
   const evalCatchHandler = (err) => {
     if (!err.message.includes('failed to find element matching selector')) {
@@ -205,7 +228,7 @@ const visitItemGamepedia = async (page, url) => {
     }
   };
   const {url: imgUrl, name: imgName} = await page
-    .$eval('.infoboxtable img', (el) => ({
+    .$eval('.infoboxtable td > img', (el) => ({
       url: el.src,
       name: el.alt,
     }))
@@ -259,7 +282,7 @@ const visitItemGamepedia = async (page, url) => {
 };
 
 const visitEqp = async (page, url) => {
-  await page.goto(url);
+  await page.goto(url, {"waitUntil" : "networkidle0"});
   console.log(url);
   const evalCatchHandler = (err) => {
     if (!err.message.includes('failed to find element matching selector')) {
@@ -326,7 +349,7 @@ const visitEqp = async (page, url) => {
 };
 
 const visitEqpGamepedia = async (page, url) => {
-  await page.goto(url);
+  await page.goto(url, {"waitUntil" : "networkidle0"});
   console.log(url);
   const evalCatchHandler = (err) => {
     if (!err.message.includes('failed to find element matching selector')) {
@@ -334,7 +357,7 @@ const visitEqpGamepedia = async (page, url) => {
     }
   };
   const {url: imgUrl, name: imgName} = await page
-    .$eval('.infoboxtable img', (el) => ({
+    .$eval('.infoboxtable td > img', (el) => ({
       url: el.src,
       name: el.alt,
     }))
@@ -366,7 +389,7 @@ const visitEqpGamepedia = async (page, url) => {
 };
 
 const visitSurvivor = async (page, url) => {
-  await page.goto(url);
+  await page.goto(url, {"waitUntil" : "networkidle0"});
   console.log(url);
   const evalCatchHandler = (err) => {
     if (!err.message.includes('failed to find element matching selector')) {
@@ -438,7 +461,8 @@ const visitSurvivor = async (page, url) => {
 };
 
 const visitSurvivorGamepedia = async (page, url) => {
-  await page.goto(url);
+  await page.goto(url, {"waitUntil" : "networkidle0"});
+  await autoScroll(page);
   console.log(url);
   const evalCatchHandler = (err) => {
     if (!err.message.includes('failed to find element matching selector')) {
@@ -446,7 +470,7 @@ const visitSurvivorGamepedia = async (page, url) => {
     }
   };
   const {url: imgUrl, name: imgName} = await page
-    .$eval('.infoboxtable img', (el) => ({
+    .$eval('.infoboxtable td > img', (el) => ({
       url: el.src,
       name: el.alt,
     }))
@@ -464,7 +488,7 @@ const visitSurvivorGamepedia = async (page, url) => {
     ),
     page.$eval('.infoboxname', (el) => el.innerText).catch(evalCatchHandler),
     page
-      .$$eval('table.wikitable.skill', (els) =>
+      .$$eval('table.skill', (els) =>
         els.map((table) => {
           const tableRows = Array.from(table.querySelectorAll('tr'));
           const name = tableRows[0].innerText;
@@ -515,7 +539,8 @@ const CHALLENGE_TABLE_CATEGORY = [
 ];
 
 const visitChallenge = async (page, url) => {
-  await page.goto(url);
+  await page.goto(url, {"waitUntil" : "networkidle0"});
+  await autoScroll(page);
   console.log(url);
   const challenges = await page.$$eval(
     '.article-table.sortable.floatheader.jquery-tablesorter',
@@ -560,7 +585,8 @@ const visitChallenge = async (page, url) => {
 };
 
 const visitArtifact = async (page, url) => {
-  await page.goto(url);
+  await page.goto(url, {"waitUntil" : "networkidle0"});
+  await autoScroll(page);
   console.log(url);
   const artifacts = await page.$$eval('.article-table.floatheader', (tables) =>
     tables
@@ -699,7 +725,7 @@ const main = () => {
         ignoreList: SURVIVOR_IGNORE_LIST,
         baseUrl: rootUrl,
         single: flags.includes('--single'),
-        genUrls: async (page, linkSeedSelector = '.gallery .gallerytext a') =>
+        genUrls: async (page, linkSeedSelector = '.gallerybox .thumb a') =>
           await page.$$eval(linkSeedSelector, (links) =>
             links.map((linkNode) => linkNode.getAttribute('href')),
           ),

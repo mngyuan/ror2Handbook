@@ -4,7 +4,7 @@
     "category": "Damage\nAIBlacklist",
     "unlock": "Advancement",
     "id": "61",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Armor-Piercing_Rounds",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Armor-Piercing_Rounds",
     "description": "Deal an additional 20% damage (+20% per stack) to bosses.",
     "name": "Armor-Piercing Rounds",
     "stats": [
@@ -18,7 +18,7 @@
     "category": "Utility",
     "unlock": "Flawless",
     "id": "58",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Backup_Magazine",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Backup_Magazine",
     "description": "Add +1 (+1 per stack) charge of your Secondary skill.",
     "name": "Backup Magazine",
     "stats": [{"stat": "Charge", "value": "1", "stack": "Linear", "add": "+1"}],
@@ -27,9 +27,9 @@
   },
   "Bison Steak": {
     "rarity": "Common",
-    "category": "Utility",
+    "category": "Healing",
     "id": "91",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Bison_Steak",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Bison_Steak",
     "description": "Increases maximum health by 25 (+25 per stack).",
     "name": "Bison Steak",
     "stats": [
@@ -43,7 +43,7 @@
     "category": "Damage\nAIBlacklist",
     "unlock": "...Maybe One More.",
     "id": "42",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Bundle_of_Fireworks",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Bundle_of_Fireworks",
     "description": "Activating an interactable launches 8 (+4 per stack) fireworks that deal 300% base damage.",
     "name": "Bundle of Fireworks",
     "stats": [
@@ -56,7 +56,7 @@
     "rarity": "Common",
     "category": "Healing\nAIBlacklist",
     "id": "16",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Bustling_Fungus",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Bustling_Fungus",
     "description": "After standing still for 1 second, create a zone that heals for 4.5% (+2.25% per stack) of your health every second to all allies within 3m (+1.5m per stack).",
     "name": "Bustling Fungus",
     "stats": [
@@ -75,16 +75,11 @@
     "rarity": "Common",
     "category": "Healing",
     "id": "27",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Cautious_Slug",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Cautious_Slug",
     "description": "Increases base health regeneration by +3 hp/s (+3 hp/s per stack) while outside of combat.",
     "name": "Cautious Slug",
     "stats": [
-      {
-        "stat": "Health Regen",
-        "value": "3 hp/s",
-        "stack": "Linear",
-        "add": "+3 hp/s"
-      }
+      {"stat": "Health Regen", "value": "3", "stack": "Linear", "add": "+3"}
     ],
     "flavorText": "Rapidly heal outside of danger.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c6/Cautious_Slug.png/revision/latest/scale-to-width-down/128?cb=20210329070118"
@@ -94,7 +89,7 @@
     "category": "Damage",
     "unlock": "The Basics",
     "id": "17",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Crowbar",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Crowbar",
     "description": "Deal +75% (+75% per stack) damage to enemies above 90% health.",
     "name": "Crowbar",
     "stats": [
@@ -103,37 +98,62 @@
     "flavorText": "Deal bonus damage to enemies above 90% health.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c0/Crowbar.png/revision/latest/scale-to-width-down/256?cb=20200129193046"
   },
+  "Delicate Watch": {
+    "rarity": "Common",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Delicate_Watch",
+    "description": "Increase damage by 20% (+20% per stack). Taking damage to below 25% health breaks this item.",
+    "name": "Delicate Watch",
+    "stats": [
+      {"stat": "Damage", "value": "20%", "stack": "Linear", "add": "+20%"}
+    ],
+    "flavorText": "Deal bonus damage. Breaks at low health.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c6/Delicate_Watch.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
   "Energy Drink": {
     "rarity": "Common",
     "category": "Utility\nSprintRelated",
     "id": "57",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Energy_Drink",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Energy_Drink",
     "description": "Sprint speed is improved by 25% (+25% per stack).",
     "name": "Energy Drink",
     "stats": [
       {"stat": "Sprint Speed", "value": "25%", "stack": "Linear", "add": "+25%"}
     ],
-    "flavorText": "Sprint faster.",
+    "flavorText": "Increase sprint speed by +25%.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/7e/Energy_Drink.png/revision/latest/scale-to-width-down/256?cb=20200129193054"
+  },
+  "Focus Crystal": {
+    "rarity": "Common",
+    "category": "Damage",
+    "id": "87",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Focus_Crystal",
+    "description": "Increase damage to enemies within 13m by 20% (+20% per stack).",
+    "name": "Focus Crystal",
+    "stats": [
+      {"stat": "Damage", "value": "20%", "stack": "Linear", "add": "+20%"}
+    ],
+    "flavorText": "Deal bonus damage to nearby enemies.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/59/Focus_Crystal.png/revision/latest/scale-to-width-down/128?cb=20200129235331"
   },
   "Gasoline": {
     "rarity": "Common",
     "category": "Damage\nOnKillEffect",
     "id": "39",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Gasoline",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Gasoline",
     "description": "Killing an enemy ignites all enemies within 12m (+4m per stack) for 150% base damage. Additionally, enemies burn for 150% (+75% per stack) base damage.",
     "name": "Gasoline",
     "stats": [
       {"stat": "Damage", "value": "150%", "stack": "Linear", "add": "+75%"},
       {"stat": "Radius", "value": "12m", "stack": "Linear", "add": "+4m"}
     ],
-    "flavorText": "Killing enemies sets nearby enemies on fire.",
+    "flavorText": "Killing an enemy ignites other nearby enemies.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/6e/Gasoline.png/revision/latest/scale-to-width-down/256?cb=20200129193059"
   },
   "Item Scrap, White": {
     "rarity": "Common",
     "category": "WorldUnique\nScrap",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Item_Scrap,_White",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Item_Scrap,_White",
     "description": "Does nothing. Prioritized when used with 3D Printers.",
     "name": "Item Scrap, White",
     "stats": [],
@@ -144,7 +164,7 @@
     "rarity": "Common",
     "category": "Damage",
     "id": "7",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Lens-Maker%27s_Glasses",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Lens-Maker%27s_Glasses",
     "description": "Your attacks have a 10% (+10% per stack) chance to 'Critically Strike', dealing double damage.",
     "name": "Lens-Maker's Glasses",
     "stats": [
@@ -155,7 +175,7 @@
         "add": "+10%"
       }
     ],
-    "flavorText": "Chance to 'Critically Strike', dealing double damage.",
+    "flavorText": "Gain 10% chance for hits to 'Critically Strike', dealing double damage.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/23/Lens-Maker%27s_Glasses.png/revision/latest/scale-to-width-down/256?cb=20200129193116"
   },
   "Medkit": {
@@ -163,18 +183,36 @@
     "category": "Healing",
     "unlock": "Elite Slayer",
     "id": "36",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Medkit",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Medkit",
     "description": "2 seconds after getting hurt, heal for 20 plus an additional 5% (+5% per stack) of maximum health.",
     "name": "Medkit",
     "stats": [{"stat": "Heal", "value": "5%", "stack": "Linear", "add": "5%"}],
     "flavorText": "Receive a delayed heal after taking damage.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/0/0f/Medkit.png/revision/latest/scale-to-width-down/256?cb=20200129193118"
   },
+  "Mocha": {
+    "rarity": "Common",
+    "category": "Damage\nUtility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Mocha",
+    "description": "Increases attack speed by 7.5% (+7.5 per stack) and movement speed by 7% (+7% per stack).",
+    "name": "Mocha",
+    "stats": [
+      {
+        "stat": "Attack Speed",
+        "value": "7.5%",
+        "stack": "Linear",
+        "add": "+7.5%"
+      },
+      {"stat": "Movement Speed", "value": "7%", "stack": "Linear", "add": "+7%"}
+    ],
+    "flavorText": "Slightly increase attack speed and movement speed.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/48/Mocha.png/revision/latest/scale-to-width-down/128?cb=20220302041305"
+  },
   "Monster Tooth": {
     "rarity": "Common",
     "category": "Healing\nOnKillEffect",
     "id": "6",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Monster_Tooth",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Monster_Tooth",
     "description": "Killing an enemy spawns a healing orb that heals for 8 plus an additional 2% (+2% per stack) of maximum health.",
     "name": "Monster Tooth",
     "stats": [
@@ -183,12 +221,24 @@
     "flavorText": "Drop a healing orb on kill.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/3b/Monster_Tooth.png/revision/latest/scale-to-width-down/256?cb=20200129193120"
   },
+  "Oddly-shaped Opal": {
+    "rarity": "Common",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Oddly-shaped_Opal",
+    "description": "Increase armor by 100 (+100 per stack) while out of danger.",
+    "name": "Oddly-shaped Opal",
+    "stats": [
+      {"stat": "Armor", "value": "100", "stack": "Linear", "add": "+100"}
+    ],
+    "flavorText": "Reduce damage the first time you are hit.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f3/Oddly-shaped_Opal.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
   "Paul's Goat Hoof": {
     "rarity": "Common",
     "category": "Utility",
     "unlock": "\"Is This Bugged?\"",
     "id": "8",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Paul%27s_Goat_Hoof",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Paul%27s_Goat_Hoof",
     "description": "Increases movement speed by 14% (+14% per stack).",
     "name": "Paul's Goat Hoof",
     "stats": [
@@ -199,14 +249,14 @@
         "add": "+14%"
       }
     ],
-    "flavorText": "Move faster.",
+    "flavorText": "Increase movement speed.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/4a/Paul%27s_Goat_Hoof.png/revision/latest/scale-to-width-down/128?cb=20210329070130"
   },
   "Personal Shield Generator": {
     "rarity": "Common",
     "category": "Utility",
     "id": "29",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Personal_Shield_Generator",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Personal_Shield_Generator",
     "description": "Gain a shield equal to 8% (+8% per stack) of your maximum health. Recharges outside of danger.",
     "name": "Personal Shield Generator",
     "stats": [
@@ -215,11 +265,21 @@
     "flavorText": "Gain a recharging shield.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e0/Personal_Shield_Generator.png/revision/latest/scale-to-width-down/256?cb=20200129193129"
   },
+  "Power Elixir": {
+    "rarity": "Common",
+    "category": "Healing",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Power_Elixir",
+    "description": "Taking damage to below 25% health consumes this item, healing you for 75% of maximum health.",
+    "name": "Power Elixir",
+    "stats": [],
+    "flavorText": "Receive an instant heal at low health. Consumed on use.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/51/Power_Elixir.png/revision/latest/scale-to-width-down/128?cb=20220302052852"
+  },
   "Repulsion Armor Plate": {
     "rarity": "Common",
     "category": "Utility",
     "id": "102",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Repulsion_Armor_Plate",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Repulsion_Armor_Plate",
     "description": "Reduce all incoming damage by 5 (+5 per stack). Cannot be reduced below 1.",
     "name": "Repulsion Armor Plate",
     "stats": [
@@ -228,12 +288,24 @@
     "flavorText": "Receive flat damage reduction from all attacks.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/aa/Repulsion_Armor_Plate.png/revision/latest/scale-to-width-down/128?cb=20200331155122"
   },
+  "Roll of Pennies": {
+    "rarity": "Common",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Roll_of_Pennies",
+    "description": "Gain 3 (+3 per stack) gold on taking damage from an enemy. Scales over time.",
+    "name": "Roll of Pennies",
+    "stats": [
+      {"stat": "Base Gold", "value": "3", "stack": "Linear", "add": "+3"}
+    ],
+    "flavorText": "Gain gold on taking damage.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e9/Roll_of_Pennies.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
   "Rusted Key": {
     "rarity": "Common",
     "category": "Utility\nAIBlacklist",
     "unlock": "Keyed Up",
     "id": "60",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Rusted_Key",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Rusted_Key",
     "description": "A hidden cache containing an item (80%/20%) will appear in a random location on each stage. Opening the cache consumes this item.",
     "name": "Rusted Key",
     "stats": [],
@@ -244,20 +316,20 @@
     "rarity": "Common",
     "category": "Damage",
     "id": "0",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Soldier%27s_Syringe",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Soldier%27s_Syringe",
     "description": "Increases attack speed by 15% (+15% per stack).",
     "name": "Soldier's Syringe",
     "stats": [
       {"stat": "Attack Speed", "value": "15%", "stack": "Linear", "add": "+15%"}
     ],
-    "flavorText": "Increases attack speed.",
+    "flavorText": "Increase attack speed.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f2/Soldier%27s_Syringe.png/revision/latest/scale-to-width-down/128?cb=20210329065946"
   },
   "Sticky Bomb": {
     "rarity": "Common",
     "category": "Damage",
     "id": "59",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Sticky_Bomb",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Sticky_Bomb",
     "description": "5% (+5% per stack) chance on hit to attach a bomb to an enemy, detonating for 180% TOTAL damage.",
     "name": "Sticky Bomb",
     "stats": [
@@ -270,7 +342,7 @@
     "rarity": "Common",
     "category": "Utility\nAIBlacklist",
     "id": "41",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Stun_Grenade",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Stun_Grenade",
     "description": "5% (+5% on stack) chance on hit to stun enemies for 2 seconds.",
     "name": "Stun Grenade",
     "stats": [
@@ -283,7 +355,7 @@
     "rarity": "Common",
     "category": "Utility\nHealing\nOnKillEffect",
     "id": "84",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Topaz_Brooch",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Topaz_Brooch",
     "description": "Gain a temporary barrier on kill for 15 health (+15 per stack).",
     "name": "Topaz Brooch",
     "stats": [
@@ -297,7 +369,7 @@
     "category": "Utility\nBrotherBlacklist",
     "unlock": "Learning Process",
     "id": "1",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Tougher_Times",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Tougher_Times",
     "description": "15% (+15% per stack) chance to block incoming damage. Unaffected by luck.",
     "name": "Tougher Times",
     "stats": [
@@ -315,7 +387,7 @@
     "rarity": "Common",
     "category": "Damage",
     "id": "20",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Tri-Tip_Dagger",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Tri-Tip_Dagger",
     "description": "10% (+10% per stack) chance to bleed an enemy for 240% base damage.",
     "name": "Tri-Tip Dagger",
     "stats": [
@@ -326,14 +398,14 @@
         "add": "+10%"
       }
     ],
-    "flavorText": "Chance to bleed enemies on hit.",
+    "flavorText": "Gain +10% chance to bleed enemies on hit.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/17/Tri-Tip_Dagger.png/revision/latest/scale-to-width-down/256?cb=20200129193212"
   },
   "Warbanner": {
     "rarity": "Common",
-    "category": "Utility\nAIBlacklist",
+    "category": "Utility\nAIBlacklist\nTurretBlacklist",
     "id": "24",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Warbanner",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Warbanner",
     "description": "On level up or starting the Teleporter event, drop a banner that strengthens all allies within 16m (+8m per stack). Raise attack and movement speed by 30%.",
     "name": "Warbanner",
     "stats": [
@@ -346,7 +418,7 @@
     "rarity": "Uncommon",
     "category": "Damage",
     "id": "3",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/AtG_Missile_Mk._1",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/AtG_Missile_Mk._1",
     "description": "10% chance to fire a missile that deals 300% (+300% per stack) TOTAL damage.",
     "name": "AtG Missile Mk. 1",
     "stats": [
@@ -359,7 +431,7 @@
     "rarity": "Uncommon",
     "category": "Utility\nOnKillEffect",
     "id": "37",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Bandolier",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Bandolier",
     "description": "18% (+10% per stack) chance on kill to drop an ammo pack that resets all skill cooldowns.",
     "name": "Bandolier",
     "stats": [
@@ -373,8 +445,8 @@
     "category": "Damage\nOnKillEffect",
     "unlock": "Glorious Battle",
     "id": "46",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Berzerker%27s_Pauldron",
-    "description": "Killing 3 enemies within 1 second sends you into a frenzy for 6s (+4s per stack). Increases movement speed by 50% and attack speed by 100%.",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Berzerker%27s_Pauldron",
+    "description": "Killing 4 enemies within 1 second sends you into a frenzy for 6s (+4s per stack). Increases movement speed by 50% and attack speed by 100%.",
     "name": "Berzerker's Pauldron",
     "stats": [
       {
@@ -384,14 +456,14 @@
         "add": "+4s"
       }
     ],
-    "flavorText": "Enter a frenzy after killing 3 enemies in quick succession.",
+    "flavorText": "Enter a frenzy after killing 4 enemies in quick succession.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/a6/Berzerker%27s_Pauldron.png/revision/latest/scale-to-width-down/256?cb=20200129193026"
   },
   "Chronobauble": {
     "rarity": "Uncommon",
     "category": "Utility",
     "id": "65",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Chronobauble",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Chronobauble",
     "description": "Slow enemies on hit for -60% movement speed for 2s (+2s per stack).",
     "name": "Chronobauble",
     "stats": [
@@ -404,7 +476,7 @@
     "rarity": "Uncommon",
     "category": "Damage",
     "id": "104",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Death_Mark",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Death_Mark",
     "description": "Enemies with 4 or more debuffs are marked for death, increasing damage taken by 50% from all sources for 7 (+7 per stack) seconds.",
     "name": "Death Mark",
     "stats": [
@@ -423,13 +495,13 @@
     "category": "Utility\nEquipmentRelated",
     "unlock": "Experimenting",
     "id": "30",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Fuel_Cell",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Fuel_Cell",
     "description": "Hold an additional equipment charge (+1 per stack). Reduce equipment cooldown by 15% (+15% per stack).",
     "name": "Fuel Cell",
     "stats": [
       {"stat": "Charges", "value": "1", "stack": "Linear", "add": "+1"},
       {
-        "stat": "Cooldown",
+        "stat": "Cooldown Reduction",
         "value": "15%",
         "stack": "Exponential",
         "add": "+15%"
@@ -442,7 +514,7 @@
     "rarity": "Uncommon",
     "category": "Utility\nOnKillEffect",
     "id": "94",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Ghor%27s_Tome",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Ghor%27s_Tome",
     "description": "4% (+4% on stack) chance on kill to drop a treasure worth $25. Scales over time.",
     "name": "Ghor's Tome",
     "stats": [
@@ -456,7 +528,7 @@
     "category": "Healing",
     "unlock": "Prismatically Aligned",
     "id": "26",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Harvester%27s_Scythe",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Harvester%27s_Scythe",
     "description": "Gain 5% critical chance. Critical strikes heal for 8 (+4 per stack) health.",
     "name": "Harvester's Scythe",
     "stats": [
@@ -470,7 +542,7 @@
     "rarity": "Uncommon",
     "category": "Utility\nAIBlacklist",
     "id": "9",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Hopoo_Feather",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Hopoo_Feather",
     "description": "Gain +1 (+1 per stack) maximum jump count.",
     "name": "Hopoo Feather",
     "stats": [
@@ -479,12 +551,36 @@
     "flavorText": "Gain an extra jump.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/3a/Hopoo_Feather.png/revision/latest/scale-to-width-down/256?cb=20200129193111"
   },
+  "Hunter's Harpoon": {
+    "rarity": "Uncommon",
+    "category": "Utility\nOnKillEffect",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Hunter%27s_Harpoon",
+    "description": "Killing an enemy increases movement speed by 125%, fading over 1 (+0.5 per stack) seconds.",
+    "name": "Hunter's Harpoon",
+    "stats": [
+      {"stat": "Duration", "value": "1s", "stack": "Linear", "add": "+0.5s"}
+    ],
+    "flavorText": "Killing an enemy gives you a burst of movement speed.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c4/Hunter%27s_Harpoon.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
+  "Ignition Tank": {
+    "rarity": "Uncommon",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Ignition_Tank",
+    "description": "Ignite effects deal +300% (+300% per stack) more damage over time.",
+    "name": "Ignition Tank",
+    "stats": [
+      {"stat": "Damage", "value": "300%", "stack": "Linear", "add": "+300%"}
+    ],
+    "flavorText": "Your ignite effects deal quadruple damage.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/ed/Ignition_Tank.png/revision/latest/scale-to-width-down/128?cb=20220302052615"
+  },
   "Infusion": {
     "rarity": "Uncommon",
     "category": "Utility\nHealing\nOnKillEffect",
     "unlock": "Slaughter",
     "id": "33",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Infusion",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Infusion",
     "description": "Killing an enemy increases your health permanently by 1 (+1 per stack), up to a maximum of 100 (+100 per stack) health.",
     "name": "Infusion",
     "stats": [
@@ -502,7 +598,7 @@
   "Item Scrap, Green": {
     "rarity": "Uncommon",
     "category": "WorldUnique\nScrap",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Item_Scrap,_Green",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Item_Scrap,_Green",
     "description": "Does nothing. Prioritized when used with 3D Printers.",
     "name": "Item Scrap, Green",
     "stats": [],
@@ -514,7 +610,7 @@
     "category": "Damage",
     "unlock": "Death Do Us Part",
     "id": "64",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Kjaro%27s_Band",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Kjaro%27s_Band",
     "description": "Hits that deal more than 400% damage also blasts enemies with a runic flame tornado, dealing 300% (+300% per stack) TOTAL damage over time. Recharges every 10 seconds.",
     "name": "Kjaro's Band",
     "stats": [
@@ -527,7 +623,7 @@
     "rarity": "Uncommon",
     "category": "Healing",
     "id": "13",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Leeching_Seed",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Leeching_Seed",
     "description": "Dealing damage heals you for 1 (+1 per stack) health.",
     "name": "Leeching Seed",
     "stats": [{"stat": "Heal", "value": "1", "stack": "Linear", "add": "+1"}],
@@ -536,9 +632,9 @@
   },
   "Lepton Daisy": {
     "rarity": "Uncommon",
-    "category": "Healing\nAIBlacklist",
+    "category": "Healing\nAIBlacklist\nTurretBlacklist",
     "id": "86",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Lepton_Daisy",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Lepton_Daisy",
     "description": "Release a healing nova during the Teleporter event, healing all nearby allies for 50% of their maximum health. Occurs 1 (+1 per stack) times.",
     "name": "Lepton Daisy",
     "stats": [
@@ -552,7 +648,7 @@
     "category": "Damage\nAIBlacklist",
     "unlock": "Cut Down",
     "id": "78",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Old_Guillotine",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Old_Guillotine",
     "description": "Instantly kill Elite monsters below 13% (+13% per stack) health.",
     "name": "Old Guillotine",
     "stats": [
@@ -570,11 +666,16 @@
     "rarity": "Uncommon",
     "category": "Utility",
     "id": "25",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Old_War_Stealthkit",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Old_War_Stealthkit",
     "description": "Falling below 25% health causes you to gain 40% movement speed and invisibility for 5s. Recharges every 30 seconds (-50% per stack).",
     "name": "Old War Stealthkit",
     "stats": [
-      {"stat": "Cooldown", "value": "30", "stack": "Linear", "add": "-50%"}
+      {
+        "stat": "Cooldown",
+        "value": "30s",
+        "stack": "Exponential",
+        "add": "-50%"
+      }
     ],
     "flavorText": "Turn invisible at low health.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/2c/Old_War_Stealthkit.png/revision/latest/scale-to-width-down/256?cb=20200129193125"
@@ -584,7 +685,7 @@
     "category": "Damage",
     "unlock": "Rapidfire",
     "id": "19",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Predatory_Instincts",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Predatory_Instincts",
     "description": "Gain 5% critical chance. Critical strikes increase attack speed by 12%. Maximum cap of 36% (+24% per stack) attack speed.",
     "name": "Predatory Instincts",
     "stats": [
@@ -603,7 +704,7 @@
     "rarity": "Uncommon",
     "category": "Damage\nAIBlacklist",
     "id": "90",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Razorwire",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Razorwire",
     "description": "Getting hit causes you to explode in a burst of razors, dealing 160% damage. Hits up to 5 (+2 per stack) targets in a 25m (+10m per stack) radius",
     "name": "Razorwire",
     "stats": [
@@ -617,7 +718,7 @@
     "rarity": "Uncommon",
     "category": "Utility",
     "id": "21",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Red_Whip",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Red_Whip",
     "description": "Leaving combat boosts your movement speed by 30% (+30% per stack).",
     "name": "Red Whip",
     "stats": [
@@ -631,11 +732,21 @@
     "flavorText": "Move fast out of combat.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/2a/Red_Whip.png/revision/latest/scale-to-width-down/128?cb=20200201131611"
   },
+  "Regenerating Scrap": {
+    "rarity": "Uncommon",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Regenerating_Scrap",
+    "description": "Does nothing. Prioritized when used with Uncommon 3D Printers. At the start of each stage, it regenerates.",
+    "name": "Regenerating Scrap",
+    "stats": [],
+    "flavorText": "Prioritized when used with Uncommon 3D Printers. Usable once per stage.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/77/Regenerating_Scrap.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
   "Rose Buckler": {
     "rarity": "Uncommon",
     "category": "Utility\nSprintRelated",
     "id": "62",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Rose_Buckler",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Rose_Buckler",
     "description": "Increase armor by 30 (+30 per stack) while sprinting.",
     "name": "Rose Buckler",
     "stats": [
@@ -649,7 +760,7 @@
     "category": "Damage",
     "unlock": "Death Do Us Part",
     "id": "63",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Runald%27s_Band",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Runald%27s_Band",
     "description": "Hits that deal more than 400% damage also blasts enemies with a runic ice blast, slowing them by 80% for 3s (+3s per stack) and dealing 250% (+250% per stack) TOTAL damage. Recharges every 10 seconds.",
     "name": "Runald's Band",
     "stats": [
@@ -659,12 +770,35 @@
     "flavorText": "High damage hits also blasts enemies with runic ice. Recharges over time.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/0/05/Runald%27s_Band.png/revision/latest/scale-to-width-down/256?cb=20200129193147"
   },
+  "Shipping Request Form": {
+    "rarity": "",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Shipping_Request_Form",
+    "description": "A delivery containing 2 items (79%/20%/1%) will appear in a random location on each stage. (Increases rarity chances of the items per stack).",
+    "name": "Shipping Request Form",
+    "stats": [{"stat": "Rarity", "value": "", "stack": "Special", "add": ""}],
+    "flavorText": "Get a delivery each stage that contains powerful items.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/44/Shipping_Request_Form.png/revision/latest/scale-to-width-down/128?cb=20220302060147"
+  },
+  "Shuriken": {
+    "rarity": "Uncommon",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Shuriken",
+    "description": "Activating your Primary skill also throws a shuriken that deals 400% (+100% per stack) base damage. You can hold up to 3 (+1 per stack) shurikens which all reload over 10 seconds.",
+    "name": "Shuriken",
+    "stats": [
+      {"stat": "Damage", "value": "400%", "stack": "Linear", "add": "+100%"},
+      {"stat": "Shurikens", "value": "3", "stack": "Linear", "add": "+1"}
+    ],
+    "flavorText": "Activating your Primary skill also throws a shuriken. Recharges over time.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/ac/Shuriken.png/revision/latest/scale-to-width-down/128?cb=20220302043445"
+  },
   "Squid Polyp": {
     "rarity": "Uncommon",
     "category": "Damage\nAIBlacklist",
     "unlock": "Automation Activation",
     "id": "103",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Squid_Polyp",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Squid_Polyp",
     "description": "Activating an interactable summons a Squid Turret that attacks nearby enemies at 100% (+100% per stack) attack speed. Lasts 30 seconds.",
     "name": "Squid Polyp",
     "stats": [
@@ -682,7 +816,7 @@
     "rarity": "Uncommon",
     "category": "Damage",
     "id": "11",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Ukulele",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Ukulele",
     "description": "25% chance to fire chain lightning for 80% TOTAL damage on up to 3 (+2 per stack) targets within 20m (+2m per stack).",
     "name": "Ukulele",
     "stats": [
@@ -697,7 +831,7 @@
     "category": "Damage\nEquipmentRelated",
     "unlock": "Warmonger",
     "id": "79",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/War_Horn",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/War_Horn",
     "description": "Activating your Equipment gives you +70% attack speed for 8s (+4s per stack).",
     "name": "War Horn",
     "stats": [
@@ -711,7 +845,7 @@
     "category": "Utility\nSprintRelated",
     "unlock": "Going Fast Recommended",
     "id": "76",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Wax_Quail",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Wax_Quail",
     "description": "Jumping while sprinting boosts you forward by 10m (+10m per stack).",
     "name": "Wax Quail",
     "stats": [
@@ -724,7 +858,7 @@
     "rarity": "Uncommon",
     "category": "Damage\nOnKillEffect",
     "id": "4",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Will-o%27-the-wisp",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Will-o%27-the-wisp",
     "description": "On killing an enemy, spawn a lava pillar in a 12m (+2.4m per stack) radius for 350% (+280% per stack) base damage.",
     "name": "Will-o'-the-wisp",
     "stats": [
@@ -739,7 +873,7 @@
     "category": "Utility",
     "unlock": "The Long Road",
     "id": "35",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/57_Leaf_Clover",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/57_Leaf_Clover",
     "description": "All random effects are rolled +1 (+1 per stack) times for a favorable outcome.",
     "name": "57 Leaf Clover",
     "stats": [{"stat": "Luck", "value": "1", "stack": "Linear", "add": "+1"}],
@@ -750,7 +884,7 @@
     "rarity": "Legendary",
     "category": "Utility\nHealing",
     "id": "80",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Aegis",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Aegis",
     "description": "Healing past full grants you a temporary barrier for 50% (+50% per stack) of the amount you healed.",
     "name": "Aegis",
     "stats": [
@@ -768,7 +902,7 @@
     "rarity": "Legendary",
     "category": "Utility",
     "id": "50",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Alien_Head",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Alien_Head",
     "description": "Reduce skill cooldowns by 25% (+25% per stack).",
     "name": "Alien Head",
     "stats": [
@@ -782,12 +916,36 @@
     "flavorText": "Reduces cooldowns for your skills.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/25/Alien_Head.png/revision/latest/scale-to-width-down/256?cb=20200129193016"
   },
+  "Ben's Raincoat": {
+    "rarity": "Legendary",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Ben%27s_Raincoat",
+    "description": "Whenever you would receive a debuff, prevent it. Increases maximum health by 100 (+100 per stack).",
+    "name": "Ben's Raincoat",
+    "stats": [
+      {"stat": "Max Health", "value": "100%", "stack": "Linear", "add": "+100"}
+    ],
+    "flavorText": "Become immune to all debuffs. Increase maximum health.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/25/Ben%27s_Raincoat.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
+  "Bottled Chaos": {
+    "rarity": "Legendary",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Bottled_Chaos",
+    "description": "Trigger a random equipment effect 1 (+1 per stack) time(s).",
+    "name": "Bottled Chaos",
+    "stats": [
+      {"stat": "Effects", "value": "1", "stack": "Linear", "add": "+1"}
+    ],
+    "flavorText": "Activating your Equipment triggers an additional, random Equipment effect.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/42/Bottled_Chaos.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
   "Brainstalks": {
     "rarity": "Legendary",
     "category": "Utility\nAIBlacklist\nOnKillEffect",
     "unlock": "Deicide",
     "id": "70",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Brainstalks",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Brainstalks",
     "description": "Upon killing an elite monster, enter a frenzy for 4s (+4s per stack) where skills have 0.5s cooldowns.",
     "name": "Brainstalks",
     "stats": [
@@ -800,8 +958,8 @@
     "rarity": "Legendary",
     "category": "Damage",
     "id": "2",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Brilliant_Behemoth",
-    "description": "All your attacks explode in a 4m (+1.5m per stack) radius for a bonus 60% TOTAL damage to nearby enemies.",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Brilliant_Behemoth",
+    "description": "All your attacks explode in a 4m (+2.5m per stack) radius for a bonus 60% TOTAL damage to nearby enemies.",
     "name": "Brilliant Behemoth",
     "stats": [
       {
@@ -818,7 +976,7 @@
     "rarity": "Legendary",
     "category": "Damage\nOnKillEffect\nAIBlacklist",
     "id": "5",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Ceremonial_Dagger",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Ceremonial_Dagger",
     "description": "Killing an enemy fires out 3 homing daggers that deal 150% (+150% per stack) base damage.",
     "name": "Ceremonial Dagger",
     "stats": [
@@ -830,7 +988,7 @@
   "Defensive Microbots": {
     "rarity": "Legendary",
     "category": "Utility\nWorldUnique",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Defensive_Microbots",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Defensive_Microbots",
     "description": "Shoot down 1 (+1 per stack) projectiles within 20m every 0.5 seconds. Recharge rate scales with attack speed.",
     "name": "Defensive Microbots",
     "stats": [
@@ -844,7 +1002,7 @@
     "category": "Utility",
     "unlock": "The Lone Survivor",
     "id": "67",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Dio%27s_Best_Friend",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Dio%27s_Best_Friend",
     "description": "Upon death, this item will be consumed and you will return to life with 3 seconds of invulnerability.",
     "name": "Dio's Best Friend",
     "stats": [{"stat": "Uses", "value": "1", "stack": "Linear", "add": "+1"}],
@@ -855,11 +1013,16 @@
     "rarity": "Legendary",
     "category": "Damage\nOnKillEffect",
     "id": "14",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Frost_Relic",
-    "description": "Killing an enemy surrounds you with an ice storm that deals 1200% damage per second and slows enemies by 80% for 1.5s. The storm grows with every kill, increasing its radius by 1m. Stacks up to 6m (+6m per stack).",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Frost_Relic",
+    "description": "Killing an enemy surrounds you with an ice storm that deals 1200% damage per second and slows enemies by 80% for 1.5s. The storm grows with every kill, increasing its radius by 2m. Stacks up to 18m (+12m per stack).",
     "name": "Frost Relic",
     "stats": [
-      {"stat": "Maximum Radius", "value": "6m", "stack": "Linear", "add": "+6m"}
+      {
+        "stat": "Maximum Radius",
+        "value": "18m",
+        "stack": "Linear",
+        "add": "+12m"
+      }
     ],
     "flavorText": "Killing enemies surrounds you with an ice storm.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/58/Frost_Relic.png/revision/latest/scale-to-width-down/256?cb=20200129193056"
@@ -868,12 +1031,12 @@
     "rarity": "Legendary",
     "category": "Damage\nUtility\nAIBlacklist",
     "id": "22",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/H3AD-5T_v2",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/H3AD-5T_v2",
     "description": "Increase jump height. Creates a 5m-100m radius kinetic explosion on hitting the ground, dealing 1000%-10000% base damage that scales up with fall distance. Recharges in 10 (-50% per stack) seconds.",
     "name": "H3AD-5T v2",
     "stats": [
       {
-        "stat": "Recharge Time",
+        "stat": "Cooldown",
         "value": "10s",
         "stack": "Exponential",
         "add": "-50%"
@@ -886,7 +1049,7 @@
     "rarity": "Legendary",
     "category": "Damage\nUtility\nOnKillEffect",
     "id": "15",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Happiest_Mask",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Happiest_Mask",
     "description": "Killing enemies has a 7% chance to spawn a ghost of the killed enemy with 1500% damage. Lasts 30s (+30s per stack).",
     "name": "Happiest Mask",
     "stats": [
@@ -904,7 +1067,7 @@
     "rarity": "Legendary",
     "category": "Utility",
     "id": "68",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Hardlight_Afterburner",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Hardlight_Afterburner",
     "description": "Add +2 (+2 per stack) charges of your Utility skill. Reduces Utility skill cooldown by 33%.",
     "name": "Hardlight Afterburner",
     "stats": [
@@ -917,8 +1080,8 @@
     "rarity": "Legendary",
     "category": "Healing",
     "id": "105",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Interstellar_Desk_Plant",
-    "description": "On kill, plant a healing fruit seed that grows into a plant after 5 seconds.\n\nThe plant heals for 10% of maximum health every second to all allies within 5m (+5.0m per stack). Lasts 10 seconds.",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Interstellar_Desk_Plant",
+    "description": "On kill, plant a healing fruit seed that grows into a plant after 5 seconds.\n\nThe plant heals for 5% of maximum health every 0.5 second to all allies within 10m (+5.0m per stack). Lasts 10 seconds.",
     "name": "Interstellar Desk Plant",
     "stats": [
       {"stat": "Radius", "value": "5m", "stack": "Linear", "add": "+5m"}
@@ -929,19 +1092,31 @@
   "Item Scrap, Red": {
     "rarity": "Legendary",
     "category": "WorldUnique\nScrap",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Item_Scrap,_Red",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Item_Scrap,_Red",
     "description": "Does nothing. Prioritized when used with 3D Printers.",
     "name": "Item Scrap, Red",
     "stats": [],
     "flavorText": "Does nothing. Prioritized when used with 3D Printers.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/48/Item_Scrap%2C_Red.png/revision/latest/scale-to-width-down/128?cb=20200811165017"
   },
+  "Laser Scope": {
+    "rarity": "Legendary",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Laser_Scope",
+    "description": "Critical Strikes deal an additional 100% damage (+100% per stack).",
+    "name": "Laser Scope",
+    "stats": [
+      {"stat": "Damage", "value": "100%", "stack": "Linear", "add": "+100%"}
+    ],
+    "flavorText": "Your 'Critical Strikes' deal an additional 100% damage.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/0/00/Laser_Scope.png/revision/latest/scale-to-width-down/128?cb=20220302050022"
+  },
   "N'kuhana's Opinion": {
     "rarity": "Legendary",
     "category": "Damage",
     "unlock": "Her Concepts",
     "id": "31",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/N%27kuhana%27s_Opinion",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/N%27kuhana%27s_Opinion",
     "description": "Store 100% (+100% per stack) of healing as Soul Energy. After your Soul Energy reaches 10% of your maximum health, fire a skull that deals 250% of your Soul Energy as damage.",
     "name": "N'kuhana's Opinion",
     "stats": [
@@ -950,12 +1125,24 @@
     "flavorText": "Fire haunting skulls when healed.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c9/N%27kuhana%27s_Opinion.png/revision/latest/scale-to-width-down/256?cb=20200129193121"
   },
+  "Pocket I.C.B.M.": {
+    "rarity": "Legendary",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Pocket_I.C.B.M.",
+    "description": "All missile items and equipment fire an additional 2 missiles. Increase missile damage by 0% (+50% per stack)",
+    "name": "Pocket I.C.B.M.",
+    "stats": [
+      {"stat": "Damage", "value": "0%", "stack": "Linear", "add": "+50%"}
+    ],
+    "flavorText": "All Missile items deal more damage and fire an additional two missiles.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/ff/Pocket_I.C.B.M..png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
   "Rejuvenation Rack": {
     "rarity": "Legendary",
     "category": "Healing",
     "unlock": "Naturopath",
     "id": "75",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Rejuvenation_Rack",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Rejuvenation_Rack",
     "description": "Heal +100% (+100% per stack) more.",
     "name": "Rejuvenation Rack",
     "stats": [
@@ -968,8 +1155,8 @@
     "rarity": "Legendary",
     "category": "Damage\nOnKillEffect",
     "id": "95",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Resonance_Disc",
-    "description": "Killing enemies charges the Resonance Disc. The disc launches itself toward a target for 300% base damage (+300% per stack), piercing all enemies it doesn't kill, and then explodes for 1000% base damage (+1000% per stack). Returns to the user, striking all enemies along the way for 300% base damage (+300% per stack).",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Resonance_Disc",
+    "description": "Killing 4 enemies in 7 seconds charges the Resonance Disc. The disc launches itself toward a target for 300% base damage (+300% per stack), piercing all enemies it doesn't kill, and then explodes for 1000% base damage (+1000% per stack). Returns to the user, striking all enemies along the way for 300% base damage (+300% per stack).",
     "name": "Resonance Disc",
     "stats": [
       {"stat": "Damage", "value": "300%", "stack": "Linear", "add": "+300%"},
@@ -988,7 +1175,7 @@
     "category": "Damage",
     "unlock": "Deja Vu?",
     "id": "38",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Sentient_Meat_Hook",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Sentient_Meat_Hook",
     "description": "20% (+20% per stack) chance on hit to fire homing hooks at up to 10 (+5 per stack) enemies for 100% TOTAL damage.",
     "name": "Sentient Meat Hook",
     "stats": [
@@ -1002,7 +1189,7 @@
     "rarity": "Legendary",
     "category": "Damage",
     "id": "85",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Shattering_Justice",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Shattering_Justice",
     "description": "After hitting an enemy 5 times, reduce their armor by 60 for 8 (+8 per stack) seconds.",
     "name": "Shattering Justice",
     "stats": [
@@ -1016,21 +1203,50 @@
     "category": "Utility\nOnKillEffect\nEquipmentRelated",
     "unlock": "Newtist",
     "id": "51",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Soulbound_Catalyst",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Soulbound_Catalyst",
     "description": "Kills reduce equipment cooldown by 4s (+2s per stack).",
     "name": "Soulbound Catalyst",
     "stats": [
-      {"stat": "Cooldown", "value": "4s", "stack": "Linear", "add": "+2s"}
+      {
+        "stat": "Cooldown Reduction",
+        "value": "4s",
+        "stack": "Linear",
+        "add": "+2s"
+      }
     ],
     "flavorText": "Kills reduce equipment cooldown.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f1/Soulbound_Catalyst.png/revision/latest/scale-to-width-down/256?cb=20200129193159"
+  },
+  "Spare Drone Parts": {
+    "rarity": "Legendary",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Spare_Drone_Parts",
+    "description": "Gain Col. Droneman. Drones gain +50% (+50% per stack) attack speed and cooldown reduction. Drones gain 10% chance to fire a missile on hit, dealing 300% TOTAL damage. Drones gain an automatic chain gun that deals 6x100% damage, bouncing to 2 enemies.",
+    "name": "Spare Drone Parts",
+    "stats": [
+      {"stat": "Attack Speed", "value": "50%", "stack": "Linear", "add": "+50%"}
+    ],
+    "flavorText": "Your drones fire faster, have less cooldowns, shoot missiles, and gain a bonus chaingun.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/85/Spare_Drone_Parts.png/revision/latest/scale-to-width-down/128?cb=20220302050131"
+  },
+  "Symbiotic Scorpion": {
+    "rarity": "Legendary",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Symbiotic_Scorpion",
+    "description": "100% chance on hit to reduce armor by 2 (+2 per stack) permanently.",
+    "name": "Symbiotic Scorpion",
+    "stats": [
+      {"stat": "Armor Reduction", "value": "2", "stack": "Linear", "add": "+2"}
+    ],
+    "flavorText": "Permanently reduce armor on hit.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/91/Symbiotic_Scorpion.png/revision/latest/scale-to-width-down/128?cb=20220302052918"
   },
   "Unstable Tesla Coil": {
     "rarity": "Legendary",
     "category": "Damage",
     "unlock": "Macho",
     "id": "32",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Unstable_Tesla_Coil",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Unstable_Tesla_Coil",
     "description": "Fire out lightning that hits 3 (+2 per stack) enemies for 200% base damage every 0.5s. The Tesla Coil switches off every 10 seconds.",
     "name": "Unstable Tesla Coil",
     "stats": [
@@ -1043,7 +1259,7 @@
     "rarity": "Legendary",
     "category": "Damage\nUtility\nAIBlacklist\nOnKillEffect",
     "id": "69",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Wake_of_Vultures",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Wake_of_Vultures",
     "description": "Gain the power of any killed elite monster for 8s (+5s per stack).",
     "name": "Wake of Vultures",
     "stats": [
@@ -1056,7 +1272,7 @@
     "rarity": "Boss (Bulwark's Ambry)",
     "category": "WorldUnique",
     "id": "101",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Artifact_Key",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Artifact_Key",
     "description": "A stone shard with immense power.",
     "name": "Artifact Key",
     "stats": [],
@@ -1066,7 +1282,7 @@
   "Charged Perforator": {
     "rarity": "Boss (Overloading Worm)",
     "category": "Damage",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Charged_Perforator",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Charged_Perforator",
     "description": "10% chance on hit to down a lightning strike, dealing 500% (+500% per stack) damage.",
     "name": "Charged Perforator",
     "stats": [
@@ -1075,10 +1291,22 @@
     "flavorText": "Chance on hit to call down a lightning strike.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/cc/Charged_Perforator.png/revision/latest/scale-to-width-down/128?cb=20210326044120"
   },
+  "Defense Nucleus": {
+    "rarity": "Boss (Xi Construct)",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Defense_Nucleus",
+    "description": "Killing elite monsters spawns an Alpha Construct. Limited to 4 (+4 per stack).",
+    "name": "Defense Nucleus",
+    "stats": [
+      {"stat": "Max Constructs", "value": "4", "stack": "Linear", "add": "+4"}
+    ],
+    "flavorText": "Summon an Alpha Construct on killing an elite.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/10/Defense_Nucleus.png/revision/latest/scale-to-width-down/128?cb=20220302095820"
+  },
   "Empathy Cores": {
     "rarity": "Boss (Solus Control Unit)",
-    "category": "Utility",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Empathy_Cores",
+    "category": "Utility\nTurretBlacklist",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Empathy_Cores",
     "description": "Every 30 seconds, summon two Solus Probes that gain +100% (+100% per stack) damage per ally on your team.",
     "name": "Empathy Cores",
     "stats": [
@@ -1091,7 +1319,7 @@
     "rarity": "Boss (Wandering Vagrant)",
     "category": "Damage",
     "id": "97",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Genesis_Loop",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Genesis_Loop",
     "description": "Falling below 25% health causes you to explode, dealing 6000% base damage. Recharges every 30 / (2 +1 per stack) seconds .",
     "name": "Genesis Loop",
     "stats": [
@@ -1107,9 +1335,9 @@
   },
   "Halcyon Seed": {
     "rarity": "Boss (Aurelionite)",
-    "category": "Utility\nWorldUnique",
+    "category": "Utility\nWorldUnique\nTurretBlacklist",
     "id": "82",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Halcyon_Seed",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Halcyon_Seed",
     "description": "Summon Aurelionite during the teleporter event. It has 100% (+50% per stack) damage and 100% (+100% per stack) health.",
     "name": "Halcyon Seed",
     "stats": [
@@ -1123,16 +1351,16 @@
     "rarity": "Boss (Cleansing Pool)",
     "category": "Damage\nHealing\nUtility\nWorldUnique",
     "id": "93",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Irradiant_Pearl",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Irradiant_Pearl",
     "description": "Increases ALL stats by 10% (+10% per stack).",
     "name": "Irradiant Pearl",
     "stats": [
       {"stat": "Health", "value": "10%", "stack": "Linear", "add": "+10%"},
       {
-        "stat": "Regen Multiplier",
-        "value": "10%",
+        "stat": "Health Regen",
+        "value": "+0.1",
         "stack": "Linear",
-        "add": "+10%"
+        "add": "+0.02"
       },
       {
         "stat": "Movement Speed",
@@ -1161,7 +1389,7 @@
   "Item Scrap, Yellow": {
     "rarity": "Boss",
     "category": "WorldUnique\nScrap",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Item_Scrap,_Yellow",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Item_Scrap,_Yellow",
     "description": "Does nothing. Prioritized when used with 3D Printers.",
     "name": "Item Scrap, Yellow",
     "stats": [],
@@ -1172,7 +1400,7 @@
     "rarity": "Boss (Grovetender)",
     "category": "Damage\nSprintRelated",
     "id": "83",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Little_Disciple",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Little_Disciple",
     "description": "Fire a tracking wisp for 300% (+300% per stack) damage. Fires every 1.6 seconds while sprinting. Fire rate increases with movement speed.",
     "name": "Little Disciple",
     "stats": [
@@ -1183,8 +1411,8 @@
   },
   "Mired Urn": {
     "rarity": "Boss (Clay Dunestrider)",
-    "category": "Healing",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Mired_Urn",
+    "category": "Healing\nBrotherBlacklist",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Mired_Urn",
     "description": "While in combat, the nearest 1 (+1 per stack) enemies to you within 13m will be 'tethered' to you, dealing 100% damage per second, applying tar, and healing you for 100% of the damage dealt.",
     "name": "Mired Urn",
     "stats": [
@@ -1196,7 +1424,7 @@
   "Molten Perforator": {
     "rarity": "Boss (Magma Worm)",
     "category": "Damage",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Molten_Perforator",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Molten_Perforator",
     "description": "10% chance on hit to call forth 3 magma balls from an enemy, dealing 300% (+300% per stack) damage each.",
     "name": "Molten Perforator",
     "stats": [
@@ -1209,7 +1437,7 @@
     "rarity": "Boss (Cleansing Pool)",
     "category": "Utility\nWorldUnique",
     "id": "92",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Pearl",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Pearl",
     "description": "Increases maximum health by 10% (+10% per stack).",
     "name": "Pearl",
     "stats": [
@@ -1221,7 +1449,7 @@
   "Planula": {
     "rarity": "Boss (Grandparent)",
     "category": "Healing",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Planula",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Planula",
     "description": "Heal from incoming damage for 15 (+15 per stack).",
     "name": "Planula",
     "stats": [
@@ -1232,9 +1460,9 @@
   },
   "Queen's Gland": {
     "rarity": "Boss (Beetle Queen)",
-    "category": "Utility",
+    "category": "Utility\nTurretBlacklist",
     "id": "53",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Queen%27s_Gland",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Queen%27s_Gland",
     "description": "Every 30 seconds, summon a Beetle Guard with bonus 300% damage and 100% health. Can have up to 1 (+1 per stack) Guards at a time.",
     "name": "Queen's Gland",
     "stats": [
@@ -1246,7 +1474,7 @@
   "Shatterspleen": {
     "rarity": "Boss (Imp Overlord)",
     "category": "Damage",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Shatterspleen",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Shatterspleen",
     "description": "Gain 5% critical chance. Critical Strikes bleed enemies for 240% base damage. Bleeding enemies explode on death for 400% (+400% per stack) damage, plus an additional 15% (+15% per stack) of their maximum health.",
     "name": "Shatterspleen",
     "stats": [
@@ -1271,7 +1499,7 @@
     "rarity": "Boss (Stone Titan)",
     "category": "Utility\nHealing",
     "id": "52",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Titanic_Knurl",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Titanic_Knurl",
     "description": "Increase maximum health by 40 (+40 per stack) and base health regeneration by +1.6 hp/s (+1.6 hp/s per stack).",
     "name": "Titanic Knurl",
     "stats": [
@@ -1289,7 +1517,7 @@
   "Beads of Fealty": {
     "rarity": "Lunar",
     "id": "98",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Beads_of_Fealty",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Beads_of_Fealty",
     "description": "Seems to do nothing... but...",
     "name": "Beads of Fealty",
     "stats": [],
@@ -1300,21 +1528,21 @@
     "rarity": "Lunar",
     "category": "Utility",
     "id": "44",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Brittle_Crown",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Brittle_Crown",
     "description": "30% chance on hit to gain 2 (+2 per stack) gold. Scales over time.\n\nLose gold on taking damage equal to 100% (+100% per stack) of the maximum health percentage you lost.",
     "name": "Brittle Crown",
     "stats": [
       {"stat": "Gold Gained", "value": "2", "stack": "Linear", "add": "+2"},
       {"stat": "Gold Lost", "value": "100%", "stack": "Linear", "add": "+100%"}
     ],
-    "flavorText": "Gain gold on hit... BUT lose gold on getting hit.",
+    "flavorText": "Gain gold on hit... BUT surrender gold on getting hit.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/ae/Brittle_Crown.png/revision/latest/scale-to-width-down/256?cb=20200129193030"
   },
   "Corpsebloom": {
     "rarity": "Lunar",
     "category": "Healing",
     "id": "71",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Corpsebloom",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Corpsebloom",
     "description": "Heal +100% (+100% per stack) more. All healing is applied over time. Can heal for a maximum of 10% (-50% per stack) of your health per second.",
     "name": "Corpsebloom",
     "stats": [
@@ -1322,7 +1550,7 @@
       {
         "stat": "Maximum Heal",
         "value": "10%",
-        "stack": "Exponential",
+        "stack": "Hyperbolic",
         "add": "-50%"
       }
     ],
@@ -1332,7 +1560,7 @@
   "Defiant Gouge": {
     "rarity": "Lunar",
     "category": "Utility\nAIBlacklist",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Defiant_Gouge",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Defiant_Gouge",
     "description": "Using a Shrine summons enemies (stronger per stack) nearby. Scales over time.",
     "name": "Defiant Gouge",
     "stats": [
@@ -1346,11 +1574,29 @@
     "flavorText": "Using a Shrine summons enemies nearby.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/b5/Defiant_Gouge.png/revision/latest/scale-to-width-down/128?cb=20200811165016"
   },
+  "Egocentrism": {
+    "rarity": "Lunar",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Egocentrism",
+    "description": "Every 3 (-50% per stack) seconds, gain an orbiting bomb that detonates on impact for 360% damage, up to a maximum of 3 bombs (+1 per stack). Every 60 seconds, a random item is converted into this item.",
+    "name": "Egocentrism",
+    "stats": [
+      {
+        "stat": "Charge time",
+        "value": "3s",
+        "stack": "Hyperbolic",
+        "add": "-50%"
+      },
+      {"stat": "Max orbs", "value": "3", "stack": "Linear", "add": "+1"}
+    ],
+    "flavorText": "Gain multiple orbiting bombs. Every minute, assimilate another item into Egocentrism.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/90/Egocentrism.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
   "Essence of Heresy": {
     "rarity": "Lunar",
-    "category": "AIBlacklist",
+    "category": "Damage\nAIBlacklist\nCannotSteal",
     "unlock": "Blockade Breaker",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Essence_of_Heresy",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Essence_of_Heresy",
     "description": "Replace your Special Skill with Ruin.\n\nDealing damage adds a stack of Ruin for 10 (+10 per stack) seconds. Activating the skill detonates all Ruin stacks at unlimited range, dealing 300% damage plus 120% damage per stack of Ruin. Recharges after 8 (+8 per stack) seconds.",
     "name": "Essence of Heresy",
     "stats": [
@@ -1360,17 +1606,29 @@
         "stack": "Linear",
         "add": "+10s"
       },
-      {"stat": "Recharge Time", "value": "8s", "stack": "Linear", "add": "+8s"}
+      {"stat": "Cooldown", "value": "8s", "stack": "Linear", "add": "+8s"}
     ],
     "flavorText": "Replace your Special Skill with 'Ruin'.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/3e/Essence_of_Heresy.png/revision/latest/scale-to-width-down/128?cb=20210326043943"
   },
+  "Eulogy Zero": {
+    "rarity": "Lunar",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Eulogy_Zero",
+    "description": "Items have a 5% (+5% per stack) chance to become a Lunar item instead.",
+    "name": "Eulogy Zero",
+    "stats": [
+      {"stat": "Effect chance", "value": "5%", "stack": "Linear", "add": "+5%"}
+    ],
+    "flavorText": "Items and equipment have a small chance to transform into a Lunar item instead.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/12/Eulogy_Zero.png/revision/latest/scale-to-width-down/128?cb=20220302060146"
+  },
   "Focused Convergence": {
     "rarity": "Lunar",
-    "category": "Utility\nAIBlacklist",
+    "category": "Utility\nAIBlacklist\nTurretBlacklist",
     "unlock": "Never Back Down",
     "id": "107",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Focused_Convergence",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Focused_Convergence",
     "description": "Teleporters charge 30% (+30% per stack) faster, but the size of the Teleporter zone is 50% (-50% per stack) smaller.",
     "name": "Focused Convergence",
     "stats": [
@@ -1395,15 +1653,15 @@
     "category": "Utility\nEquipmentRelated",
     "unlock": "The Demons And The Crabs",
     "id": "74",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Gesture_of_the_Drowned",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Gesture_of_the_Drowned",
     "description": "Reduce Equipment cooldown by 50% (+15% per stack). Forces your Equipment to activate whenever it is off cooldown.",
     "name": "Gesture of the Drowned",
     "stats": [
       {
-        "stat": "Cooldown",
-        "value": "-50%",
+        "stat": "Cooldown Reduction",
+        "value": "50%",
         "stack": "Exponential",
-        "add": "-15%"
+        "add": "15%"
       }
     ],
     "flavorText": "Dramatically reduce Equipment cooldown... BUT it automatically activates.",
@@ -1411,26 +1669,44 @@
   },
   "Hooks of Heresy": {
     "rarity": "Lunar",
-    "category": "AIBlacklist",
+    "category": "Damage\nAIBlacklist\nCannotSteal",
     "unlock": "Blockade Breaker",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Hooks_of_Heresy",
-    "description": "Replace your Secondary Skill with Slicing Maelstrom.\n\nCharge up a projectile that deals 175% damage per second to nearby enemies, exploding after 3 seconds to deal 700% damage and root enemies for 3 (+3 per stack) seconds. Recharges after 5 (+5 per stack) seconds.",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Hooks_of_Heresy",
+    "description": "Replace your Secondary Skill with Slicing Maelstrom.\n\nCharge up a projectile that deals 875% damage per second to nearby enemies, exploding after 3 seconds to deal 700% damage and root enemies for 3 (+3 per stack) seconds. Recharges after 5 (+5 per stack) seconds.",
     "name": "Hooks of Heresy",
     "stats": [
       {"stat": "Root Duration", "value": "3s", "stack": "Linear", "add": "+3s"},
-      {"stat": "Recharge Time", "value": "5s", "stack": "Linear", "add": "+5s"}
+      {"stat": "Cooldown", "value": "5s", "stack": "Linear", "add": "+5s"}
     ],
     "flavorText": "Replace your Secondary Skill with 'Slicing Maelstrom'.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/66/Hooks_of_Heresy.png/revision/latest/scale-to-width-down/128?cb=20210326043944"
   },
+  "Light Flux Pauldron": {
+    "rarity": "Lunar",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Light_Flux_Pauldron",
+    "description": "Decrease skill cooldowns by 50% (+50% per stack). Decrease attack speed by 50% (+50% per stack).",
+    "name": "Light Flux Pauldron",
+    "stats": [
+      {
+        "stat": "Skill Cooldowns",
+        "value": "50%",
+        "stack": "Exponential",
+        "add": "-50%"
+      },
+      {"stat": "Attack Speed", "value": "50%", "stack": "Linear", "add": "-50%"}
+    ],
+    "flavorText": "Halve your cooldowns.. BUT halve your attack speed.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/6e/Light_Flux_Pauldron.png/revision/latest/scale-to-width-down/128?cb=20220302095820"
+  },
   "Mercurial Rachis": {
     "rarity": "Lunar",
     "category": "Utility",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Mercurial_Rachis",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Mercurial_Rachis",
     "description": "Creates a Ward of Power in a random location nearby that buffs both enemies and allies within 16m (+50% per stack), causing them to deal +50% damage.",
     "name": "Mercurial Rachis",
     "stats": [
-      {"stat": "Range", "value": "16m", "stack": "Linear", "add": "+50%"}
+      {"stat": "Range", "value": "16m", "stack": "Exponential", "add": "+50%"}
     ],
     "flavorText": "Randomly create a Ward of Power. ALL characters deal bonus damage while in the Ward.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/25/Mercurial_Rachis.png/revision/latest/scale-to-width-down/128?cb=20200811165019"
@@ -1439,7 +1715,7 @@
     "rarity": "Lunar",
     "category": "Utility",
     "unlock": "The Calm",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Purity",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Purity",
     "description": "All skill cooldowns are reduced by 2 (+1 per stack) seconds. All random effects are rolled +1 (+1 per stack) times for an unfavorable outcome.",
     "name": "Purity",
     "flavorText": "Reduce your skill cooldowns by 2 seconds. You are unlucky.",
@@ -1449,7 +1725,7 @@
     "rarity": "Lunar",
     "category": "Damage",
     "id": "43",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Shaped_Glass",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Shaped_Glass",
     "description": "Increase base damage by 100% (+100% per stack). Reduce maximum health by 50% (+50% per stack).",
     "name": "Shaped Glass",
     "stats": [
@@ -1469,12 +1745,30 @@
     "flavorText": "Double your damage... BUT halve your health.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/ff/Shaped_Glass.png/revision/latest/scale-to-width-down/256?cb=20200129193153"
   },
+  "Stone Flux Pauldron": {
+    "rarity": "Lunar",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Stone_Flux_Pauldron",
+    "description": "Increase max health by 100% (+100% per stack). Reduce movement speed by 50% (+50% per stack).",
+    "name": "Stone Flux Pauldron",
+    "stats": [
+      {
+        "stat": "Max Health",
+        "value": "100%",
+        "stack": "Linear",
+        "add": "+100%"
+      },
+      {"stat": "Speed", "value": "50%", "stack": "Hyperbolic", "add": "-50%"}
+    ],
+    "flavorText": "Double your health... BUT halve your speed.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/b1/Stone_Flux_Pauldron.png/revision/latest/scale-to-width-down/128?cb=20220302095820"
+  },
   "Strides of Heresy": {
     "rarity": "Lunar",
-    "category": "Utility\nAIBlacklist",
+    "category": "Utility\nAIBlacklist\nCannotSteal",
     "unlock": "Blockade Breaker",
     "id": "88",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Strides_of_Heresy",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Strides_of_Heresy",
     "description": "Replace your Utility Skill with Shadowfade.\n\nFade away, becoming intangible and gaining +30% movement speed. Heal for 18.2% (+18.2% per stack) of your maximum health. Lasts 3 (+3 per stack) seconds.",
     "name": "Strides of Heresy",
     "stats": [
@@ -1488,7 +1782,7 @@
     "rarity": "Lunar",
     "category": "Utility",
     "id": "49",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Transcendence",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Transcendence",
     "description": "Convert all but 1 health into regenerating shields. Gain 50% (+25% per stack) maximum health.",
     "name": "Transcendence",
     "stats": [
@@ -1504,10 +1798,10 @@
   },
   "Visions of Heresy": {
     "rarity": "Lunar",
-    "category": "Damage\nAIBlacklist",
+    "category": "Damage\nAIBlacklist\nCannotSteal",
     "unlock": "Blockade Breaker",
     "id": "96",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Visions_of_Heresy",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Visions_of_Heresy",
     "description": "Replace your Primary Skill with Hungering Gaze.\n\nFire a flurry of tracking shards that detonate after a delay, dealing 120% base damage. Hold up to 12 charges (+12 per stack) that reload after 2 seconds (+2 per stack).",
     "name": "Visions of Heresy",
     "stats": [
@@ -1517,18 +1811,184 @@
     "flavorText": "Replace your Primary Skill with 'Hungering Gaze'.",
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/31/Visions_of_Heresy.png/revision/latest/scale-to-width-down/128?cb=20200129235347"
   },
-  "Focus Crystal": {
-    "rarity": "Common",
-    "category": "Damage",
-    "id": "87",
-    "wikiUrl": "https://riskofrain2.gamepedia.com/wiki/Focus_Crystal",
-    "description": "Increase damage to enemies within 13m by 20% (+20% per stack).",
-    "name": "Focus Crystal",
+  "Benthic Bloom": {
+    "rarity": "Void",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Benthic_Bloom",
+    "description": "Upgrades 3 (+3 per stack) random items to items of the next higher rarity at the start of each stage. Corrupts all 57 Leaf Clovers.",
+    "name": "Benthic Bloom",
     "stats": [
-      {"stat": "Damage", "value": "20%", "stack": "Linear", "add": "+20%"}
+      {"stat": "Items upgraded", "value": "3", "stack": "Linear", "add": "+3"}
     ],
-    "flavorText": "Deal bonus damage to nearby enemies.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/59/Focus_Crystal.png/revision/latest/scale-to-width-down/128?cb=20200129235331"
+    "flavorText": "Upgrades your items at the start of each stage. Corrupts all 57 Leaf Clovers.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/b0/Benthic_Bloom.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
+  "Encrusted Key": {
+    "rarity": "Void",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Encrusted_Key",
+    "description": "A hidden cache containing an item (60%/30%/10%) will appear in a random location on each stage. Opening the cache consumes this item. Corrupts all Rusted Keys.",
+    "name": "Encrusted Key",
+    "stats": [],
+    "flavorText": "Gain access to an Encrusted Cache that contains a void item. Corrupts all Rusted Keys.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/fa/Encrusted_Key.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
+  "Lost Seer's Lenses": {
+    "rarity": "Void",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Lost_Seer%27s_Lenses",
+    "description": "Your attacks have a 0.5% (+0.5% per stack) chance to instantly kill a non-Boss enemy. Corrupts all Lens-Maker's Glasses.",
+    "name": "Lost Seer's Lenses",
+    "stats": [
+      {
+        "stat": "Kill chance",
+        "value": "0.5%",
+        "stack": "Linear",
+        "add": "+0.5%"
+      }
+    ],
+    "flavorText": "Gain a 0.5% chance to instantly kill a non-boss enemy. Corrupts all Lens-Maker's Glasses.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/14/Lost_Seer%27s_Lenses.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
+  "Lysate Cell": {
+    "rarity": "Void",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Lysate_Cell",
+    "description": "Add +1 (+1 per stack) charge of your Special skill. Reduces Special skill cooldown by 33%. Corrupts all Fuel Cells.",
+    "name": "Lysate Cell",
+    "stats": [
+      {"stat": "Charges", "value": "1", "stack": "Linear", "add": "+1"}
+    ],
+    "flavorText": "Add an extra charge of your Special skill. Corrupts all Fuel Cells.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/53/Lysate_Cell.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
+  "Needletick": {
+    "rarity": "Void",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Needletick",
+    "description": "10% (+10% per stack) chance to collapse an enemy for 400% base damage. Corrupts all Tri-Tip Daggers.",
+    "name": "Needletick",
+    "stats": [
+      {
+        "stat": "Chance to Collapse",
+        "value": "10%",
+        "stack": "Linear",
+        "add": "+10%"
+      }
+    ],
+    "flavorText": "Chance to collapse enemies on hit. Corrupts all Tri-Tip Daggers.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/76/Needletick.png/revision/latest/scale-to-width-down/128?cb=20220302043224"
+  },
+  "Newly Hatched Zoea": {
+    "rarity": "Void",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Newly_Hatched_Zoea",
+    "description": "Every 60 (-50% per stack) seconds, gain a random Void ally. Can have up to 1 (+1 per stack) allies at a time. Corrupts all yellow items.",
+    "name": "Newly Hatched Zoea",
+    "stats": [
+      {
+        "stat": "Charge time",
+        "value": "60s",
+        "stack": "Hyperbolic",
+        "add": "-50%"
+      },
+      {"stat": "Max allies", "value": "1", "stack": "Linear", "add": "+1"}
+    ],
+    "flavorText": "Periodically recruit allies from the Void. Corrupts all yellow items.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/55/Newly_Hatched_Zoea.png/revision/latest/scale-to-width-down/128?cb=20220302132150"
+  },
+  "Plasma Shrimp": {
+    "rarity": "Void",
+    "category": "Damage\nUtility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Plasma_Shrimp",
+    "description": "Gain a shield equal to 10% of your maximum health. While you have a shield, hitting an enemy fires a missile that deals 40% (+40% per stack) TOTAL damage. Corrupts all AtG Missile Mk. 1s.",
+    "name": "Plasma Shrimp",
+    "stats": [
+      {"stat": "Damage", "value": "40%", "stack": "Linear", "add": "+40%"}
+    ],
+    "flavorText": "While you have shield, fire missiles on every hit. Corrupts all AtG Missile Mk. 1s.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/cf/Plasma_Shrimp.png/revision/latest/scale-to-width-down/128?cb=20220302041001"
+  },
+  "Pluripotent Larva": {
+    "rarity": "Void",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Pluripotent_Larva",
+    "description": "Upon death, this item will be consumed and you will return to life with 3 seconds of invulnerability, and all of your items that can be corrupted will be. Corrupts all Dio's Best Friends.",
+    "name": "Pluripotent Larva",
+    "stats": [{"stat": "Uses", "value": "1", "stack": "Linear", "add": "+1"}],
+    "flavorText": "Get a corrupted extra life. Consumed on use. Corrupts all Dio's Best Friends.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/26/Pluripotent_Larva.png/revision/latest/scale-to-width-down/128?cb=20220302123635"
+  },
+  "Polylute": {
+    "rarity": "Void",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Polylute",
+    "description": "25% chance to fire lightning for 60% TOTAL damage up to 3 (+3 per stack) times. Corrupts all Ukuleles.",
+    "name": "Polylute",
+    "stats": [{"stat": "Hits", "value": "3", "stack": "Linear", "add": "+3"}],
+    "flavorText": "Chance to repeatedly strike a single enemy with lightning. Corrupts all Ukuleles.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/b5/Polylute.png/revision/latest/scale-to-width-down/128?cb=20220302043421"
+  },
+  "Safer Spaces": {
+    "rarity": "Void",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Safer_Spaces",
+    "description": "Blocks incoming damage once. Recharges after 15 seconds (-10% per stack) Corrupts all Tougher Times.",
+    "name": "Safer Spaces",
+    "stats": [
+      {"stat": "Recharge", "value": "15s", "stack": "Hyperbolic", "add": "-10%"}
+    ],
+    "flavorText": "Block the next source of damage. Corrupts all Tougher Times.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9d/Safer_Spaces.png/revision/latest/scale-to-width-down/128?cb=20220302040829"
+  },
+  "Singularity Band": {
+    "rarity": "Void",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Singularity_Band",
+    "description": "Hits that deal more than 400% damage also fire a black hole that draws enemies within 15m into its center. Lasts 5 seconds before collapsing, dealing 100% (+100% per stack) TOTAL damage. Recharges every 20 seconds. Corrupts all Runald's and Kjaro's Bands.",
+    "name": "Singularity Band",
+    "stats": [
+      {"stat": "Damage", "value": "100%", "stack": "Linear", "add": "+100%"}
+    ],
+    "flavorText": "High damage hits also create unstable black holes. Recharges over time. Corrupts all Runald's and Kjaro's Bands.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/30/Singularity_Band.png/revision/latest/scale-to-width-down/128?cb=20220302060147"
+  },
+  "Tentabauble": {
+    "rarity": "Void",
+    "category": "Utility",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Tentabauble",
+    "description": "5% (+5% per stack) chance on hit to root enemies for 1s (+1s per stack). Corrupts all Chronobaubles.",
+    "name": "Tentabauble",
+    "stats": [
+      {"stat": "Root chance", "value": "5%", "stack": "Linear", "add": "+5%"},
+      {"stat": "Duration", "value": "1s", "stack": "Linear", "add": "+1s"}
+    ],
+    "flavorText": "Chance to root enemies on hit. Corrupts all Chronobaubles.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/64/Tentabauble.png/revision/latest/scale-to-width-down/128?cb=20220302111728"
+  },
+  "Voidsent Flame": {
+    "rarity": "Void",
+    "category": "Damage",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Voidsent_Flame",
+    "description": "Upon hitting an enemy at full health, spawn a lava pillar in a 12m (+2.4m per stack) radius for 260% (+156% per stack) base damage. Corrupts all Will-o'-the-wisps.",
+    "name": "Voidsent Flame",
+    "stats": [
+      {"stat": "Damage", "value": "260%", "stack": "Linear", "add": "+156%"},
+      {"stat": "Radius", "value": "12m", "stack": "Linear", "add": "+2.4m"}
+    ],
+    "flavorText": "Full health enemies also detonate on hit. Corrupts all Will-o'-the-wisps.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/69/Voidsent_Flame.png/revision/latest/scale-to-width-down/128?cb=20220302111748"
+  },
+  "Weeping Fungus": {
+    "rarity": "Void",
+    "category": "Healing\nSprintRelated",
+    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Weeping_Fungus",
+    "description": "Heals for 2% (+2% per stack) of your health every second while sprinting. Corrupts all Bustling Fungi.",
+    "name": "Weeping Fungus",
+    "stats": [
+      {"stat": "HP per second", "value": "2%", "stack": "Linear", "add": "+2%"}
+    ],
+    "flavorText": "Heal while sprinting. Corrupts all Bustling Fungi.",
+    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e1/Weeping_Fungus.png/revision/latest/scale-to-width-down/128?cb=20220302043223"
   }
 }
-
