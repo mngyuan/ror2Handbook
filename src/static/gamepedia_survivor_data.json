@@ -1061,6 +1061,7 @@
   },
   "Railgunner": {
     "wikiUrl": "https://riskofrain2.fandom.com/wiki/Railgunner",
+    "description": "Fights with her railgun using homing rounds and powerful piercing shots that give her incredible long-range damage output, as well as decent crowd control, and the all-or-nothing Supercharge.",
     "stats": {
       "Health": "110 (+33 per level)",
       "Health Regen": " 1.5/s (+0.2 per level)\n 1/s (+0.2 per level)\n 0.6/s (+0.2 per level)",

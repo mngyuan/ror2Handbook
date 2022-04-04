@@ -277,7 +277,7 @@ export default {
   SLAM: require('./SLAM.png'),
   SlicingMaelstrom: require('./SlicingMaelstrom.png'),
   SlicingWinds: require('./SlicingWinds.png'),
-  Smokebomb: require('./Smokebomb.png'),
+  SmokeBomb: require('./SmokeBomb.png'),
   Smoothie: require('./Smoothie.png'),
   Snapfreeze: require('./Snapfreeze.png'),
   "Soldier'sSyringe": require("./Soldier'sSyringe.png"),
