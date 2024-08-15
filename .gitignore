@@ -28,6 +28,7 @@ build/
 .gradle
 local.properties
 *.iml
+*.hprof
 # Upload cert for Play Store?
 android/app/upload_cert.pem
 
