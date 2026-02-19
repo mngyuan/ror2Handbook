@@ -1,6 +1,5 @@
 import React, {useRef, useContext} from 'react';
 import {StatusBar, useColorScheme, Platform, UIManager} from 'react-native';
-import analytics, {firebase} from '@react-native-firebase/analytics';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {
   NavigationContainer,
@@ -27,10 +26,6 @@ if (
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const enableAnalytics = async () =>
-  await firebase.analytics().setAnalyticsCollectionEnabled(!__DEV__);
-enableAnalytics();
-
 const Drawer = createDrawerNavigator();
 
 const App = () => {
@@ -46,9 +41,10 @@ const App = () => {
 const Root = () => (
   <Drawer.Navigator
     initialRouteName="Home"
-    drawerType="slide"
-    drawerContentOptions={{
-      labelStyle: {fontFamily: Brand.defaultFont},
+    screenOptions={{
+      drawerType: 'slide',
+      headerShown: false,
+      drawerLabelStyle: {fontFamily: Brand.defaultFont},
     }}>
     <Drawer.Screen
       name="Home"
@@ -65,7 +61,6 @@ const Root = () => (
 );
 
 const NavigationRoot = ({children}) => {
-  const navigationRef = useRef();
   const routeNameRef = useRef();
   const systemColorScheme = useColorScheme();
   const {data: asyncStorageData} = useContext(AsyncStorageContext);
@@ -76,21 +71,8 @@ const NavigationRoot = ({children}) => {
 
   return (
     <NavigationContainer
-      ref={navigationRef}
-      onReady={() =>
-        (routeNameRef.current = navigationRef.current.getCurrentRoute().name)
-      }
-      onStateChange={() => {
-        const previousRouteName = routeNameRef.current;
-        const currentRouteName = navigationRef.current.getCurrentRoute().name;
-
-        if (previousRouteName !== currentRouteName) {
-          analytics().logScreenView({screen_name: currentRouteName});
-        }
-
-        // Save the current route name for later comparision
-        routeNameRef.current = currentRouteName;
-      }}
+      onReady={() => {}}
+      onStateChange={() => {}}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <StatusBar
         barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}

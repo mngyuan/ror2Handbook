@@ -11,9 +11,8 @@ import {
   View,
   useColorScheme,
 } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
-import Icon from 'react-native-vector-icons/Ionicons';
-import analytics from '@react-native-firebase/analytics';
+import Constants from 'expo-constants';
+import {Ionicons} from '@expo/vector-icons';
 import {DarkTheme} from '@react-navigation/native';
 import {AsyncStorageContext} from './AsyncStorageProvider.js';
 import {
@@ -41,7 +40,7 @@ const SettingsScreen = ({navigation}) => {
     ? 'dark'
     : systemColorScheme;
 
-  const versionString = `Version: ${DeviceInfo.getVersion()} Build: ${DeviceInfo.getBuildNumber()}`;
+  const versionString = `Version: ${Constants.expoConfig?.version || '1.3.0'}`;
 
   return (
     <SafeAreaView
@@ -57,8 +56,8 @@ const SettingsScreen = ({navigation}) => {
         <TouchableOpacity
           onPress={() => navigation.openDrawer()}
           style={styles.screenHeaderBack}>
-          <Icon
-            name="ios-chevron-back"
+          <Ionicons
+            name="chevron-back"
             size={28}
             color={
               colorScheme === 'dark' ? DarkTheme.colors.text : Colors.black
@@ -94,10 +93,9 @@ const SettingsScreen = ({navigation}) => {
             style={[styles.aboutRow]}
             onPress={async () => {
               await Share.share({url: SHARE_URL, title: SHARE_URL});
-              analytics.logEvent('share');
             }}>
             <RText style={styles.aboutRowText}>Share this app</RText>
-            <Icon
+            <Ionicons
               name="chevron-forward"
               size={20}
               color={
@@ -111,10 +109,9 @@ const SettingsScreen = ({navigation}) => {
               Linking.openURL(
                 `mailto:${SUPPORT_EMAIL}?subject=${SUPPORT_EMAIL_SUBJECT}&body=${versionString}\n${SUPPORT_EMAIL_BODY}`,
               );
-              analytics().logEvent('support');
             }}>
             <RText style={styles.aboutRowText}>Report an issue</RText>
-            <Icon
+            <Ionicons
               name="chevron-forward"
               size={20}
               color={
@@ -130,12 +127,11 @@ const SettingsScreen = ({navigation}) => {
                   ? `itms-apps://itunes.apple.com/us/app/apple-store/${IOS_APP_ID}?mt=8`
                   : `market://details?id=${ANDROID_PACKAGE_NAME}`,
               );
-              analytics().logEvent('rate');
             }}>
             <RText style={styles.aboutRowText}>
               Rate on {Platform.OS === 'ios' ? 'App' : 'Play'} Store
             </RText>
-            <Icon
+            <Ionicons
               name="chevron-forward"
               size={20}
               color={

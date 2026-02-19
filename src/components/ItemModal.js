@@ -1,18 +1,16 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {Image, Platform, View, useColorScheme} from 'react-native';
-import analytics from '@react-native-firebase/analytics';
 import {DarkTheme} from '@react-navigation/native';
 import {AsyncStorageContext} from './AsyncStorageProvider.js';
 import {ChallengeModal} from './ChallengeModal.js';
 import {Colors, SEARCHABLE_DATA} from '../const.js';
 import {RModal, RText, sharedStyles} from '../ui.js';
-import {getItemRarityColor, useAppState} from '../util.js';
+import {getItemRarityColor} from '../util.js';
 import IMAGES from '../../imgs/images.js';
 
 export const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
   const [viewingChallenge, setViewingChallenge] = useState(null);
   const [challengeModalVisible, setChallengeModalVisible] = useState(false);
-  const appState = useAppState();
   const systemColorScheme = useColorScheme();
   const {data: asyncStorageData} = useContext(AsyncStorageContext);
 
@@ -20,26 +18,6 @@ export const ItemModal = ({itemName, modalVisible, setModalVisible}) => {
   const colorScheme = asyncStorageData?.dark_mode_override
     ? 'dark'
     : systemColorScheme;
-
-  useEffect(() => {
-    if (__DEV__) {
-      //appState === 'active' && Alert.alert('active!');
-    }
-  }, [appState]);
-
-  useEffect(() => {
-    if (challengeModalVisible) {
-      analytics().logViewItem({
-        items: [
-          {
-            item_name: viewingChallenge.name,
-            item_category: 'challenge',
-            item_category2: viewingChallenge.category,
-          },
-        ],
-      });
-    }
-  }, [viewingChallenge, challengeModalVisible]);
 
   return item ? (
     <RModal modalVisible={modalVisible} setModalVisible={setModalVisible}>

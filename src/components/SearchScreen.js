@@ -14,8 +14,7 @@ import {
   View,
   useColorScheme,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import analytics from '@react-native-firebase/analytics';
+import {Ionicons} from '@expo/vector-icons';
 import {DarkTheme} from '@react-navigation/native';
 import {ArtifactModal} from './ArtifactModal.js';
 import {AsyncStorageContext} from './AsyncStorageProvider.js';
@@ -33,7 +32,7 @@ import {
 } from '../const.js';
 import IMAGES from '../../imgs/images.js';
 
-const getDefaultSearchFilters = (type) =>
+const getDefaultSearchFilters = type =>
   type === 'items'
     ? {
         category: null,
@@ -42,7 +41,7 @@ const getDefaultSearchFilters = (type) =>
       }
     : null;
 
-const getType = (o) => {
+const getType = o => {
   if (SEARCHABLE_DATA.items[o.name]) {
     return 'item';
   }
@@ -57,7 +56,7 @@ const getType = (o) => {
   }
 };
 
-const findObjByName = (name) =>
+const findObjByName = name =>
   SEARCHABLE_DATA.items[name] ||
   SEARCHABLE_DATA.survivors[name] ||
   NONSEARCHABLE_DATA.challenges[name];
@@ -138,8 +137,9 @@ const SearchBar = ({placeholder, onChangeText, value}) => {
             backgroundColor:
               colorScheme === 'dark' ? DarkTheme.colors.card : Colors.lightGrey,
           },
-        ]}>
-        <Icon
+        ]}
+      >
+        <Ionicons
           name="search"
           color={
             colorScheme === 'dark' ? DarkTheme.colors.text : 'rgba(76,60,60,67)'
@@ -171,7 +171,7 @@ const SearchBar = ({placeholder, onChangeText, value}) => {
         {isFocused && value?.length > 0 ? (
           <TouchableWithoutFeedback onPress={() => onChangeText('')}>
             <View style={[{paddingRight: 8}, styles.verticalHitboxExtender]}>
-              <Icon
+              <Ionicons
                 name="close-circle-sharp"
                 color={
                   colorScheme === 'dark'
@@ -186,9 +186,11 @@ const SearchBar = ({placeholder, onChangeText, value}) => {
       </View>
       {isFocused ? (
         <TouchableOpacity
-          onPress={() => textInput.current && textInput.current.blur()}>
+          onPress={() => textInput.current && textInput.current.blur()}
+        >
           <View
-            style={[{paddingLeft: 8, flex: 1}, styles.verticalHitboxExtender]}>
+            style={[{paddingLeft: 8, flex: 1}, styles.verticalHitboxExtender]}
+          >
             <RText style={{color: 'rgb(10,132,255)'}}>Cancel</RText>
           </View>
         </TouchableOpacity>
@@ -206,17 +208,19 @@ const PickerModalRow = ({
   <TouchableOpacity
     activeOpacity={multi ? 1 : undefined}
     style={[styles.PickerModalRow]}
-    onPress={() => onSelect(!selected)}>
+    onPress={() => onSelect(!selected)}
+  >
     <View style={styles.pickerModalRowInner}>
       <RText
         style={[
           styles.pickerModalRowText,
           selected ? styles.pickerSelectedText : {},
-        ]}>
+        ]}
+      >
         {option}
       </RText>
       {multi && selected ? (
-        <Icon name="checkmark" color={Colors.selected} size={24} />
+        <Ionicons name="checkmark" color={Colors.selected} size={24} />
       ) : null}
     </View>
   </TouchableOpacity>
@@ -249,8 +253,9 @@ const FilterPill = ({
     <>
       <Pill
         onPress={() => setFilterModalVisible(true)}
-        backgroundColor={filterOn ? Colors.selected : undefined}>
-        <Icon
+        backgroundColor={filterOn ? Colors.selected : undefined}
+      >
+        <Ionicons
           name="chevron-down"
           size={12}
           color={colorScheme === 'dark' ? DarkTheme.colors.text : Colors.black}
@@ -266,13 +271,15 @@ const FilterPill = ({
       <RModal
         modalVisible={filterModalVisible}
         setModalVisible={setFilterModalVisible}
-        modalInnerNoPadding>
+        modalInnerNoPadding
+      >
         <RText style={styles.filterName}>{label}</RText>
         <ScrollView
           contentContainerStyle={[sharedStyles.modalInnerPadding]}
           keyboardShouldPersistTaps="handled"
-          scrollEnabled={false}>
-          {filterOptions.map((option) => (
+          scrollEnabled={false}
+        >
+          {filterOptions.map(option => (
             <PickerModalRow
               key={option}
               option={option}
@@ -282,11 +289,11 @@ const FilterPill = ({
                   : displayFilter === option
               }
               multi={multi}
-              onSelect={(select) => {
+              onSelect={select => {
                 if (multi) {
                   const newFilter = select
                     ? [...(displayFilter || []), option]
-                    : (displayFilter || []).filter((f) => f !== option);
+                    : (displayFilter || []).filter(f => f !== option);
                   setDisplayFilter(newFilter.length > 0 ? newFilter : null);
                 } else {
                   setDisplayFilter(select ? option : '');
@@ -329,7 +336,8 @@ const Pill = ({onPress, children, backgroundColor}) => {
             backgroundColor ||
             (colorScheme === 'dark' ? DarkTheme.colors.card : Colors.lightGrey),
         },
-      ]}>
+      ]}
+    >
       {children}
     </TouchableOpacity>
   );
@@ -342,13 +350,13 @@ const SearchFilters = ({searchFilters, setSearchFilters, type}) => {
   const itemCategories = Array.from(
     Object.values(SEARCHABLE_DATA.items).reduce((agg, cur) => {
       if (cur.category) {
-        cur.category.split(/\n/g).map((c) => agg.add(c));
+        cur.category.split(/\n/g).map(c => agg.add(c));
       }
       return agg;
     }, new Set()),
   ).sort();
   const itemRarities = Object.keys(RARITY_ORDER).filter(
-    (rarity) => !rarity.includes('Equipment'),
+    rarity => !rarity.includes('Equipment'),
   );
   const colorScheme = asyncStorageData?.dark_mode_override
     ? 'dark'
@@ -360,13 +368,14 @@ const SearchFilters = ({searchFilters, setSearchFilters, type}) => {
       showsHorizontalScrollIndicator={false}
       style={[styles.SearchFilters]}
       contentContainerStyle={{paddingHorizontal: 16}}
-      keyboardShouldPersistTaps="handled">
+      keyboardShouldPersistTaps="handled"
+    >
       <FilterPill
         filterOptions={itemCategories}
         label="Category"
         multi
         filter={searchFilters.category}
-        onSetFilter={(filter) =>
+        onSetFilter={filter =>
           setSearchFilters({...searchFilters, category: filter})
         }
       />
@@ -375,7 +384,7 @@ const SearchFilters = ({searchFilters, setSearchFilters, type}) => {
         label="Rarity"
         multi
         filter={searchFilters.rarity}
-        onSetFilter={(filter) =>
+        onSetFilter={filter =>
           setSearchFilters({...searchFilters, rarity: filter})
         }
       />
@@ -384,7 +393,7 @@ const SearchFilters = ({searchFilters, setSearchFilters, type}) => {
         label="Type"
         multi
         filter={searchFilters.type}
-        onSetFilter={(filter) =>
+        onSetFilter={filter =>
           setSearchFilters({...searchFilters, type: filter})
         }
       />
@@ -392,7 +401,7 @@ const SearchFilters = ({searchFilters, setSearchFilters, type}) => {
         searchFilters.rarity ||
         searchFilters.type) && (
         <Pill onPress={() => setSearchFilters(getDefaultSearchFilters(type))}>
-          <Icon
+          <Ionicons
             name="close-circle-sharp"
             size={12}
             color={
@@ -430,7 +439,7 @@ export const SearchScreen = ({route, navigation}) => {
     const matchesFilteredType =
       !searchFilters.type ||
       (o.rarity &&
-        searchFilters.type.some((type) =>
+        searchFilters.type.some(type =>
           type === 'Equipment'
             ? o.rarity.includes('Equipment')
             : !o.rarity.includes('Equipment'),
@@ -438,13 +447,11 @@ export const SearchScreen = ({route, navigation}) => {
     const matchesFilteredRarity =
       !searchFilters.rarity ||
       (o.rarity &&
-        searchFilters.rarity.some((rarity) => o.rarity.includes(rarity)));
+        searchFilters.rarity.some(rarity => o.rarity.includes(rarity)));
     const matchesFilteredCategory =
       !searchFilters.category ||
       (!!o.category &&
-        searchFilters.category.some((category) =>
-          o.category.includes(category),
-        ));
+        searchFilters.category.some(category => o.category.includes(category)));
     return (
       matchesFilteredType && matchesFilteredRarity && matchesFilteredCategory
     );
@@ -461,16 +468,16 @@ export const SearchScreen = ({route, navigation}) => {
   const searchData = Object.values(baseData)
     .map(Object.values)
     .flat()
-    .filter((o) => {
+    .filter(o => {
       const searchableFields = Object.values(o).filter(
-        (v) => typeof v === 'string',
+        v => typeof v === 'string',
       );
-      const matchesUserSearch = searchTokens.every((t) =>
-        searchableFields.some((s) => s.toLocaleLowerCase().includes(t)),
+      const matchesUserSearch = searchTokens.every(t =>
+        searchableFields.some(s => s.toLocaleLowerCase().includes(t)),
       );
       return matchesUserSearch && checkMatchesSearchFilter(o, searchFilters);
     })
-    .filter((o) => !HIDE_LIST.includes(o.name));
+    .filter(o => !HIDE_LIST.includes(o.name));
   const searchDataSorted = searchData.sort(compareObjs);
 
   useEffect(() => {
@@ -482,53 +489,30 @@ export const SearchScreen = ({route, navigation}) => {
   }, [search, searchDataSorted.length]);
 
   useEffect(() => {
-    if (itemModalVisible) {
-      analytics().logViewItem({
-        items: [
-          {
-            item_name: viewingItem.name,
-            item_category: 'item',
-            item_category2: viewingItem.category,
-          },
-        ],
-      });
-    }
-  }, [viewingItem, itemModalVisible]);
-  useEffect(() => {
-    if (challengeModalVisible) {
-      analytics().logViewItem({
-        items: [
-          {
-            item_name: viewingChallenge.name,
-            item_category: 'challenge',
-            item_category2: viewingChallenge.category,
-          },
-        ],
-      });
-    }
-  }, [viewingChallenge, challengeModalVisible]);
-  useEffect(() => {
-    if (artifactModalVisible) {
-      analytics().logViewItem({
-        items: [
-          {
-            item_name: viewingArtifact.name,
-            item_category: 'artifact',
-          },
-        ],
-      });
-    }
-  }, [viewingArtifact, artifactModalVisible]);
-
-  useEffect(() => {
     setSearchFilters(getDefaultSearchFilters(type));
   }, [route, type]);
+
+  const handlePress = v => {
+    if (SEARCHABLE_DATA.items[v.name]) {
+      setViewingItem(v.name);
+      setItemModalVisible(true);
+    } else if (NONSEARCHABLE_DATA.challenges[v.name]) {
+      setViewingChallenge(v.name);
+      setChallengeModalVisible(true);
+    } else if (SEARCHABLE_DATA.artifacts[v.name]) {
+      setViewingArtifact(v.name);
+      setArtifactModalVisible(true);
+    } else {
+      navigation.navigate('Detail', {itemName: v.name});
+    }
+  };
 
   return (
     <>
       <TouchableWithoutFeedback
         onPress={() => Keyboard.dismiss()}
-        style={{flex: 1}}>
+        style={{flex: 1}}
+      >
         <View
           style={{
             flex: 1,
@@ -536,15 +520,17 @@ export const SearchScreen = ({route, navigation}) => {
               colorScheme === 'dark'
                 ? DarkTheme.colors.background
                 : Colors.white,
-          }}>
+          }}
+        >
           <KeyboardAvoidingView
             behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
-            style={{flex: 1}}>
+            style={{flex: 1}}
+          >
             <SearchBar
               placeholder={`Search ${
                 type ? type.toLocaleLowerCase() : 'anything'
               }...`}
-              onChangeText={(text) => setSearch(text)}
+              onChangeText={text => setSearch(text)}
               value={search}
             />
             <SearchFilters
@@ -566,29 +552,19 @@ export const SearchScreen = ({route, navigation}) => {
                 },
               ]}
               contentContainerStyle={{flexGrow: 1}}
-              ref={scrollView}>
+              ref={scrollView}
+            >
               <View
                 style={styles.searchResults}
-                onStartShouldSetResponder={() => true}>
-                {searchDataSorted.map((v) =>
+                onStartShouldSetResponder={() => true}
+              >
+                {searchDataSorted.map(v =>
                   type === 'survivors' ? (
                     <TouchableOpacity
                       style={[styles.searchResultRow]}
                       key={v.name}
-                      onPress={() => {
-                        if (SEARCHABLE_DATA.items[v.name]) {
-                          setViewingItem(v.name);
-                          setItemModalVisible(true);
-                        } else if (NONSEARCHABLE_DATA.challenges[v.name]) {
-                          setViewingChallenge(v.name);
-                          setChallengeModalVisible(true);
-                        } else if (SEARCHABLE_DATA.artifacts[v.name]) {
-                          setViewingArtifact(v.name);
-                          setArtifactModalVisible(true);
-                        } else {
-                          navigation.navigate('Detail', {itemName: v.name});
-                        }
-                      }}>
+                      onPress={() => handlePress(v)}
+                    >
                       {IMAGES[v.name.replace(/ /g, '')] ? (
                         <Image
                           source={IMAGES[v.name.replace(/ /g, '')]}
@@ -606,60 +582,54 @@ export const SearchScreen = ({route, navigation}) => {
                     </TouchableOpacity>
                   ) : type === 'challenges' ? (
                     <TouchableOpacity
-                      style={[styles.searchResultRow]}
+                      style={[
+                        styles.searchResultRow,
+                        {alignItems: 'flex-start'},
+                      ]}
                       key={v.name}
-                      onPress={() => {
-                        if (SEARCHABLE_DATA.items[v.name]) {
-                          setViewingItem(v.name);
-                          setItemModalVisible(true);
-                        } else if (NONSEARCHABLE_DATA.challenges[v.name]) {
-                          setViewingChallenge(v.name);
-                          setChallengeModalVisible(true);
-                        } else if (SEARCHABLE_DATA.artifacts[v.name]) {
-                          setViewingArtifact(v.name);
-                          setArtifactModalVisible(true);
-                        } else {
-                          navigation.navigate('Detail', {itemName: v.name});
-                        }
-                      }}>
+                      onPress={() => handlePress(v)}
+                    >
                       <RText style={[styles.searchResultRowName]}>
                         {v.name}
                       </RText>
-                      {v.unlock
-                        .split('\n')
-                        .map((unlock) =>
-                          IMAGES[unlock.replace(/[ :]/g, '')] ? (
-                            <Image
-                              key={unlock}
-                              source={IMAGES[unlock.replace(/[ :]/g, '')]}
-                              style={[
-                                styles.searchResultSurvivorImage,
-                                {marginLeft: 12},
-                              ]}
-                            />
-                          ) : (
-                            <RText key={unlock}>Image not found</RText>
-                          ),
-                        )}
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          flexWrap: 'wrap',
+                          marginLeft: 12,
+                          flex: 1,
+                          justifyContent: 'flex-end',
+                          height: '100%',
+                        }}
+                      >
+                        {v.unlock
+                          .split('\n')
+                          .map(s => s.trim())
+                          .filter(s => s.length > 0)
+                          .map((unlock, i) =>
+                            IMAGES[unlock.replace(/[ :]/g, '')] ? (
+                              <Image
+                                key={`${v.name}-${unlock}-${i}`}
+                                source={IMAGES[unlock.replace(/[ :]/g, '')]}
+                                style={[
+                                  styles.searchResultSurvivorImage,
+                                  {marginLeft: 12},
+                                ]}
+                              />
+                            ) : (
+                              <RText key={`${v.name}-${unlock}-${i}`}>
+                                Image not found
+                              </RText>
+                            ),
+                          )}
+                      </View>
                     </TouchableOpacity>
                   ) : type === 'artifacts' ? (
                     <TouchableOpacity
                       style={[styles.searchResultRow]}
                       key={v.name}
-                      onPress={() => {
-                        if (SEARCHABLE_DATA.items[v.name]) {
-                          setViewingItem(v.name);
-                          setItemModalVisible(true);
-                        } else if (NONSEARCHABLE_DATA.challenges[v.name]) {
-                          setViewingChallenge(v.name);
-                          setChallengeModalVisible(true);
-                        } else if (SEARCHABLE_DATA.artifacts[v.name]) {
-                          setViewingArtifact(v.name);
-                          setArtifactModalVisible(true);
-                        } else {
-                          navigation.navigate('Detail', {itemName: v.name});
-                        }
-                      }}>
+                      onPress={() => handlePress(v)}
+                    >
                       {IMAGES[v.name.replace(/ /g, '')] ? (
                         <Image
                           source={IMAGES[v.name.replace(/ /g, '')]}
@@ -679,20 +649,8 @@ export const SearchScreen = ({route, navigation}) => {
                     <TouchableOpacity
                       style={[styles.searchResult]}
                       key={v.name}
-                      onPress={() => {
-                        if (SEARCHABLE_DATA.items[v.name]) {
-                          setViewingItem(v.name);
-                          setItemModalVisible(true);
-                        } else if (NONSEARCHABLE_DATA.challenges[v.name]) {
-                          setViewingChallenge(v.name);
-                          setChallengeModalVisible(true);
-                        } else if (SEARCHABLE_DATA.artifacts[v.name]) {
-                          setViewingArtifact(v.name);
-                          setArtifactModalVisible(true);
-                        } else {
-                          navigation.navigate('Detail', {itemName: v.name});
-                        }
-                      }}>
+                      onPress={() => handlePress(v)}
+                    >
                       {IMAGES[v.name.replace(/ /g, '')] ? (
                         <Image
                           source={IMAGES[v.name.replace(/ /g, '')]}
@@ -772,17 +730,17 @@ const styles = StyleSheet.create({
     aspectRatio: null,
     paddingHorizontal: 4,
     paddingVertical: 4,
-    height: 80,
+    minHeight: 80,
     overflow: 'hidden',
     alignItems: 'center',
     marginBottom: 8,
     justifyContent: 'space-between',
   },
   searchResultSurvivorImage: {
-    width: `${100 / 3}%`,
+    width: `${100 / 2}%`,
     aspectRatio: 1,
   },
-  searchResultSurvivorImage: {
+  searchResultArtifactImage: {
     width: `${100 / 4}%`,
     aspectRatio: 1,
   },

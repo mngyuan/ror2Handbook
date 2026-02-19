@@ -10,6 +10,10 @@ export const ChallengeModal = ({
   setModalVisible,
 }) => {
   const challenge = NONSEARCHABLE_DATA.challenges[challengeName];
+  const unlocks = challenge?.unlock
+    .split('\n')
+    .map(s => s.trim())
+    .filter(s => s.length > 0);
 
   return challenge ? (
     <RModal modalVisible={modalVisible} setModalVisible={setModalVisible}>
@@ -18,32 +22,38 @@ export const ChallengeModal = ({
           sharedStyles.ModalName,
           sharedStyles.itemModalHeaderRow,
           {color: Colors.achievementColor},
-        ]}>
+        ]}
+      >
         {challenge.name}
       </RText>
       <RText style={[sharedStyles.bodyText, {marginBottom: 4}]}>
         {challenge.description}
       </RText>
-      <View
-        style={[
-          {marginBottom: 4, flexDirection: 'row', alignItems: 'flex-end'},
-        ]}>
-        <RText style={[sharedStyles.bodyText]}>Unlocks </RText>
-        <RText style={[sharedStyles.bodyText, sharedStyles.mediumText]}>
-          {challenge.unlock}
-        </RText>
-        {IMAGES[challenge.unlock.replace(/ /g, '')] ? (
-          <>
-            <RText style={[sharedStyles.bodyText]}> </RText>
+      {unlocks.map((unlock, i) => (
+        <View
+          key={`${challenge.name}-${unlock}-${i}`}
+          style={[
+            {marginBottom: 4, flexDirection: 'row', alignItems: 'center'},
+          ]}
+        >
+          {i === 0 ? (
+            <RText style={[sharedStyles.bodyText]}>Unlocks </RText>
+          ) : null}
+          {IMAGES[unlock.replace(/ /g, '')] ? (
             <Image
-              source={IMAGES[challenge.unlock.replace(/ /g, '')]}
+              source={IMAGES[unlock.replace(/ /g, '')]}
               style={[styles.challengeModalUnlockImage]}
             />
-            <RText style={[sharedStyles.bodyText]}> </RText>
-          </>
-        ) : null}
-        <RText style={[sharedStyles.bodyText]}>.</RText>
-      </View>
+          ) : null}
+          <RText style={[sharedStyles.bodyText]}> </RText>
+          <RText style={[sharedStyles.bodyText, sharedStyles.mediumText]}>
+            {unlock}
+          </RText>
+          <RText style={[sharedStyles.bodyText]}>
+            {i >= unlocks.length - 1 ? '.' : ','}
+          </RText>
+        </View>
+      ))}
     </RModal>
   ) : null;
 };

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   Image,
   ScrollView,
@@ -6,7 +6,6 @@ import {
   View,
   useColorScheme,
 } from 'react-native';
-import analytics from '@react-native-firebase/analytics';
 import {DarkTheme} from '@react-navigation/native';
 import {AsyncStorageContext} from './AsyncStorageProvider.js';
 import {ChallengeModal} from './ChallengeModal.js';
@@ -31,28 +30,6 @@ export const DetailScreen = ({route}) => {
     : systemColorScheme;
   const {itemName} = route.params;
   const survivor = SEARCHABLE_DATA.survivors[itemName] || {};
-
-  useEffect(() => {
-    if (itemName) {
-      analytics().logViewItem({
-        items: [{item_name: itemName, item_category: 'survivor'}],
-      });
-    }
-  }, [itemName]);
-
-  useEffect(() => {
-    if (challengeModalVisible) {
-      analytics().logViewItem({
-        items: [
-          {
-            item_name: viewingChallenge.name,
-            item_category: 'challenge',
-            item_category2: viewingChallenge.category,
-          },
-        ],
-      });
-    }
-  }, [viewingChallenge, challengeModalVisible]);
 
   return (
     <ScrollView>

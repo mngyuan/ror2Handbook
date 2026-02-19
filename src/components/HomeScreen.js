@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {TouchableOpacity, StyleSheet, useColorScheme} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {Ionicons} from '@expo/vector-icons';
 import {DarkTheme} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {AsyncStorageContext} from './AsyncStorageProvider.js';
@@ -27,7 +27,7 @@ export const HomeScreen = ({type}) => {
             <TouchableOpacity
               onPress={() => navigation.openDrawer()}
               style={styles.headerIcon}>
-              <Icon
+              <Ionicons
                 name="menu"
                 size={24}
                 color={
@@ -36,7 +36,6 @@ export const HomeScreen = ({type}) => {
               />
             </TouchableOpacity>
           ),
-          headerMode: 'screen',
           headerTitleStyle: {
             fontFamily: Brand.defaultFont,
             ...FontStyles.semibold,
