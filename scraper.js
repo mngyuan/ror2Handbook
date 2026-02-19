@@ -1,7 +1,9 @@
 'use strict';
 const fs = require('fs');
 const https = require('https');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+puppeteer.use(StealthPlugin());
 
 const CLI_DOC = `scraper.js
 
@@ -17,11 +19,26 @@ const artifactDataPath = './artifact_data.json';
 
 const download = (url, destination) =>
   new Promise((resolve, reject) => {
-    const destWithoutSpaces = destination.replace(/ /g, '');
+    if (!url || !url.startsWith('https')) {
+      return resolve(false);
+    }
+    // Request original format to avoid WebP conversion from Fandom CDN
+    const downloadUrl = url.includes('wikia.nocookie.net')
+      ? url + (url.includes('?') ? '&' : '?') + 'format=original'
+      : url;
+    // Ensure file has an extension, extracted from URL if missing
+    let destWithExt = destination;
+    const hasExt = /\.\w+$/.test(destination);
+    if (!hasExt) {
+      const urlPath = new URL(url).pathname;
+      const extMatch = urlPath.match(/\.(\w+)/);
+      if (extMatch) destWithExt = `${destination}.${extMatch[1]}`;
+    }
+    const destWithoutSpaces = destWithExt.replace(/ /g, '');
     const file = fs.createWriteStream(destWithoutSpaces);
 
     https
-      .get(url, (response) => {
+      .get(downloadUrl, (response) => {
         response.pipe(file);
 
         file.on('finish', () => {
@@ -90,7 +107,7 @@ const scrape = ({
     try {
       // to debug, launch with launch({devtools: true, headless: false})
       const browser = await puppeteer.launch({
-        "headless": true,
+        "headless": "new",
         "args": ["--fast-start", "--disable-extensions", "--no-sandbox"],
         "ignoreHTTPSErrors": true
       });
@@ -228,8 +245,8 @@ const visitItemGamepedia = async (page, url) => {
     }
   };
   const {url: imgUrl, name: imgName} = await page
-    .$eval('.infoboxtable td > img', (el) => ({
-      url: el.src,
+    .$eval('.infoboxtable td[colspan] img.mw-file-element', (el) => ({
+      url: el.getAttribute('data-src') || el.src,
       name: el.alt,
     }))
     .catch(evalCatchHandler);
@@ -259,12 +276,19 @@ const visitItemGamepedia = async (page, url) => {
             .map((el) => el.innerText)
             .map(window.toCamelCase),
         );
-        return statRows.slice(1).map((row) => {
-          const values = Array.from(row.querySelectorAll('td')).map(
-            (el) => el.innerText,
-          );
-          return Object.fromEntries(keyNames.map((key, i) => [key, values[i]]));
-        });
+        return statRows.slice(1)
+          .filter((row) => {
+            const tds = row.querySelectorAll('td');
+            // Skip empty rows and internal name rows
+            return tds.length >= keyNames.length && !row.querySelector('.infoboxname');
+          })
+          .map((row) => {
+            const values = Array.from(row.querySelectorAll('td')).map(
+              (el) => el.innerText,
+            );
+            return Object.fromEntries(keyNames.map((key, i) => [key, values[i]]));
+          })
+          .filter((stat) => Object.values(stat).some((v) => v));
       })
       .catch(evalCatchHandler),
     page.$eval('.infoboxcaption', (el) => el.innerText).catch(evalCatchHandler),
@@ -357,8 +381,8 @@ const visitEqpGamepedia = async (page, url) => {
     }
   };
   const {url: imgUrl, name: imgName} = await page
-    .$eval('.infoboxtable td > img', (el) => ({
-      url: el.src,
+    .$eval('.infoboxtable td[colspan] img.mw-file-element', (el) => ({
+      url: el.getAttribute('data-src') || el.src,
       name: el.alt,
     }))
     .catch(evalCatchHandler);
@@ -470,43 +494,49 @@ const visitSurvivorGamepedia = async (page, url) => {
     }
   };
   const {url: imgUrl, name: imgName} = await page
-    .$eval('.infoboxtable td > img', (el) => ({
-      url: el.src,
+    .$eval('.infoboxtable td[colspan] img.mw-file-element', (el) => ({
+      url: el.getAttribute('data-src') || el.src,
       name: el.alt,
     }))
     .catch(evalCatchHandler);
   const [description, stats, name, skills, _] = await Promise.all([
     page.$eval('.infoboxdesc', (el) => el.innerText).catch(evalCatchHandler),
-    page.$$eval('.infoboxtable tr td:first-child:nth-last-child(2)', (tds) =>
-      Object.fromEntries(
-        tds.map((td) => {
-          const key = td.innerText;
-          const value = td.nextElementSibling.innerText;
-          return [key, value];
-        }),
-      ),
-    ),
+    page.$$eval('.infoboxtable tr td:first-child:nth-last-child(2)', (tds) => {
+      const statKeys = ['Health', 'Health Regen', 'Damage', 'Speed', 'Armor', 'Unlock'];
+      return Object.fromEntries(
+        tds
+          .map((td) => {
+            const key = td.innerText;
+            const value = td.nextElementSibling.innerText;
+            return [key, value];
+          })
+          .filter(([key]) => statKeys.includes(key)),
+      );
+    }),
     page.$eval('.infoboxname', (el) => el.innerText).catch(evalCatchHandler),
     page
       .$$eval('table.skill', (els) =>
         els.map((table) => {
           const tableRows = Array.from(table.querySelectorAll('tr'));
           const name = tableRows[0].innerText;
-          const imgUrl =
-            tableRows[1].querySelector('img').getAttribute('data-src') ||
-            tableRows[1].querySelector('img').getAttribute('src');
-          const imgName = tableRows[1].querySelector('img').alt;
+          const imgEl = tableRows[1]?.querySelector('img');
+          const imgUrl = imgEl
+            ? (imgEl.getAttribute('data-src') || imgEl.getAttribute('src'))
+            : null;
+          const imgName = imgEl ? imgEl.alt : null;
           const data = {};
           for (const [i, row] of tableRows.slice(2).entries()) {
-            if (row.querySelector('th').innerText === 'Notes') {
+            if (row.querySelector('th')?.innerText === 'Notes') {
               data['Notes'] = tableRows
                 .slice(2)
-                [i + 1].querySelector('td').innerText;
+                [i + 1]?.querySelector('td')?.innerText;
               break;
             }
-            data[row.querySelector('th').innerText] = row.querySelector(
-              'td',
-            ).innerText;
+            if (row.querySelector('th') && row.querySelector('td')) {
+              data[row.querySelector('th').innerText] = row.querySelector(
+                'td',
+              ).innerText;
+            }
           }
           return {name, imgUrl, imgName, ...data};
         }),
@@ -515,9 +545,11 @@ const visitSurvivorGamepedia = async (page, url) => {
     download(imgUrl, `${imageDirPath}/${imgName}`),
   ]);
   await Promise.all(
-    skills.map((skill) =>
-      download(skill.imgUrl, `${imageDirPath}/${skill.imgName}`),
-    ),
+    skills
+      .filter((skill) => skill.imgUrl)
+      .map((skill) =>
+        download(skill.imgUrl, `${imageDirPath}/${skill.imgName}`),
+      ),
   );
   return {
     wikiUrl: url,
@@ -543,22 +575,26 @@ const visitChallenge = async (page, url) => {
   await autoScroll(page);
   console.log(url);
   const challenges = await page.$$eval(
-    '.article-table.sortable.floatheader.jquery-tablesorter',
+    '.article-table.floatheader',
     (tables) =>
       tables
         .map((table, i) => {
           const tableRows = Array.from(table.querySelectorAll('tbody tr'));
           return tableRows.map((tableRow) => {
             const tableDatas = tableRow.querySelectorAll('td');
+            if (tableDatas.length < 4) return null;
+            const unlockTd = tableDatas[3];
+            const img = unlockTd.querySelector('img');
+            if (!img) return null;
             return {
               name: tableDatas[0].innerText,
               description: tableDatas[1].innerText,
-              unlock: tableDatas[2].innerText,
+              unlock: unlockTd.innerText,
               category: CHALLENGE_TABLE_CATEGORY[i],
-              imgUrl: tableDatas[2].querySelector('img').src,
-              imgName: tableDatas[2].querySelector('img').alt,
+              imgUrl: img.getAttribute('data-src') || img.src,
+              imgName: img.alt,
             };
-          });
+          }).filter(Boolean);
         })
         .flat(),
   );
@@ -598,12 +634,16 @@ const visitArtifact = async (page, url) => {
             if (tableDatas.length == 0) {
               return null;
             }
+            // Find the artifact image (skip DLC icons by looking for 'Artifact' in alt)
+            const imgs = tableDatas[0].querySelectorAll('img');
+            const img = Array.from(imgs).find(i => i.alt.startsWith('Artifact')) || imgs[0];
+            if (!img || !img.alt.startsWith('Artifact')) return null;
             return {
-              name: tableDatas[0].innerText,
+              name: img.alt,
               description: tableDatas[1].innerText,
               code: tableDatas[2].innerText.replace(/[ \n]/g, ''),
-              imgUrl: tableDatas[0].querySelector('img').src,
-              imgName: tableDatas[0].querySelector('img').alt,
+              imgUrl: img.getAttribute('data-src') || img.src,
+              imgName: img.alt,
             };
           })
           .filter((artifact) => !!artifact);
