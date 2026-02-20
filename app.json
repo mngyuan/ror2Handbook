@@ -2,7 +2,7 @@
   "expo": {
     "name": "RoR2 Handbook",
     "slug": "ror2Handbook",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
