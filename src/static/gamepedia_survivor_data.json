@@ -344,7 +344,7 @@
         "Cooldown": "3s",
         "Proc Coefficient": "1.0 (someone double check this)",
         "Description": "Frost\n. Launch ice cubes for 3x150% damage.",
-        "Notes": "unlocked by completing the challenge \"CHEF: It's getting hot in here\"\nIce Box is CHEF's alternate secondary. Ice box shoots 3 ice cubes, doing 3x150% damage on hit and applying 1 stack of frost per cube hit. Stacking an enemy with 6 stacks of \"Frost\" will freeze them, very similar to Artificer's abilities."
+        "Notes": "Unlocked via the CHEF: It's Getting Hot In Here! Challenge. (As CHEF apply 20 stacks of Burn at once to Mithrix.)\nIce Box is CHEF's alternate secondary. Ice box shoots 3 ice cubes, doing 3x150% damage on hit and applying 1 stack of frost per cube hit. Stacking an enemy with 6 stacks of \"Frost\" will freeze them, very similar to Artificer's abilities."
       },
       {
         "name": "Boosted Ice Box",
@@ -382,7 +382,7 @@
         "Cooldown": "?",
         "Proc Coefficient": "?",
         "Description": "Twirl upwards then slam down, exploding with oil for 200% damage. Launch again by reactivating this ability before landing, up to 4 total.",
-        "Notes": "Oil Spill is CHEF's alternate utility ability. It is unlocked by completing the challenge \"CHEF: You've always been crazy\" which requires the player to hit 5 airborne enemies with 1 use of Roll. This can be done easily with primordial cube. Oil spill launches the player in the air, and bounces them on the ground up to 4 times. Using this ability again just before hitting the ground will trigger 2 oil balls to fall from him, which can be ignited or frozen, depending on his secondary."
+        "Notes": "Unlocked via the CHEF: You've Always Been Crazy Challenge. (As CHEF hit five airborne enemies with one instance of Roll.)\nOil Spill is CHEF's alternate utility ability.\nOil spill launches the player in the air, and bounces them on the ground up to 4 times. Using this ability again just before hitting the ground will trigger 2 oil balls to fall from him, which can be ignited or frozen, depending on his secondary."
       },
       {
         "name": "Glaze",
@@ -402,7 +402,7 @@
         "Cooldown": "15s",
         "Proc Coefficient": "0",
         "Description": "Emit a blast attack dealing 400% damage, inflicting Ignite or Frost. Boosts the next Skill used.",
-        "Notes": "Unlocked via the CHEF: Barbecued Bison Recipe Complete\nApplies the \n Boosted\n status buff.\nOne time use skill.\nBoosts CHEF's regular abilities to make them stronger and changes properties of the attacks.\nCreates a small blast attack with a radius of 10 that deals 100% damage.\nAlso spawns a small damage-over-time zone on CHEF that deals 10% damage every second with a proc coefficient of 0.33 that applies \n Burn\n.\nBoosted skills will appear over any Heresy skills (\nVisions of Heresy\n, \nHooks of Heresy\n, \nStrides of Heresy\n).\nActivating \n Roll\n after using a boosted \n Dice\n or \n Sear\n will allow you to use Roll before switching back to \n Shadowfade"
+        "Notes": "Unlocked via the CHEF: Barbecued Bison Recipe Complete Challenge. (As CHEF complete 10 recipes by searing an oiled bison with Sear.)\nApplies the \n Boosted\n status buff.\nOne time use skill.\nBoosts CHEF's regular abilities to make them stronger and changes properties of the attacks.\nCreates a small blast attack with a radius of 10 that deals 100% damage.\nAlso spawns a small damage-over-time zone on CHEF that deals 10% damage every second with a proc coefficient of 0.33 that applies \n Burn\n.\nBoosted skills will appear over any Heresy skills (\nVisions of Heresy\n, \nHooks of Heresy\n, \nStrides of Heresy\n).\nActivating \n Roll\n after using a boosted \n Dice\n or \n Sear\n will allow you to use Roll before switching back to \n Shadowfade"
       }
     ],
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/51/CHEF.png/revision/latest?cb=20240828191631"
@@ -1675,7 +1675,7 @@
         "Cooldown": "7s",
         "Proc Coefficient": "1.0",
         "Description": "Manifest spiraling orbs dealing 150% damage. Hits grant temporary barrier. Exhilarate on activation at max orbs.",
-        "Notes": "Unlocked via Seeker: Airborne Souls (As Seeker, hit three or more airborne enemies with a single use of the exploding third hit of Spirit Punch.)\nEach orb can hit 11 times before expiring, with the final hit dealing 200% damage.\nEach stack of \n Tranquility\n grants two more hits per orb before expiring, capping out at 23 hits.\nEach orb grants 3% barrier on hit.\nEach stack of \n Tranquility\n grants 1% more barrier, capping out at 9% barrier on hit.\nUp to 6 orbs can be cast at a time. Casting after reaching max stacks will spin the orbs.\nAt max spin speed, the orbs deal up to +50% damage.\nEase in: 0.5s, Boost: 3s, Ease out: 1.0s"
+        "Notes": "Unlocked via the Seeker: Airborne Souls Challenge. (As Seeker, hit three or more airborne enemies with a single use of the exploding third hit of Spirit Punch.)\nEach orb can hit 11 times before expiring, with the final hit dealing 200% damage.\nEach stack of \n Tranquility\n grants two more hits per orb before expiring, capping out at 23 hits.\nEach orb grants 3% barrier on hit.\nEach stack of \n Tranquility\n grants 1% more barrier, capping out at 9% barrier on hit.\nUp to 6 orbs can be cast at a time. Casting after reaching max stacks will spin the orbs.\nAt max spin speed, the orbs deal up to +50% damage.\nEase in: 0.5s, Boost: 3s, Ease out: 1.0s"
       },
       {
         "name": "Sojourn",
@@ -1695,7 +1695,7 @@
         "Cooldown": "9s",
         "Proc Coefficient": "1.0",
         "Description": "Gain barrier and take flight. Total barrier loss or impact creates a cyclone, healing allies, and dealing 200% damage per second.",
-        "Notes": "Unlocked via Seeker: Scorched Earth (Deal 500,000% damage with one use of Sojourn's explosion.)\nThe vortex pulls in monsters in a 15m radius. (1/2 of Primordial_Cube)\nthe vortex deal 200% damage/s thus 800 damage total with 4s.\nwith the max 6 stack of \n Tranquility\n the total damage are 1400%.\nEach stack of \n Tranquility\n increase the duration of the vortex for 0.5s each, capping out at 7s."
+        "Notes": "Unlocked via the Seeker: Scorched Earth Challenge. (Deal 500,000% damage with one use of Sojourn's explosion.)\nThe vortex pulls in monsters in a 15m radius. (1/2 of Primordial_Cube)\nthe vortex deal 200% damage/s thus 800 damage total with 4s.\nwith the max 6 stack of \n Tranquility\n the total damage are 1400%.\nEach stack of \n Tranquility\n increase the duration of the vortex for 0.5s each, capping out at 7s."
       },
       {
         "name": "Meditate",
@@ -1715,7 +1715,7 @@
         "Cooldown": "12s",
         "Proc Coefficient": "1.0",
         "Description": "Charge a piercing, spectral hand that deals 400%-700% damage and heals allies. Multihit three characters to gain Tranquility and barrier.",
-        "Notes": "Unlocked via Seeker: Clear Mind (As Seeker, meditate 20 times without missing an input in a single run.)\nCharge for 1.5s to upgrade damage from 400% to 700% and change the color from green to yellow.\nEach stack of \n Tranquility\n increase size of the hand by 15% each and damages by 250%, capping out at 90% size and 1500% damage bonus to a total of 2200% if fully charged.\nevery 3 enemies hit with one palm blast give a stack of \n Tranquility"
+        "Notes": "Unlocked via the Seeker: Clear Mind Challenge. (As Seeker, meditate 20 times without missing an input in a single run.)\nCharge for 1.5s to upgrade damage from 400% to 700% and change the color from green to yellow.\nEach stack of \n Tranquility\n increase size of the hand by 15% each and damages by 250%, capping out at 90% size and 1500% damage bonus to a total of 2200% if fully charged.\nevery 3 enemies hit with one palm blast give a stack of \n Tranquility"
       }
     ],
     "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/54/Seeker.png/revision/latest?cb=20240828191746"
