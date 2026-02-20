@@ -5,6 +5,7 @@ import {
   StyleSheet,
   View,
   useColorScheme,
+  useWindowDimensions,
 } from 'react-native';
 import {DarkTheme} from '@react-navigation/native';
 import {AsyncStorageContext} from './AsyncStorageProvider.js';
@@ -24,12 +25,31 @@ export const DetailScreen = ({route}) => {
   const [viewingChallenge, setViewingChallenge] = useState(null);
   const [challengeModalVisible, setChallengeModalVisible] = useState(false);
   const {data: asyncStorageData} = useContext(AsyncStorageContext);
+  const {width} = useWindowDimensions();
 
   const colorScheme = asyncStorageData?.dark_mode_override
     ? 'dark'
     : systemColorScheme;
   const {itemName} = route.params;
   const survivor = SEARCHABLE_DATA.survivors[itemName] || {};
+
+  // On larger screens, the stats should be in the same flex row as the header info, otherwise
+  // the mostly sparse header row creates a lot of empty space
+  const stats =
+    Object.entries(survivor.stats).length > 0 ? (
+      <>
+        <RText style={[styles.detailSectionHeader]}>Stats</RText>
+        <View style={styles.detailStats}>
+          {Object.entries(survivor.stats)
+            .filter(([k]) => !['Unlock'].includes(k))
+            .map(([k, v]) => (
+              <RText style={styles.detailStat} key={k}>
+                <RText style={styles.detailStatLabel}>{k}</RText> {v}
+              </RText>
+            ))}
+        </View>
+      </>
+    ) : null;
 
   return (
     <ScrollView>
@@ -42,7 +62,8 @@ export const DetailScreen = ({route}) => {
                 ? DarkTheme.colors.background
                 : Colors.white,
           },
-        ]}>
+        ]}
+      >
         <View style={styles.detailHeader}>
           <View style={styles.detailHeaderInfo}>
             <RText style={styles.detailSectionHeader}>{survivor.name}</RText>
@@ -54,7 +75,8 @@ export const DetailScreen = ({route}) => {
                   onPress={() => {
                     setViewingChallenge(survivor.stats.Unlock);
                     setChallengeModalVisible(true);
-                  }}>
+                  }}
+                >
                   {survivor.stats.Unlock}
                 </RText>
               </RText>
@@ -64,30 +86,18 @@ export const DetailScreen = ({route}) => {
                 {survivor.description}
               </RText>
             ) : null}
+            {width >= 500 ? stats : null}
           </View>
           <Image
             source={IMAGES[survivor.name.replace(/ /g, '')]}
             style={styles.detailHeaderImage}
           />
         </View>
-        {Object.entries(survivor.stats).length > 0 ? (
-          <>
-            <RText style={[styles.detailSectionHeader]}>Stats</RText>
-            <View style={styles.detailStats}>
-              {Object.entries(survivor.stats)
-                .filter(([k]) => !['Unlock'].includes(k))
-                .map(([k, v]) => (
-                  <RText style={styles.detailStat} key={k}>
-                    <RText style={styles.detailStatLabel}>{k}</RText> {v}
-                  </RText>
-                ))}
-            </View>
-          </>
-        ) : null}
+        {width < 500 ? stats : null}
         {survivor.skills && survivor.skills.length > 0 ? (
           <>
             <RText style={[styles.detailSectionHeader]}>Skills</RText>
-            {survivor.skills.map((skill) => (
+            {survivor.skills.map(skill => (
               <View style={styles.detailSkillRow} key={skill.name}>
                 <View style={styles.detailSkillInfo}>
                   <RText style={styles.detailSkillHeader}>
@@ -97,7 +107,8 @@ export const DetailScreen = ({route}) => {
                   </RText>
                   {skill.Notes && skill.Notes.includes('Unlock') ? (
                     <RText
-                      style={[sharedStyles.bodyText, styles.detailSkillUnlock]}>
+                      style={[sharedStyles.bodyText, styles.detailSkillUnlock]}
+                    >
                       Unlocked by{' '}
                       <RText
                         style={sharedStyles.achievementNameLink}
@@ -107,7 +118,8 @@ export const DetailScreen = ({route}) => {
                           )[1];
                           setViewingChallenge(unlock);
                           setChallengeModalVisible(true);
-                        }}>
+                        }}
+                      >
                         {
                           skill.Notes.match(
                             /Unlocked via the (.*) Challenge\./,
@@ -120,7 +132,8 @@ export const DetailScreen = ({route}) => {
                     style={[
                       sharedStyles.bodyText,
                       styles.detailSkillDescription,
-                    ]}>
+                    ]}
+                  >
                     {skill.Description.replace(/\n/g, '')}
                   </RText>
                   {skill['Proc Coefficient'] ? (
@@ -170,6 +183,7 @@ const styles = StyleSheet.create({
   },
   detailHeaderImage: {
     width: '45%',
+    maxWidth: 250,
     aspectRatio: 1,
   },
   detailStats: {

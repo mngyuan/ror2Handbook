@@ -13,6 +13,7 @@ import {
   TouchableWithoutFeedback,
   View,
   useColorScheme,
+  useWindowDimensions,
 } from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import {DarkTheme} from '@react-navigation/native';
@@ -461,6 +462,15 @@ export const SearchScreen = ({route, navigation}) => {
     ? 'dark'
     : systemColorScheme;
 
+  const {width} = useWindowDimensions();
+  const numColumns = width >= 900 ? 3 : width >= 500 ? 2 : 1;
+  const gap = 8;
+  const totalGap = gap * (numColumns - 1);
+  const containerWidth = width - (16 - 4) * 2 - 4 * 2;
+  const rowColumnStyle = {
+    width: (containerWidth - totalGap) / numColumns,
+  };
+
   const searchTokens = search.toLocaleLowerCase().split(/ +/);
   const baseData = type
     ? {type: SEARCHABLE_DATA[type] || NONSEARCHABLE_DATA[type]}
@@ -555,13 +565,16 @@ export const SearchScreen = ({route, navigation}) => {
               ref={scrollView}
             >
               <View
-                style={styles.searchResults}
+                style={[
+                  styles.searchResults,
+                  type !== 'items' && type !== null && numColumns > 1 && {gap},
+                ]}
                 onStartShouldSetResponder={() => true}
               >
                 {searchDataSorted.map(v =>
                   type === 'survivors' ? (
                     <TouchableOpacity
-                      style={[styles.searchResultRow]}
+                      style={[styles.searchResultRow, rowColumnStyle]}
                       key={v.name}
                       onPress={() => handlePress(v)}
                     >
@@ -584,6 +597,7 @@ export const SearchScreen = ({route, navigation}) => {
                     <TouchableOpacity
                       style={[
                         styles.searchResultRow,
+                        rowColumnStyle,
                         {alignItems: 'flex-start'},
                       ]}
                       key={v.name}
@@ -626,7 +640,7 @@ export const SearchScreen = ({route, navigation}) => {
                     </TouchableOpacity>
                   ) : type === 'artifacts' ? (
                     <TouchableOpacity
-                      style={[styles.searchResultRow]}
+                      style={[styles.searchResultRow, rowColumnStyle]}
                       key={v.name}
                       onPress={() => handlePress(v)}
                     >
@@ -662,6 +676,13 @@ export const SearchScreen = ({route, navigation}) => {
                     </TouchableOpacity>
                   ),
                 )}
+                {
+                  // In the grid views, add a filler at the end to make the justifyContent: 'space-between'
+                  // look nice on the last row if it isn't t full
+                  (type === 'items' || type === null || numColumns > 1) && (
+                    <View style={{flex: 1}} />
+                  )
+                }
               </View>
             </ScrollView>
           </KeyboardAvoidingView>
@@ -707,6 +728,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   searchResults: {
+    justifyContent: 'space-between',
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: '100%',
@@ -716,6 +738,7 @@ const styles = StyleSheet.create({
   },
   searchResult: {
     width: '20%',
+    maxWidth: 120,
     aspectRatio: 1,
     paddingHorizontal: 4,
     paddingVertical: 4,
@@ -725,7 +748,6 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   searchResultRow: {
-    width: '100%',
     flexDirection: 'row',
     aspectRatio: null,
     paddingHorizontal: 4,
