@@ -3,380 +3,423 @@
     "rarity": "Equipment",
     "cooldown": "20s",
     "unlock": "Warm For Life",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Blast_Shower",
+    "id": "Cleanse",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Blast_Shower",
     "description": "Cleanse all negative effects. Includes debuffs, damage over time, and nearby projectiles.",
     "name": "Blast Shower",
     "flavorText": "Cleanse all negative effects.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/4f/Blast_Shower.png/revision/latest?cb=20200129235330"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Blast_Shower.png?62fe22"
   },
   "Deus Ex Machina": {
     "rarity": "Equipment",
     "cooldown": "60s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Deus_Ex_Machina",
+    "id": "Parry",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Deus_Ex_Machina",
     "description": "Briefly enter a countering stance that lets you parry any and ALL damage. A successful parry nullifies incoming damage, reduces your equipment cooldown by 75%, and grants Blessing, causing your next attack to ALWAYS activate your on-hit effects.",
     "name": "Deus Ex Machina",
     "flavorText": "Counter any damage. Successful counters bless your next attack, ensuring your on-hit effects ALWAYS activate.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/b7/Deus_Ex_Machina.png/revision/latest?cb=20251122230018"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Deus_Ex_Machina.png?77ed54"
   },
   "Disposable Missile Launcher": {
     "rarity": "Equipment",
     "cooldown": "45s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Disposable_Missile_Launcher",
+    "id": "CommandMissile",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Disposable_Missile_Launcher",
     "description": "Fire a swarm of 12 missiles that deal 12x300% damage.",
     "name": "Disposable Missile Launcher",
     "flavorText": "Fire a swarm of missiles.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/78/Disposable_Missile_Launcher.png/revision/latest?cb=20200129193051"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Disposable_Missile_Launcher.png?2e0692"
   },
   "Eccentric Vase": {
     "rarity": "Equipment",
     "cooldown": "45s",
     "unlock": "Blackout",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Eccentric_Vase",
+    "id": "Gateway",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Eccentric_Vase",
     "description": "Create a quantum tunnel of up to 1000m in length. Lasts 30 seconds.",
     "name": "Eccentric Vase",
     "flavorText": "Create a quantum tunnel between two locations.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/ce/Eccentric_Vase.png/revision/latest?cb=20200129193052"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Eccentric_Vase.png?900a65"
   },
   "Executive Card": {
     "rarity": "Equipment",
     "cooldown": "0.1s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Executive_Card",
+    "id": "MultiShopCard",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Executive_Card",
     "description": "Whenever you make a gold purchase, get 10% of the spent gold back. If the purchase is a multishop terminal, the other terminals will remain open.",
     "name": "Executive Card",
     "flavorText": "Gain 10% cash back on all purchases. Multishops remain open.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/82/Executive_Card.png/revision/latest?cb=20220302120708"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Executive_Card.png?e23d0a"
   },
   "Foreign Fruit": {
     "rarity": "Equipment",
     "cooldown": "45s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Foreign_Fruit",
+    "id": "Fruit",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Foreign_Fruit",
     "description": "Instantly heal for 50% of your maximum health.",
     "name": "Foreign Fruit",
     "flavorText": "Heal on use.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d0/Foreign_Fruit.png/revision/latest?cb=20200129193055"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Foreign_Fruit.png?20f2f2"
   },
   "Forgive Me Please": {
     "rarity": "Equipment",
     "cooldown": "45s",
     "unlock": "I Love Dying!",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Forgive_Me_Please",
+    "id": "DeathProjectile",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Forgive_Me_Please",
     "description": "Throw a cursed doll out that triggers any On-Kill effects you have every 1 second for 8 seconds.",
     "name": "Forgive Me Please",
     "flavorText": "Throw a cursed doll that repeatedly triggers your 'On Kill' effects.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/78/Forgive_Me_Please.png/revision/latest?cb=20200811161828"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Forgive_Me_Please.png?723ede"
   },
   "Fuel Array": {
     "rarity": "Equipment",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Fuel_Array",
+    "id": "QuestVolatileBattery",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Fuel_Array",
     "description": "Looks like it could power something. EXTREMELY unstable...",
     "name": "Fuel Array",
     "flavorText": "Looks like it could power something. EXTREMELY unstable...",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/fe/Fuel_Array.png/revision/latest?cb=20200129193057"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Fuel_Array.png?8d0508"
   },
   "Gnarled Woodsprite": {
     "rarity": "Equipment",
     "cooldown": "15s",
     "unlock": "One with the Woods",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Gnarled_Woodsprite",
+    "id": "PassiveHealing",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Gnarled_Woodsprite",
     "description": "Gain a Woodsprite follower that heals for 1.5% of your maximum health/second. Can be sent to an ally to heal them for 10% of their maximum health.",
     "name": "Gnarled Woodsprite",
     "flavorText": "Heal over time. Activate to send to an ally.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d8/Gnarled_Woodsprite.png/revision/latest?cb=20200129193103"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Gnarled_Woodsprite.png?ef1d5d"
   },
   "Goobo Jr.": {
     "rarity": "Equipment",
     "cooldown": "100s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Goobo_Jr.",
+    "id": "GummyClone",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Goobo_Jr.",
     "description": "Spawn a gummy clone that has 300% damage and 300% health. Expires in 30 seconds.",
     "name": "Goobo Jr.",
     "flavorText": "Create a clone of you for 30 seconds.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/3a/Goobo_Jr..png/revision/latest?cb=20220302043343"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Goobo_Jr..png?ecca14"
   },
   "Gorag's Opus": {
     "rarity": "Equipment",
     "cooldown": "45s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Gorag%27s_Opus",
+    "id": "TeamWarCry",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Gorag%27s_Opus",
     "description": "All allies enter a frenzy for 7 seconds. Increases movement speed by 50% and attack speed by 100%.",
     "name": "Gorag's Opus",
     "flavorText": "You and all your allies enter a frenzy.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/56/Gorag%27s_Opus.png/revision/latest?cb=20200811161829"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Gorag%27s_Opus.png?df994b"
   },
   "Jade Elephant": {
     "rarity": "Equipment",
     "cooldown": "45s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Jade_Elephant",
+    "id": "GainArmor",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Jade_Elephant",
     "description": "Gain 500 armor for 5 seconds.",
     "name": "Jade Elephant",
     "flavorText": "Gain massive armor for 5 seconds.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/41/Jade_Elephant.png/revision/latest?cb=20200129235337"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Jade_Elephant.png?9f79e4"
   },
   "Milky Chrysalis": {
     "rarity": "Equipment",
     "cooldown": "60s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Milky_Chrysalis",
+    "id": "Jetpack",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Milky_Chrysalis",
     "description": "Sprout wings and fly for 15 seconds. Gain +20% movement speed for the duration.",
     "name": "Milky Chrysalis",
     "flavorText": "Gain temporary flight.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e3/Milky_Chrysalis.png/revision/latest?cb=20200129193119"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Milky_Chrysalis.png?c954e8"
   },
   "Molotov (6-Pack)": {
     "rarity": "Equipment",
     "cooldown": "45s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Molotov_(6-Pack)",
+    "id": "Molotov",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Molotov_(6-Pack)",
     "description": "Throw 6 molotov cocktails that ignites enemies for 500% base damage. Each molotov leaves a burning area for 200% damage per second.",
     "name": "Molotov (6-Pack)",
     "flavorText": "Throw 6 flaming molotovs that ignite enemies upon shattering.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/b/bf/Molotov_%286-Pack%29.png/revision/latest?cb=20220302120707"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Molotov_%286-Pack%29.png?701dfd"
   },
   "Ocular HUD": {
     "rarity": "Equipment",
     "cooldown": "60s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Ocular_HUD",
+    "id": "CritOnUse",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Ocular_HUD",
     "description": "Gain +100% Critical Strike Chance for 8 seconds.",
     "name": "Ocular HUD",
     "flavorText": "Gain 100% Critical Strike Chance for 8 seconds.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/68/Ocular_HUD.png/revision/latest?cb=20200129193123"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Ocular_HUD.png?17554a"
   },
   "Preon Accumulator": {
     "rarity": "Equipment",
     "cooldown": "140s",
     "unlock": "[REDACTED]",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Preon_Accumulator",
+    "id": "BFG",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Preon_Accumulator",
     "description": "Fires preon tendrils, zapping enemies within 35m for up to 600% damage/second. On contact, detonate in an enormous 20m explosion for 4000% damage.",
     "name": "Preon Accumulator",
     "flavorText": "Fire a ball of energy that electrocutes nearby enemies before detonating.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/fe/Preon_Accumulator.png/revision/latest?cb=20200129193133"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Preon_Accumulator.png?22990f"
   },
   "Primordial Cube": {
     "rarity": "Equipment",
     "cooldown": "60s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Primordial_Cube",
+    "id": "Blackhole",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Primordial_Cube",
     "description": "Fire a black hole that draws enemies within 30m into its center. Lasts 10 seconds",
     "name": "Primordial Cube",
     "flavorText": "Fire a black hole that draws enemies in.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d9/Primordial_Cube.png/revision/latest?cb=20200129193135"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Primordial_Cube.png?625c48"
   },
   "Radar Scanner": {
     "rarity": "Equipment",
     "cooldown": "45s",
     "unlock": "Bookworm",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Radar_Scanner",
+    "id": "Scanner",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Radar_Scanner",
     "description": "Reveal all interactables within 500m for 10 seconds.",
     "name": "Radar Scanner",
     "flavorText": "Reveal all nearby interactables.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/7f/Radar_Scanner.png/revision/latest?cb=20200129193139"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Radar_Scanner.png?f69cd5"
   },
   "Recycler": {
     "rarity": "Equipment",
     "cooldown": "45s",
     "unlock": "Cleanup Duty",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Recycler",
+    "id": "Recycle",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Recycler",
     "description": "Transform an Item or Equipment into a different one. Can only be converted into the same tier one time.",
     "name": "Recycler",
     "flavorText": "Transform an Item or Equipment into a different one. Can only recycle once.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/67/Recycler.png/revision/latest?cb=20200331153330"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Recycler.png?ad6d53"
   },
   "Remote Caffeinator": {
     "rarity": "Equipment",
     "cooldown": "60s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Remote_Caffeinator",
+    "id": "VendingMachine",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Remote_Caffeinator",
     "description": "Request an Eclipse Zero Vending Machine from the UES Safe Travels. Delivery guaranteed in 5 seconds, dealing 2000% damage. Heal up to 3 targets for 25% of their maximum health.",
     "name": "Remote Caffeinator",
     "flavorText": "Request a healing soda machine.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9c/Remote_Caffeinator.png/revision/latest?cb=20220304231621"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Remote_Caffeinator.png?fba4ed"
   },
   "Royal Capacitor": {
     "rarity": "Equipment",
     "cooldown": "20s",
     "unlock": "Ascendant",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Royal_Capacitor",
+    "id": "Lightning",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Royal_Capacitor",
     "description": "Call down a lightning strike on a targeted monster, dealing 3000% damage and stunning nearby monsters.",
     "name": "Royal Capacitor",
     "flavorText": "Call down a lightning strike on a targeted monster.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/ef/Royal_Capacitor.png/revision/latest?cb=20200129193145"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Royal_Capacitor.png?fa849b"
   },
   "Sawmerang": {
     "rarity": "Equipment",
     "cooldown": "45s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Sawmerang",
+    "id": "Saw",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Sawmerang",
     "description": "Throw three large saw blades that slice through enemies for 3x400% damage. Also deals an additional 3x100% damage per second while bleeding enemies. Can strike enemies again on the way back.",
     "name": "Sawmerang",
     "flavorText": "Throw a fan of buzzing saws that come back to you.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/6/62/Sawmerang.png/revision/latest?cb=20200331153332"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Sawmerang.png?a6b9a4"
   },
   "Seed of Life": {
     "rarity": "Equipment",
-    "cooldown": "15s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Seed_of_Life",
-    "description": "Revives the user when killed or dead allies on activation. Consumed on use.",
+    "cooldown": "60s",
+    "id": "HealAndRevive",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Seed_of_Life",
+    "description": "Revive dead, friendly Survivors upon activation. Dying while holding this Equipment returns only you to life. Reviving gives 3s of invulnerability and consumes the equipment.",
     "name": "Seed of Life",
     "flavorText": "Revives the user when killed or dead allies on activation. Consumed on use.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9e/Seed_of_Life.png/revision/latest?cb=20240828191958"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Seed_of_Life.png?508e73"
   },
   "Super Massive Leech": {
     "rarity": "Equipment",
     "cooldown": "60s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Super_Massive_Leech",
+    "id": "LifestealOnHit",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Super_Massive_Leech",
     "description": "Heal for 20% of the damage you deal. Lasts 8 seconds.",
     "name": "Super Massive Leech",
     "flavorText": "Heal for a percentage of the damage you deal for 8 seconds.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/ae/Super_Massive_Leech.png/revision/latest?cb=20200811161830"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Super_Massive_Leech.png?40f502"
   },
   "The Back-up": {
-    "rarity": "Equipment",
+    "rarity": "Uncommon",
     "cooldown": "100s",
     "unlock": "Mechanic",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/The_Back-up",
+    "id": "DroneBackup",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/The_Back-up",
     "description": "Call 4 Strike Drones to fight for you. Lasts 25 seconds.",
     "name": "The Back-up",
     "flavorText": "Call drones for back up. Lasts 25 seconds.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/39/The_Back-up.png/revision/latest?cb=20200129193206"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/The_Back-up.png?61f55f"
   },
   "The Crowdfunder": {
     "rarity": "Equipment",
     "unlock": "Funded!",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/The_Crowdfunder",
+    "id": "GoldGat",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/The_Crowdfunder",
     "description": "Fires a continuous barrage that deals 100% damage per bullet. Costs $1 per bullet. Cost increases over time.",
     "name": "The Crowdfunder",
     "flavorText": "Toggle to fire. Costs gold per bullet.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d4/The_Crowdfunder.png/revision/latest?cb=20200129193207"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/The_Crowdfunder.png?58fc1a"
   },
   "Trophy Hunter's Tricorn": {
     "rarity": "Equipment",
-    "cooldown": "60s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Trophy_Hunter%27s_Tricorn",
+    "cooldown": "0s",
+    "id": "BossHunter",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Trophy_Hunter%27s_Tricorn",
     "description": "Execute any enemy capable of spawning a unique reward, and it will drop that item. Equipment is consumed on use.",
     "name": "Trophy Hunter's Tricorn",
     "flavorText": "Execute a large monster and claim its trophy. Consumed on use.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/72/Trophy_Hunter%27s_Tricorn.png/revision/latest?cb=20220302120753"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Trophy_Hunter%27s_Tricorn.png?4d17b1"
   },
   "Volcanic Egg": {
     "rarity": "Equipment",
     "cooldown": "30s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Volcanic_Egg",
+    "id": "FireBallDash",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Volcanic_Egg",
     "description": "Turn into a draconic fireball for 5 seconds. Deal 500% damage on impact. Detonates at the end for 800% damage.",
     "name": "Volcanic Egg",
     "flavorText": "Transform into a speeding draconic fireball, dealing damage as you pass through enemies.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/2e/Volcanic_Egg.png/revision/latest?cb=20200129235350"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Volcanic_Egg.png?19deb4"
   },
   "Effigy of Grief": {
     "rarity": "Lunar Equipment",
     "cooldown": "15s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Effigy_of_Grief",
+    "id": "CrippleWard",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Effigy_of_Grief",
     "description": "ALL characters within are slowed by 50% and have their armor reduced by 20. Can place up to 5.",
     "name": "Effigy of Grief",
     "flavorText": "Drop a permanent effigy that cripples ALL characters inside. Can place up to 5.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/45/Effigy_of_Grief.png/revision/latest?cb=20200129193053"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Effigy_of_Grief.png?d29bca"
   },
   "Glowing Meteorite": {
     "rarity": "Lunar Equipment",
     "cooldown": "140s",
     "unlock": "Moon Worshipper",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Glowing_Meteorite",
+    "id": "Meteor",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Glowing_Meteorite",
     "description": "Rain meteors from the sky, damaging ALL characters for 600% damage per blast. Lasts 20 seconds.",
     "name": "Glowing Meteorite",
     "flavorText": "Rain meteors from the sky, hurting both enemies and allies.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f4/Glowing_Meteorite.png/revision/latest?cb=20200129193102"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Glowing_Meteorite.png?62cbd0"
   },
   "Helfire Tincture": {
     "rarity": "Lunar Equipment",
     "cooldown": "45s",
     "unlock": "Multikill!",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Helfire_Tincture",
+    "id": "BurnNearby",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Helfire_Tincture",
     "description": "Ignite ALL characters within 15m for 12s. Deal 5% of your maximum health/second as burning as damage. The burn is 0.5x stronger on yourself, 0.25x stronger on allies, and 24x stronger on enemies.",
     "name": "Helfire Tincture",
     "flavorText": "Burn everything nearby... including you and allies.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/4/4d/Helfire_Tincture.png/revision/latest?cb=20200129193109"
-  },
-  "Aurelionite's Blessing": {
-    "rarity": "Elite Equipment",
-    "cooldown": "25s",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Aurelionite%27s_Blessing",
-    "description": "Become an aspect of radiance.",
-    "name": "Aurelionite's Blessing",
-    "flavorText": "Become an aspect of radiance.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/50/Aurelionite%27s_Blessing.png/revision/latest?cb=20240909034932"
-  },
-  "Her Biting Embrace": {
-    "rarity": "Elite Equipment",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Her_Biting_Embrace",
-    "description": "Become an aspect of ice.",
-    "name": "Her Biting Embrace",
-    "flavorText": "Become an aspect of ice.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/8b/Her_Biting_Embrace.png/revision/latest?cb=20200129193110"
-  },
-  "His Reassurance": {
-    "rarity": "Elite Equipment",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/His_Reassurance",
-    "description": "Become an aspect of earth.",
-    "name": "His Reassurance",
-    "flavorText": "Become an aspect of earth.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/5d/His_Reassurance.png/revision/latest?cb=20220304231620"
-  },
-  "His Spiteful Boon": {
-    "rarity": "Elite Equipment",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/His_Spiteful_Boon",
-    "description": "Become an aspect of spite.",
-    "name": "His Spiteful Boon",
-    "flavorText": "Become an aspect of spite.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/ab/His_Spiteful_Boon.png/revision/latest?cb=20240909035021"
-  },
-  "Ifrit's Distinction": {
-    "rarity": "Elite Equipment",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Ifrit%27s_Distinction",
-    "description": "Become an aspect of fire.",
-    "name": "Ifrit's Distinction",
-    "flavorText": "Become an aspect of fire.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/0/08/Ifrit%27s_Distinction.png/revision/latest?cb=20200129193112"
-  },
-  "N'kuhana's Retort": {
-    "rarity": "Elite Equipment",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/N%27kuhana%27s_Retort",
-    "description": "Become an aspect of corruption.",
-    "name": "N'kuhana's Retort",
-    "flavorText": "Become an aspect of corruption.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9b/N%27kuhana%27s_Retort.png/revision/latest?cb=20200129193122"
-  },
-  "Of One Mind": {
-    "rarity": "Elite Equipment",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Of_One_Mind",
-    "description": "Become an aspect of the Collective.",
-    "name": "Of One Mind",
-    "flavorText": "Become an aspect of the Collective.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/8b/Of_One_Mind.png/revision/latest?cb=20251123010036"
-  },
-  "Shared Design": {
-    "rarity": "Elite Equipment",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Shared_Design",
-    "description": "Become an aspect of perfection.",
-    "name": "Shared Design",
-    "flavorText": "Become an aspect of perfection.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/50/Shared_Design.png/revision/latest?cb=20210329031824"
-  },
-  "Silence Between Two Strikes": {
-    "rarity": "Elite Equipment",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Silence_Between_Two_Strikes",
-    "description": "Become an aspect of lightning.",
-    "name": "Silence Between Two Strikes",
-    "flavorText": "Become an aspect of lightning.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/0/0a/Silence_Between_Two_Strikes.png/revision/latest?cb=20200129193155"
-  },
-  "Spectral Circlet": {
-    "rarity": "Elite Equipment",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Spectral_Circlet",
-    "description": "Become an aspect of incorporeality.",
-    "name": "Spectral Circlet",
-    "flavorText": "Become an aspect of incorporeality.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d2/Spectral_Circlet.png/revision/latest?cb=20200331152250"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Helfire_Tincture.png?488556"
   },
   "Spinel Tonic": {
     "rarity": "Untiered",
     "cooldown": "60s",
     "unlock": "Cosmic Explorer",
-    "wikiUrl": "https://riskofrain2.fandom.com/wiki/Spinel_Tonic",
+    "id": "TonicAffliction",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Spinel_Tonic",
     "description": "Drink the Tonic, gaining a boost for 20 seconds. Increases damage by +100%. Increases attack speed by +70%. Increases armor by +20. Increases maximum health by +50%. Increases passive health regeneration by +300%. Increases movespeed by +30%.\n\nWhen the Tonic wears off, you have a 20% chance to gain a Tonic Affliction, reducing all of your stats by -5% (-5% per stack).",
     "name": "Spinel Tonic",
     "flavorText": "Gain a massive boost to ALL stats. Chance to gain an affliction that reduces ALL stats.",
-    "imgUrl": "https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/29/Spinel_Tonic.png/revision/latest?cb=20200129193202"
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Spinel_Tonic.png?de8d8c"
+  },
+  "Aurelionite's Blessing": {
+    "rarity": "Elite Equipment",
+    "cooldown": "25s",
+    "id": "EliteAurelioniteEquipment",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Aurelionite%27s_Blessing",
+    "description": "Become an aspect of radiance.",
+    "name": "Aurelionite's Blessing",
+    "flavorText": "Become an aspect of radiance.",
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Aurelionite%27s_Blessing.png?501841"
+  },
+  "Her Biting Embrace": {
+    "rarity": "Elite Equipment",
+    "id": "EliteIceEquipment",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Her_Biting_Embrace",
+    "description": "Become an aspect of ice.",
+    "name": "Her Biting Embrace",
+    "flavorText": "Become an aspect of ice.",
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Her_Biting_Embrace.png?6cbf47"
+  },
+  "His Reassurance": {
+    "rarity": "Elite Equipment",
+    "id": "EliteEarthEquipment",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/His_Reassurance",
+    "description": "Become an aspect of earth.",
+    "name": "His Reassurance",
+    "flavorText": "Become an aspect of earth.",
+    "imgUrl": "https://riskofrain2.wiki.gg/images/His_Reassurance.png?4aadbb"
+  },
+  "His Spiteful Boon": {
+    "rarity": "Elite Equipment",
+    "id": "EliteBeadEquipment",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/His_Spiteful_Boon",
+    "description": "Become an aspect of spite.",
+    "name": "His Spiteful Boon",
+    "flavorText": "Become an aspect of spite.",
+    "imgUrl": "https://riskofrain2.wiki.gg/images/His_Spiteful_Boon.png?d4a184"
+  },
+  "Ifrit's Distinction": {
+    "rarity": "Elite Equipment",
+    "id": "EliteFireEquipment",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Ifrit%27s_Distinction",
+    "description": "Become an aspect of fire.",
+    "name": "Ifrit's Distinction",
+    "flavorText": "Become an aspect of fire.",
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Ifrit%27s_Distinction.png?20af00"
+  },
+  "N'kuhana's Retort": {
+    "rarity": "Elite Equipment",
+    "id": "ElitePoisonEquipment",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/N%27kuhana%27s_Retort",
+    "description": "Become an aspect of corruption.",
+    "name": "N'kuhana's Retort",
+    "flavorText": "Become an aspect of corruption.",
+    "imgUrl": "https://riskofrain2.wiki.gg/images/N%27kuhana%27s_Retort.png?4fa21d"
+  },
+  "Of One Mind": {
+    "rarity": "Elite Equipment",
+    "id": "EliteCollectiveEquipment",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Of_One_Mind",
+    "description": "Become an aspect of the Collective.",
+    "name": "Of One Mind",
+    "flavorText": "Become an aspect of the Collective.",
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Of_One_Mind.png?f0a3e4"
+  },
+  "Shared Design": {
+    "rarity": "Elite Equipment",
+    "id": "EliteLunarEquipment",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Shared_Design",
+    "description": "Become an aspect of perfection.",
+    "name": "Shared Design",
+    "flavorText": "Become an aspect of perfection.",
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Shared_Design.png?cb6c3d"
+  },
+  "Silence Between Two Strikes": {
+    "rarity": "Elite Equipment",
+    "id": "EliteLightningEquipment",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Silence_Between_Two_Strikes",
+    "description": "Become an aspect of lightning.",
+    "name": "Silence Between Two Strikes",
+    "flavorText": "Become an aspect of lightning.",
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Silence_Between_Two_Strikes.png?c91440"
+  },
+  "Spectral Circlet": {
+    "rarity": "Elite Equipment",
+    "id": "EliteHauntedEquipment",
+    "wikiUrl": "https://riskofrain2.wiki.gg/wiki/Spectral_Circlet",
+    "description": "Become an aspect of incorporeality.",
+    "name": "Spectral Circlet",
+    "flavorText": "Become an aspect of incorporeality.",
+    "imgUrl": "https://riskofrain2.wiki.gg/images/Spectral_Circlet.png?aab849"
   }
 }
+

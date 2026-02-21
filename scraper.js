@@ -16,9 +16,9 @@ Examples
   node scraper.js items --single https://riskofrain2.wiki.gg/wiki/Focus_Crystal`;
 
 const imageDirPath = './imgs';
-const gamepediaItemDataPath = './gamepedia_item_data.json';
-const gamepediaEqpDataPath = './gamepedia_eqp_data.json';
-const gamepediaSurvivorDataPath = './gamepedia_survivor_data.json';
+const itemDataPath = './item_data.json';
+const eqpDataPath = './eqp_data.json';
+const survivorDataPath = './survivor_data.json';
 const challengeDataPath = './challenge_data.json';
 const artifactDataPath = './artifact_data.json';
 const rootUrl = 'https://riskofrain2.wiki.gg';
@@ -94,9 +94,9 @@ async function autoScroll(page) {
 
 const genUrlsToFollow = async (page, navboxSelector = '.navbox') =>
   await page.$$eval(navboxSelector, navboxes =>
-    Array.from(
-      navboxes[0].querySelectorAll('.notitle > a:not(.selflink)'),
-    ).map(linkNode => linkNode.getAttribute('href')),
+    Array.from(navboxes[0].querySelectorAll('.notitle > a:not(.selflink)')).map(
+      linkNode => linkNode.getAttribute('href'),
+    ),
   );
 
 const scrape = ({
@@ -116,7 +116,11 @@ const scrape = ({
       });
       const page = await browser.newPage();
       await page.exposeFunction('toCamelCase', toCamelCase);
-      await windowSet(page, 'CHALLENGE_TABLE_CATEGORY', CHALLENGE_TABLE_CATEGORY);
+      await windowSet(
+        page,
+        'CHALLENGE_TABLE_CATEGORY',
+        CHALLENGE_TABLE_CATEGORY,
+      );
       await page.setDefaultNavigationTimeout(0);
       if (!single) {
         logInfo(`Navigating to seed URL: ${seed}`);
@@ -164,37 +168,66 @@ const visitItem = async (page, url) => {
   await autoScroll(page);
   console.log(url);
 
-  const {url: rawImgUrl, name: imgName} = await page
-    .$eval('table.portable-infobox td[colspan] img', el => ({
+  // Handle pages with multiple infoboxes (e.g. Item Scrap has 4 on one page)
+  // Find which infobox matches the URL
+  const infoboxes = await page.$$('table.portable-infobox');
+  let infobox = infoboxes[0];
+  if (infoboxes.length > 1) {
+    const urlName = decodeURIComponent(url.split('/wiki/')[1]).replace(
+      /_/g,
+      ' ',
+    );
+    for (const box of infoboxes) {
+      const boxName = await box.$eval('th.infoboxname', el => {
+        const clone = el.cloneNode(true);
+        clone.querySelectorAll('span').forEach(s => s.remove());
+        return clone.textContent.trim();
+      });
+      if (urlName.includes(boxName) || boxName.includes(urlName)) {
+        infobox = box;
+        break;
+      }
+    }
+  }
+
+  const {url: rawImgUrl, name: imgName} = await infobox
+    .$eval('td[colspan] img', el => ({
       url: el.getAttribute('src'),
-      name: el.alt || el.getAttribute('src').split('/').pop().split('?')[0],
+      // Strip extension from path
+      name: (
+        el.alt || el.getAttribute('src').split('/').pop().split('?')[0]
+      ).replace(/\.\w+$/, ''),
     }))
     .catch(evalCatchHandler);
   const imgUrl = resolveImgUrl(rawImgUrl);
 
   const [description, keyInfo, name, stats, flavorText] = await Promise.all([
-    page.$eval('td.infoboxdesc', el => el.innerText).catch(evalCatchHandler),
-    page
-      .$$eval('table.portable-infobox tr', els =>
+    infobox.$eval('td.infoboxdesc', el => el.innerText).catch(evalCatchHandler),
+    infobox
+      .$$eval('tr', els =>
         els.reduce((agg, cur) => {
           const label = cur.querySelector('td')?.innerText.toLocaleLowerCase();
-          return ['rarity', 'category', 'id', 'unlock'].includes(label)
-            ? {...agg, [label]: cur.querySelectorAll('td')[1].innerText}
+          const value = cur.querySelectorAll('td')[1]?.innerText;
+          return ['rarity', 'category', 'id', 'unlock'].includes(label) &&
+            // overwrite if nullish, handles cases where rarity might be listed twice
+            // (see Shipping Request Form)
+            !agg[label]
+            ? {...agg, [label]: value}
             : agg;
         }, {}),
       )
       .catch(evalCatchHandler),
-    page
+    infobox
       .$eval('th.infoboxname', el => {
         const clone = el.cloneNode(true);
         clone.querySelectorAll('span').forEach(s => s.remove());
         return clone.textContent.trim();
       })
       .catch(evalCatchHandler),
-    page
-      .$$eval('table.portable-infobox:first-of-type tr', async els => {
-        const statRowIndex = els.findIndex(
-          row => row.querySelector('th:not(.infoboxname)'),
+    infobox
+      .$$eval('tr', async els => {
+        const statRowIndex = els.findIndex(row =>
+          row.querySelector('th:not(.infoboxname)'),
         );
         const statRows = els.slice(statRowIndex);
         if (statRows.length === 0) return;
@@ -208,18 +241,25 @@ const visitItem = async (page, url) => {
           .slice(1)
           .filter(row => {
             const tds = row.querySelectorAll('td');
-            return tds.length >= keyNames.length && !row.querySelector('.infoboxname');
+            return (
+              tds.length >= keyNames.length &&
+              !row.querySelector('.infoboxname')
+            );
           })
           .map(row => {
             const values = Array.from(row.querySelectorAll('td')).map(
               el => el.innerText,
             );
-            return Object.fromEntries(keyNames.map((key, i) => [key, values[i]]));
+            return Object.fromEntries(
+              keyNames.map((key, i) => [key, values[i]]),
+            );
           })
           .filter(stat => Object.values(stat).some(v => v));
       })
       .catch(evalCatchHandler),
-    page.$eval('td.infoboxcaption', el => el.innerText).catch(evalCatchHandler),
+    infobox
+      .$eval('td.infoboxcaption', el => el.innerText)
+      .catch(evalCatchHandler),
   ]);
 
   const browser = page.browser();
@@ -251,7 +291,10 @@ const visitEqp = async (page, url) => {
   const {url: rawImgUrl, name: imgName} = await page
     .$eval('table.portable-infobox:first-of-type td[colspan] img', el => ({
       url: el.getAttribute('src'),
-      name: el.alt || el.getAttribute('src').split('/').pop().split('?')[0],
+      // Strip extension from path
+      name: (
+        el.alt || el.getAttribute('src').split('/').pop().split('?')[0]
+      ).replace(/\.\w+$/, ''),
     }))
     .catch(evalCatchHandler);
   const imgUrl = resolveImgUrl(rawImgUrl);
@@ -317,7 +360,10 @@ const visitSurvivor = async (page, url) => {
   const {url: rawImgUrl, name: imgName} = await page
     .$eval('table.portable-infobox td[colspan] img', el => ({
       url: el.getAttribute('src'),
-      name: el.alt || el.getAttribute('src').split('/').pop().split('?')[0],
+      // Strip extension from path
+      name: (
+        el.alt || el.getAttribute('src').split('/').pop().split('?')[0]
+      ).replace(/\.\w+$/, ''),
     }))
     .catch(evalCatchHandler);
   const imgUrl = resolveImgUrl(rawImgUrl);
@@ -343,7 +389,11 @@ const visitSurvivor = async (page, url) => {
       if (tds.length >= 2) {
         const key = tds[0].innerText.trim();
         if (statKeys.includes(key)) {
-          result[key] = tds[1].innerText.trim();
+          let value = tds[1].innerText.trim();
+          if (key === 'Armor') {
+            value = value.replace('(', '(Max');
+          }
+          result[key] = value;
         }
       }
     }
@@ -363,9 +413,12 @@ const visitSurvivor = async (page, url) => {
 
         const imgEl = table.querySelector('th.skillimage img');
         const imgUrl = imgEl ? imgEl.getAttribute('src') : null;
+        // Strip extension from path
         const imgName = imgEl
-          ? imgEl.alt ||
-            imgEl.getAttribute('src').split('/').pop().split('?')[0]
+          ? (
+              imgEl.alt ||
+              imgEl.getAttribute('src').split('/').pop().split('?')[0]
+            ).replace(/\.\w+$/, '')
           : null;
 
         const data = {};
@@ -407,7 +460,11 @@ const visitSurvivor = async (page, url) => {
     await download(dlPage, imgUrl, `${imageDirPath}/${imgName}`);
     if (skills) {
       for (const skill of skills.filter(skill => skill.imgUrl)) {
-        await download(dlPage, skill.imgUrl, `${imageDirPath}/${skill.imgName}`);
+        await download(
+          dlPage,
+          skill.imgUrl,
+          `${imageDirPath}/${skill.imgName}`,
+        );
       }
     }
   } finally {
@@ -430,31 +487,30 @@ const visitChallenge = async (page, url) => {
   await page.goto(url, {waitUntil: 'networkidle0'});
   await autoScroll(page);
   console.log(url);
-  const challenges = await page.$$eval(
-    '.wikitable.floatheader',
-    tables =>
-      tables
-        .map((table, i) => {
-          const tableRows = Array.from(table.querySelectorAll('tbody tr'));
-          return tableRows
-            .map(tableRow => {
-              const tableDatas = tableRow.querySelectorAll('td');
-              if (tableDatas.length < 3) return null;
-              const unlockTd = tableDatas[2];
-              const img = unlockTd.querySelector('img');
-              if (!img) return null;
-              return {
-                name: tableDatas[0].innerText,
-                description: tableDatas[1].innerText,
-                unlock: unlockTd.innerText,
-                category: CHALLENGE_TABLE_CATEGORY[i],
-                imgUrl: img.getAttribute('src'),
-                imgName: img.alt,
-              };
-            })
-            .filter(Boolean);
-        })
-        .flat(),
+  const challenges = await page.$$eval('.wikitable.floatheader', tables =>
+    tables
+      .map((table, i) => {
+        const tableRows = Array.from(table.querySelectorAll('tbody tr'));
+        return tableRows
+          .map(tableRow => {
+            const tableDatas = tableRow.querySelectorAll('td');
+            if (tableDatas.length < 3) return null;
+            const unlockTd = tableDatas[2];
+            const img = unlockTd.querySelector('img');
+            if (!img) return null;
+            return {
+              name: tableDatas[0].innerText,
+              description: tableDatas[1].innerText,
+              unlock: unlockTd.innerText,
+              category: CHALLENGE_TABLE_CATEGORY[i],
+              imgUrl: img.getAttribute('src'),
+              // Strip extension from path
+              imgName: img.alt.replace(/\.\w+$/, ''),
+            };
+          })
+          .filter(Boolean);
+      })
+      .flat(),
   );
 
   // Resolve image URLs
@@ -497,12 +553,14 @@ const visitArtifact = async (page, url) => {
             if (tableDatas.length === 0) return null;
             const img = tableDatas[0].querySelector('img');
             if (!img || !img.alt.startsWith('Artifact')) return null;
+            // Strip extension from path
+            const name = img.alt.replace(/\.\w+$/, '');
             return {
-              name: img.alt,
+              name,
               description: tableDatas[1].innerText,
-              code: tableDatas[2].innerText.replace(/[ \n]/g, ''),
+              code: tableDatas[2].textContent.replace(/[ \n]/g, ''),
               imgUrl: img.getAttribute('src'),
-              imgName: img.alt,
+              imgName: name,
             };
           })
           .filter(artifact => !!artifact);
@@ -519,7 +577,11 @@ const visitArtifact = async (page, url) => {
   const dlPage = await browser.newPage();
   try {
     for (const artifact of artifacts) {
-      await download(dlPage, artifact.imgUrl, `${imageDirPath}/${artifact.imgName}`);
+      await download(
+        dlPage,
+        artifact.imgUrl,
+        `${imageDirPath}/${artifact.imgName}`,
+      );
     }
   } finally {
     await dlPage.close();
@@ -531,6 +593,8 @@ const visitArtifact = async (page, url) => {
 // ----- Code generation -----
 
 const generateImageRequires = () => {
+  // could improve by reading item_data.json to get name so name in gen'd code
+  // doesn't have to have its spaces stripped
   const outputPath = `${imageDirPath}/images.js`;
   const imgFiles = fs.readdirSync(imageDirPath);
   const [getFilenameWithoutExt, getFileExt] = [
@@ -590,7 +654,7 @@ const main = () => {
           if (flags.includes('--single')) {
             console.log(JSON.stringify(itemData, null, 2));
           } else {
-            const outputPath = gamepediaItemDataPath;
+            const outputPath = itemDataPath;
             fs.writeFile(outputPath, JSON.stringify(itemData), err => {
               if (err) throw err;
               console.log(`written to ${outputPath}`);
@@ -617,7 +681,7 @@ const main = () => {
           if (flags.includes('--single')) {
             console.log(JSON.stringify(eqpData, null, 2));
           } else {
-            const outputPath = gamepediaEqpDataPath;
+            const outputPath = eqpDataPath;
             fs.writeFile(outputPath, JSON.stringify(eqpData), err => {
               if (err) throw err;
               console.log(`written to ${outputPath}`);
@@ -644,7 +708,7 @@ const main = () => {
           if (flags.includes('--single')) {
             console.log(JSON.stringify(survivorData, null, 2));
           } else {
-            const outputPath = gamepediaSurvivorDataPath;
+            const outputPath = survivorDataPath;
             fs.writeFile(outputPath, JSON.stringify(survivorData), err => {
               if (err) throw err;
               console.log(`written to ${outputPath}`);
