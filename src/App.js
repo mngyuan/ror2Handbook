@@ -18,6 +18,7 @@ import {
 } from './components/HomeScreen.js';
 import SettingsScreen from './components/SettingsScreen.js';
 import {Brand, Colors} from './const.js';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 if (
   Platform.OS === 'android' &&
@@ -30,11 +31,13 @@ const Drawer = createDrawerNavigator();
 
 const App = () => {
   return (
-    <AsyncStorageProvider>
-      <NavigationRoot>
-        <Root />
-      </NavigationRoot>
-    </AsyncStorageProvider>
+    <SafeAreaProvider>
+      <AsyncStorageProvider>
+        <NavigationRoot>
+          <Root />
+        </NavigationRoot>
+      </AsyncStorageProvider>
+    </SafeAreaProvider>
   );
 };
 
@@ -45,10 +48,11 @@ const Root = () => (
       drawerType: 'slide',
       headerShown: false,
       drawerLabelStyle: {fontFamily: Brand.defaultFont},
-    }}>
+    }}
+  >
     <Drawer.Screen
       name="Home"
-      component={React.memo((props) => (
+      component={React.memo(props => (
         <HomeScreen {...props} type={null} />
       ))}
     />
@@ -73,7 +77,8 @@ const NavigationRoot = ({children}) => {
     <NavigationContainer
       onReady={() => {}}
       onStateChange={() => {}}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+    >
       <StatusBar
         barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
         backgroundColor={colorScheme === 'dark' ? Colors.black : Colors.white}

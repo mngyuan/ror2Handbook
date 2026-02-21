@@ -52,18 +52,13 @@ export const DetailScreen = ({route}) => {
     ) : null;
 
   return (
-    <ScrollView>
-      <View
-        style={[
-          styles.DetailScreen,
-          {
-            backgroundColor:
-              colorScheme === 'dark'
-                ? DarkTheme.colors.background
-                : Colors.white,
-          },
-        ]}
-      >
+    <ScrollView
+      style={{
+        backgroundColor:
+          colorScheme === 'dark' ? DarkTheme.colors.background : Colors.white,
+      }}
+    >
+      <View style={styles.DetailScreen}>
         <View style={styles.detailHeader}>
           <View style={styles.detailHeaderInfo}>
             <RText style={styles.detailSectionHeader}>{survivor.name}</RText>
@@ -105,7 +100,7 @@ export const DetailScreen = ({route}) => {
                     <RText> {skill.Type}</RText>
                     {skill.Cooldown ? <RText>, {skill.Cooldown}</RText> : null}
                   </RText>
-                  {skill.Notes && skill.Notes.includes('Unlock') ? (
+                  {skill.Challenge ? (
                     <RText
                       style={[sharedStyles.bodyText, styles.detailSkillUnlock]}
                     >
@@ -113,18 +108,11 @@ export const DetailScreen = ({route}) => {
                       <RText
                         style={sharedStyles.achievementNameLink}
                         onPress={() => {
-                          const unlock = skill.Notes.match(
-                            /Unlocked via the (.*) Challenge\./,
-                          )[1];
-                          setViewingChallenge(unlock);
+                          setViewingChallenge(skill.Challenge);
                           setChallengeModalVisible(true);
                         }}
                       >
-                        {
-                          skill.Notes.match(
-                            /Unlocked via the (.*) Challenge\./,
-                          )[1]
-                        }
+                        {skill.Challenge}
                       </RText>
                     </RText>
                   ) : null}

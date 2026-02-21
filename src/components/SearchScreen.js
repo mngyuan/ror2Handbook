@@ -278,7 +278,7 @@ const FilterPill = ({
         <ScrollView
           contentContainerStyle={[sharedStyles.modalInnerPadding]}
           keyboardShouldPersistTaps="handled"
-          scrollEnabled={false}
+          scrollEnabled={true}
         >
           {filterOptions.map(option => (
             <PickerModalRow

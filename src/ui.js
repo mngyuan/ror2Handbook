@@ -7,10 +7,16 @@ import {
   View,
   useColorScheme,
 } from 'react-native';
+import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import Modal from 'react-native-modal';
 import {DarkTheme} from '@react-navigation/native';
 import {AsyncStorageContext} from './components/AsyncStorageProvider.js';
 import {Brand, Colors, FontSize, FontStyles} from './const';
+import {
+  Directions,
+  Gesture,
+  GestureDetector,
+} from 'react-native-gesture-handler';
 
 export const RText = ({color = 'primary', style, children, ...props}) => {
   const systemColorScheme = useColorScheme();
@@ -27,7 +33,7 @@ export const RText = ({color = 'primary', style, children, ...props}) => {
   // hacky android line height fix for Space Grotesk
   const providedFontSize =
     style?.fontSize ||
-    (style && style.find ? style.find((s) => !!s.fontSize)?.fontSize : null);
+    (style && style.find ? style.find(s => !!s.fontSize)?.fontSize : null);
 
   return (
     <Text
@@ -38,7 +44,8 @@ export const RText = ({color = 'primary', style, children, ...props}) => {
           : {},
         style,
       ]}
-      {...props}>
+      {...props}
+    >
       {children}
     </Text>
   );
@@ -50,26 +57,24 @@ export const VerticalSwipeView = ({
   children,
 }) => {
   const [offset, setOffset] = useState(0);
+
+  const swipeUp = Gesture.Fling()
+    .direction(Directions.DOWN)
+    .onEnd(() => {
+      onSwipeDown();
+    })
+    .runOnJS(!!onSwipeDown);
+
   return (
-    <ScrollView
-      onScroll={(e) => {
-        const offset = e.nativeEvent.contentOffset.y;
-        setOffset(offset);
-      }}
-      onResponderRelease={() => {
-        if (offset > -50) {
-          return;
-        }
-        onSwipeDown();
-      }}
-      scrollEventThrottle={50}
-      showsVerticalScrollIndicator={false}
+    <GestureDetector
+      gesture={swipeUp}
       keyboardShouldPersistTaps="handled"
-      style={{overflow: 'visible'}}>
+      style={{overflow: 'visible'}}
+    >
       <View onStartShouldSetResponder={() => true} style={style}>
         {children}
       </View>
-    </ScrollView>
+    </GestureDetector>
   );
 };
 
@@ -81,6 +86,7 @@ export const RModal = ({
 }) => {
   const systemColorScheme = useColorScheme();
   const {data: asyncStorageData} = useContext(AsyncStorageContext);
+  const insets = useSafeAreaInsets();
 
   const colorScheme = asyncStorageData?.dark_mode_override
     ? 'dark'
@@ -91,7 +97,9 @@ export const RModal = ({
       isVisible={modalVisible}
       onBackdropPress={() => setModalVisible(false)}
       backdropTransitionOutTiming={0}
-      style={modalStyles.Modal}>
+      // Not sure why this is 2* to get the long category filter pill modal to fit
+      style={[modalStyles.Modal, {marginTop: 2 * insets.top}]}
+    >
       <VerticalSwipeView
         onSwipeDown={() => setModalVisible(false)}
         style={[
@@ -103,7 +111,8 @@ export const RModal = ({
                 ? DarkTheme.colors.background
                 : Colors.white,
           },
-        ]}>
+        ]}
+      >
         {children}
       </VerticalSwipeView>
     </Modal>
@@ -112,18 +121,13 @@ export const RModal = ({
 
 const modalStyles = StyleSheet.create({
   Modal: {
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    flex: 1,
-    flexDirection: 'row',
     margin: 0,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
   },
   ModalInner: {
     borderRadius: 12,
     padding: 16,
-    // we want to show ModalInner's background on vertical bounces
-    paddingBottom: 24 + 512,
-    marginBottom: -512,
   },
 });
 

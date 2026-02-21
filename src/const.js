@@ -1,8 +1,8 @@
 import {Platform} from 'react-native';
 
-import ITEM_DATA from './static/gamepedia_item_data.json';
-import EQP_DATA from './static/gamepedia_eqp_data.json';
-import SURVIVOR_DATA from './static/gamepedia_survivor_data.json';
+import ITEM_DATA from './static/item_data.json';
+import EQP_DATA from './static/eqp_data.json';
+import SURVIVOR_DATA from './static/survivor_data.json';
 import CHALLENGE_DATA from './static/challenge_data.json';
 import ARTIFACT_DATA from './static/artifact_data.json';
 
