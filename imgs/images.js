@@ -365,7 +365,7 @@ export default {
   Salvage: require('./Salvage.png'),
   Salvaged: require('./Salvaged.png'),
   Sanctified: require('./Sanctified.png'),
-  SautéedWorms: require('./SautéedWorms.png'),
+  SautéedWorms: require('./SauteedWorms.png'),
   Sawmerang: require('./Sawmerang.png'),
   ScrapBarrier: require('./ScrapBarrier.png'),
   ScrapLauncher: require('./ScrapLauncher.png'),

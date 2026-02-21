@@ -194,9 +194,9 @@ const visitItem = async (page, url) => {
     .$eval('td[colspan] img', el => ({
       url: el.getAttribute('src'),
       // Strip extension from path
-      name: (
-        el.alt || el.getAttribute('src').split('/').pop().split('?')[0]
-      ).replace(/\.\w+$/, ''),
+      name: (el.alt || el.getAttribute('src').split('/').pop().split('?')[0])
+        .replace(/\.\w+$/, '')
+        .replace(/é/g, 'e'),
     }))
     .catch(evalCatchHandler);
   const imgUrl = resolveImgUrl(rawImgUrl);
@@ -292,9 +292,9 @@ const visitEqp = async (page, url) => {
     .$eval('table.portable-infobox:first-of-type td[colspan] img', el => ({
       url: el.getAttribute('src'),
       // Strip extension from path
-      name: (
-        el.alt || el.getAttribute('src').split('/').pop().split('?')[0]
-      ).replace(/\.\w+$/, ''),
+      name: (el.alt || el.getAttribute('src').split('/').pop().split('?')[0])
+        .replace(/\.\w+$/, '')
+        .replace(/é/g, 'e'),
     }))
     .catch(evalCatchHandler);
   const imgUrl = resolveImgUrl(rawImgUrl);
@@ -361,9 +361,9 @@ const visitSurvivor = async (page, url) => {
     .$eval('table.portable-infobox td[colspan] img', el => ({
       url: el.getAttribute('src'),
       // Strip extension from path
-      name: (
-        el.alt || el.getAttribute('src').split('/').pop().split('?')[0]
-      ).replace(/\.\w+$/, ''),
+      name: (el.alt || el.getAttribute('src').split('/').pop().split('?')[0])
+        .replace(/\.\w+$/, '')
+        .replace(/é/g, 'e'),
     }))
     .catch(evalCatchHandler);
   const imgUrl = resolveImgUrl(rawImgUrl);
@@ -418,7 +418,9 @@ const visitSurvivor = async (page, url) => {
           ? (
               imgEl.alt ||
               imgEl.getAttribute('src').split('/').pop().split('?')[0]
-            ).replace(/\.\w+$/, '')
+            )
+              .replace(/\.\w+$/, '')
+              .replace(/é/g, 'e')
           : null;
 
         const data = {};
@@ -505,7 +507,7 @@ const visitChallenge = async (page, url) => {
               category: CHALLENGE_TABLE_CATEGORY[i],
               imgUrl: img.getAttribute('src'),
               // Strip extension from path
-              imgName: img.alt.replace(/\.\w+$/, ''),
+              imgName: img.alt.replace(/\.\w+$/, '').replace(/é/g, 'e'),
             };
           })
           .filter(Boolean);
@@ -554,7 +556,7 @@ const visitArtifact = async (page, url) => {
             const img = tableDatas[0].querySelector('img');
             if (!img || !img.alt.startsWith('Artifact')) return null;
             // Strip extension from path
-            const name = img.alt.replace(/\.\w+$/, '');
+            const name = img.alt.replace(/\.\w+$/, '').replace(/é/g, 'e');
             return {
               name,
               description: tableDatas[1].innerText,
@@ -609,7 +611,7 @@ const generateImageRequires = () => {
     }));
   const kvPairs = fileInfo.map(
     file =>
-      `${JSON.stringify(file.name)}: require(${JSON.stringify(file.path)})`,
+      `${JSON.stringify(file.name === 'SauteedWorms' ? 'SautéedWorms' : file.name)}: require(${JSON.stringify(file.path)})`,
   );
   const code = `export default {${kvPairs.join(',\n')}}`;
   console.log(code);
